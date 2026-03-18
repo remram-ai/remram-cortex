@@ -1,117 +1,54 @@
 # remram-cortex
 
-Knowledge authority for the Remram system.
+Remram Cortex is the knowledge authority for Remram.
 
-Remram Cortex is a Go service responsible for structured memory, semantic retrieval, and knowledge consolidation. It provides durable, queryable context to agents and client applications while remaining independent from runtime packaging and behavioral logic.
+It turns runtime evidence, tool outputs, and imported artifacts into durable knowledge, then serves bounded retrieval back to orchestration. Cortex owns memory. It does not own execution, runtime policy, or prompt assembly.
 
-Cortex owns memory.
-It does not own execution or agent behavior.
+## What Cortex Is
 
----
+Cortex is:
 
-## Purpose
+- the durable memory layer for Remram
+- the retrieval authority for structured knowledge
+- the home of reflection, reconciliation, and artifact promotion
+- a local-first service boundary, not a prompt-side convenience feature
 
-`remram-cortex` provides persistent, structured knowledge for the Remram ecosystem.
+## What Cortex Is Not
 
-It is responsible for:
+Cortex is not:
 
-- Semantic indexing and retrieval
-- Structured knowledge storage
-- Memory consolidation and reflection routines
-- Search schema management
-- Exposing a service interface for agents and applications
+- a transcript archive
+- a vector-only memory store
+- the execution runtime
+- the orchestration or prompt-policy layer
 
-Cortex is implemented as a standalone Go service.
+OpenClaw executes. Orchestration governs behavior. Gateway governs the control plane. Cortex remembers.
 
----
+## Repository Status
 
-## Project Structure (Go Service Layout)
+This repository is currently documentation-first. The baseline conceptual architecture is being locked in before deeper implementation detail is added.
 
-This repository follows standard Go service conventions.
+The `docs/` tree is the source of truth for the current design:
 
-```
-remram-cortex/
-  README.md
-  go.mod
-  go.sum
+- [docs/overview/](docs/overview/README.md) for the high-level role and boundary
+- [docs/glossary.md](docs/glossary.md) for normalized terminology
+- [docs/concepts/](docs/concepts/README.md) for short concept definitions
+- [docs/remram-cortex/architecture.md](docs/remram-cortex/architecture.md) for the canonical architecture
+- [docs/remram-cortex/inconsistencies.md](docs/remram-cortex/inconsistencies.md) for the small set of unresolved design boundaries
 
-  cmd/
-    cortex/
-      main.go
+## Core Model
 
-  internal/
-    api/
-    core/
-    storage/
+The current architectural baseline is:
 
-  migrations/
-  config/
-  scripts/
-```
+- transcripts are evidence, not knowledge
+- memory is composed of structured knowledge objects
+- retrieval is filter-first, bounded, and inspectable
+- reflection performs immediate post-run mutation and thread-memory compression
+- dream performs later reconciliation, conflict handling, and promotion
+- promoted artifacts are Git-backed projections, not replacements for canonical memory
 
-### Root Files
+## Repository Boundary
 
-- `go.mod` / `go.sum` — Go module definition and dependencies.
-- `README.md` — Repository documentation.
+This repository owns Cortex-local design and implementation material.
 
-### `cmd/`
-
-Entrypoint binaries.
-
-- `cmd/cortex/main.go` — Application bootstrap, configuration loading, and server start.
-
-### `internal/`
-
-Core service logic (not intended for external reuse).
-
-- `api/` — Transport layer (HTTP and/or future RPC surfaces).
-- `core/` — Domain logic for indexing, retrieval, and memory operations.
-- `storage/` — Persistence abstractions and OpenSearch integration.
-
-Domain boundaries inside `core/` may evolve as Cortex matures.
-
-### `migrations/`
-
-Search index templates, mappings, and schema evolution.
-
-### `config/`
-
-Service configuration templates and environment bindings.
-
-### `scripts/`
-
-Operational utilities such as bootstrap or maintenance helpers.
-
----
-
-## Interface Surface
-
-Cortex will expose a service interface for:
-
-- Agent memory queries
-- Application-level knowledge access
-- Structured ingestion and indexing
-
-The transport mechanism (REST, RPC, or hybrid) is intentionally not fixed at this stage. The repository is structured to support evolution of the API layer without impacting core memory logic.
-
----
-
-## Relationship to Other Repositories
-
-- `remram-gateway` provisions and connects to Cortex.
-- `remram-agents` query Cortex for structured memory.
-- `remram-app` consumes Cortex data for user-facing experiences.
-- `remram` documents the overall system.
-
-Cortex remains isolated from runtime packaging and agent definitions.
-
----
-
-## Design Principle
-
-Cortex provides persistent, structured knowledge.
-
-Agents interpret.
-Gateway executes.
-Cortex remembers.
-
+The broader `remram` repository holds the system-level feature record and adjacent platform context. This repository holds the authoritative Cortex vocabulary, architecture, and future service implementation.
