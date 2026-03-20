@@ -8,7 +8,11 @@ If a term here conflicts with another document, update the architecture and glos
 
 ### Artifact
 
-A human-readable durable output such as a design document, plan, or decision record. In Cortex, artifacts may be imported as evidence or promoted from knowledge, but they are not the primary memory unit.
+A durable file such as a document, image, plan, or decision record. In Cortex, artifacts may be imported as evidence or promoted from knowledge, but the primary technical memory unit remains the knowledge object.
+
+### Artifact Intake
+
+The multimodal import path that reads external documents or images, preserves source locations, and turns them into source-linked memory inside Cortex.
 
 ### Artifact Promotion
 
@@ -82,6 +86,10 @@ A future-oriented historical replay path that feeds prior sessions or chat expor
 
 ## K
 
+### Knowledge Object
+
+The primary technical durable memory unit in Cortex. A knowledge object is a structured claim, preference, constraint, decision, principle, procedure, or relation with provenance, dimensions, confidence, and potentially multiple supporting sources.
+
 ### Knowledge Authority
 
 The layer that decides what counts as durable memory and is allowed to mutate it. In Remram, Cortex is the knowledge authority.
@@ -90,15 +98,17 @@ The layer that decides what counts as durable memory and is allowed to mutate it
 
 The structured output of Cortex retrieval. A bundle contains bounded knowledge selected for a live run, along with enough metadata for orchestration to assemble prompts or user views intentionally.
 
-### Knowledge Object
-
-The primary durable memory unit in Cortex. A knowledge object is a structured claim, preference, constraint, decision, principle, procedure, or relation with provenance, dimensions, and confidence.
-
 ## L
 
 ### Local-first
 
 The principle that Cortex should remain useful and durable on local infrastructure without depending on a remote control plane for ownership of memory.
+
+## M
+
+### Memory
+
+The generic term for durable retained meaning in Remram. In Cortex, memory is stored primarily as knowledge objects plus any adjacent continuity objects such as conversation records.
 
 ## O
 
@@ -114,7 +124,7 @@ The policy and prompt-assembly layer that decides when to retrieve from Cortex, 
 
 ### Provenance
 
-The traceable origin of a knowledge object or artifact, including the sessions, tools, imports, or documents that support it.
+The traceable origin of a knowledge object or artifact, including the sessions, tools, imports, or documents that support it and any location metadata needed to get back to the source.
 
 ## R
 

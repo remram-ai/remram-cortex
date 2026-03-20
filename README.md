@@ -41,7 +41,8 @@ The `docs/` tree is the source of truth for the current design:
 The current architectural baseline is:
 
 - transcripts are evidence, not knowledge
-- memory is composed of structured knowledge objects
+- memory is composed of structured knowledge objects with multi-source provenance
+- imported documents and images enter through one source-linked artifact-intake path
 - retrieval is filter-first, bounded, and inspectable
 - reflection performs immediate post-run mutation and thread-memory compression
 - dream performs later reconciliation, conflict handling, and promotion

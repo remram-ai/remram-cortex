@@ -2,11 +2,11 @@
 
 ## 1. Overview
 
-Remram Cortex is the memory engine and knowledge authority layer in Remram. It turns transient conversations, tool outputs, and artifacts into durable, normalized knowledge objects.
+Remram Cortex is the memory engine and knowledge authority layer in Remram. It turns transient conversations, tool outputs, and artifacts into durable memory. The primary technical record inside that memory is the knowledge object: a typed, source-linked record that can be reinforced, reconciled, promoted, or pruned over time.
 
-It owns structured memory, bounded semantic retrieval, post-run reflection, and scheduled dream-cycle reconciliation.
+It owns structured memory, bounded semantic retrieval, artifact intake, post-run reflection, and scheduled dream-cycle reconciliation.
 
-Cortex is not a transcript archive and not a vector-only memory system. It persists structured knowledge; embeddings are only one ranking signal used during retrieval.
+Cortex is not a transcript archive and not a vector-only memory system. It persists structured memory; embeddings are only one ranking signal used during retrieval.
 
 Cortex is not a memory plugin. It is a system-level intelligence layer for knowledge maturation.
 
@@ -16,19 +16,22 @@ Cortex does not own execution, runtime packaging, or agent behavior. OpenClaw ex
 
 Agents interpret. OpenClaw executes. Gateway governs the control plane. Cortex remembers.
 
-The core rule is simple: transcripts are evidence, not knowledge. Cortex extracts, structures, and reconciles durable knowledge objects from runtime activity so Remram can improve over time without depending on raw transcript sprawl.
+The core rule is simple: transcripts are evidence, not memory. Cortex extracts, structures, and reconciles durable knowledge objects from runtime activity so Remram can improve over time without depending on raw transcript sprawl.
 
-The knowledge lifecycle is: interaction -> extraction -> structured object -> reinforcement -> reconciliation -> promotion.
+The memory lifecycle is: interaction -> evidence capture -> extraction or compression -> knowledge-object delta -> reinforcement -> reconciliation -> promotion or pruning.
 
-Memory captures experience. Cortex is the layer that distills experience into durable knowledge.
+Memory captures experience. Cortex is the layer that distills experience into durable knowledge and continuity.
 
 The first end-to-end execution path is: capture -> reflection -> storage -> retrieval -> injection.
 
 ## 2. Core Principles
 
-- Transcript vs Knowledge: raw transcripts, tool logs, and artifacts are runtime evidence; only extracted and reconciled knowledge objects are treated as durable memory.
+- Transcript vs Memory: raw transcripts, tool logs, and artifacts are runtime evidence; only extracted and reconciled knowledge objects are treated as durable memory.
 - No Transcript Duplication: Cortex may reference session identifiers and persisted evidence, but it must not duplicate full transcripts or recreate transcript storage under another name.
 - Separation of Authority: Cortex owns durable knowledge and its maturation lifecycle. OpenClaw owns execution, and orchestration owns behavior and prompt policy.
+- Multi-Source Memory: one knowledge object may be reinforced by many sessions, tools, or artifacts. Strength should rise through corroboration and reuse rather than duplicate copies.
+- Source-Linked Intake: imported artifact memory must preserve provenance back to an artifact and source location so Cortex can audit, revise, or prune safely later.
+- Originals vs Derived Memory Metadata: the Git-backed artifact store keeps original imported or promoted files. OpenSearch keeps knowledge objects, indexes, and intake metadata. These stores should not be mirrored into duplicate metadata files.
 - Local-first Memory: Cortex should preserve useful memory locally and remain valuable without depending on remote control planes.
 - Memory vs Context: prompt context is a per-run injection surface; memory is structured, persistent, and expected to survive transcript compaction and session boundaries.
 - Knowledge Maturation Over Recall: Cortex is designed to mature extracted memory into scored, reconciled, promotable knowledge rather than merely persist recall snippets.
@@ -36,6 +39,7 @@ The first end-to-end execution path is: capture -> reflection -> storage -> retr
 - Semantic Continuity Over Temporal History: long-term continuity should preserve meaning, recency, and direction rather than raw chronological detail.
 - Bootstrap Before Live Evolution: historical backfill is a first-class conditioning path for initializing knowledge before live reflection and dream loops take over.
 - Reflection Before Reconciliation: each run produces candidate knowledge deltas first; broader cleanup and synthesis happen later in dream cycles.
+- Not All Evidence Persists: low-value imports and weak transient memory may be pruned when they fail to produce durable reuse. Retention is earned.
 - Bounded Retrieval: eligibility precedes similarity. Retrieval starts with explicit scope and dimension filters, then applies ranking only inside that bounded set.
 - Vectors Are Subordinate: embeddings and vector similarity are ranking signals only; they do not define truth, structure, or eligibility.
 
@@ -45,9 +49,9 @@ Cortex sits beside the runtime, not inside it.
 
 Cortex is a standalone Go service with explicit HTTP API boundaries. It does not access OpenClaw internals directly, and runtime clients do not read or write Cortex storage or indexes directly.
 
-It should be treated as infrastructure rather than as a plugin extension. Bootstrap ingestion, retrieval, reflection, dream, and promotion all run through the same service boundary and authority model.
+It should be treated as infrastructure rather than as a plugin extension. Bootstrap ingestion, artifact intake, retrieval, reflection, dream, and promotion all run through the same service boundary and authority model.
 
-The near-term MVP path operationalizes the minimum closed loop: lifecycle capture -> structured reflection -> knowledge-object storage -> bounded retrieval -> prompt injection. Dream and richer promotion flows extend that loop rather than replacing it.
+The near-term MVP path operationalizes the minimum closed loop: lifecycle capture -> structured reflection or intake -> knowledge-object storage -> bounded retrieval -> prompt injection. Dream and richer promotion flows extend that loop rather than replacing it.
 
 The implementation is layered as:
 
@@ -63,14 +67,19 @@ The implementation is layered as:
 
 Service boundaries are:
 
-- ingestion of runtime evidence and promoted artifacts
+- ingestion of runtime evidence, imported artifacts, and promoted artifacts
+- artifact parsing of documents and images into source-linked intake outputs
 - storage of structured knowledge objects and relationships
 - retrieval of bounded knowledge bundles
-- asynchronous reconciliation, consolidation, and reindexing
+- asynchronous reconciliation, consolidation, pruning, and reindexing
 
 All durable semantic recall flows through Cortex. Runtime-native memory features must not become competing knowledge authorities.
 
 OpenSearch is the primary retrieval backend owned by Cortex. It stores knowledge objects as documents and supports lexical ranking, vector similarity, and dimension-based filtering under Cortex control.
+
+A local Git-backed artifact store sits beside OpenSearch. It keeps original imported artifacts and promoted outputs. OpenSearch keeps knowledge objects, retrieval indexes, and intake metadata. Cortex should not create duplicate metadata files just to mirror state that already lives in those stores.
+
+Artifact intake should run through one named Artifact Parser surface. That parser emits a summary, highlights, and bounded source-linked slices from documents or images. A Qwen-VL-class multimodal parser is a strong near-term fit because the same flow should handle both documents and images.
 
 The target service surface is:
 
@@ -89,27 +98,32 @@ The MVP-required subset is:
 - `/ingest`
 - `/reflect`
 
-## 4. Knowledge Model
+## 4. Memory Model
 
-The primary unit is the knowledge object: a durable, typed record about some subject, entity, or relationship in Remram memory.
+Memory is the generic concept. The primary technical stored record inside that memory is the knowledge object: a durable, typed record about some subject, entity, relationship, preference, or bounded source-derived fact in Remram memory.
 
-Knowledge object identity remains stable over time. What changes is the object's confidence, supporting evidence, relationships, and promotion state.
+Knowledge object identity remains stable over time. What changes is the object's confidence, supporting evidence, relationships, retention posture, and promotion state.
 
 Each knowledge object should carry:
 
 - a canonical statement or structured payload
+- an optional short summary when the memory needs a compact gloss
 - a type such as fact, preference, constraint, correction, decision, principle, or procedure
-- provenance linking back to runs, artifacts, tools, or promoted documents
-- confidence and freshness metadata
+- provenance linking back to runs, artifacts, tools, or promoted documents, including source-location detail when available
+- confidence, freshness, and reinforcement metadata such as reference count or strength
 - dimensions used for retrieval eligibility
 - relationships to other knowledge objects, entities, and artifacts
-- promotion state describing whether the knowledge remains internal, is a promotion candidate, or is backed by a promoted artifact
+- promotion and retention state describing whether the knowledge remains internal, is a promotion candidate, is backed by a promoted artifact, or is weak enough to retire
 
-Knowledge should normalize around entity collections plus typed attributes and relations rather than unconstrained key-path namespaces. Dimensions are structured metadata fields on objects, not vector axes. The system should build knowledge incrementally through capture and reflection rather than relying on large pre-authored schemas.
+Knowledge should normalize around entity collections plus typed attributes and relations rather than unconstrained key-path namespaces. Dimensions are structured metadata fields on objects, not vector axes. The system should build knowledge incrementally through capture, artifact intake, and reflection rather than relying on large pre-authored schemas.
+
+Knowledge objects are deduplicated and multi-sourced. One imported artifact may reinforce many knowledge objects, and one knowledge object may accumulate support from many sessions, tools, or artifacts.
 
 Knowledge objects are updated by delta, not by rewriting the entire memory set on each run.
 
 Confidence increases through reinforcement, recurrence, and corroborating tool or artifact validation. It decreases through contradiction and decay. Confidence influences retrieval ranking and review priority, not direct execution control.
+
+Large imports may still be segmented into bounded slices during parsing or retrieval support. That chunking is an ingestion tactic, not a second durable memory class beneath the knowledge object.
 
 A proposed adjacent object type is the conversation object: a semantic continuity record that links related sessions without storing their transcripts. If adopted, it would sit beside knowledge objects rather than replacing them.
 
@@ -162,22 +176,25 @@ The injection contract is structured, typed, and inspectable, not transcript-sha
 
 ## 7. Ingestion Pipeline
 
-Ingestion begins with runtime evidence capture and ends with indexed knowledge updates.
+Ingestion begins with runtime evidence capture and ends with indexed memory updates.
 
 Intake sources may include live runtime evidence, external artifact import, and historical backfill, but all sources must pass through the same knowledge-authority model. Cortex does not read transcripts directly from runtime internals; transcript-derived evidence must arrive through explicit hooks, exports, or backfill jobs. On live runs, `tool_result_persist` is the capture boundary so structured outputs survive pruning, transcript compaction, and loss of prompt visibility.
 
 1. persisted tool outputs, imported artifacts, or historical evidence are captured through runtime hooks or explicit import flows
-2. evidence is parsed, chunked, and indexed for retrieval support
-3. extraction produces candidate knowledge objects and candidate dimensions
-4. Cortex applies create, update, merge, or retire operations against knowledge objects
-5. affected objects are reindexed for retrieval and queued for later reconciliation when needed
+2. if the source is an external artifact, Cortex stores the original file in the Git-backed artifact store and runs Artifact Parser to emit a summary, highlights, and bounded source-linked slices
+3. evidence is parsed, deduplicated, and indexed for retrieval support, and import slices may create or reinforce knowledge objects directly
+4. extraction produces candidate knowledge objects, candidate dimensions, and continuity signals
+5. Cortex applies create, update, merge, strengthen, weaken, or retire operations against knowledge objects
+6. affected objects are reindexed for retrieval and queued for later reconciliation when needed
 
 The two primary write paths are:
 
-- `/ingest` for deterministic structured tool or import capture, including low-confidence imported knowledge candidates when the source is already structured enough to mutate directly
+- `/ingest` for deterministic structured tool or import capture, including Artifact Parser outputs and other low-confidence imported knowledge candidates when the source is already structured enough to mutate directly
 - `/reflect` for direct post-turn reflection deltas and functional thread-memory compression
 
 Ingestion and reflection both mutate Cortex state. They should be deterministic and idempotent by provenance key so retries do not duplicate knowledge.
+
+Artifact intake is a first-class multimodal import mode within this model. It should accept documents and images through one parser path, create source-linked memory before the user is asked to do manual summarization, and still allow later user framing to adjust authority, override posture, or evergreen status.
 
 Bootstrap ingestion is a first-class backfill path within this model. It reads historical transcript sources in read-only mode, extracts structured knowledge objects, builds relationships and dimension indexes, detects recurrence and contradiction signals, and initializes the knowledge base before or alongside live runtime evolution.
 
@@ -185,20 +202,21 @@ Bootstrap produces knowledge objects, continuity metadata, and other derived vie
 
 Bootstrap should prefer controlled Gateway, Forge, or OpenClaw-managed surfaces over raw runtime-store manipulation. Early migration work may still ingest existing memory or session files in read-only mode when that is the safest way to learn the data shape and seed onboarding.
 
-Two future ingestion-oriented enhancement paths build on the same authority model:
+Hydrate is the historical conversation backfill mode inside the same authority model. It replays prior session history or external chat exports through reflection-oriented batch processing to initialize continuity and shorten time-to-value.
 
-- Artifact import: manually triggered ingestion of documents, repository snapshots, or other external artifacts that parses structure, extracts low-confidence candidates, and uses later review or user framing to adjust authority and confidence.
-- Hydrate: historical conversation backfill that replays prior session history or external chat exports through reflection-oriented batch processing to initialize continuity and shorten time-to-value.
+Original imported artifacts stay in the Git-backed artifact store. OpenSearch stores the resulting knowledge objects, indexes, and intake metadata. Duplicate metadata files are unnecessary.
 
 ## 8. Reflection Model
 
 Reflection is the near-line asynchronous extraction pass that runs after execution completes and after the user-visible response path is finished.
 
 - trigger: `agent_end`
-- input: bounded run evidence, tool results, and existing related knowledge
-- output: candidate deltas such as add, revise, correct, weaken, strengthen, relate, retire, and propose-dimension
+- input: bounded run evidence, tool results, existing related knowledge, and when needed full interaction or loop logs
+- output: candidate deltas such as add, revise, correct, weaken, strengthen, relate, retire, and propose-dimension, plus optional dense continuity summaries or highlights
 
 Reflection should be idempotent, incremental, and delta-based. It extracts facts, preferences, constraints, decisions, corrections, and candidate dimensions while updating the smallest necessary part of memory instead of regenerating a full memory snapshot. Reflection output is structured delta data, not a narrative summary.
+
+When the raw evidence is large, a compression-oriented model may sit inside this path before the delta writer commits durable memory. Mamba 3 is a strong candidate for extracting stable signal from full chat or loop logs, especially for preferences, recurring patterns, notable signals, and dense continuity summaries.
 
 Reflect runs directly after a chat turn. It may also emit functional process summaries or other dense thread-memory forms that can be retrieved later instead of replaying full chat history. New reflection outputs should be flagged for later Dream adjudication.
 
@@ -216,13 +234,14 @@ Its responsibilities are:
 - form higher-order principles from repeated corroborated patterns
 - promote stable candidate dimensions into canonical ones
 - identify artifact-promotion candidates
+- prune low-value imported artifacts and weak import-only knowledge when they show no reuse, while retaining lightweight summary or provenance records when needed for audit
 - adjust confidence based on corroboration, recency, and conflict
 
 Dream does not replace reflection. Reflection captures local deltas from a run; dream reconciles the global memory graph over time.
 
 Dream is part of the target architecture. The MVP memory loop can be verified before full reconciliation logic is operationalized, but the storage and APIs should anticipate that later phase.
 
-Dream is the nightly or scheduled adjudication pass. It looks harder at newly added memory, performs expanded retrieval and semantic separation, resolves conflicts, enriches context, and formalizes what reflection added quickly in the live path.
+Dream is the nightly or scheduled adjudication pass. It looks harder at newly added memory, performs expanded retrieval and semantic separation, resolves conflicts, enriches context, formalizes what reflection added quickly in the live path, and decides what deserves permanence.
 
 If conversation objects are adopted, dream may also become the place where stale summaries are compressed, overlapping conversations are reviewed for merge, and continuity prominence is recalibrated.
 
@@ -235,6 +254,8 @@ Promotion is appropriate when a synthesized result is stable, reusable, reviewab
 Promoted artifacts are Markdown projections of validated knowledge. They are derived outputs, not the canonical source of truth. The canonical memory record remains the knowledge object and its relationships inside Cortex.
 
 Promoted artifacts should live in a local Git-backed artifact store, remain linked to their originating knowledge objects, and be reindexed back into Cortex as higher-authority document sources after creation or update.
+
+Imported source artifacts may live in that same store, but they follow a different contract. Imported artifacts are evidence captured first, parsed into source-linked knowledge objects, and potentially pruned later. Promoted artifacts are human-facing outputs derived from already-validated knowledge.
 
 The normal promotion flow is: knowledge candidate -> artifact draft -> diff and review in the App -> approval -> `/promote` -> commit or update -> reindex.
 
@@ -276,6 +297,7 @@ Failures must be visible. Degradation should be explicit in logs, metrics, and r
 
 - extraction strategy: always run reflection or gate it by heuristic
 - reflection format: how granular structured deltas should be and what counts as a knowledge-worthy extraction
+- reflection compressor: whether Mamba 3 remains the default signal-extraction model for raw chat and loop logs or becomes provider-configurable
 - prediction-based delta model: whether reflection should compare against expected memory changes before writing
 - confidence math: exact scoring, decay, contradiction impact, and reinforcement weighting
 - hybrid scoring: how BM25, vector similarity, confidence, and other weak signals should combine
@@ -286,9 +308,11 @@ Failures must be visible. Degradation should be explicit in logs, metrics, and r
 - bootstrap mode behavior: whether live injection should be disabled, reduced, or left pass-through while historical backfill is running
 - historical backfill: how bootstrap ingestion should replay prior sessions and initialize confidence safely
 - source-sensitive confidence: how `historical-session`, `external-artifact`, and live runtime evidence should differ in initial confidence and reinforcement rules
-- external import: how document ingestion should balance low-confidence writes, review, and deduplication
+- external import: the exact Artifact Parser contract for documents, images, and repository snapshots, including how bounded source slices become knowledge objects
+- source-location schema: the normalized location fields Cortex should require across pages, sections, offsets, frames, and image regions
 - import review workflow: how post-analysis user framing should adjust authority, overrides, and evergreen status for imported knowledge
-- import archive model: whether imported artifacts need searchable full-text storage outside canonical knowledge objects
+- artifact pruning thresholds: which reuse, reference, or reinforcement signals justify deleting the original imported artifact and retaining only a lightweight record
+- artifact store lifecycle: the exact Git layout and deletion policy for imported artifacts after pruning
 - hydrate execution strategy: whether batch replay should be sequential or parallel, and whether hydrate defaults to full history or scoped ranges
 - hydrate onboarding UX: which summary metrics and memory-map views best communicate "wake up to continuity" without overstating certainty
 - durable conversation layer: whether conversation continuity should be modeled as first-class Cortex objects adjacent to knowledge objects or as derived retrieval views

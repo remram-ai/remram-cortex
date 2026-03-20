@@ -9,7 +9,7 @@ It is a conditioning pipeline for waking up the knowledge base, not a replacemen
 Bootstrap ingestion should:
 
 - read historical transcript sources in read-only mode
-- extract structured knowledge objects and recurrence signals
+- extract structured knowledge objects, recurrence signals, and durable continuity cues
 - build dimensions, relationships, and retrieval indexes
 - surface contradictions and candidate principles
 - initialize derived continuity views such as memory-map projections

@@ -27,9 +27,9 @@ OpenClaw executes. Orchestration decides behavior. Cortex remembers.
 
 ## Why This Boundary Matters
 
-Without a single memory authority, transcripts, prompts, and runtime state get confused with actual knowledge. Cortex prevents that drift by making extracted knowledge objects the only durable memory unit.
+Without a single memory authority, transcripts, prompts, and runtime state get confused with actual knowledge. Cortex prevents that drift by making extracted knowledge objects the default durable memory unit inside the broader concept of memory.
 
-All durable semantic recall flows through Cortex. Other runtime memory features may exist as implementation details, but they do not become competing knowledge authorities or mutation paths.
+All durable semantic recall flows through Cortex. Other runtime memory features may exist as implementation details, and storage backends such as Git or OpenSearch may hold originals or indexes, but they do not become competing knowledge authorities or mutation paths.
 
 Cortex is also not a vector store that defines truth. Vectors help rank knowledge during retrieval, but structure, dimensions, provenance, and confidence still govern memory.
 

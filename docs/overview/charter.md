@@ -18,7 +18,7 @@ Cortex exists so experience does not remain trapped as raw history or prompt res
 
 ### Knowledge Over Sessions
 
-Longer transcripts are not the answer. Cortex stores normalized knowledge objects with explicit metadata, relationships, and confidence so durable memory survives compaction and pruning.
+Longer transcripts are not the answer. Cortex stores normalized knowledge objects with explicit metadata, relationships, confidence, and source provenance so durable memory survives compaction and pruning.
 
 ### Token Efficiency
 
@@ -27,6 +27,10 @@ Retrieval should be selective, bounded, and intentional. Only eligible, high-val
 ### Reflection
 
 Reflection is the path from interaction to knowledge. It should focus on deltas that matter rather than repeatedly storing the same already-known facts.
+
+### Artifact Intake
+
+Imported documents and images should not stay opaque attachments. Cortex should parse them through one artifact-intake flow so source-linked memory can be created before the user is asked to do manual summarization.
 
 ### Bootstrap
 

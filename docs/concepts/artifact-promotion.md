@@ -6,6 +6,8 @@ Promoted artifacts are derived projections of validated knowledge, not the canon
 
 They should live in a local Git-backed artifact store so revisions remain reviewable and traceable over time.
 
+Imported source artifacts may live in that same store, but they enter Cortex through [Artifact Intake](artifact-intake.md). Promotion is the reverse direction: validated memory becoming a durable human-facing artifact.
+
 ## When Promotion Makes Sense
 
 Promotion is appropriate when the result is:
@@ -30,5 +32,6 @@ If the linked knowledge changes later, Dream may redraft the artifact and commit
 ## Related Concepts
 
 - [Knowledge Object](knowledge-object.md)
+- [Artifact Intake](artifact-intake.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
