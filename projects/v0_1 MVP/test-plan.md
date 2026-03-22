@@ -4,9 +4,17 @@
 
 Prove that Cortex can establish a baseline knowledge base from imported artifacts and then evolve that base through Quick Capture without splitting into parallel memory paths.
 
+This is the umbrella test plan for the MVP. Detailed test plans for each capability live under [capabilities/](capabilities/README.md).
+
 ## 2. Test Categories
 
-### 2.1 Artifact Storage Tests
+### 2.1 Infrastructure Tests
+
+- OpenSearch service starts and is reachable
+- Cortex index mapping can be created
+- local Git-backed provider persists and resolves artifacts correctly
+
+### 2.2 Artifact Storage Tests
 
 - imported artifact is persisted and addressable by `artifact_id`
 - capture artifact is persisted and addressable by `artifact_id`
@@ -15,32 +23,57 @@ Prove that Cortex can establish a baseline knowledge base from imported artifact
 - Cortex artifact resolution does not depend on the original source-system path remaining unchanged
 - provider metadata is preserved on the artifact record
 
-### 2.2 Artifact Intake Tests
+### 2.3 Artifact Intake Tests
 
 - Markdown import creates source-linked slices
 - text import creates source-linked slices
 - PDF import creates source-linked slices when text is extractable
 - extracted slices produce knowledge objects with provenance
 
-### 2.3 Quick Capture Tests
+### 2.4 Knowledge Extraction Tests
+
+- imported evidence becomes structured knowledge-object deltas
+- capture evidence becomes structured knowledge-object deltas
+- typed signals and signature are attached to resulting objects
+- obvious duplicate noise is reduced through merge discipline
+
+### 2.5 Quick Capture Tests
 
 - a short capture becomes a persisted capture artifact
 - the capture produces one or more knowledge-object deltas
 - the capture can reinforce an existing object instead of duplicating blindly
 - the capture can create a new object when no existing object is relevant
 
-### 2.4 Retrieval Tests
+### 2.6 Retrieval Tests
 
 - imported knowledge is retrievable
 - capture-derived knowledge is retrievable
 - linked imported plus captured knowledge can be retrieved together
 - retrieval trace explains filters and ranking contributors
 
-### 2.5 General Chat Injection Tests
+### 2.7 General Chat Injection Tests
 
 - ordinary chat can call Cortex retrieval before prompt build
 - the returned bundle is bounded and inspectable
 - the final chat answer uses seeded or captured knowledge in a way the no-Cortex path would miss
+
+### 2.8 Chat Interface Tests
+
+- a minimal chat harness can submit a user question
+- the harness shows or exposes the retrieved bundle used for the answer
+- the harness can be used as the proof surface before any OpenClaw integration exists
+
+### 2.9 Capability Detail Documents
+
+- [01 OpenSearch Service](capabilities/01-opensearch-service/test-plan.md)
+- [02 Git Provider](capabilities/02-git-provider/test-plan.md)
+- [03 Artifact Storage](capabilities/03-artifact-storage/test-plan.md)
+- [04 Artifact Intake](capabilities/04-artifact-intake/test-plan.md)
+- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/test-plan.md)
+- [06 Quick Capture](capabilities/06-quick-capture/test-plan.md)
+- [07 Retrieval](capabilities/07-retrieval/test-plan.md)
+- [08 Chat Injection](capabilities/08-chat-injection/test-plan.md)
+- [09 Chat Interface](capabilities/09-chat-interface/test-plan.md)
 
 ## 3. Acceptance Scenarios
 

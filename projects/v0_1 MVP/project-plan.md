@@ -15,15 +15,37 @@ Deliver the first end-to-end Cortex slice that can:
 
 ### 2.1 Required
 
+- OpenSearch service for local Cortex retrieval development
+- Git-backed local artifact provider service
 - artifact storage adapter contract implemented or stubbed against at least one provider
 - artifact intake pipeline for text-bearing artifacts
 - quick capture submission path
 - OpenSearch indexing for imported and captured knowledge
 - one general chat integration path that consumes Cortex retrieval
+- one minimal chat interface or harness that proves the end-to-end read path
 - retrieval traces for debugging
 - demo corpus and proof scenarios
 
-### 2.2 Optional If Cheap
+### 2.2 Capability Packs
+
+Each MVP capability must have:
+
+- one capability spec
+- one capability test plan
+
+Current capability set:
+
+- [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
+- [02 Git Provider](capabilities/02-git-provider/spec.md)
+- [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
+- [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
+- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
+- [06 Quick Capture](capabilities/06-quick-capture/spec.md)
+- [07 Retrieval](capabilities/07-retrieval/spec.md)
+- [08 Chat Injection](capabilities/08-chat-injection/spec.md)
+- [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+
+### 2.3 Optional If Cheap
 
 - simple status endpoints for import and capture jobs
 - lightweight CLI harness for demoing imports and captures
@@ -34,8 +56,9 @@ Deliver the first end-to-end Cortex slice that can:
 
 Deliver:
 
-- artifact storage adapter interface
-- minimal local storage implementation
+- [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
+- [02 Git Provider](capabilities/02-git-provider/spec.md)
+- [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
 - stable artifact ID generation
 - predictable storage layout
 
@@ -46,15 +69,12 @@ Exit criteria:
 
 The first provider may still be local Git even if the long-term model supports multiple providers.
 
-### Phase 2: Artifact Intake Baseline
+### Phase 2: Evidence To Knowledge Baseline
 
 Deliver:
 
-- import submission flow
-- text extraction for Markdown, text, and PDF
-- bounded source slicing
-- provenance capture
-- initial knowledge-object creation
+- [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
+- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
 
 Exit criteria:
 
@@ -64,30 +84,25 @@ Exit criteria:
 
 Deliver:
 
-- governance filtering
-- typed signal indexing
-- signature support
-- lexical and vector scoring path
-- retrieval trace output
+- [06 Quick Capture](capabilities/06-quick-capture/spec.md)
+- [07 Retrieval](capabilities/07-retrieval/spec.md)
 
 Exit criteria:
 
 - imported knowledge can be rediscovered through multiple query framings
 
-### Phase 4: Quick Capture Proof Surface
+### Phase 4: Operator Proof Surface
 
 Deliver:
 
-- text-first capture submission
-- capture artifact persistence
-- reflection-driven update path
-- dedup, refine, or link behavior against imported knowledge
+- [08 Chat Injection](capabilities/08-chat-injection/spec.md)
+- [09 Chat Interface](capabilities/09-chat-interface/spec.md)
 
 Exit criteria:
 
 - a new capture can update an existing knowledge area instead of creating obvious duplicate noise
 
-### Phase 5: Proof And Hardening
+### Phase 5: End-To-End Proof And Hardening
 
 Deliver:
 
@@ -102,7 +117,13 @@ Exit criteria:
 
 ## 4. Suggested Work Breakdown
 
-### Workstream A: Artifact Storage
+### Workstream A: [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
+
+- stand up local OpenSearch service
+- define Cortex index mapping
+- verify indexing and query connectivity
+
+### Workstream B: [02 Git Provider](capabilities/02-git-provider/spec.md) And [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
 
 - implement local adapter
 - define provider capability model
@@ -111,31 +132,43 @@ Exit criteria:
 - verify source lookup by artifact ID
 - preserve external source refs as provenance only
 
-### Workstream B: Artifact Intake
+### Workstream C: [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
 
 - define import job shape
 - implement parser pipeline for supported formats
 - emit source-linked slices
 - hand slices to knowledge extraction
 
-### Workstream C: Knowledge Extraction
+### Workstream D: [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
 
 - define MVP object-kind subset
 - implement reflection merge discipline
 - generate typed signals and signature
 
-### Workstream D: Retrieval
+### Workstream E: [07 Retrieval](capabilities/07-retrieval/spec.md)
 
 - define OpenSearch mapping
 - implement scoring query
 - implement rerank pass and trace output
 
-### Workstream E: Quick Capture
+### Workstream F: [06 Quick Capture](capabilities/06-quick-capture/spec.md)
 
 - define submission contract
 - store raw capture artifact
 - invoke reflection path
 - test dedup or linking against seeded corpus
+
+### Workstream G: [08 Chat Injection](capabilities/08-chat-injection/spec.md)
+
+- define orchestration hook contract
+- define bundle injection shape
+- run before/after answer comparisons
+
+### Workstream H: [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+
+- define the minimal chat harness surface
+- wire retrieval into the harness
+- expose bundle and trace visibility for debugging
 
 ## 5. Primary Risks
 
