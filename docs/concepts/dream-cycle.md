@@ -10,11 +10,20 @@ Dream cycles are responsible for:
 
 - deduplicating overlapping knowledge objects
 - surfacing contradictions instead of hiding them
+- consolidating duplicate or low-value retrieval cues
 - adjusting confidence based on corroboration, conflict, and recency
 - allowing stale or weak knowledge to decay or be demoted over time
 - forming higher-order principles from repeated consistent patterns
-- promoting stable candidate dimensions into canonical ones
 - identifying artifact-promotion candidates
+
+Dream should improve the quality of retrieval without turning retrieval into a reasoning-heavy live step.
+
+That means it may:
+
+- normalize synonymous signal values
+- prune weak signal phrases that never help retrieval
+- compress stale continuity summaries
+- propose architectural pressure for new signal-field types without changing the hot-path schema automatically
 
 ## Why Dream Cycles Are Separate
 
@@ -24,5 +33,6 @@ Reconciliation is broader and slower than reflection. Keeping it asynchronous av
 
 - [Reflection](reflection.md)
 - [Knowledge Object](knowledge-object.md)
+- [Typed Signals](typed-signals.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [Architecture](../remram-cortex/architecture.md)

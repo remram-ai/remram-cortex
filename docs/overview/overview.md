@@ -4,11 +4,11 @@ Remram Cortex is the memory engine for Remram.
 
 It is the layer that turns transient conversations, runtime evidence, and imported artifacts into durable knowledge. It makes retrieval a deliberate system capability instead of prompt sprawl and gives the platform a place where reflection, reconciliation, and long-horizon memory can live.
 
-Memory captures raw experience. Cortex exists to distill that experience into knowledge that can compound over time.
+Runtime evidence captures raw experience. Cortex exists to distill that evidence into knowledge that can compound over time.
 
 Cortex is not a memory plugin and not a chatbot convenience feature. It is a local-first intelligence infrastructure layer for knowledge maturation.
 
-Cortex is not a transcript archive and not a vector-only memory store. It is a structured knowledge layer where eligibility, dimensions, provenance, and confidence govern memory quality, while lexical and vector signals only help rank already-eligible results.
+Cortex is not a transcript archive and not a vector-only memory store. It is a structured knowledge layer where governance filters, typed retrieval signals, provenance, and confidence govern memory quality, while lexical and vector signals only help rank already-eligible results.
 
 When Cortex is fully realized, Remram stops behaving like a stateless assistant with a better transcript and starts behaving like a system that can remember, reorganize, and improve over time.
 
@@ -19,6 +19,8 @@ Cortex is the center of long-lived intelligence in the Remram ecosystem:
 - durable knowledge instead of transcript dependence
 - bounded retrieval instead of uncontrolled context stuffing
 - reflection and dream-cycle reconciliation instead of one-pass accumulation
+- semantic signature as soft routing rather than hard taxonomy
+- typed signal fields as the primary semantic retrieval surface
 - bootstrap ingestion that can initialize continuity from historical conversations
 - a dedicated system boundary for memory services, indexing, promotion, and recall
 - vectors as subordinate ranking signals rather than the definition of memory truth

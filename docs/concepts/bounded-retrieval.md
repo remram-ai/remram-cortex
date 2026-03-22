@@ -8,12 +8,14 @@ The system does not search the entire memory graph and then hope ranking fixes t
 
 The expected flow is:
 
-1. resolve explicit dimensions and constraints
-2. filter the knowledge set down to eligible objects
-3. rank that bounded set with BM25 and other lexical signals
-4. apply vector similarity plus confidence and freshness weighting inside that bounded set
-5. enforce token-budget limits
-6. return a structured knowledge bundle
+1. resolve scope, ownership, and other governance constraints
+2. filter the knowledge set down to eligible objects using governance fields
+3. bias or preselect with semantic signature similarity
+4. score the bounded set across typed signal fields with lexical search
+5. optionally boost recall with vector similarity inside that already-bounded set
+6. enrich with relationship expansion and rerank using confidence, freshness, and reinforcement
+7. enforce token-budget and bundle-shape limits
+8. return a structured knowledge bundle plus an inspectable retrieval trace when needed
 
 Eligibility precedes similarity.
 
@@ -23,13 +25,17 @@ This model improves precision, keeps retrieval explainable, and reduces the chan
 
 Embeddings are a ranking signal only. They do not define truth, structure, or eligibility.
 
+The expensive work should already have happened during reflection and Dream. Retrieval is where Cortex cashes in that prior work, not where it tries to rediscover memory structure from scratch.
+
 ## Output Contract
 
 Cortex returns a knowledge bundle, not a transcript. Orchestration decides how to inject or present that bundle.
 
 ## Related Concepts
 
-- [Dimension](dimension.md)
+- [Governance Fields](governance-fields.md)
+- [Semantic Signature](semantic-signature.md)
+- [Typed Signals](typed-signals.md)
 - [Memory Versus Context](memory-vs-context.md)
 - [Knowledge Object](knowledge-object.md)
 - [Reflection](reflection.md)

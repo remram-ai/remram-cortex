@@ -34,7 +34,7 @@ The `docs/` tree is the source of truth for the current design:
 - [docs/glossary.md](docs/glossary.md) for normalized terminology
 - [docs/concepts/](docs/concepts/README.md) for short concept definitions
 - [docs/remram-cortex/architecture.md](docs/remram-cortex/architecture.md) for the canonical architecture
-- [docs/remram-cortex/inconsistencies.md](docs/remram-cortex/inconsistencies.md) for the small set of unresolved design boundaries
+- [docs/remram-cortex/inconsistencies.md](docs/remram-cortex/inconsistencies.md) for current inconsistency status and archive links
 
 ## Core Model
 
@@ -42,6 +42,9 @@ The current architectural baseline is:
 
 - transcripts are evidence, not knowledge
 - memory is composed of structured knowledge objects with multi-source provenance
+- governance fields hard-filter eligibility before ranking
+- semantic signature acts as soft routing bias
+- typed signal fields form the primary OpenSearch retrieval surface
 - imported documents and images enter through one source-linked artifact-intake path
 - retrieval is filter-first, bounded, and inspectable
 - reflection performs immediate post-run mutation and thread-memory compression

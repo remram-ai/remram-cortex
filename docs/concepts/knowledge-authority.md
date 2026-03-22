@@ -31,11 +31,13 @@ Without a single memory authority, transcripts, prompts, and runtime state get c
 
 All durable semantic recall flows through Cortex. Other runtime memory features may exist as implementation details, and storage backends such as Git or OpenSearch may hold originals or indexes, but they do not become competing knowledge authorities or mutation paths.
 
-Cortex is also not a vector store that defines truth. Vectors help rank knowledge during retrieval, but structure, dimensions, provenance, and confidence still govern memory.
+Cortex is also not a vector store that defines truth. Vectors help rank knowledge during retrieval, but governance fields, typed signals, provenance, and confidence still govern memory.
 
 ## Related Concepts
 
 - [Knowledge Object](knowledge-object.md)
+- [Governance Fields](governance-fields.md)
+- [Typed Signals](typed-signals.md)
 - [Memory Versus Context](memory-vs-context.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)

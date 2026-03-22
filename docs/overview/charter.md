@@ -8,7 +8,7 @@ It is infrastructure, not a plugin. The goal is knowledge maturation, not just m
 
 ## Core Shift
 
-Memory captures what happened.
+Evidence captures what happened.
 
 Knowledge extracts what mattered.
 
@@ -18,11 +18,11 @@ Cortex exists so experience does not remain trapped as raw history or prompt res
 
 ### Knowledge Over Sessions
 
-Longer transcripts are not the answer. Cortex stores normalized knowledge objects with explicit metadata, relationships, confidence, and source provenance so durable memory survives compaction and pruning.
+Longer transcripts are not the answer. Cortex stores normalized knowledge objects with explicit governance fields, typed retrieval signals, relationships, confidence, and source provenance so durable memory survives compaction and pruning.
 
 ### Token Efficiency
 
-Retrieval should be selective, bounded, and intentional. Only eligible, high-value knowledge should be injected into runtime context. This keeps prompts smaller, cloud dependence lower, and execution easier to govern.
+Retrieval should be selective, bounded, and intentional. Hard governance filters should constrain the candidate set before semantic scoring. Only eligible, high-value knowledge should be injected into runtime context. This keeps prompts smaller, cloud dependence lower, and execution easier to govern.
 
 ### Reflection
 

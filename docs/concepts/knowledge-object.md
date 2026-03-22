@@ -16,20 +16,22 @@ A knowledge object should carry:
 - an optional short summary when the memory needs a compact gloss
 - a type such as fact, preference, constraint, correction, decision, principle, or procedure
 - provenance back to runs, artifacts, or tools, including source-location detail where available
+- governance fields used for hard eligibility, such as ownership, visibility, scope, and lifecycle state
+- typed signal fields used for primary semantic retrieval
+- a semantic signature used for soft routing bias
 - confidence, freshness, and reinforcement metadata such as reference count or strength
-- dimensions used for retrieval eligibility
 - relationships to other objects or artifacts
 - promotion state when the object becomes a promotion candidate or a promoted artifact source
 
 ## How It Changes
 
-Knowledge objects are updated by delta. Reflection may add, revise, relate, strengthen, weaken, or retire them. Dream cycles may later merge duplicates, surface conflicts, raise principles from repeated patterns, or prune weak low-value imports.
+Knowledge objects are updated by delta. Reflection may add, revise, relate, strengthen, weaken, retire, supersede, contradict, generalize, or specialize them. Dream cycles may later merge duplicates, normalize retrieval cues, raise principles from repeated patterns, or prune weak low-value imports.
 
 One source artifact may reinforce many knowledge objects. One knowledge object may accumulate support from many sessions, tools, or artifacts.
 
 The model is designed for incremental enrichment over time rather than one-shot schema completion.
 
-Cortex should prefer entity collections plus typed attributes and relations over unconstrained key-path namespaces. Confidence changes ranking and review priority, but it does not directly drive execution behavior.
+Cortex should prefer one canonical object with many retrieval paths over duplicate copies filed into different buckets. Groupings, clusters, and project views may be derived later, but the object itself remains primary.
 
 For imported artifacts, bounded chunking may be used to parse large sources. That chunking is an ingestion tactic, not a second durable type below the knowledge object.
 
@@ -49,6 +51,8 @@ Those may be evidence, but they are not the memory object itself.
 - [Knowledge Authority](knowledge-authority.md)
 - [Artifact Intake](artifact-intake.md)
 - [Memory Versus Context](memory-vs-context.md)
-- [Dimension](dimension.md)
+- [Governance Fields](governance-fields.md)
+- [Semantic Signature](semantic-signature.md)
+- [Typed Signals](typed-signals.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)

@@ -8,15 +8,15 @@ It is a conditioning pipeline for waking up the knowledge base, not a replacemen
 
 Bootstrap ingestion should:
 
-- read historical transcript sources in read-only mode
-- extract structured knowledge objects, recurrence signals, and durable continuity cues
-- build dimensions, relationships, and retrieval indexes
+- read historical transcript sources through exports, backfill jobs, or other controlled read-only surfaces
+- extract structured knowledge objects, retrieval signals, and durable continuity cues
+- build governance fields, relationships, and retrieval indexes
 - surface contradictions and candidate principles
 - initialize derived continuity views such as memory-map projections
 
 It must not rewrite transcripts or store them as durable Cortex memory.
 
-Where possible, it should use controlled Gateway, Forge, or OpenClaw-managed surfaces rather than ad hoc raw runtime-store manipulation. Early migration work may still ingest existing memory or session files in read-only mode when that is the lowest-risk way to learn the source format.
+Where possible, it should use controlled Gateway, Forge, or OpenClaw-managed surfaces rather than ad hoc raw runtime-store manipulation. Migration-phase direct file reads may still exist as one-time operational tooling, but they should not become the long-term public contract.
 
 ## Why It Exists
 

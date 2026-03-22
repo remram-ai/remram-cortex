@@ -4,11 +4,13 @@ Artifact intake is the multimodal evidence path that turns external documents an
 
 It gives Cortex one consistent entry point for imported artifacts instead of treating every upload as an opaque attachment.
 
+After intake, Cortex should own the artifact record even when the backing provider is external. The original external location may remain in provenance, but it is not the authoritative organization or identity surface inside Cortex.
+
 ## Intake Flow
 
 Artifact intake should:
 
-- store the original artifact in a local Git-backed artifact store
+- create or update a Cortex-managed artifact record and assign a stable internal `artifact_id`
 - run an Artifact Parser over the source to extract structure and meaning
 - emit a summary, highlights, and bounded source-linked import slices
 - deduplicate those slices against existing memory
@@ -18,6 +20,8 @@ Artifact intake should:
 A Qwen-VL-class model is a likely fit for the first Artifact Parser profile because the same intake path should be able to read both documents and images.
 
 The parser may use chunking internally to keep large artifacts bounded. Those chunks are not a second durable memory tier. The durable Cortex record remains the knowledge object created or updated by each source-linked slice.
+
+Context-aware chunking and related RAG ingestion strategies are most relevant here. They help preserve document structure before knowledge extraction without turning chunks themselves into the durable memory model.
 
 ## Why Source Location Matters
 
@@ -29,13 +33,28 @@ Each imported slice should carry source references such as:
 
 This keeps memory traceable, reviewable, and updatable when the source artifact changes.
 
+External source location is provenance, not organization. Cortex should be able to preserve where an artifact came from without depending on that source path for its internal layout, retrieval behavior, or human inspection hierarchy.
+
+## Canonical Artifact Identity
+
+Import should create a Cortex-managed artifact record with:
+
+- a stable internal `artifact_id`
+- provider identity and provider-local location
+- a deterministic Cortex resolution path
+- source provenance such as original URI, Drive file ID, chat attachment reference, or import session
+- authority mode such as `cortex_owned` or `external_authoritative`
+- links to resulting knowledge objects and later promoted artifacts
+
+That separation matters because imported source systems are allowed to drift. Files may be renamed, moved, re-sliced, or deleted in their original environment while Cortex still needs a stable evidence surface.
+
 ## Storage Boundary
 
-- the Git-backed artifact store keeps the original imported file
+- the configured artifact provider keeps the backing artifact bytes or provider-native document
 - OpenSearch keeps knowledge objects, retrieval indexes, and intake metadata
-- Cortex remains the only mutation authority over durable memory
+- Cortex remains the only mutation authority over durable memory even when artifact bytes live in an external provider
 
-Imported artifacts are evidence. Promoted artifacts are derived human-facing outputs. Both may live in the Git-backed store, but they enter the system through different workflows.
+Imported artifacts are evidence. Promoted artifacts are derived human-facing outputs. Both should be addressable through the same Cortex artifact identity model even if their backing providers differ.
 
 ## Retention And Pruning
 
@@ -50,8 +69,10 @@ Dream or other REM routines may:
 ## Related Concepts
 
 - [Knowledge Object](knowledge-object.md)
+- [Typed Signals](typed-signals.md)
 - [Bootstrap Ingestion](bootstrap-ingestion.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
+- [Artifact Provider](artifact-provider.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [Architecture](../remram-cortex/architecture.md)

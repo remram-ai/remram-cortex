@@ -18,7 +18,7 @@ If adopted, the conversation layer should store dense continuity data such as:
 
 - referenced session identifiers
 - a canonical rolling summary
-- retrieval metadata such as dimensions, embedding, recency, and prominence
+- governance scope, signature, and retrieval metadata such as recency and prominence
 - optional links to artifacts or archived continuity state
 
 It should not store full transcripts.
@@ -29,11 +29,17 @@ Raw transcript persistence does not scale into durable memory. The conversation 
 
 This keeps continuity compaction-agnostic: OpenClaw may compact sessions while Cortex still retains meaning.
 
-## Open Boundary
+## Ownership Boundary
 
-The biggest unresolved question is ownership of conversation assignment and lifecycle rules. The current design direction is that any durable conversation object would live in Cortex, while attach, fork, or closure decisions may involve orchestration logic.
+If conversation objects are adopted, they should be durably owned by Cortex.
 
-There is also a likely migration phase where OpenClaw-native memory or memory files may continue to exist while Cortex learns to capture the same continuity safely. The target state is still Cortex-owned durable conversation continuity.
+Orchestration may still provide runtime hints such as:
+
+- continue this thread
+- fork into a new thread
+- prefer a related prior thread
+
+But durable attachment, merge, and continuity storage should remain Cortex responsibilities.
 
 ## Related Concepts
 

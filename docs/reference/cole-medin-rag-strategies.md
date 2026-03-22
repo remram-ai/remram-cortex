@@ -7,28 +7,26 @@
 - Video: https://youtu.be/tLMViADvSNE?si=qr43o169HVhB9EZi
 - Companion repo: https://github.com/coleam00/ottomator-agents/tree/main/all-rag-strategies
 
-## Companion Repo Notes
+## Why This Reference Matters
 
-The companion repository is useful because it is not just a link dump. It includes:
+The guide is useful as a retrieval-pattern catalog.
+
+It is not a Cortex architecture source on its own, but it is a strong external sanity check for what Cortex should adopt, translate, constrain, or defer.
+
+The companion repo explicitly positions its implementations as educational rather than production-ready. That matters for Cortex: the value is in the strategy patterns, not in copying the exact stack.
+
+## Repo Shape
+
+The `all-rag-strategies` folder provides:
 
 - `docs/` for theory and research notes
-- `examples/` for short pseudocode examples
+- `examples/` for short pseudocode
 - `implementation/` for educational code examples
 
-The repository README explicitly describes the implementation folder as educational and not production-ready. That matters for Cortex: this is a pattern library and learning reference, not a codebase to copy directly into the service.
-
-## Why This Matters For Cortex
-
-This guide is a useful external reference because Cortex is not a generic RAG product, but it will still need several mature retrieval patterns inside its bounded knowledge-retrieval layer.
-
-The video is a compact survey of common RAG strategies. For Cortex, the value is not in copying the whole stack. The value is in identifying which retrieval and chunking techniques can be adapted to a knowledge-authority system with stronger governance, provenance, confidence, and lifecycle controls.
-
-## Strategies Covered By The Guide
-
-The source video description lists these strategies:
+The strategy overview in the repo currently covers:
 
 1. reranking
-2. agentic RAG, including hybrid search
+2. agentic RAG
 3. knowledge graphs
 4. contextual retrieval
 5. query expansion
@@ -39,80 +37,172 @@ The source video description lists these strategies:
 10. self-reflective RAG
 11. fine-tuned embeddings
 
-The repo also marks which strategies currently have fuller example coverage:
+GitHub repo: https://github.com/coleam00/ottomator-agents/tree/main/all-rag-strategies
 
-- code examples: reranking, agentic RAG, contextual retrieval, query expansion, multi-query RAG, context-aware chunking, self-reflective RAG
-- pseudocode only: knowledge graphs, late chunking, hierarchical RAG, fine-tuned embeddings
+## Cortex Alignment
 
-That makes the repo more useful for implementation pattern review in some areas than others.
+### Direct Fits
 
-## Implementation Context From The Repo
+#### Hybrid Retrieval
 
-The example implementation stack in the companion repo is:
+Cortex aligns strongly with hybrid retrieval, but with stricter governance.
 
-- Pydantic AI
-- PostgreSQL plus pgvector
-- Docling
-- OpenAI models and embeddings
+Practical Cortex mapping:
 
-That stack does not match Cortex directly. Cortex is currently oriented around a standalone Go service and OpenSearch. The transferable value is the retrieval and chunking patterns, not the exact framework or storage choices.
+- OpenSearch `filter` over governance fields
+- OpenSearch `should` over typed signal fields
+- optional vector scoring inside the bounded candidate set
 
-## Likely Cortex Relevance
+This is the main retrieval surface for Cortex.
 
-### High Relevance
+#### Reranking
 
+Reranking is a direct fit.
+
+Cortex should rerank with:
+
+- signal-field match quality
+- semantic signature similarity
+- confidence
+- freshness
+- reinforcement
+- relationship expansion
+
+This is one of the clearest overlaps with the guide.
+
+#### Hierarchical Retrieval Using Metadata
+
+This maps directly to Cortex's governance-first retrieval model.
+
+The repo describes metadata-driven narrowing for complex document retrieval. Cortex applies the same principle at the knowledge-object level by enforcing ownership, audience, scope, lifecycle, and temporal validity before semantic ranking begins.
+
+#### Context-Aware Chunking
+
+This is highly relevant for artifact intake and bootstrap ingestion.
+
+Cortex should use chunking as an ingestion tactic to preserve source structure before knowledge extraction, not as a second durable memory tier.
+
+### Partial Fits
+
+#### Contextual Retrieval
+
+Contextual retrieval is most useful for imported artifacts or continuity summaries where a source slice needs more document-level framing before it embeds well.
+
+It is less central to canonical knowledge-object retrieval, because Cortex expects reflection to have already distilled the durable object.
+
+#### Query Expansion
+
+Query expansion is useful when the user asks an underspecified question and initial retrieval confidence is weak.
+
+For Cortex, this should be:
+
+- a fallback
+- bounded
+- inspectable
+
+It should not become the default answer to mediocre reflection quality.
+
+#### Multi-Query RAG
+
+Multi-query retrieval can improve recall, but it increases latency and complexity.
+
+For Cortex, it makes more sense as:
+
+- a low-confidence fallback
+- or a Dream-time analysis tool
+
+than as the default live retrieval path.
+
+#### Late Chunking
+
+Late chunking is promising for imported artifacts and historical backfill where larger document context may improve extraction quality. It is relevant to ingestion, not to the durable memory unit itself.
+
+### Translated Rather Than Adopted
+
+#### Self-Reflective RAG
+
+The guide treats self-reflection as a retrieval-time strategy.
+
+Cortex should translate that idea into its lifecycle:
+
+- Reflection handles immediate post-run extraction and merge decisions
+- Dream handles slower global reconciliation
+
+That keeps self-correction out of the hottest retrieval path.
+
+#### Knowledge Graphs
+
+Knowledge graphs are conceptually relevant because Cortex stores typed links and uses relationship expansion.
+
+However:
+
+- Cortex does not need graph-first infrastructure for the first architecture pass
+- OpenSearch plus typed links is sufficient for the current model
+
+So this is relationship-aware retrieval, not a full graph-RAG commitment.
+
+#### Agentic RAG
+
+The companion repo treats agentic RAG as autonomous selection between retrieval tools.
+
+For Cortex, the parallel is weaker:
+
+- orchestration may choose when to call Cortex or when to fetch full artifacts
+- Cortex retrieval itself should remain predictable and bounded
+
+The architecture should not depend on an agent improvising memory policy at retrieval time.
+
+### Deferred Or Open
+
+#### Fine-Tuned Embeddings
+
+Potentially relevant later if local or domain-specific embeddings materially improve ranking quality. This remains an embedding-strategy question, not a foundational architecture requirement.
+
+## OpenSearch Practicality
+
+The reference stack in the repo uses PostgreSQL plus pgvector, Docling, and hosted model services. Cortex instead targets OpenSearch plus a standalone Go service.
+
+That still maps well:
+
+- BM25 and multi-field lexical scoring map cleanly to OpenSearch
+- governance filters map cleanly to `bool.filter`
+- vector backstop maps to OpenSearch k-NN or vector scoring
+- reranking can happen in Cortex after OpenSearch returns a bounded candidate set
+- chunking strategies remain applicable at ingest time
+
+The main architectural difference is that Cortex stores canonical knowledge objects rather than raw document chunks as the durable memory surface.
+
+## Practical Takeaways For Cortex
+
+Use this reference to justify and refine:
+
+- governance-first hierarchical retrieval
+- hybrid lexical plus vector retrieval
+- multi-stage reranking
+- context-aware chunking for import and bootstrap
+- selective fallback expansion when recall is weak
+
+Do not use it to justify:
+
+- vector-first memory
+- chunk-first canonical storage
+- fully agentic retrieval policy
+- query-time self-reasoning as the default compensation for weak reflection
+
+## Bottom Line
+
+Cole Medin's guide is a strong external fit for Cortex if it is read as a retrieval-technique catalog.
+
+The closest direct matches are:
+
+- hybrid retrieval
 - reranking
-  Cortex already assumes filter-first retrieval plus reranking. This reference is directly relevant to how lexical, vector, confidence, and freshness signals should combine inside the eligible set.
-- hybrid search
-  Cortex retrieval already combines structured eligibility with lexical and vector signals. This is one of the clearest direct overlaps.
-- context-aware chunking
-  Useful for bootstrap ingestion and artifact import, where raw inputs need to be segmented without destroying surrounding structure.
-- late chunking
-  Potentially useful for preserving richer semantics during ingestion before knowledge extraction or retrieval indexing.
-- hierarchical retrieval using metadata
-  Strong fit with the Cortex dimension system, where metadata and scope should gate eligibility before semantic ranking begins.
+- hierarchical metadata retrieval
+- chunking strategies for ingestion
 
-- self-reflective retrieval patterns
-  The repo treats this as a retrieval strategy. In Cortex, the closest analogue is not generic self-correction during retrieval but the stronger Reflection and Dream lifecycle. Even so, the implementation examples may still be useful when evaluating retrieval-time quality-control patterns.
+The most important Cortex-specific translation is this:
 
-### Medium Relevance
+generic RAG often spends intelligence at retrieval time;
+Cortex should spend most of that intelligence during Reflection and Dream so retrieval remains fast and predictable.
 
-- contextual retrieval
-  Relevant if Cortex needs richer retrieval context for imported artifacts or continuity objects, but it must remain bounded and inspectable.
-- query expansion
-  Potential enhancement for recall quality, especially when users ask underspecified questions.
-- multi-query RAG
-  Potential orchestration or retrieval-layer enhancement for broader recall when one query formulation is too narrow.
-- fine-tuned embeddings
-  Relevant to the open embedding-strategy question, especially if Cortex needs better domain sensitivity without abandoning local-first constraints.
-
-### Lower Or Deferred Relevance
-
-- knowledge graphs
-  Cortex already stores relationships between knowledge objects, but a dedicated graph-first retrieval layer is not yet part of the current MVP path.
-- agentic RAG
-  Relevant only in a constrained way. Cortex should expose retrieval as a structured system capability, while orchestration remains responsible for deciding when and how to invoke it.
-
-## Cortex-Specific Interpretation
-
-This guide should be used as a retrieval-technique catalog, not as a substitute architecture.
-
-Cortex still differs from generic RAG systems in several important ways:
-
-- Cortex stores knowledge objects, not raw transcript chunks, as canonical durable memory.
-- Eligibility filtering and dimensions remain primary; vector similarity stays subordinate.
-- Retrieval is part of a broader maturation system that includes Reflection, Dream, artifact promotion, and bootstrap ingestion.
-- Prompt injection remains controlled by orchestration, not by retrieval heuristics alone.
-
-## Recommended Follow-Up
-
-Use this reference when evaluating:
-
-- reranking and hybrid scoring policy
-- chunking strategies for bootstrap ingestion and artifact import
-- hierarchical retrieval patterns that align with dimensions
-- whether query expansion or multi-query retrieval belongs in Cortex, orchestration, or both
-- future embedding strategy decisions
-- which repo examples are mature enough to study first versus which are only conceptual pointers
-
-Do not treat the guide as a canonical Cortex design source. The authoritative model remains in [architecture.md](../remram-cortex/architecture.md).
+The authoritative Cortex model remains [architecture.md](../remram-cortex/architecture.md).

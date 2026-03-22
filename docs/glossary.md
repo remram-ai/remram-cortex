@@ -1,94 +1,94 @@
 # Glossary
 
-This glossary locks the baseline vocabulary for the current Cortex architecture.
+This glossary locks the baseline Cortex vocabulary.
 
-If a term here conflicts with another document, update the architecture and glossary together instead of letting two definitions coexist.
+If a term here conflicts with the architecture or concept docs, update them together instead of letting parallel meanings survive.
 
 ## A
 
 ### Artifact
 
-A durable file such as a document, image, plan, or decision record. In Cortex, artifacts may be imported as evidence or promoted from knowledge, but the primary technical memory unit remains the knowledge object.
+A durable file such as a document, image, plan, or decision record. When artifacts are imported, Cortex assigns them stable internal identity and resolves them through a configured provider. Artifacts may enter Cortex as evidence through import or leave Cortex as promoted outputs, but they are not the primary durable memory unit.
 
 ### Artifact Intake
 
-The multimodal import path that reads external documents or images, preserves source locations, and turns them into source-linked memory inside Cortex.
+The multimodal import path that reads external artifacts, creates a Cortex-managed artifact record, preserves source locations as provenance, and turns bounded evidence slices into source-linked knowledge updates.
+
+### Artifact Provider
+
+The configurable backend that stores or resolves artifact content for Cortex. Providers may include local Git, Google Workspace, or remote Git systems. Cortex keeps stable artifact identity and metadata above the provider layer.
 
 ### Artifact Promotion
 
-The process of turning stabilized knowledge into a Git-backed artifact that can be reviewed, versioned, and reindexed.
+The process of turning stabilized internal knowledge into a Cortex-managed human-facing artifact that can be reviewed, versioned, and reindexed through an artifact provider.
 
 ## B
 
 ### Bootstrap Ingestion
 
-The historical backfill path that reads prior conversations or other evidence in read-only mode and initializes Cortex with structured knowledge before live reflection becomes the main growth path.
+The historical backfill path that reads exported or otherwise controlled evidence in read-only mode and initializes Cortex before live reflection becomes the primary growth path.
 
 ### Bounded Retrieval
 
-The rule that retrieval must be constrained by scope and dimensions before ranking. Cortex retrieves an inspectable knowledge bundle, not an unbounded memory dump.
+The Cortex rule that retrieval must be constrained by hard governance filters before semantic scoring. Cortex returns a small inspectable bundle, not an unbounded memory dump.
 
 ## C
 
-### Candidate Dimension
-
-A proposed retrieval axis discovered during reflection or import that is not yet part of the canonical dimension set. Dream may later promote it.
-
 ### Confidence
 
-A mutable score that expresses how strongly Cortex trusts a knowledge object. Confidence influences ranking, review, and reconciliation priority. It does not directly control execution.
+A mutable ranking signal that expresses how strongly Cortex trusts a knowledge object right now. Confidence influences ranking, review priority, and reconciliation, but it does not itself grant execution authority.
 
 ### Conversation Object
 
-A proposed Cortex continuity object that groups related sessions without storing transcripts. It carries dense summary and retrieval metadata adjacent to knowledge objects.
+A proposed continuity record that links related sessions without storing full transcripts. It lives beside knowledge objects and preserves semantic direction, recency, and continuity metadata.
 
 ### Cortex
 
-The Remram knowledge authority service. Cortex owns durable memory, retrieval, reflection, dream reconciliation, and artifact promotion workflows.
+The Remram knowledge authority service. Cortex owns durable memory, retrieval, reflection, Dream reconciliation, artifact intake, and artifact promotion.
 
 ## D
 
 ### Dimension
 
-A hard-bounding metadata field used to determine whether a knowledge object is eligible for retrieval before lexical or vector ranking begins.
+A legacy umbrella term from earlier drafts. The current model splits that older idea into harder [Governance Fields](#governance-field) and softer [Signal Fields](#signal-field).
 
 ### Dream
 
-The scheduled reconciliation pass that reviews newly added memory, resolves conflicts, adjusts confidence, promotes stable patterns, and prepares artifact candidates.
+The scheduled reconciliation pass that reviews accumulated knowledge, resolves conflicts, normalizes retrieval cues, adjusts ranking signals, and identifies promotion candidates.
 
 ## E
 
 ### Eligibility
 
-The rule that a memory item must satisfy scope and dimension constraints before it can enter ranking. Eligibility precedes similarity.
+The rule that a memory item must satisfy scope, visibility, lifecycle, and other hard governance constraints before it may enter semantic ranking. Eligibility precedes similarity.
 
 ### Evidence
 
-The raw runtime material Cortex can learn from, such as transcripts, tool outputs, imported artifacts, or historical session files. Evidence is input to knowledge formation, not durable knowledge itself.
+The raw material Cortex can learn from, such as transcripts, tool outputs, imported artifacts, or historical session exports. Evidence informs knowledge formation; it is not itself durable knowledge.
 
 ## F
 
 ### Functional Thread Memory
 
-A dense, compressed summary of how a thread progressed and what operational state matters next. Reflection may emit this so later runs can retrieve process continuity without replaying full chat history.
+A dense operational summary of how a thread progressed and what state matters next. Reflection may emit this so later runs can retrieve continuity without replaying full chat history.
 
 ## G
 
 ### Gateway
 
-The OpenClaw control plane used for deployment, snapshotting, and safe operational change. Gateway is not a runtime execution surface and does not directly query Cortex for memory retrieval.
+The OpenClaw control plane used for deployment, snapshotting, and safe operational change. Gateway is not a runtime execution surface and does not query Cortex for retrieval.
+
+### Governance Field
+
+A hard-bounding field used to determine whether a knowledge object is even eligible for retrieval. Governance fields cover concerns such as ownership, audience, knowledge space, lifecycle state, and temporal validity. They are not open-ended semantic tags.
 
 ## H
 
 ### Hydrate
 
-A future-oriented historical replay path that feeds prior sessions or chat exports through reflection-style processing to shorten time-to-value and initialize continuity.
+A historical replay mode that feeds prior sessions or chat exports through reflection-style processing to initialize useful continuity faster.
 
 ## K
-
-### Knowledge Object
-
-The primary technical durable memory unit in Cortex. A knowledge object is a structured claim, preference, constraint, decision, principle, procedure, or relation with provenance, dimensions, confidence, and potentially multiple supporting sources.
 
 ### Knowledge Authority
 
@@ -96,7 +96,11 @@ The layer that decides what counts as durable memory and is allowed to mutate it
 
 ### Knowledge Bundle
 
-The structured output of Cortex retrieval. A bundle contains bounded knowledge selected for a live run, along with enough metadata for orchestration to assemble prompts or user views intentionally.
+The structured output of Cortex retrieval. A bundle contains bounded knowledge chosen for a live run, along with enough provenance and ranking metadata for orchestration to use it deliberately.
+
+### Knowledge Object
+
+The primary technical durable memory unit in Cortex. A knowledge object is a structured claim, preference, constraint, decision, principle, procedure, or relation with provenance, governance fields, signal fields, ranking metadata, and links.
 
 ## L
 
@@ -130,16 +134,44 @@ The traceable origin of a knowledge object or artifact, including the sessions, 
 
 ### Reflection
 
-The immediate post-run extraction pass that mutates Cortex memory with structured deltas, including new knowledge, corrections, and compressed functional thread memory.
+The immediate post-run extraction pass that turns evidence into structured deltas. Reflection is where Cortex computes canonical statements, signal fields, links, and merge decisions so later retrieval can stay cheap.
+
+### Relationship Expansion
+
+The retrieval step that enriches a result set by following typed links between already-relevant knowledge objects. Relationship expansion augments primary retrieval; it does not replace it.
+
+### Retrieval Trace
+
+The inspectable debug record of how Cortex answered a retrieval request, including filters applied, score contributors, suppressed candidates, and final bundle composition.
 
 ## S
+
+### Scope
+
+The ownership and visibility boundary that determines which knowledge a caller is even allowed to see. Scope is part of governance, not a soft semantic hint.
+
+### Semantic Signature
+
+A compact 16-32 bit semantic routing code generated for both knowledge objects and queries. Signature similarity can bias retrieval or preselect candidates, but it is never the sole source of truth.
 
 ### Session
 
 A runtime execution grouping owned by OpenClaw. Sessions are evidence sources and may belong to a longer-lived conversation, but they are not themselves durable knowledge objects.
+
+### Signal Field
+
+A fixed semantic channel used for primary retrieval scoring. Cortex currently centers retrieval around a small set of open-valued signal fields such as domain, activity, need, object, and mechanism.
+
+### Statement
+
+The canonical wording or structured payload Cortex stores for a knowledge object. Alternate wording may exist in provenance or retrieval cues, but the statement remains the canonical object surface.
 
 ## T
 
 ### Transcript
 
 The append-only record of runtime interaction owned by OpenClaw. Transcripts are evidence, not knowledge, and Cortex must not become a second transcript store.
+
+### Typed Signal Index
+
+The OpenSearch retrieval surface formed by indexing each fixed signal field separately while allowing the values inside those fields to remain open natural language.
