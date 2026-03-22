@@ -16,8 +16,10 @@ Deliver the first end-to-end Cortex slice that can:
 ### 2.1 Required
 
 - OpenSearch service for local Cortex retrieval development
-- Git-backed local artifact provider service
 - artifact storage adapter contract implemented or stubbed against at least one provider
+- local Git service for provider-backed artifact storage
+- Git-backed local artifact provider implementation
+- Google Drive provider design and integration path
 - artifact intake pipeline for text-bearing artifacts
 - quick capture submission path
 - OpenSearch indexing for imported and captured knowledge
@@ -36,14 +38,16 @@ Each MVP capability must have:
 Current capability set:
 
 - [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
-- [02 Git Provider](capabilities/02-git-provider/spec.md)
-- [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
-- [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
-- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
-- [06 Quick Capture](capabilities/06-quick-capture/spec.md)
-- [07 Retrieval](capabilities/07-retrieval/spec.md)
-- [08 Chat Injection](capabilities/08-chat-injection/spec.md)
-- [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+- [02 Artifact Storage](capabilities/02-artifact-storage/spec.md)
+- [03 Git Service](capabilities/03-git-service/spec.md)
+- [04 Git Provider](capabilities/04-git-provider/spec.md)
+- [05 Google Drive Provider](capabilities/05-google-drive-provider/spec.md)
+- [06 Artifact Intake](capabilities/06-artifact-intake/spec.md)
+- [07 Knowledge Extraction](capabilities/07-knowledge-extraction/spec.md)
+- [08 Quick Capture](capabilities/08-quick-capture/spec.md)
+- [09 Retrieval](capabilities/09-retrieval/spec.md)
+- [10 Chat Injection](capabilities/10-chat-injection/spec.md)
+- [11 Chat Interface](capabilities/11-chat-interface/spec.md)
 
 ### 2.3 Optional If Cheap
 
@@ -57,8 +61,9 @@ Current capability set:
 Deliver:
 
 - [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
-- [02 Git Provider](capabilities/02-git-provider/spec.md)
-- [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
+- [02 Artifact Storage](capabilities/02-artifact-storage/spec.md)
+- [03 Git Service](capabilities/03-git-service/spec.md)
+- [04 Git Provider](capabilities/04-git-provider/spec.md)
 - stable artifact ID generation
 - predictable storage layout
 
@@ -73,8 +78,9 @@ The first provider may still be local Git even if the long-term model supports m
 
 Deliver:
 
-- [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
-- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
+- [05 Google Drive Provider](capabilities/05-google-drive-provider/spec.md)
+- [06 Artifact Intake](capabilities/06-artifact-intake/spec.md)
+- [07 Knowledge Extraction](capabilities/07-knowledge-extraction/spec.md)
 
 Exit criteria:
 
@@ -84,8 +90,8 @@ Exit criteria:
 
 Deliver:
 
-- [06 Quick Capture](capabilities/06-quick-capture/spec.md)
-- [07 Retrieval](capabilities/07-retrieval/spec.md)
+- [08 Quick Capture](capabilities/08-quick-capture/spec.md)
+- [09 Retrieval](capabilities/09-retrieval/spec.md)
 
 Exit criteria:
 
@@ -95,8 +101,8 @@ Exit criteria:
 
 Deliver:
 
-- [08 Chat Injection](capabilities/08-chat-injection/spec.md)
-- [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+- [10 Chat Injection](capabilities/10-chat-injection/spec.md)
+- [11 Chat Interface](capabilities/11-chat-interface/spec.md)
 
 Exit criteria:
 
@@ -123,48 +129,59 @@ Exit criteria:
 - define Cortex index mapping
 - verify indexing and query connectivity
 
-### Workstream B: [02 Git Provider](capabilities/02-git-provider/spec.md) And [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
+### Workstream B: [02 Artifact Storage](capabilities/02-artifact-storage/spec.md)
 
-- implement local adapter
 - define provider capability model
 - define artifact routing policy
 - define import and capture container layout
 - verify source lookup by artifact ID
 - preserve external source refs as provenance only
 
-### Workstream C: [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
+### Workstream C: [03 Git Service](capabilities/03-git-service/spec.md) And [04 Git Provider](capabilities/04-git-provider/spec.md)
+
+- implement local adapter
+- stand up the local Git-backed service or repository foundation
+- wire the Git provider into artifact storage defaults
+
+### Workstream D: [05 Google Drive Provider](capabilities/05-google-drive-provider/spec.md)
+
+- define provider contract fit for Google-native docs
+- define provider metadata, authority, and sync boundary
+- define later ingestion or watch path without blocking the MVP core
+
+### Workstream E: [06 Artifact Intake](capabilities/06-artifact-intake/spec.md)
 
 - define import job shape
 - implement parser pipeline for supported formats
 - emit source-linked slices
 - hand slices to knowledge extraction
 
-### Workstream D: [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
+### Workstream F: [07 Knowledge Extraction](capabilities/07-knowledge-extraction/spec.md)
 
 - define MVP object-kind subset
 - implement reflection merge discipline
 - generate typed signals and signature
 
-### Workstream E: [07 Retrieval](capabilities/07-retrieval/spec.md)
+### Workstream G: [09 Retrieval](capabilities/09-retrieval/spec.md)
 
 - define OpenSearch mapping
 - implement scoring query
 - implement rerank pass and trace output
 
-### Workstream F: [06 Quick Capture](capabilities/06-quick-capture/spec.md)
+### Workstream H: [08 Quick Capture](capabilities/08-quick-capture/spec.md)
 
 - define submission contract
 - store raw capture artifact
 - invoke reflection path
 - test dedup or linking against seeded corpus
 
-### Workstream G: [08 Chat Injection](capabilities/08-chat-injection/spec.md)
+### Workstream I: [10 Chat Injection](capabilities/10-chat-injection/spec.md)
 
 - define orchestration hook contract
 - define bundle injection shape
 - run before/after answer comparisons
 
-### Workstream H: [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+### Workstream J: [11 Chat Interface](capabilities/11-chat-interface/spec.md)
 
 - define the minimal chat harness surface
 - wire retrieval into the harness

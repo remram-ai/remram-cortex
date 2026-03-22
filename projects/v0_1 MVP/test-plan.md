@@ -12,6 +12,7 @@ This is the umbrella test plan for the MVP. Detailed test plans for each capabil
 
 - OpenSearch service starts and is reachable
 - Cortex index mapping can be created
+- local Git service foundation is usable
 - local Git-backed provider persists and resolves artifacts correctly
 
 ### 2.2 Artifact Storage Tests
@@ -23,57 +24,65 @@ This is the umbrella test plan for the MVP. Detailed test plans for each capabil
 - Cortex artifact resolution does not depend on the original source-system path remaining unchanged
 - provider metadata is preserved on the artifact record
 
-### 2.3 Artifact Intake Tests
+### 2.3 Provider Tests
+
+- Git provider works as the default fallback path
+- Google Drive provider contract is defined coherently enough to preserve authority and provenance boundaries
+- provider choice can be routed by artifact policy rather than source path
+
+### 2.4 Artifact Intake Tests
 
 - Markdown import creates source-linked slices
 - text import creates source-linked slices
 - PDF import creates source-linked slices when text is extractable
 - extracted slices produce knowledge objects with provenance
 
-### 2.4 Knowledge Extraction Tests
+### 2.5 Knowledge Extraction Tests
 
 - imported evidence becomes structured knowledge-object deltas
 - capture evidence becomes structured knowledge-object deltas
 - typed signals and signature are attached to resulting objects
 - obvious duplicate noise is reduced through merge discipline
 
-### 2.5 Quick Capture Tests
+### 2.6 Quick Capture Tests
 
 - a short capture becomes a persisted capture artifact
 - the capture produces one or more knowledge-object deltas
 - the capture can reinforce an existing object instead of duplicating blindly
 - the capture can create a new object when no existing object is relevant
 
-### 2.6 Retrieval Tests
+### 2.7 Retrieval Tests
 
 - imported knowledge is retrievable
 - capture-derived knowledge is retrievable
 - linked imported plus captured knowledge can be retrieved together
 - retrieval trace explains filters and ranking contributors
 
-### 2.7 General Chat Injection Tests
+### 2.8 General Chat Injection Tests
 
 - ordinary chat can call Cortex retrieval before prompt build
 - the returned bundle is bounded and inspectable
 - the final chat answer uses seeded or captured knowledge in a way the no-Cortex path would miss
 
-### 2.8 Chat Interface Tests
+### 2.9 Chat Interface Tests
 
 - a minimal chat harness can submit a user question
 - the harness shows or exposes the retrieved bundle used for the answer
 - the harness can be used as the proof surface before any OpenClaw integration exists
 
-### 2.9 Capability Detail Documents
+### 2.10 Capability Detail Documents
 
 - [01 OpenSearch Service](capabilities/01-opensearch-service/test-plan.md)
-- [02 Git Provider](capabilities/02-git-provider/test-plan.md)
-- [03 Artifact Storage](capabilities/03-artifact-storage/test-plan.md)
-- [04 Artifact Intake](capabilities/04-artifact-intake/test-plan.md)
-- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/test-plan.md)
-- [06 Quick Capture](capabilities/06-quick-capture/test-plan.md)
-- [07 Retrieval](capabilities/07-retrieval/test-plan.md)
-- [08 Chat Injection](capabilities/08-chat-injection/test-plan.md)
-- [09 Chat Interface](capabilities/09-chat-interface/test-plan.md)
+- [02 Artifact Storage](capabilities/02-artifact-storage/test-plan.md)
+- [03 Git Service](capabilities/03-git-service/test-plan.md)
+- [04 Git Provider](capabilities/04-git-provider/test-plan.md)
+- [05 Google Drive Provider](capabilities/05-google-drive-provider/test-plan.md)
+- [06 Artifact Intake](capabilities/06-artifact-intake/test-plan.md)
+- [07 Knowledge Extraction](capabilities/07-knowledge-extraction/test-plan.md)
+- [08 Quick Capture](capabilities/08-quick-capture/test-plan.md)
+- [09 Retrieval](capabilities/09-retrieval/test-plan.md)
+- [10 Chat Injection](capabilities/10-chat-injection/test-plan.md)
+- [11 Chat Interface](capabilities/11-chat-interface/test-plan.md)
 
 ## 3. Acceptance Scenarios
 

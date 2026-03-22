@@ -16,14 +16,16 @@ Additional artifacts such as API notes, sample payloads, diagrams, or implementa
 ## Capability Order
 
 1. `01-opensearch-service`
-2. `02-git-provider`
-3. `03-artifact-storage`
-4. `04-artifact-intake`
-5. `05-knowledge-extraction`
-6. `06-quick-capture`
-7. `07-retrieval`
-8. `08-chat-injection`
-9. `09-chat-interface`
+2. `02-artifact-storage`
+3. `03-git-service`
+4. `04-git-provider`
+5. `05-google-drive-provider`
+6. `06-artifact-intake`
+7. `07-knowledge-extraction`
+8. `08-quick-capture`
+9. `09-retrieval`
+10. `10-chat-injection`
+11. `11-chat-interface`
 
 ## Source Documents
 

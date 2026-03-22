@@ -16,7 +16,7 @@ without forcing the user to manually restate the document every time.
 
 The project progresses capability by capability, with each layer making the next layer possible.
 
-It starts with usable infrastructure. OpenSearch gives Cortex a real retrieval substrate. The Git provider gives Cortex a concrete local-first artifact provider. Artifact Storage then creates stable Cortex artifact identity so imported and captured artifacts are addressable by Cortex ID instead of file path.
+It starts with usable infrastructure. OpenSearch gives Cortex a real retrieval substrate. Artifact Storage defines the Cortex-owned provider contract and stable artifact identity so imported and captured artifacts are addressable by Cortex ID instead of file path. Git Service gives the project the concrete local Git repository mechanics it can build on. Git Provider uses that service as the safe default local provider. Google Drive Provider expands the same provider model into collaborative document territory without changing Cortex artifact identity.
 
 Once storage exists, Cortex can form memory from evidence. Artifact Intake turns imported documents into bounded, source-linked slices. Knowledge Extraction turns those slices into structured knowledge objects with typed signals, signatures, provenance, and links. Quick Capture proves the same write path works for new thoughts, not just imported documents.
 
@@ -27,17 +27,20 @@ The project only counts as successful when these capabilities add up to one cohe
 ## Capability Sequence
 
 - [01 OpenSearch Service](capabilities/01-opensearch-service/spec.md)
-- [02 Git Provider](capabilities/02-git-provider/spec.md)
-- [03 Artifact Storage](capabilities/03-artifact-storage/spec.md)
-- [04 Artifact Intake](capabilities/04-artifact-intake/spec.md)
-- [05 Knowledge Extraction](capabilities/05-knowledge-extraction/spec.md)
-- [06 Quick Capture](capabilities/06-quick-capture/spec.md)
-- [07 Retrieval](capabilities/07-retrieval/spec.md)
-- [08 Chat Injection](capabilities/08-chat-injection/spec.md)
-- [09 Chat Interface](capabilities/09-chat-interface/spec.md)
+- [02 Artifact Storage](capabilities/02-artifact-storage/spec.md)
+- [03 Git Service](capabilities/03-git-service/spec.md)
+- [04 Git Provider](capabilities/04-git-provider/spec.md)
+- [05 Google Drive Provider](capabilities/05-google-drive-provider/spec.md)
+- [06 Artifact Intake](capabilities/06-artifact-intake/spec.md)
+- [07 Knowledge Extraction](capabilities/07-knowledge-extraction/spec.md)
+- [08 Quick Capture](capabilities/08-quick-capture/spec.md)
+- [09 Retrieval](capabilities/09-retrieval/spec.md)
+- [10 Chat Injection](capabilities/10-chat-injection/spec.md)
+- [11 Chat Interface](capabilities/11-chat-interface/spec.md)
 
 ## Documents
 
+- [Seed Prompt](seed-prompt.md)
 - [Project Plan](project-plan.md)
 - [Test Plan](test-plan.md)
 - [Capability Packs](capabilities/README.md)
