@@ -23,7 +23,10 @@ Turn stored knowledge into bounded, inspectable bundles that satisfy the Cortex 
 
 ## Epic Documents
 
+- [Requirements](retrieval-requirements.md)
 - [Technical Spec](retrieval-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

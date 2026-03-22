@@ -1,0 +1,120 @@
+{
+    "plan_id":  "epic-10-chat-injection",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "10-chat-injection",
+    "goal":  "Implement the orchestration hook that injects Cortex retrieval into the answer path.",
+    "reference_dependencies":  [
+                                   "[Chat Injection Spec](../../../../product/capabilities/chat-injection/spec.md)",
+                                   "[Chat Injection Regression Plan](../../../../product/capabilities/chat-injection/regression-plan.md)",
+                                   "[Retrieval Epic](../09-retrieval/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "CI-DEL-001",
+                             "title":  "Retrieval-before-answer Hook",
+                             "summary":  "retrieval-before-answer hook",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "retrieval-before-answer hook"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-001",
+                                               "title":  "Retrieval-before-answer Hook",
+                                               "status":  "planned",
+                                               "description":  "Implement and document retrieval-before-answer hook in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "retrieval-before-answer hook"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "CI-DEL-002",
+                             "title":  "Bounded Bundle Injection Shape",
+                             "summary":  "bounded bundle injection shape",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "bounded bundle injection shape"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-002",
+                                               "title":  "Bounded Bundle Injection Shape",
+                                               "status":  "planned",
+                                               "description":  "Implement and document bounded bundle injection shape in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "bounded bundle injection shape"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "CI-DEL-003",
+                             "title":  "Before And After Comparison Posture",
+                             "summary":  "before and after comparison posture",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "before and after comparison posture"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-003",
+                                               "title":  "Before And After Comparison Posture",
+                                               "status":  "planned",
+                                               "description":  "Implement and document before and after comparison posture in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "before and after comparison posture"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

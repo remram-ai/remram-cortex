@@ -1,0 +1,121 @@
+{
+    "plan_id":  "epic-04-git-provider",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "04-git-provider",
+    "goal":  "Wire the local Git substrate into the Cortex provider contract as the default fallback path.",
+    "reference_dependencies":  [
+                                   "[Git Provider Spec](../../../../product/capabilities/git-provider/spec.md)",
+                                   "[Git Provider Regression Plan](../../../../product/capabilities/git-provider/regression-plan.md)",
+                                   "[Git Service Epic](../02-git-service/README.md)",
+                                   "[Artifact Storage Epic](../03-artifact-storage/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "GP-DEL-001",
+                             "title":  "Git Provider Contract Fit",
+                             "summary":  "Git provider contract fit",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "Git provider contract fit"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GP-TASK-001",
+                                               "title":  "Git Provider Contract Fit",
+                                               "status":  "planned",
+                                               "description":  "Implement and document Git provider contract fit in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "Git provider contract fit"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GP-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GP-DEL-002",
+                             "title":  "Default Local Provider Posture",
+                             "summary":  "default local provider posture",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "default local provider posture"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GP-TASK-002",
+                                               "title":  "Default Local Provider Posture",
+                                               "status":  "planned",
+                                               "description":  "Implement and document default local provider posture in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "default local provider posture"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GP-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GP-DEL-003",
+                             "title":  "Clean Integration With Artifact Storage",
+                             "summary":  "clean integration with artifact storage",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "clean integration with artifact storage"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GP-TASK-003",
+                                               "title":  "Clean Integration With Artifact Storage",
+                                               "status":  "planned",
+                                               "description":  "Implement and document clean integration with artifact storage in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "clean integration with artifact storage"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GP-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

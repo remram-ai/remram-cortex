@@ -10,6 +10,14 @@ Implement the local Git-backed provider as the safe default Cortex provider with
 - it is the default local provider for MVP work because it gives deterministic local ownership and inspectability
 - provider behavior stays adapter-scoped and does not redefine artifact identity
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Git Provider Requirements](git-provider-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -33,3 +41,4 @@ Implement the local Git-backed provider as the safe default Cortex provider with
 - the Git provider fits the artifact-storage contract
 - it acts as the safe default local provider
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

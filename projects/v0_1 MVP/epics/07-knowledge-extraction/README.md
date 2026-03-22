@@ -20,7 +20,10 @@ Turn intake slices into structured knowledge objects with provenance and retriev
 
 ## Epic Documents
 
+- [Requirements](knowledge-extraction-requirements.md)
 - [Technical Spec](knowledge-extraction-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

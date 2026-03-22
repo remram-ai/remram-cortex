@@ -11,6 +11,14 @@ Prove that Cortex retrieval can influence a live answer before prompt build with
 - the injection path stays inspectable enough to demonstrate that Cortex improved the result
 - this epic proves the integration boundary before any broader UI work
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Chat Injection Requirements](chat-injection-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -34,3 +42,4 @@ Prove that Cortex retrieval can influence a live answer before prompt build with
 - a chat-facing path can call Cortex retrieval
 - the bounded bundle is available for answer generation
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

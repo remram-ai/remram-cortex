@@ -1,0 +1,105 @@
+{
+    "plan_id":  "epic-03-artifact-storage-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "03-artifact-storage",
+    "goal":  "Prove that Cortex artifact identity and provider routing work as a stable foundation.",
+    "tests":  [
+                  {
+                      "test_id":  "AS-TEST-001",
+                      "title":  "Create Or Register Artifact Records With Stable Identity",
+                      "objective":  "create or register artifact records with stable identity",
+                      "covers_deliverables":  [
+                                                  "AS-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "create or register artifact records with stable identity"
+                                           ],
+                      "failure_conditions":  [
+                                                 "artifact identity depends on source path",
+                                                 "provider routing is ambiguous",
+                                                 "import and capture flows would fork into different identity models"
+                                             ],
+                      "required_evidence":  [
+                                                "sample artifact records",
+                                                "route and resolution examples",
+                                                "provider metadata examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "AS-TEST-002",
+                      "title":  "Resolve Artifacts By `artifact_id`",
+                      "objective":  "resolve artifacts by `artifact_id`",
+                      "covers_deliverables":  [
+                                                  "AS-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "resolve artifacts by `artifact_id`"
+                                           ],
+                      "failure_conditions":  [
+                                                 "artifact identity depends on source path",
+                                                 "provider routing is ambiguous",
+                                                 "import and capture flows would fork into different identity models"
+                                             ],
+                      "required_evidence":  [
+                                                "sample artifact records",
+                                                "route and resolution examples",
+                                                "provider metadata examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "AS-TEST-003",
+                      "title":  "Verify Provider Metadata And Routing Behavior",
+                      "objective":  "verify provider metadata and routing behavior",
+                      "covers_deliverables":  [
+                                                  "AS-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "verify provider metadata and routing behavior"
+                                           ],
+                      "failure_conditions":  [
+                                                 "artifact identity depends on source path",
+                                                 "provider routing is ambiguous",
+                                                 "import and capture flows would fork into different identity models"
+                                             ],
+                      "required_evidence":  [
+                                                "sample artifact records",
+                                                "route and resolution examples",
+                                                "provider metadata examples"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

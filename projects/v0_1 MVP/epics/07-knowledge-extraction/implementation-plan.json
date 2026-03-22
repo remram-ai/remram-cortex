@@ -1,0 +1,151 @@
+{
+    "plan_id":  "epic-07-knowledge-extraction",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "07-knowledge-extraction",
+    "goal":  "Implement the MVP extraction path from slices to structured knowledge objects.",
+    "reference_dependencies":  [
+                                   "[Knowledge Extraction Spec](../../../../product/capabilities/knowledge-extraction/spec.md)",
+                                   "[Knowledge Extraction Regression Plan](../../../../product/capabilities/knowledge-extraction/regression-plan.md)",
+                                   "[Artifact Intake Epic](../06-artifact-intake/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "KE-DEL-001",
+                             "title":  "MVP Object-kind Subset",
+                             "summary":  "MVP object-kind subset",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "MVP object-kind subset"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "KE-TASK-001",
+                                               "title":  "MVP Object-kind Subset",
+                                               "status":  "planned",
+                                               "description":  "Implement and document MVP object-kind subset in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "MVP object-kind subset"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "KE-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "KE-DEL-002",
+                             "title":  "Typed Signal Generation",
+                             "summary":  "typed signal generation",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "typed signal generation"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "KE-TASK-002",
+                                               "title":  "Typed Signal Generation",
+                                               "status":  "planned",
+                                               "description":  "Implement and document typed signal generation in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "typed signal generation"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "KE-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "KE-DEL-003",
+                             "title":  "Semantic Signature Generation",
+                             "summary":  "semantic signature generation",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "semantic signature generation"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "KE-TASK-003",
+                                               "title":  "Semantic Signature Generation",
+                                               "status":  "planned",
+                                               "description":  "Implement and document semantic signature generation in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "semantic signature generation"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "KE-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "KE-DEL-004",
+                             "title":  "Provenance And Merge-ready Output Shape",
+                             "summary":  "provenance and merge-ready output shape",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "provenance and merge-ready output shape"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "KE-TASK-004",
+                                               "title":  "Provenance And Merge-ready Output Shape",
+                                               "status":  "planned",
+                                               "description":  "Implement and document provenance and merge-ready output shape in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "provenance and merge-ready output shape"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "KE-TEST-004"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

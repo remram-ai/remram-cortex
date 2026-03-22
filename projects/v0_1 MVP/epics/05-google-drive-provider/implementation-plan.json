@@ -1,0 +1,120 @@
+{
+    "plan_id":  "epic-05-google-drive-provider",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "05-google-drive-provider",
+    "goal":  "Close the Google Drive provider contract and integration path needed for collaborative artifact intake.",
+    "reference_dependencies":  [
+                                   "[Google Drive Provider Spec](../../../../product/capabilities/google-drive-provider/spec.md)",
+                                   "[Google Drive Provider Regression Plan](../../../../product/capabilities/google-drive-provider/regression-plan.md)",
+                                   "[Artifact Storage Epic](../03-artifact-storage/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "GDP-DEL-001",
+                             "title":  "Provider Metadata And Authority Model",
+                             "summary":  "provider metadata and authority model",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "provider metadata and authority model"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GDP-TASK-001",
+                                               "title":  "Provider Metadata And Authority Model",
+                                               "status":  "planned",
+                                               "description":  "Implement and document provider metadata and authority model in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "provider metadata and authority model"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GDP-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GDP-DEL-002",
+                             "title":  "Artifact-storage Fit",
+                             "summary":  "artifact-storage fit",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "artifact-storage fit"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GDP-TASK-002",
+                                               "title":  "Artifact-storage Fit",
+                                               "status":  "planned",
+                                               "description":  "Implement and document artifact-storage fit in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "artifact-storage fit"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GDP-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GDP-DEL-003",
+                             "title":  "MVP-ready Integration Notes Without Overcommitting To Full Sync Behavior",
+                             "summary":  "MVP-ready integration notes without overcommitting to full sync behavior",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "MVP-ready integration notes without overcommitting to full sync behavior"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GDP-TASK-003",
+                                               "title":  "MVP-ready Integration Notes Without Overcommitting To Full Sync Behavior",
+                                               "status":  "planned",
+                                               "description":  "Implement and document MVP-ready integration notes without overcommitting to full sync behavior in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "MVP-ready integration notes without overcommitting to full sync behavior"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GDP-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

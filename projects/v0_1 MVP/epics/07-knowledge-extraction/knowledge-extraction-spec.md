@@ -11,6 +11,14 @@ Turn bounded intake slices into structured knowledge objects with provenance and
 - typed signals, semantic signature, and provenance remain first-class explicit fields
 - the extraction contract is shaped so Retrieval can consume it directly without reinterpretation
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Knowledge Extraction Requirements](knowledge-extraction-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -34,3 +42,4 @@ Turn bounded intake slices into structured knowledge objects with provenance and
 - knowledge-object deltas are produced from imported evidence
 - typed signals, provenance, and signature are attached
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

@@ -11,6 +11,14 @@ Stand up the shared OpenSearch dependency in a way that later Cortex epics can t
 - deployment, restart, and service health stay on the existing `moltbox gateway service ...` path
 - Cortex bootstrap runs after service health and owns index and alias creation for Cortex data surfaces
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [OpenSearch Service Requirements](opensearch-service-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -35,3 +43,4 @@ Stand up the shared OpenSearch dependency in a way that later Cortex epics can t
 - the Moltbox-managed OpenSearch service can be deployed and inspected
 - the dependency posture is documented well enough for later Cortex epics to reuse directly
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

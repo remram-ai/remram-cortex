@@ -1,0 +1,105 @@
+{
+    "plan_id":  "epic-08-quick-capture-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "08-quick-capture",
+    "goal":  "Prove that quick capture uses the same durable memory path as imported evidence.",
+    "tests":  [
+                  {
+                      "test_id":  "QC-TEST-001",
+                      "title":  "Persist A Short Capture As An Artifact",
+                      "objective":  "persist a short capture as an artifact",
+                      "covers_deliverables":  [
+                                                  "QC-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "persist a short capture as an artifact"
+                                           ],
+                      "failure_conditions":  [
+                                                 "quick capture bypasses the knowledge-object model",
+                                                 "captures create obvious duplicate noise",
+                                                 "capture artifacts cannot be reopened or traced"
+                                             ],
+                      "required_evidence":  [
+                                                "sample capture artifacts",
+                                                "reinforce vs new-object examples",
+                                                "provenance notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "QC-TEST-002",
+                      "title":  "Reinforce An Existing Idea",
+                      "objective":  "reinforce an existing idea",
+                      "covers_deliverables":  [
+                                                  "QC-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "reinforce an existing idea"
+                                           ],
+                      "failure_conditions":  [
+                                                 "quick capture bypasses the knowledge-object model",
+                                                 "captures create obvious duplicate noise",
+                                                 "capture artifacts cannot be reopened or traced"
+                                             ],
+                      "required_evidence":  [
+                                                "sample capture artifacts",
+                                                "reinforce vs new-object examples",
+                                                "provenance notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "QC-TEST-003",
+                      "title":  "Create A New Concept When No Match Exists",
+                      "objective":  "create a new concept when no match exists",
+                      "covers_deliverables":  [
+                                                  "QC-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "create a new concept when no match exists"
+                                           ],
+                      "failure_conditions":  [
+                                                 "quick capture bypasses the knowledge-object model",
+                                                 "captures create obvious duplicate noise",
+                                                 "capture artifacts cannot be reopened or traced"
+                                             ],
+                      "required_evidence":  [
+                                                "sample capture artifacts",
+                                                "reinforce vs new-object examples",
+                                                "provenance notes"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

@@ -1,0 +1,135 @@
+{
+    "plan_id":  "epic-09-retrieval-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "09-retrieval",
+    "goal":  "Prove that retrieval returns bounded, inspectable knowledge bundles over imported and captured knowledge.",
+    "tests":  [
+                  {
+                      "test_id":  "R-TEST-001",
+                      "title":  "Run Governance-filtered Retrieval",
+                      "objective":  "run governance-filtered retrieval",
+                      "covers_deliverables":  [
+                                                  "R-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "run governance-filtered retrieval"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval ignores governance boundaries",
+                                                 "imported and captured knowledge split into separate pools",
+                                                 "traces do not explain the result"
+                                             ],
+                      "required_evidence":  [
+                                                "sample queries and results",
+                                                "retrieval trace examples",
+                                                "provenance lookup examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "R-TEST-002",
+                      "title":  "Confirm Multiple Framings Can Recover The Same Concept",
+                      "objective":  "confirm multiple framings can recover the same concept",
+                      "covers_deliverables":  [
+                                                  "R-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "confirm multiple framings can recover the same concept"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval ignores governance boundaries",
+                                                 "imported and captured knowledge split into separate pools",
+                                                 "traces do not explain the result"
+                                             ],
+                      "required_evidence":  [
+                                                "sample queries and results",
+                                                "retrieval trace examples",
+                                                "provenance lookup examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "R-TEST-003",
+                      "title":  "Inspect Retrieval Traces And Provenance",
+                      "objective":  "inspect retrieval traces and provenance",
+                      "covers_deliverables":  [
+                                                  "R-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "inspect retrieval traces and provenance"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval ignores governance boundaries",
+                                                 "imported and captured knowledge split into separate pools",
+                                                 "traces do not explain the result"
+                                             ],
+                      "required_evidence":  [
+                                                "sample queries and results",
+                                                "retrieval trace examples",
+                                                "provenance lookup examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "R-TEST-004",
+                      "title":  "Validate Bounded Bundle Assembly",
+                      "objective":  "validate bounded bundle assembly",
+                      "covers_deliverables":  [
+                                                  "R-DEL-004"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "validate bounded bundle assembly"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval ignores governance boundaries",
+                                                 "imported and captured knowledge split into separate pools",
+                                                 "traces do not explain the result"
+                                             ],
+                      "required_evidence":  [
+                                                "sample queries and results",
+                                                "retrieval trace examples",
+                                                "provenance lookup examples"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

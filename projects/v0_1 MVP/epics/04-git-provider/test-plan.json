@@ -1,0 +1,105 @@
+{
+    "plan_id":  "epic-04-git-provider-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "04-git-provider",
+    "goal":  "Prove that the Git provider is usable as the default local provider.",
+    "tests":  [
+                  {
+                      "test_id":  "GP-TEST-001",
+                      "title":  "Persist Artifacts Through The Git Provider",
+                      "objective":  "persist artifacts through the Git provider",
+                      "covers_deliverables":  [
+                                                  "GP-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "persist artifacts through the Git provider"
+                                           ],
+                      "failure_conditions":  [
+                                                 "provider does not fit the artifact-storage contract",
+                                                 "default local behavior is unclear",
+                                                 "provider state depends on hidden path conventions"
+                                             ],
+                      "required_evidence":  [
+                                                "provider persistence examples",
+                                                "provider resolution examples",
+                                                "default-provider notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "GP-TEST-002",
+                      "title":  "Resolve Stored Artifacts Through The Provider",
+                      "objective":  "resolve stored artifacts through the provider",
+                      "covers_deliverables":  [
+                                                  "GP-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "resolve stored artifacts through the provider"
+                                           ],
+                      "failure_conditions":  [
+                                                 "provider does not fit the artifact-storage contract",
+                                                 "default local behavior is unclear",
+                                                 "provider state depends on hidden path conventions"
+                                             ],
+                      "required_evidence":  [
+                                                "provider persistence examples",
+                                                "provider resolution examples",
+                                                "default-provider notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "GP-TEST-003",
+                      "title":  "Confirm Fallback Behavior Is Coherent",
+                      "objective":  "confirm fallback behavior is coherent",
+                      "covers_deliverables":  [
+                                                  "GP-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "confirm fallback behavior is coherent"
+                                           ],
+                      "failure_conditions":  [
+                                                 "provider does not fit the artifact-storage contract",
+                                                 "default local behavior is unclear",
+                                                 "provider state depends on hidden path conventions"
+                                             ],
+                      "required_evidence":  [
+                                                "provider persistence examples",
+                                                "provider resolution examples",
+                                                "default-provider notes"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

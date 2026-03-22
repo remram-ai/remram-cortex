@@ -21,7 +21,10 @@ Establish the Cortex-owned artifact identity and provider-routing foundation.
 
 ## Epic Documents
 
+- [Requirements](artifact-storage-requirements.md)
 - [Technical Spec](artifact-storage-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

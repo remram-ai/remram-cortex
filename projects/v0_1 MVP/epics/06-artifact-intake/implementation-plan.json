@@ -1,0 +1,120 @@
+{
+    "plan_id":  "epic-06-artifact-intake",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "06-artifact-intake",
+    "goal":  "Implement the import path that turns stored artifacts into bounded, source-linked slices.",
+    "reference_dependencies":  [
+                                   "[Artifact Intake Spec](../../../../product/capabilities/artifact-intake/spec.md)",
+                                   "[Artifact Intake Regression Plan](../../../../product/capabilities/artifact-intake/regression-plan.md)",
+                                   "[Artifact Storage Epic](../03-artifact-storage/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "AI-DEL-001",
+                             "title":  "Import Job Shape",
+                             "summary":  "import job shape",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "import job shape"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AI-TASK-001",
+                                               "title":  "Import Job Shape",
+                                               "status":  "planned",
+                                               "description":  "Implement and document import job shape in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "import job shape"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AI-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "AI-DEL-002",
+                             "title":  "Parser Support For MVP Formats",
+                             "summary":  "parser support for MVP formats",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "parser support for MVP formats"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AI-TASK-002",
+                                               "title":  "Parser Support For MVP Formats",
+                                               "status":  "planned",
+                                               "description":  "Implement and document parser support for MVP formats in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "parser support for MVP formats"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AI-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "AI-DEL-003",
+                             "title":  "Source-linked Slice Handoff",
+                             "summary":  "source-linked slice handoff",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "source-linked slice handoff"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AI-TASK-003",
+                                               "title":  "Source-linked Slice Handoff",
+                                               "status":  "planned",
+                                               "description":  "Implement and document source-linked slice handoff in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "source-linked slice handoff"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AI-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

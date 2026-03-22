@@ -1,0 +1,119 @@
+{
+    "plan_id":  "epic-02-git-service",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "02-git-service",
+    "goal":  "Close the local Git dependency surface before provider-specific artifact work begins.",
+    "reference_dependencies":  [
+                                   "[Git Service Spec](../../../../product/dependencies/git-service/spec.md)",
+                                   "[Git Service Regression Plan](../../../../product/dependencies/git-service/regression-plan.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "GS-DEL-001",
+                             "title":  "One Usable Local Git-backed Storage Root",
+                             "summary":  "one usable local Git-backed storage root",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "one usable local Git-backed storage root"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GS-TASK-001",
+                                               "title":  "One Usable Local Git-backed Storage Root",
+                                               "status":  "planned",
+                                               "description":  "Implement and document one usable local Git-backed storage root in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "one usable local Git-backed storage root"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GS-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GS-DEL-002",
+                             "title":  "Deterministic Repository Location And Initialization Posture",
+                             "summary":  "deterministic repository location and initialization posture",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "deterministic repository location and initialization posture"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GS-TASK-002",
+                                               "title":  "Deterministic Repository Location And Initialization Posture",
+                                               "status":  "planned",
+                                               "description":  "Implement and document deterministic repository location and initialization posture in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "deterministic repository location and initialization posture"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GS-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "GS-DEL-003",
+                             "title":  "Dependency Notes Ready For Git Provider And Artifact Storage Work",
+                             "summary":  "dependency notes ready for Git Provider and Artifact Storage work",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "dependency notes ready for Git Provider and Artifact Storage work"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "GS-TASK-003",
+                                               "title":  "Dependency Notes Ready For Git Provider And Artifact Storage Work",
+                                               "status":  "planned",
+                                               "description":  "Implement and document dependency notes ready for Git Provider and Artifact Storage work in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "dependency notes ready for Git Provider and Artifact Storage work"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "GS-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

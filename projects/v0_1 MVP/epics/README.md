@@ -7,15 +7,16 @@ Read the project [README.md](../README.md) first for the charter and [project-pl
 Each epic should contain:
 
 - `README.md`
+- `<component>-requirements.md`
 - `<component>-spec.md`
-- `implementation-plan.md`
-- `implementation-plan.json` once the epic enters active execution
+- `implementation-plan.json`
 - `test-plan.md`
-- `test-plan.json` once the epic enters active execution
+- `test-plan.json`
 - `tests/`
 
 The ownership rule is:
 
+- `<component>-requirements.md` is the PM-owned local business slice and definition of done for the epic
 - `<component>-spec.md` is the active working technical design the developer and tester use during implementation
 - product specs under `../../product/` remain stable reference inputs
 - accepted work can later be promoted back into product or platform surfaces
@@ -25,7 +26,7 @@ Each epic stores its executed test artifacts directly under `tests/`, for exampl
 - `tests/001-test-result-ddmmyyyy.md`
 - `tests/002-test-result-ddmmyyyy.md`
 
-Use the markdown files for context and the JSON companions for stable IDs, procedures, and execution inventory when an epic becomes active.
+Use the markdown files for human-readable context and the JSON companions for stable IDs, procedures, and execution inventory.
 
 Current epic set:
 

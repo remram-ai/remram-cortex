@@ -11,6 +11,14 @@ Define the Cortex-owned artifact identity, versioning, and provider-routing mode
 - routing is policy-driven and provider-neutral
 - prune, backlink, and resolve behavior are explicit parts of the contract, not ad hoc follow-on features
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Artifact Storage Requirements](artifact-storage-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -34,3 +42,4 @@ Define the Cortex-owned artifact identity, versioning, and provider-routing mode
 - stable `artifact_id` handling exists
 - provider routing and record shape are explicit
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

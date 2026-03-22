@@ -1,0 +1,105 @@
+{
+    "plan_id":  "epic-11-chat-interface-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "11-chat-interface",
+    "goal":  "Prove that the chat harness is a usable proof surface for the end-to-end Cortex read path.",
+    "tests":  [
+                  {
+                      "test_id":  "CI-TEST-001",
+                      "title":  "Submit A Question Through The Cortex-backed Path",
+                      "objective":  "submit a question through the Cortex-backed path",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "submit a question through the Cortex-backed path"
+                                           ],
+                      "failure_conditions":  [
+                                                 "no usable proof surface exists",
+                                                 "the harness hides the retrieval behavior completely",
+                                                 "later OpenClaw integration would require redefining Cortex semantics"
+                                             ],
+                      "required_evidence":  [
+                                                "harness walkthrough notes",
+                                                "bundle or trace visibility proof",
+                                                "end-to-end demo notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "CI-TEST-002",
+                      "title":  "Inspect The Retrieved Bundle Or Trace",
+                      "objective":  "inspect the retrieved bundle or trace",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "inspect the retrieved bundle or trace"
+                                           ],
+                      "failure_conditions":  [
+                                                 "no usable proof surface exists",
+                                                 "the harness hides the retrieval behavior completely",
+                                                 "later OpenClaw integration would require redefining Cortex semantics"
+                                             ],
+                      "required_evidence":  [
+                                                "harness walkthrough notes",
+                                                "bundle or trace visibility proof",
+                                                "end-to-end demo notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "CI-TEST-003",
+                      "title":  "Confirm The Harness Can Support The Final MVP Demo",
+                      "objective":  "confirm the harness can support the final MVP demo",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "confirm the harness can support the final MVP demo"
+                                           ],
+                      "failure_conditions":  [
+                                                 "no usable proof surface exists",
+                                                 "the harness hides the retrieval behavior completely",
+                                                 "later OpenClaw integration would require redefining Cortex semantics"
+                                             ],
+                      "required_evidence":  [
+                                                "harness walkthrough notes",
+                                                "bundle or trace visibility proof",
+                                                "end-to-end demo notes"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

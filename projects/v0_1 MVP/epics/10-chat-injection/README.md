@@ -21,7 +21,10 @@ Prove that Cortex retrieval can influence a live answer before prompt build.
 
 ## Epic Documents
 
+- [Requirements](chat-injection-requirements.md)
 - [Technical Spec](chat-injection-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

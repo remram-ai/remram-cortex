@@ -21,7 +21,10 @@ Provide the visible proof surface for the MVP read path.
 
 ## Epic Documents
 
+- [Requirements](chat-interface-requirements.md)
 - [Technical Spec](chat-interface-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

@@ -21,7 +21,10 @@ Prove that new thoughts can enter the same evidence-to-knowledge path as importe
 
 ## Epic Documents
 
+- [Requirements](quick-capture-requirements.md)
 - [Technical Spec](quick-capture-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

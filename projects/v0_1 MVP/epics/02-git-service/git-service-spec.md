@@ -10,6 +10,14 @@ Provide the local Git substrate that later provider work can rely on for reposit
 - it does not own artifact identity, provider routing, or collaborative-provider behavior
 - the output should be a stable local Git service contract that the Git Provider epic can consume directly
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Git Service Requirements](git-service-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -33,3 +41,4 @@ Provide the local Git substrate that later provider work can rely on for reposit
 - the local Git service or repository foundation is stable enough for Cortex use
 - the dependency contract is explicit
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

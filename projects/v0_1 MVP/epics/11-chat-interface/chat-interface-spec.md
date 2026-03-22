@@ -11,6 +11,14 @@ Provide the visible proof surface for the MVP read path so reviewers can see Cor
 - it exposes the retrieved bundle or trace surface so the improvement remains inspectable
 - the main success condition is demonstrability, not breadth of UI capability
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Chat Interface Requirements](chat-interface-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -34,3 +42,4 @@ Provide the visible proof surface for the MVP read path so reviewers can see Cor
 - a minimal chat harness can exercise the Cortex-backed path
 - the harness exposes the retrieved bundle or trace surface
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

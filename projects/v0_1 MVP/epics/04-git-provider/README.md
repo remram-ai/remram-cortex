@@ -22,7 +22,10 @@ Make the local Git provider the safe default Cortex provider.
 
 ## Epic Documents
 
+- [Requirements](git-provider-requirements.md)
 - [Technical Spec](git-provider-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

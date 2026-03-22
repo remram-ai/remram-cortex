@@ -1,0 +1,152 @@
+{
+    "plan_id":  "epic-09-retrieval",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "09-retrieval",
+    "goal":  "Implement the Cortex retrieval path over the stored knowledge pool.",
+    "reference_dependencies":  [
+                                   "[Retrieval Spec](../../../../product/capabilities/retrieval/spec.md)",
+                                   "[Retrieval Regression Plan](../../../../product/capabilities/retrieval/regression-plan.md)",
+                                   "[OpenSearch Service Epic](../01-opensearch-service/README.md)",
+                                   "[Knowledge Extraction Epic](../07-knowledge-extraction/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "R-DEL-001",
+                             "title":  "Governance Filtering",
+                             "summary":  "governance filtering",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "governance filtering"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "R-TASK-001",
+                                               "title":  "Governance Filtering",
+                                               "status":  "planned",
+                                               "description":  "Implement and document governance filtering in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "governance filtering"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "R-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "R-DEL-002",
+                             "title":  "Typed Signal Scoring",
+                             "summary":  "typed signal scoring",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "typed signal scoring"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "R-TASK-002",
+                                               "title":  "Typed Signal Scoring",
+                                               "status":  "planned",
+                                               "description":  "Implement and document typed signal scoring in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "typed signal scoring"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "R-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "R-DEL-003",
+                             "title":  "Vector Assist And Trace Output",
+                             "summary":  "vector assist and trace output",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "vector assist and trace output"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "R-TASK-003",
+                                               "title":  "Vector Assist And Trace Output",
+                                               "status":  "planned",
+                                               "description":  "Implement and document vector assist and trace output in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "vector assist and trace output"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "R-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "R-DEL-004",
+                             "title":  "Bounded Bundle Assembly",
+                             "summary":  "bounded bundle assembly",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "bounded bundle assembly"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "R-TASK-004",
+                                               "title":  "Bounded Bundle Assembly",
+                                               "status":  "planned",
+                                               "description":  "Implement and document bounded bundle assembly in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "bounded bundle assembly"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "R-TEST-004"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

@@ -1,0 +1,105 @@
+{
+    "plan_id":  "epic-10-chat-injection-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "10-chat-injection",
+    "goal":  "Prove that chat answers can improve because Cortex retrieval ran first.",
+    "tests":  [
+                  {
+                      "test_id":  "CI-TEST-001",
+                      "title":  "Ask A Question That Should Benefit From Stored Knowledge",
+                      "objective":  "ask a question that should benefit from stored knowledge",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "ask a question that should benefit from stored knowledge"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval is never called before answer generation",
+                                                 "injected bundle is not inspectable",
+                                                 "answer quality does not improve meaningfully"
+                                             ],
+                      "required_evidence":  [
+                                                "bundle examples",
+                                                "before and after answer comparison",
+                                                "orchestration notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "CI-TEST-002",
+                      "title":  "Inspect The Injected Bundle",
+                      "objective":  "inspect the injected bundle",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "inspect the injected bundle"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval is never called before answer generation",
+                                                 "injected bundle is not inspectable",
+                                                 "answer quality does not improve meaningfully"
+                                             ],
+                      "required_evidence":  [
+                                                "bundle examples",
+                                                "before and after answer comparison",
+                                                "orchestration notes"
+                                            ]
+                  },
+                  {
+                      "test_id":  "CI-TEST-003",
+                      "title":  "Compare With A No-Cortex Baseline",
+                      "objective":  "compare with a no-Cortex baseline",
+                      "covers_deliverables":  [
+                                                  "CI-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "compare with a no-Cortex baseline"
+                                           ],
+                      "failure_conditions":  [
+                                                 "retrieval is never called before answer generation",
+                                                 "injected bundle is not inspectable",
+                                                 "answer quality does not improve meaningfully"
+                                             ],
+                      "required_evidence":  [
+                                                "bundle examples",
+                                                "before and after answer comparison",
+                                                "orchestration notes"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

@@ -20,7 +20,10 @@ Stand up the local Git substrate that later provider and artifact work can build
 
 ## Epic Documents
 
+- [Requirements](git-service-requirements.md)
 - [Technical Spec](git-service-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

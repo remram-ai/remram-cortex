@@ -21,7 +21,10 @@ Turn imported artifacts into bounded, source-linked slices for later knowledge e
 
 ## Epic Documents
 
+- [Requirements](artifact-intake-requirements.md)
 - [Technical Spec](artifact-intake-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

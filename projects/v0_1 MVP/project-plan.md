@@ -43,6 +43,7 @@ This folder is the execution package for this MVP run.
 Primary project artifacts:
 
 - [README.md](README.md)
+- [project-charter.md](project-charter.md)
 - [project-plan.md](project-plan.md)
 - [seed-prompt.md](seed-prompt.md)
 - [acceptance-test.md](acceptance-test.md)
@@ -101,15 +102,22 @@ This project is implemented epic by epic.
 
 Each epic owns:
 
-- [README.md](epics/README.md) style epic charter
+- epic `<component>-requirements.md`
+- [README.md](epics/README.md) style epic brief
 - epic `<component>-spec.md`
-- epic `implementation-plan.md`
 - epic `implementation-plan.json`
 - epic `test-plan.md`
 - epic `test-plan.json`
 - epic `tests/`
 
 The project plan ties those epics together.
+
+Authority is split intentionally:
+
+- `project-charter.md` owns project-level user need, scope, and definition of done
+- `project-plan.md` owns epic order
+- epic `<component>-requirements.md` owns the local business slice for the epic
+- epic `<component>-spec.md` owns the technical design for the epic
 
 ### Epic Order
 

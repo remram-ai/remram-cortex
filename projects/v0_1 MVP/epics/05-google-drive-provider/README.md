@@ -20,7 +20,10 @@ Define the collaborative document provider path without changing Cortex artifact
 
 ## Epic Documents
 
+- [Requirements](google-drive-provider-requirements.md)
 - [Technical Spec](google-drive-provider-spec.md)
-- [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)
+

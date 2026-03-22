@@ -1,6 +1,8 @@
 # Cortex v0.1 MVP Project
 
-This folder is the execution package for the first real Cortex slice.
+This `README.md` is the project entry point.
+
+The authoritative project-level intent and definition of done now live in [Project Charter](project-charter.md). Use this file for orientation and navigation.
 
 ## Project Goal
 
@@ -47,8 +49,8 @@ The project is done when:
 
 ## Start Here
 
-- If you are evaluating the MVP, read this file, then [Acceptance Test](acceptance-test.md), then [Runtime Docs](runtime-docs.md).
-- If you are implementing an epic, read this file, then [Project Plan](project-plan.md), then the specific epic folder with its local technical spec such as [opensearch-service-spec.md](epics/01-opensearch-service/opensearch-service-spec.md), then the supporting product references.
+- If you are evaluating the MVP, read this file, then [Project Charter](project-charter.md), then [Acceptance Test](acceptance-test.md), then [Runtime Docs](runtime-docs.md).
+- If you are implementing an epic, read this file, then [Project Charter](project-charter.md), then [Project Plan](project-plan.md), then the specific epic folder with its local requirements and technical spec such as [opensearch-service-requirements.md](epics/01-opensearch-service/opensearch-service-requirements.md) and [opensearch-service-spec.md](epics/01-opensearch-service/opensearch-service-spec.md), then the supporting product references.
 - If you are starting an AI thread, read [Seed Prompt](seed-prompt.md) after this file and follow its scoped reading order.
 
 ## Stable Product References
@@ -101,12 +103,13 @@ Current epic order:
 
 Project artifact roles:
 
-- `README.md` is the charter and reader entry point
+- `README.md` is the reader entry point
+- `project-charter.md` is the project-level authority for user need, scope, and definition of done
 - `project-plan.md` sequences the epics
 - `acceptance-test.md` explains project-level acceptance
 - `acceptance-test.json` is the executable acceptance inventory with stable test IDs
 - `acceptance-tests/` stores executed acceptance and HAT records
-- `epics/` holds the local component technical specs, epic implementation plans, epic test plans, their structured companions, and epic test artifacts
+- `epics/` holds the local epic requirements, component technical specs, epic implementation plans, epic test plans, their structured companions, and epic test artifacts
 
 ## Design Inputs
 

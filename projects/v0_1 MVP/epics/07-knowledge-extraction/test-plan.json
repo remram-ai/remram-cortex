@@ -1,0 +1,135 @@
+{
+    "plan_id":  "epic-07-knowledge-extraction-test",
+    "plan_type":  "epic-test",
+    "epic_id":  "07-knowledge-extraction",
+    "goal":  "Prove that extraction turns evidence into structured, retrievable knowledge-object deltas.",
+    "tests":  [
+                  {
+                      "test_id":  "KE-TEST-001",
+                      "title":  "Extract Knowledge From Imported Slices",
+                      "objective":  "extract knowledge from imported slices",
+                      "covers_deliverables":  [
+                                                  "KE-DEL-001"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "extract knowledge from imported slices"
+                                           ],
+                      "failure_conditions":  [
+                                                 "extraction outputs blobs instead of structured knowledge",
+                                                 "provenance is missing",
+                                                 "retrieval signals are absent or unusable"
+                                             ],
+                      "required_evidence":  [
+                                                "sample knowledge deltas",
+                                                "signal examples",
+                                                "provenance examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "KE-TEST-002",
+                      "title":  "Confirm Typed Signals And Provenance Are Attached",
+                      "objective":  "confirm typed signals and provenance are attached",
+                      "covers_deliverables":  [
+                                                  "KE-DEL-002"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "confirm typed signals and provenance are attached"
+                                           ],
+                      "failure_conditions":  [
+                                                 "extraction outputs blobs instead of structured knowledge",
+                                                 "provenance is missing",
+                                                 "retrieval signals are absent or unusable"
+                                             ],
+                      "required_evidence":  [
+                                                "sample knowledge deltas",
+                                                "signal examples",
+                                                "provenance examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "KE-TEST-003",
+                      "title":  "Confirm Obvious Duplicate Noise Is Reduced Through Merge Discipline",
+                      "objective":  "confirm obvious duplicate noise is reduced through merge discipline",
+                      "covers_deliverables":  [
+                                                  "KE-DEL-003"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "confirm obvious duplicate noise is reduced through merge discipline"
+                                           ],
+                      "failure_conditions":  [
+                                                 "extraction outputs blobs instead of structured knowledge",
+                                                 "provenance is missing",
+                                                 "retrieval signals are absent or unusable"
+                                             ],
+                      "required_evidence":  [
+                                                "sample knowledge deltas",
+                                                "signal examples",
+                                                "provenance examples"
+                                            ]
+                  },
+                  {
+                      "test_id":  "KE-TEST-004",
+                      "title":  "Validate Provenance And Merge-ready Output Shape",
+                      "objective":  "validate provenance and merge-ready output shape",
+                      "covers_deliverables":  [
+                                                  "KE-DEL-004"
+                                              ],
+                      "preconditions":  [
+                                            "The epic requirements and technical spec are available.",
+                                            "The current implementation plan is up to date."
+                                        ],
+                      "procedure":  [
+                                        "Review the relevant requirements, technical spec, and implementation-plan.json entries for this deliverable.",
+                                        "Execute or inspect the implementation work needed to prove the scenario.",
+                                        "Capture evidence under tests/ and record any gaps back into the epic artifacts."
+                                    ],
+                      "expected_results":  [
+                                               "validate provenance and merge-ready output shape"
+                                           ],
+                      "failure_conditions":  [
+                                                 "extraction outputs blobs instead of structured knowledge",
+                                                 "provenance is missing",
+                                                 "retrieval signals are absent or unusable"
+                                             ],
+                      "required_evidence":  [
+                                                "sample knowledge deltas",
+                                                "signal examples",
+                                                "provenance examples"
+                                            ]
+                  }
+              ],
+    "exit_criteria":  [
+                          "The epic test plan covers the implementation plan deliverables.",
+                          "Required evidence exists for the executed scenarios.",
+                          "Open failures are specific enough to route back into the implementation loop."
+                      ],
+    "run_artifact_location":  "tests/",
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

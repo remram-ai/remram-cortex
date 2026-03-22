@@ -10,6 +10,14 @@ Add a collaborative document provider path without changing Cortex-owned artifac
 - provider-native references and collaboration behavior stay behind the provider boundary
 - Cortex continues to own identity, versioning, and retained metadata
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Google Drive Provider Requirements](google-drive-provider-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -33,3 +41,4 @@ Add a collaborative document provider path without changing Cortex-owned artifac
 - the provider contract fit is explicit
 - authority and provenance boundaries are preserved
 - the project-local implementation and test plans are complete and consistent with this technical spec
+

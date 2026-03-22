@@ -1,0 +1,121 @@
+{
+    "plan_id":  "epic-08-quick-capture",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "08-quick-capture",
+    "goal":  "Implement the low-friction capture path that feeds the same durable knowledge model.",
+    "reference_dependencies":  [
+                                   "[Quick Capture Spec](../../../../product/capabilities/quick-capture/spec.md)",
+                                   "[Quick Capture Regression Plan](../../../../product/capabilities/quick-capture/regression-plan.md)",
+                                   "[Artifact Storage Epic](../03-artifact-storage/README.md)",
+                                   "[Knowledge Extraction Epic](../07-knowledge-extraction/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "QC-DEL-001",
+                             "title":  "Capture Submission Contract",
+                             "summary":  "capture submission contract",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "capture submission contract"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "QC-TASK-001",
+                                               "title":  "Capture Submission Contract",
+                                               "status":  "planned",
+                                               "description":  "Implement and document capture submission contract in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "capture submission contract"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "QC-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "QC-DEL-002",
+                             "title":  "Capture Artifact Persistence",
+                             "summary":  "capture artifact persistence",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "capture artifact persistence"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "QC-TASK-002",
+                                               "title":  "Capture Artifact Persistence",
+                                               "status":  "planned",
+                                               "description":  "Implement and document capture artifact persistence in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "capture artifact persistence"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "QC-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "QC-DEL-003",
+                             "title":  "Extraction Handoff And Dedup Or Linking Behavior",
+                             "summary":  "extraction handoff and dedup or linking behavior",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "extraction handoff and dedup or linking behavior"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "QC-TASK-003",
+                                               "title":  "Extraction Handoff And Dedup Or Linking Behavior",
+                                               "status":  "planned",
+                                               "description":  "Implement and document extraction handoff and dedup or linking behavior in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "extraction handoff and dedup or linking behavior"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "QC-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

@@ -1,0 +1,120 @@
+{
+    "plan_id":  "epic-11-chat-interface",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "11-chat-interface",
+    "goal":  "Build the minimum chat-facing proof surface for the Cortex MVP.",
+    "reference_dependencies":  [
+                                   "[Chat Interface Spec](../../../../product/capabilities/chat-interface/spec.md)",
+                                   "[Chat Interface Regression Plan](../../../../product/capabilities/chat-interface/regression-plan.md)",
+                                   "[Chat Injection Epic](../10-chat-injection/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "CI-DEL-001",
+                             "title":  "Simple Chat Harness",
+                             "summary":  "simple chat harness",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "simple chat harness"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-001",
+                                               "title":  "Simple Chat Harness",
+                                               "status":  "planned",
+                                               "description":  "Implement and document simple chat harness in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "simple chat harness"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "CI-DEL-002",
+                             "title":  "Answer Output",
+                             "summary":  "answer output",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "answer output"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-002",
+                                               "title":  "Answer Output",
+                                               "status":  "planned",
+                                               "description":  "Implement and document answer output in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "answer output"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "CI-DEL-003",
+                             "title":  "Bundle Or Trace Visibility For Debugging",
+                             "summary":  "bundle or trace visibility for debugging",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "bundle or trace visibility for debugging"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "CI-TASK-003",
+                                               "title":  "Bundle Or Trace Visibility For Debugging",
+                                               "status":  "planned",
+                                               "description":  "Implement and document bundle or trace visibility for debugging in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "bundle or trace visibility for debugging"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "CI-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

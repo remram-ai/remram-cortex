@@ -1,0 +1,120 @@
+{
+    "plan_id":  "epic-03-artifact-storage",
+    "plan_type":  "epic-implementation",
+    "epic_id":  "03-artifact-storage",
+    "goal":  "Implement the Cortex-owned artifact record and provider-routing foundation.",
+    "reference_dependencies":  [
+                                   "[Artifact Storage Spec](../../../../product/capabilities/artifact-storage/spec.md)",
+                                   "[Artifact Storage Regression Plan](../../../../product/capabilities/artifact-storage/regression-plan.md)",
+                                   "[Git Service Epic](../02-git-service/README.md)"
+                               ],
+    "validation_references":  [
+                                  "[Epic Test Plan](test-plan.md)",
+                                  "[Project Acceptance Test](../../acceptance-test.md)"
+                              ],
+    "deliverables":  [
+                         {
+                             "deliverable_id":  "AS-DEL-001",
+                             "title":  "Artifact Record And Version Posture",
+                             "summary":  "artifact record and version posture",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "artifact record and version posture"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AS-TASK-001",
+                                               "title":  "Artifact Record And Version Posture",
+                                               "status":  "planned",
+                                               "description":  "Implement and document artifact record and version posture in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "artifact record and version posture"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AS-TEST-001"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "AS-DEL-002",
+                             "title":  "Provider Registry And Routing Shape",
+                             "summary":  "provider registry and routing shape",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "provider registry and routing shape"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AS-TASK-002",
+                                               "title":  "Provider Registry And Routing Shape",
+                                               "status":  "planned",
+                                               "description":  "Implement and document provider registry and routing shape in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "provider registry and routing shape"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AS-TEST-002"
+                                                                   ]
+                                           }
+                                       ]
+                         },
+                         {
+                             "deliverable_id":  "AS-DEL-003",
+                             "title":  "Import And Capture Compatibility Through Stable Cortex Identity",
+                             "summary":  "import and capture compatibility through stable Cortex identity",
+                             "dependencies":  [
+
+                                              ],
+                             "paths":  [
+
+                                       ],
+                             "outputs":  [
+                                             "import and capture compatibility through stable Cortex identity"
+                                         ],
+                             "tasks":  [
+                                           {
+                                               "task_id":  "AS-TASK-003",
+                                               "title":  "Import And Capture Compatibility Through Stable Cortex Identity",
+                                               "status":  "planned",
+                                               "description":  "Implement and document import and capture compatibility through stable Cortex identity in line with the epic requirements and technical spec.",
+                                               "dependencies":  [
+
+                                                                ],
+                                               "outputs":  [
+                                                               "import and capture compatibility through stable Cortex identity"
+                                                           ],
+                                               "validation_refs":  [
+                                                                       "AS-TEST-003"
+                                                                   ]
+                                           }
+                                       ]
+                         }
+                     ],
+    "assumptions":  [
+                        "The epic requirements doc remains the local business slice and definition of done.",
+                        "The technical spec remains the operative technical design for the epic.",
+                        "Deliverables may need finer-grained task expansion once implementation begins."
+                    ],
+    "risks":  [
+                  "The existing markdown implementation plan may have omitted lower-level task structure.",
+                  "Validation coverage may need to expand as the test plan becomes more executable."
+              ],
+    "updated_at":  "2026-03-22T00:00:00Z"
+}

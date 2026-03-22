@@ -11,6 +11,14 @@ Turn imported artifacts into bounded, source-linked slices that the extraction s
 - every slice preserves enough source linkage to support provenance and backlinking later
 - the output of this epic is the slice handoff contract, not the final knowledge object
 
+## Requirements Inputs
+
+This technical spec responds to:
+
+- [Artifact Intake Requirements](artifact-intake-requirements.md)
+- [Project Charter](../../project-charter.md)
+- [Project Plan](../../project-plan.md)
+
 ## Implementation Surfaces
 
 - project-local implementation and test plans in this epic folder
@@ -34,3 +42,4 @@ Turn imported artifacts into bounded, source-linked slices that the extraction s
 - supported artifacts can be turned into source-linked slices
 - the slice handoff to extraction is clear
 - the project-local implementation and test plans are complete and consistent with this technical spec
+
