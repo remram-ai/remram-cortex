@@ -19,5 +19,6 @@ Local documents:
 
 - [spec.md](spec.md)
 - [regression-plan.md](regression-plan.md)
+- [regression-plan.json](regression-plan.json)
 
 When the platform item fully captures the needed posture, this folder can collapse to this README alone.

@@ -1,5 +1,10 @@
 # Cortex v0.1 MVP Acceptance Test
 
+## Structured Companion
+
+Use [acceptance-test.json](acceptance-test.json) as the executable acceptance inventory.
+Use this markdown file for scope, narrative context, and reader guidance.
+
 ## 1. Test Goal
 
 Prove that Cortex can establish a baseline knowledge base from imported artifacts and then evolve that base through Quick Capture without splitting into parallel memory paths.

@@ -25,6 +25,8 @@ The default stable artifact set is:
 
 Optional artifacts such as operator guides, provider notes, sample payloads, or diagrams may be added when the surface needs them.
 
+When a stable regression plan becomes an active execution surface, add a `regression-plan.json` companion so tests can be tracked by stable IDs instead of prose alone.
+
 ## Boundary
 
 `product/` is the Cortex equivalent of the platform registry layer in `remram`, but scoped to this repository as one product-sized implementation boundary.

@@ -72,13 +72,16 @@ projects/
     README.md
     project-plan.md
     acceptance-test.md
+    acceptance-test.json
     runtime-docs.md
     seed-prompt.md       # optional, active thread bootstrap prompt
     epics/
       01-<epic-name>/
         README.md
         implementation-plan.md
+        implementation-plan.json   # once the epic becomes active
         test-plan.md
+        test-plan.json             # once the epic becomes active
         tests/
           001-test-result-ddmmyyyy.md
     acceptance-tests/
@@ -89,7 +92,8 @@ Read that shape as:
 
 - `README.md` = project charter
 - `project-plan.md` = epic sequencing
-- `acceptance-test.md` = project acceptance criteria and scenarios
+- `acceptance-test.md` = human-facing acceptance context and scope
+- `acceptance-test.json` = executable project acceptance inventory with stable test IDs
 - `acceptance-tests/` = executed acceptance and HAT records
 - `epics/<epic>/` = implementation work package for one epic
 
@@ -136,6 +140,8 @@ The epics define the implementation work.
 
 `projects/<project>/acceptance-test.md` is the project-level acceptance plan.
 
+Its paired `acceptance-test.json` is the executable test inventory.
+
 It should test:
 
 - project user stories
@@ -156,6 +162,12 @@ They serve different scopes.
 
 The executed records for that plan belong in `acceptance-tests/`, not back in `product/`.
 
+Use the pair like this:
+
+- `acceptance-test.md` explains the acceptance story, scope, and reader guidance
+- `acceptance-test.json` carries stable `test_id` values, preconditions, procedures, expected results, failure conditions, and required evidence
+- acceptance run records must report against those stable `test_id` values
+
 ## 8. Epic Contract
 
 Each epic should live under:
@@ -168,7 +180,9 @@ Each epic should contain at least:
 
 - `README.md`
 - `implementation-plan.md`
+- `implementation-plan.json`
 - `test-plan.md`
+- `test-plan.json`
 - `tests/`
 
 ### 8.1 Epic README
@@ -187,6 +201,8 @@ It should define:
 
 The epic `implementation-plan.md` is the developer-facing execution plan for that epic.
 
+Its paired `implementation-plan.json` is the executable implementation inventory.
+
 Use it for:
 
 - deliverable breakdown
@@ -198,12 +214,19 @@ Use it for:
 
 This is the right place for detailed implementation sequencing.
 
+Use the pair like this:
+
+- `implementation-plan.md` explains the goal, delivery posture, and human context
+- `implementation-plan.json` carries stable deliverable IDs, task IDs, dependencies, outputs, and validation references that execution should track directly
+
 Going forward, prefer epic-level implementation plans over a project-level `implementation-plan.md`.
 If an older project still has a project-level implementation plan, treat it as transitional and migrate that detail into the relevant epic folders.
 
 ### 8.3 Epic Test Plan
 
 The epic `test-plan.md` proves that the epic itself is complete.
+
+Its paired `test-plan.json` is the executable epic test inventory.
 
 It should define:
 
@@ -212,6 +235,11 @@ It should define:
 - concrete acceptance proof for the deliverables in that epic
 
 Epic test plans are narrower than the project test plan and more execution-facing than product regression plans.
+
+Use the pair like this:
+
+- `test-plan.md` explains scope, interpretation, and human guidance
+- `test-plan.json` carries stable `test_id` values, mapped deliverables, preconditions, procedures, expected results, failure conditions, and evidence requirements
 
 ### 8.4 Epic Tests Folder
 
@@ -253,6 +281,18 @@ This folder is also the home for HAT (human acceptance testing) records.
 
 If a specific run needs supporting files, put them beside the run record or in a same-numbered sibling folder.
 
+Run records should be structured enough to report execution deterministically. At minimum, each run record should capture:
+
+- `run_id`
+- `plan_id`
+- `executed_at`
+- `executed_by`
+- per-test results keyed by stable `test_id`
+- failure notes or follow-up actions
+- evidence references
+
+Structured JSON is preferred for run records when a tool or agent needs to parse them directly. Structured markdown is acceptable when it preserves the same fields clearly.
+
 ## 11. Temporary Material
 
 If a project uses a seed prompt actively, keep it at the project root as `seed-prompt.md`.
@@ -266,11 +306,11 @@ Use these rules when creating future Cortex work:
 - write stable behavior into `product/`
 - write project intent into project `README.md`
 - sequence the work in `project-plan.md`
-- test the full project in project `acceptance-test.md`
+- pair project `acceptance-test.md` with `acceptance-test.json`
 - keep any active seed prompt at project root as `seed-prompt.md`
 - implement epic by epic under `epics/`
-- give every epic its own `implementation-plan.md`
-- give every epic its own `test-plan.md`
+- give every active epic its own `implementation-plan.md` plus `implementation-plan.json`
+- give every active epic its own `test-plan.md` plus `test-plan.json`
 - keep executed project artifacts under `acceptance-tests/` and epic artifacts under epic `tests/`
 - keep long-lived capability validation in `product/.../regression-plan.md`
 - keep prompt churn low and avoid polluting the project tree with throwaway prompt variants

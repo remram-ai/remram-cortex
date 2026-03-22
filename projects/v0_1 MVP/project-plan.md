@@ -44,6 +44,7 @@ Primary project artifacts:
 - [project-plan.md](project-plan.md)
 - [seed-prompt.md](seed-prompt.md)
 - [acceptance-test.md](acceptance-test.md)
+- [acceptance-test.json](acceptance-test.json)
 - [runtime-docs.md](runtime-docs.md)
 - [epics/](epics/README.md)
 - [acceptance-tests/](acceptance-tests/)
@@ -100,7 +101,9 @@ Each epic owns:
 
 - [README.md](epics/README.md) style epic charter
 - epic `implementation-plan.md`
+- epic `implementation-plan.json`
 - epic `test-plan.md`
+- epic `test-plan.json`
 - epic `tests/`
 
 The project plan ties those epics together.

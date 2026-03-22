@@ -1,5 +1,10 @@
 # Epic 01 Implementation Plan
 
+## Structured Companion
+
+Use [implementation-plan.json](implementation-plan.json) as the execution source of truth for deliverable IDs, task IDs, dependencies, outputs, and validation references.
+Use this markdown file for summary context and navigation.
+
 ## Goal
 
 Close the OpenSearch dependency surface needed before Cortex retrieval work begins.

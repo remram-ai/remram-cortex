@@ -8,13 +8,17 @@ Each epic should contain:
 
 - `README.md`
 - `implementation-plan.md`
+- `implementation-plan.json` once the epic enters active execution
 - `test-plan.md`
+- `test-plan.json` once the epic enters active execution
 - `tests/`
 
 Each epic stores its executed test artifacts directly under `tests/`, for example:
 
 - `tests/001-test-result-ddmmyyyy.md`
 - `tests/002-test-result-ddmmyyyy.md`
+
+Use the markdown files for context and the JSON companions for stable IDs, procedures, and execution inventory when an epic becomes active.
 
 Current epic set:
 

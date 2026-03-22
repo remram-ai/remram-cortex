@@ -1,0 +1,261 @@
+{
+  "plan_id": "opensearch-service-regression",
+  "plan_type": "dependency-regression",
+  "scope": "product/dependencies/opensearch-service",
+  "goal": "Prove that Cortex has a working OpenSearch backend whose schema and behavior are compatible with the MVP retrieval model.",
+  "referenced_context": [
+    "projects/v0_1 MVP/README.md",
+    "projects/v0_1 MVP/project-plan.md",
+    "projects/v0_1 MVP/acceptance-test.md",
+    "product/capabilities/retrieval/spec.md",
+    "docs/remram-cortex/architecture.md",
+    "d:/Development/RemRam/remram/platform/services/opensearch/spec.md",
+    "d:/Development/RemRam/moltbox-services/services/opensearch/compose.yml.template"
+  ],
+  "preconditions": [
+    "The service is deployable through the Moltbox service model.",
+    "Operator access to gateway lifecycle commands is available.",
+    "The target host has the intended storage devices or an explicitly documented substitute."
+  ],
+  "tests": [
+    {
+      "test_id": "OS-REG-001",
+      "title": "Service deploy, status, and bootstrap states",
+      "objective": "Verify gateway deployment succeeds and Cortex can distinguish service health from bootstrap state.",
+      "preconditions": [
+        "Service metadata and compose templates exist."
+      ],
+      "procedure": [
+        "Run the standard service deploy flow.",
+        "Run the standard service status flow.",
+        "Check cluster reachability and readiness.",
+        "Differentiate unreachable, reachable-but-unbootstrapped, and bootstrapped states."
+      ],
+      "expected_results": [
+        "Deploy succeeds through the standard control plane.",
+        "Status exposes a healthy or inspectable service state.",
+        "Bootstrap state can be distinguished from raw service health."
+      ],
+      "failure_conditions": [
+        "Deploy fails through the standard control plane.",
+        "Status does not expose a usable service state.",
+        "Bootstrap and service health remain conflated."
+      ],
+      "required_evidence": [
+        "Gateway deploy output.",
+        "Gateway status output.",
+        "Cluster reachability or readiness output."
+      ]
+    },
+    {
+      "test_id": "OS-REG-002",
+      "title": "Schema compatibility and Cortex bootstrap",
+      "objective": "Verify Cortex-owned indexes and aliases can be created with the intended mapping shape.",
+      "preconditions": [
+        "OS-REG-001 has passed."
+      ],
+      "procedure": [
+        "Run the Cortex bootstrap path.",
+        "Inspect the knowledge and retrieval-trace mappings.",
+        "Inspect the versioned indexes and stable aliases."
+      ],
+      "expected_results": [
+        "Knowledge and retrieval-trace mappings are created successfully.",
+        "Governance, typed-signal, provenance, link, and vector-capable fields are accepted.",
+        "Stable aliases resolve to versioned indexes."
+      ],
+      "failure_conditions": [
+        "Bootstrap fails or is not idempotent.",
+        "Mappings reject required Cortex fields.",
+        "Aliases or versioned indexes are missing."
+      ],
+      "required_evidence": [
+        "Bootstrap output.",
+        "Knowledge-index mapping sample.",
+        "Retrieval-trace mapping sample.",
+        "Alias inspection output."
+      ]
+    },
+    {
+      "test_id": "OS-REG-003",
+      "title": "CLI and plugin posture",
+      "objective": "Verify the operator can reach native inspection surfaces and that required plugins are present.",
+      "preconditions": [
+        "OS-REG-001 has passed."
+      ],
+      "procedure": [
+        "Run `moltbox opensearch --version`.",
+        "Inspect plugin inventory through the documented operator path.",
+        "Capture the exact command path used for version, health, and snapshot inspection."
+      ],
+      "expected_results": [
+        "Native CLI passthrough is reachable.",
+        "Required plugins are present.",
+        "Operator command path is explicit and reusable."
+      ],
+      "failure_conditions": [
+        "CLI passthrough is missing or undocumented.",
+        "Required plugins are absent.",
+        "No documented command path exists for routine inspection."
+      ],
+      "required_evidence": [
+        "Version output.",
+        "Plugin inventory output.",
+        "Recorded operator command path."
+      ]
+    },
+    {
+      "test_id": "OS-REG-004",
+      "title": "Resource, storage, and security posture",
+      "objective": "Verify the service is running with the intended RAM, CPU, mount, and security posture.",
+      "preconditions": [
+        "OS-REG-001 has passed."
+      ],
+      "procedure": [
+        "Inspect rendered service config or live container state.",
+        "Confirm the configured memory, CPU, and no-GPU posture.",
+        "Confirm the NVMe data path and backup-HDD snapshot path.",
+        "Confirm Security plugin enablement and credential bootstrap path."
+      ],
+      "expected_results": [
+        "Service matches the intended 64 GiB memory and 4-core posture.",
+        "Data and backup paths resolve correctly.",
+        "Security is enabled and secret injection is explicit."
+      ],
+      "failure_conditions": [
+        "Live posture drifts from the intended resource allocation.",
+        "Mount paths are incorrect or missing.",
+        "Security remains disabled."
+      ],
+      "required_evidence": [
+        "Rendered config or live inspection output.",
+        "Mount-path proof.",
+        "Security bootstrap proof."
+      ]
+    },
+    {
+      "test_id": "OS-REG-005",
+      "title": "Snapshot repository and nightly backup policy",
+      "objective": "Verify backup configuration is active and verifiable.",
+      "preconditions": [
+        "OS-REG-004 has passed."
+      ],
+      "procedure": [
+        "Verify `path.repo` and mounted snapshot path.",
+        "Register the filesystem snapshot repository.",
+        "Run repository verification.",
+        "Verify or create the nightly snapshot-management policy with explicit retention."
+      ],
+      "expected_results": [
+        "Snapshot repository verifies successfully.",
+        "Nightly snapshot policy exists with retention."
+      ],
+      "failure_conditions": [
+        "Repository verification fails.",
+        "No nightly policy exists.",
+        "Retention is undefined."
+      ],
+      "required_evidence": [
+        "Repository verification output.",
+        "Snapshot policy definition."
+      ]
+    },
+    {
+      "test_id": "OS-REG-006",
+      "title": "Service account, smoke index, and snapshot restore",
+      "objective": "Verify security and backup posture are usable in practice through smoke operations.",
+      "preconditions": [
+        "OS-REG-003, OS-REG-004, and OS-REG-005 have passed."
+      ],
+      "procedure": [
+        "Authenticate with the admin or operator credential.",
+        "Provision or verify the Cortex service account and role.",
+        "Create a temporary `cortex-smoke-<id>` index and sentinel document.",
+        "Run one smoke snapshot and one throwaway restore drill.",
+        "Delete the original and restored smoke targets after verification."
+      ],
+      "expected_results": [
+        "Cortex service account authenticates successfully.",
+        "Temporary smoke index lifecycle succeeds.",
+        "Snapshot and restore drill both succeed."
+      ],
+      "failure_conditions": [
+        "Service account cannot authenticate.",
+        "Smoke index lifecycle fails.",
+        "Snapshot or restore drill fails."
+      ],
+      "required_evidence": [
+        "Service-account proof.",
+        "Smoke index evidence.",
+        "Snapshot evidence.",
+        "Restore evidence."
+      ]
+    },
+    {
+      "test_id": "OS-REG-007",
+      "title": "Write, read, provenance, and governance query behavior",
+      "objective": "Verify Cortex-shaped documents can be indexed and queried safely.",
+      "preconditions": [
+        "OS-REG-002 and OS-REG-006 have passed."
+      ],
+      "procedure": [
+        "Index a small sample knowledge set by stable ID.",
+        "Upsert one sample document by the same stable ID.",
+        "Run a governance-filtered lexical query.",
+        "Fetch the winning document by ID.",
+        "Query provenance by `artifact_id` and read back a trace sample."
+      ],
+      "expected_results": [
+        "Stable-ID upsert works without duplicate ambiguity.",
+        "Governance filters exclude wrong-scope documents before ranking matters.",
+        "Knowledge document, provenance, and trace are all inspectable."
+      ],
+      "failure_conditions": [
+        "Upsert creates ambiguous duplicates.",
+        "Governance filtering fails.",
+        "ID, provenance, or trace lookups fail."
+      ],
+      "required_evidence": [
+        "Sample indexed knowledge documents.",
+        "Query result sample.",
+        "Document fetch by ID.",
+        "Provenance lookup sample.",
+        "Trace sample."
+      ]
+    },
+    {
+      "test_id": "OS-REG-008",
+      "title": "Diagnostics and operator inspection surfaces",
+      "objective": "Verify operators can inspect the state needed to debug deployment, mapping, query, and snapshot issues.",
+      "preconditions": [
+        "OS-REG-001 has passed."
+      ],
+      "procedure": [
+        "Capture deploy and status output.",
+        "Inspect aliases, mappings, snapshot state, and raw query responses.",
+        "Capture the exact operator path used for those inspections."
+      ],
+      "expected_results": [
+        "Inspection surfaces are available for deploy, aliases, mappings, snapshot state, and queries.",
+        "Operator command path is explicit enough to reuse during later epics."
+      ],
+      "failure_conditions": [
+        "Required inspection surfaces are missing.",
+        "Operator path for routine inspections remains undocumented."
+      ],
+      "required_evidence": [
+        "Deploy and status evidence.",
+        "Alias and mapping evidence.",
+        "Snapshot-state evidence.",
+        "Recorded operator command path."
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "All active OpenSearch dependency regression tests pass or have an explicitly approved exception.",
+    "Required evidence exists for each regression test.",
+    "Later Cortex epics can assume the service exists without additional setup explanation."
+  ],
+  "run_artifact_location": "../../projects/v0_1 MVP/epics/01-opensearch-service/tests/",
+  "updated_at": "2026-03-21T00:00:00Z"
+}

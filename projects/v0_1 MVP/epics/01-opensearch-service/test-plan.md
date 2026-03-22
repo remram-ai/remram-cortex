@@ -1,5 +1,10 @@
 # Epic 01 Test Plan
 
+## Structured Companion
+
+Use [test-plan.json](test-plan.json) as the executable test inventory with stable `test_id` values.
+Use this markdown file for summary scope and interpretation notes.
+
 ## Goal
 
 Prove that OpenSearch is operationally ready for later Cortex MVP work.

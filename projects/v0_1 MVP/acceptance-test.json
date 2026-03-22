@@ -1,0 +1,221 @@
+{
+  "plan_id": "cortex-v0_1-mvp-acceptance",
+  "plan_type": "project-acceptance",
+  "project_id": "v0_1-mvp",
+  "goal": "Prove that Cortex can ingest artifacts, consolidate them into durable knowledge, retrieve them later, and improve a chat answer without requiring the user to restate source context.",
+  "user_goals": [
+    "Ingest a document once and later ask ordinary questions without restating its contents.",
+    "Add a quick capture and have Cortex reinforce or extend the existing knowledge base.",
+    "Bring up required service dependencies and confirm they are healthy and usable.",
+    "Inspect provenance, retrieval traces, and service posture when behavior is wrong.",
+    "See a visible before-and-after proof that Cortex improved a chat answer."
+  ],
+  "referenced_lower_level_plans": [
+    "../../product/dependencies/opensearch-service/regression-plan.json",
+    "../../product/dependencies/git-service/regression-plan.md",
+    "../../product/capabilities/artifact-storage/regression-plan.md",
+    "../../product/capabilities/git-provider/regression-plan.md",
+    "../../product/capabilities/google-drive-provider/regression-plan.md",
+    "../../product/capabilities/artifact-intake/regression-plan.md",
+    "../../product/capabilities/knowledge-extraction/regression-plan.md",
+    "../../product/capabilities/quick-capture/regression-plan.md",
+    "../../product/capabilities/retrieval/regression-plan.md",
+    "../../product/capabilities/chat-injection/regression-plan.md",
+    "../../product/capabilities/chat-interface/regression-plan.md",
+    "epics/01-opensearch-service/test-plan.json"
+  ],
+  "preconditions": [
+    "OpenSearch and Git Service foundations are implemented enough for the MVP path to run end to end.",
+    "Artifact storage and provider routing are configured for the demo corpus.",
+    "A small demo corpus is available for import.",
+    "At least one quick capture scenario is prepared.",
+    "A minimal chat proof surface exists for the final acceptance pass."
+  ],
+  "tests": [
+    {
+      "test_id": "AT-001",
+      "title": "Infrastructure And Identity Foundation",
+      "objective": "Prove the MVP has working dependency substrate and stable artifact identity before end-to-end knowledge tests begin.",
+      "covers": [
+        "01-opensearch-service",
+        "02-git-service",
+        "03-artifact-storage",
+        "04-git-provider"
+      ],
+      "preconditions": [
+        "The OpenSearch epic and Git Service epic are implemented.",
+        "Artifact storage and the Git provider are available to the project."
+      ],
+      "procedure": [
+        "Validate the OpenSearch service through its epic-level test plan.",
+        "Validate the Git substrate and provider path for stored artifacts.",
+        "Create or register one imported artifact and one capture artifact.",
+        "Resolve both artifacts by Cortex-owned artifact ID."
+      ],
+      "expected_results": [
+        "Required services are healthy and reachable.",
+        "Imported and captured artifacts resolve through Cortex-owned identity.",
+        "Artifact resolution does not depend on source-system path stability."
+      ],
+      "failure_conditions": [
+        "Required services are unavailable or unhealthy.",
+        "Artifact identity depends on source path or provider-specific path conventions.",
+        "Stored artifacts cannot be reopened by artifact ID."
+      ],
+      "required_evidence": [
+        "OpenSearch deploy and health evidence.",
+        "Git or provider-path proof.",
+        "Sample imported artifact record.",
+        "Sample capture artifact record."
+      ]
+    },
+    {
+      "test_id": "AT-002",
+      "title": "Baseline Knowledge Seeding",
+      "objective": "Prove imported artifacts become durable knowledge objects with provenance and retrievable state.",
+      "covers": [
+        "03-artifact-storage",
+        "06-artifact-intake",
+        "07-knowledge-extraction",
+        "09-retrieval"
+      ],
+      "preconditions": [
+        "Demo corpus is selected and available.",
+        "Import and extraction paths are wired to artifact storage and OpenSearch."
+      ],
+      "procedure": [
+        "Import a small project document set.",
+        "Confirm Cortex-managed imported copies exist in artifact storage.",
+        "Confirm knowledge objects or knowledge deltas were created.",
+        "Run retrieval queries against the imported corpus."
+      ],
+      "expected_results": [
+        "Imported documents become source-linked knowledge state.",
+        "Knowledge is retrievable with source-linked provenance.",
+        "Imported artifacts remain reachable by Cortex artifact ID even if source paths drift."
+      ],
+      "failure_conditions": [
+        "Import succeeds but no durable knowledge state is created.",
+        "Retrieved results do not point back to imported evidence.",
+        "Artifact resolution breaks when the source system path changes."
+      ],
+      "required_evidence": [
+        "Import job result sample.",
+        "Stored imported artifact sample.",
+        "Knowledge-object or delta sample.",
+        "Retrieval result sample."
+      ]
+    },
+    {
+      "test_id": "AT-003",
+      "title": "Quick Capture Refines Existing Knowledge",
+      "objective": "Prove quick capture uses the same durable memory path as imported artifacts and can reinforce existing knowledge.",
+      "covers": [
+        "03-artifact-storage",
+        "08-quick-capture",
+        "07-knowledge-extraction",
+        "09-retrieval"
+      ],
+      "preconditions": [
+        "Imported project knowledge already exists from AT-002."
+      ],
+      "procedure": [
+        "Submit a short capture related to the imported corpus.",
+        "Confirm the capture is stored as a capture artifact.",
+        "Inspect the resulting knowledge delta or object change.",
+        "Re-run retrieval on the affected topic."
+      ],
+      "expected_results": [
+        "The capture artifact is persisted and addressable by artifact ID.",
+        "The capture reinforces or extends existing knowledge rather than duplicating blindly.",
+        "The updated topic becomes retrievable through the same knowledge path."
+      ],
+      "failure_conditions": [
+        "Quick capture bypasses the normal knowledge-object model.",
+        "Capture artifacts cannot be reopened or traced.",
+        "Obvious duplicate objects are created instead of reinforcement or extension."
+      ],
+      "required_evidence": [
+        "Capture artifact sample.",
+        "Knowledge delta sample.",
+        "Before and after retrieval comparison."
+      ]
+    },
+    {
+      "test_id": "AT-004",
+      "title": "Multi-Angle Retrieval And Provenance",
+      "objective": "Prove the same underlying concept can be found from multiple framings and audited back to its source evidence.",
+      "covers": [
+        "07-knowledge-extraction",
+        "09-retrieval"
+      ],
+      "preconditions": [
+        "Imported knowledge and at least one related capture exist."
+      ],
+      "procedure": [
+        "Run retrieval with multiple valid phrasings that should resolve to the same concept.",
+        "Choose one returned object from the results.",
+        "Inspect its retrieval trace and provenance.",
+        "Open the linked imported or capture artifact."
+      ],
+      "expected_results": [
+        "The same underlying concept is discoverable from multiple phrasings.",
+        "Ranking may vary, but the canonical object remains reachable.",
+        "The retrieved object can be traced back to the evidence that created or reinforced it."
+      ],
+      "failure_conditions": [
+        "Different phrasings split the same concept into disconnected result sets.",
+        "Retrieval traces do not explain filters and ranking contributors.",
+        "Provenance cannot be followed back to an artifact."
+      ],
+      "required_evidence": [
+        "Multi-angle query results.",
+        "Retrieval trace sample.",
+        "Provenance lookup sample.",
+        "Linked artifact proof."
+      ]
+    },
+    {
+      "test_id": "AT-005",
+      "title": "Chat Injection Proof Surface",
+      "objective": "Prove Cortex retrieval materially improves at least one ordinary chat answer and remains inspectable.",
+      "covers": [
+        "09-retrieval",
+        "10-chat-injection",
+        "11-chat-interface"
+      ],
+      "preconditions": [
+        "Imported artifacts and at least one related quick capture already exist.",
+        "A minimal chat harness or proof surface exists."
+      ],
+      "procedure": [
+        "Ask an ordinary chat question that should benefit from stored Cortex knowledge.",
+        "Inspect the retrieved bundle or trace used for the answer.",
+        "Compare the answer with a no-Cortex or retrieval-disabled baseline."
+      ],
+      "expected_results": [
+        "Cortex retrieval runs before final answer generation.",
+        "The retrieved bundle is bounded and inspectable.",
+        "The final answer is materially better than the no-Cortex baseline."
+      ],
+      "failure_conditions": [
+        "Chat never calls Cortex retrieval before answering.",
+        "The retrieved bundle cannot be inspected.",
+        "The answer quality does not improve meaningfully when Cortex retrieval is enabled."
+      ],
+      "required_evidence": [
+        "Injected retrieval bundle sample.",
+        "Before and after answer comparison.",
+        "Chat or orchestration trace sample."
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "All project acceptance tests pass or have an explicitly approved exception.",
+    "Required evidence exists for each project acceptance test.",
+    "At least one visible chat proof demonstrates a materially improved answer due to Cortex retrieval.",
+    "No unresolved failure remains that breaks artifact identity, provenance, retrieval usefulness, or chat-time value."
+  ],
+  "run_artifact_location": "acceptance-tests/",
+  "updated_at": "2026-03-21T00:00:00Z"
+}

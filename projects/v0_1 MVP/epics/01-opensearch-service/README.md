@@ -22,5 +22,7 @@ Stand up the OpenSearch dependency so Cortex has a usable retrieval substrate fo
 ## Epic Documents
 
 - [Implementation Plan](implementation-plan.md)
+- [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)
+- [Test Plan Data](test-plan.json)
 - [Tests](tests/)

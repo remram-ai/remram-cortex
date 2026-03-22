@@ -1,5 +1,10 @@
 # OpenSearch Service Dependency Regression Plan
 
+## Structured Companion
+
+Use [regression-plan.json](regression-plan.json) as the executable regression inventory with stable `test_id` values.
+Use this markdown file for scope, context pack, and rationale.
+
 ## 1. Goal
 
 Prove that Cortex has a working OpenSearch backend whose schema and behavior are compatible with the MVP retrieval model.

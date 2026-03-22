@@ -92,6 +92,7 @@ Current epic order:
 - [Seed Prompt](seed-prompt.md)
 - [Project Plan](project-plan.md)
 - [Acceptance Test](acceptance-test.md)
+- [Acceptance Test Data](acceptance-test.json)
 - [Runtime Docs](runtime-docs.md)
 - [Epic Records](epics/README.md)
 - [Acceptance Tests](acceptance-tests/)
@@ -100,9 +101,10 @@ Project artifact roles:
 
 - `README.md` is the charter and reader entry point
 - `project-plan.md` sequences the epics
-- `acceptance-test.md` defines project-level acceptance
+- `acceptance-test.md` explains project-level acceptance
+- `acceptance-test.json` is the executable acceptance inventory with stable test IDs
 - `acceptance-tests/` stores executed acceptance and HAT records
-- `epics/` holds epic implementation plans, epic test plans, and epic test artifacts
+- `epics/` holds epic implementation plans, epic test plans, their structured companions, and epic test artifacts
 
 ## Design Inputs
 

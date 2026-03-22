@@ -1,0 +1,343 @@
+{
+  "plan_id": "epic-01-opensearch-service",
+  "plan_type": "epic-implementation",
+  "epic_id": "01-opensearch-service",
+  "goal": "Close the OpenSearch dependency surface needed before Cortex retrieval work begins.",
+  "deliverables": [
+    {
+      "deliverable_id": "OS-DEL-001",
+      "title": "Cross-repo service contract alignment",
+      "summary": "Align the Cortex dependency overlay with the platform-owned OpenSearch service contract and the real implementation repositories.",
+      "dependencies": [],
+      "paths": [
+        "product/dependencies/opensearch-service/README.md",
+        "product/dependencies/opensearch-service/spec.md",
+        "product/dependencies/opensearch-service/regression-plan.md",
+        "d:/Development/RemRam/remram/platform/services/opensearch/README.md",
+        "d:/Development/RemRam/remram/platform/services/opensearch/spec.md",
+        "d:/Development/RemRam/remram/platform/services/opensearch/operator-guide.md"
+      ],
+      "outputs": [
+        "Aligned ownership split between Cortex overlay and platform canonical service docs.",
+        "Context pack and implementation references that point developers at the correct repos."
+      ],
+      "tasks": [
+        {
+          "task_id": "OS-TASK-001",
+          "title": "Validate service ownership split",
+          "status": "planned",
+          "description": "Confirm which parts of the OpenSearch work belong to the platform service bundle, the Cortex dependency overlay, and the deployment repos.",
+          "dependencies": [],
+          "outputs": [
+            "Explicit ownership notes in Cortex dependency docs.",
+            "No conflicting duplicate contract surface."
+          ],
+          "validation_refs": [
+            "OS-REG-001",
+            "OS-REG-002"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-002",
+          "title": "Align local Cortex dependency docs",
+          "status": "planned",
+          "description": "Keep the Cortex OpenSearch overlay focused on Cortex-specific contract needs, context pack, and downstream acceptance requirements.",
+          "dependencies": [
+            "OS-TASK-001"
+          ],
+          "outputs": [
+            "Updated Cortex dependency README, spec, and regression plan."
+          ],
+          "validation_refs": [
+            "OS-REG-001",
+            "OS-REG-008"
+          ]
+        }
+      ]
+    },
+    {
+      "deliverable_id": "OS-DEL-002",
+      "title": "Container posture and mount configuration",
+      "summary": "Update the deployed service definition so the container uses the intended RAM, CPU, storage, plugin, and backup posture.",
+      "dependencies": [
+        "OS-DEL-001"
+      ],
+      "paths": [
+        "d:/Development/RemRam/moltbox-services/services/opensearch/service.yaml",
+        "d:/Development/RemRam/moltbox-services/services/opensearch/compose.yml.template",
+        "d:/Development/RemRam/moltbox-services/services/opensearch/Dockerfile"
+      ],
+      "outputs": [
+        "Rendered service posture for 64 GiB memory, 4 CPU cores, no GPU requirement, dedicated NVMe data path, and backup HDD mount.",
+        "Required plugin or tooling set available in the service image."
+      ],
+      "tasks": [
+        {
+          "task_id": "OS-TASK-003",
+          "title": "Set resource allocation and JVM posture",
+          "status": "planned",
+          "description": "Update the service definition to reflect the intended memory budget, heap sizing, CPU allocation, and no-GPU posture.",
+          "dependencies": [],
+          "outputs": [
+            "Updated compose or service template with the intended resource posture."
+          ],
+          "validation_refs": [
+            "OS-REG-004"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-004",
+          "title": "Wire data and backup mounts",
+          "status": "planned",
+          "description": "Mount the dedicated NVMe data path and the backup HDD snapshot path, and configure path.repo for snapshot registration.",
+          "dependencies": [
+            "OS-TASK-003"
+          ],
+          "outputs": [
+            "Updated service mount configuration.",
+            "Documented manual host bootstrap step if the mount target must be prepared manually."
+          ],
+          "validation_refs": [
+            "OS-REG-004",
+            "OS-REG-005"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-005",
+          "title": "Confirm required plugins and tooling",
+          "status": "planned",
+          "description": "Ensure the image exposes the MVP-required plugin and tooling set, including k-NN, Security, SQL, Index Management, and Performance Analyzer.",
+          "dependencies": [
+            "OS-TASK-003"
+          ],
+          "outputs": [
+            "Image or runtime plugin inventory that matches the documented requirement set."
+          ],
+          "validation_refs": [
+            "OS-REG-003"
+          ]
+        }
+      ]
+    },
+    {
+      "deliverable_id": "OS-DEL-003",
+      "title": "Operator control plane and CLI path",
+      "summary": "Expose a clear Moltbox operator path for deploy, status, version inspection, health checks, and temporary index administration.",
+      "dependencies": [
+        "OS-DEL-002"
+      ],
+      "paths": [
+        "d:/Development/RemRam/remram/docs/concepts/gateway.md",
+        "d:/Development/RemRam/remram/reference/cli-reference.md",
+        "d:/Development/RemRam/remram/docs/audits/cli-contract-audit.md"
+      ],
+      "outputs": [
+        "Documented operator command path for deploy, status, version, health, snapshot inspection, and smoke-index lifecycle."
+      ],
+      "tasks": [
+        {
+          "task_id": "OS-TASK-006",
+          "title": "Verify standard gateway lifecycle commands",
+          "status": "planned",
+          "description": "Use the standard Moltbox service lifecycle commands as the canonical deploy and status path.",
+          "dependencies": [],
+          "outputs": [
+            "Validated deploy and status command path."
+          ],
+          "validation_refs": [
+            "OS-REG-001"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-007",
+          "title": "Define native CLI passthrough usage",
+          "status": "planned",
+          "description": "Confirm how the operator invokes native OpenSearch inspection commands through the Moltbox control plane and capture that path for later epics.",
+          "dependencies": [
+            "OS-TASK-006"
+          ],
+          "outputs": [
+            "Documented CLI passthrough path."
+          ],
+          "validation_refs": [
+            "OS-REG-003",
+            "OS-TEST-002",
+            "OS-TEST-004"
+          ]
+        }
+      ]
+    },
+    {
+      "deliverable_id": "OS-DEL-004",
+      "title": "Security and backup bootstrap",
+      "summary": "Enable the Security plugin, provision initial credentials and the Cortex service account, and configure the snapshot repository and nightly policy.",
+      "dependencies": [
+        "OS-DEL-002",
+        "OS-DEL-003"
+      ],
+      "paths": [
+        "d:/Development/RemRam/moltbox-services/services/opensearch/compose.yml.template",
+        "d:/Development/RemRam/remram/platform/services/opensearch/operator-guide.md"
+      ],
+      "outputs": [
+        "Security-enabled service posture.",
+        "Initial admin secret path.",
+        "Dedicated Cortex service account and role.",
+        "Registered snapshot repository and nightly policy."
+      ],
+      "tasks": [
+        {
+          "task_id": "OS-TASK-008",
+          "title": "Enable security and secret injection",
+          "status": "planned",
+          "description": "Turn on the Security plugin and route initial credentials through the standard secret-management path.",
+          "dependencies": [],
+          "outputs": [
+            "Security-enabled configuration.",
+            "Admin credential bootstrap path."
+          ],
+          "validation_refs": [
+            "OS-REG-004",
+            "OS-TEST-003"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-009",
+          "title": "Provision Cortex service account",
+          "status": "planned",
+          "description": "Create the dedicated Cortex service account and role with the least privilege needed for Cortex bootstrap and normal read or write paths.",
+          "dependencies": [
+            "OS-TASK-008"
+          ],
+          "outputs": [
+            "Authenticated Cortex service account and role."
+          ],
+          "validation_refs": [
+            "OS-REG-004",
+            "OS-TEST-004",
+            "OS-TEST-007"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-010",
+          "title": "Configure snapshot repository and nightly policy",
+          "status": "planned",
+          "description": "Register the filesystem snapshot repository, verify it, and define the nightly snapshot-management policy with explicit retention.",
+          "dependencies": [
+            "OS-TASK-004",
+            "OS-TASK-008"
+          ],
+          "outputs": [
+            "Verified snapshot repository.",
+            "Nightly backup policy with retention."
+          ],
+          "validation_refs": [
+            "OS-REG-005",
+            "OS-TEST-005",
+            "OS-TEST-006"
+          ]
+        }
+      ]
+    },
+    {
+      "deliverable_id": "OS-DEL-005",
+      "title": "Cortex bootstrap and smoke proveout",
+      "summary": "Deploy the service, run Cortex bootstrap, perform smoke index and sample knowledge operations, and capture reusable operator evidence for later epics.",
+      "dependencies": [
+        "OS-DEL-003",
+        "OS-DEL-004"
+      ],
+      "paths": [
+        "projects/v0_1 MVP/runtime-docs.md",
+        "projects/v0_1 MVP/epics/01-opensearch-service/tests/"
+      ],
+      "outputs": [
+        "Gateway deploy and health evidence.",
+        "Smoke index lifecycle evidence.",
+        "Snapshot and restore smoke evidence.",
+        "Cortex bootstrap evidence.",
+        "Runtime notes reusable by later epics."
+      ],
+      "tasks": [
+        {
+          "task_id": "OS-TASK-011",
+          "title": "Deploy and confirm health",
+          "status": "planned",
+          "description": "Deploy the service through the gateway lifecycle and confirm status and cluster health are acceptable for single-node operation.",
+          "dependencies": [
+            "OS-TASK-006"
+          ],
+          "outputs": [
+            "Service deploy and health evidence."
+          ],
+          "validation_refs": [
+            "OS-TEST-001",
+            "OS-TEST-002"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-012",
+          "title": "Run operator smoke index lifecycle",
+          "status": "planned",
+          "description": "Create, inspect, write to, and delete a temporary cortex-smoke index using the documented operator path.",
+          "dependencies": [
+            "OS-TASK-007",
+            "OS-TASK-008"
+          ],
+          "outputs": [
+            "Smoke index lifecycle evidence."
+          ],
+          "validation_refs": [
+            "OS-TEST-004"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-013",
+          "title": "Run snapshot and restore smoke drill",
+          "status": "planned",
+          "description": "Trigger or await one snapshot run, then restore into a throwaway target to prove the backup is usable.",
+          "dependencies": [
+            "OS-TASK-010",
+            "OS-TASK-012"
+          ],
+          "outputs": [
+            "Snapshot success evidence.",
+            "Restore-drill evidence."
+          ],
+          "validation_refs": [
+            "OS-TEST-005",
+            "OS-TEST-006"
+          ]
+        },
+        {
+          "task_id": "OS-TASK-014",
+          "title": "Run Cortex bootstrap and sample query flow",
+          "status": "planned",
+          "description": "Bootstrap the Cortex-owned indexes and aliases, index sample knowledge, and verify ID, provenance, governance, and trace behaviors.",
+          "dependencies": [
+            "OS-TASK-009",
+            "OS-TASK-011"
+          ],
+          "outputs": [
+            "Bootstrap and query evidence reusable by later epics."
+          ],
+          "validation_refs": [
+            "OS-TEST-007",
+            "OS-TEST-008"
+          ]
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "OpenSearch continues to be deployed through the standard Moltbox service model.",
+    "Cortex embeddings remain externally generated and do not require Neural Search or ML Commons for the MVP.",
+    "The dedicated NVMe data path and backup HDD path are available on the target host."
+  ],
+  "risks": [
+    "Container posture in moltbox-services may still lag the documented Cortex requirement set.",
+    "The exact native CLI wrapper for index administration may require additional control-plane work.",
+    "Security bootstrap and service-account provisioning may expose cross-repo ownership gaps."
+  ],
+  "updated_at": "2026-03-21T00:00:00Z"
+}

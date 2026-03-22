@@ -27,16 +27,18 @@ Read these first:
 3. `projects/v0_1 MVP/seed-prompt.md`
 4. `projects/v0_1 MVP/project-plan.md`
 5. `projects/v0_1 MVP/acceptance-test.md`
-6. `projects/v0_1 MVP/epics/README.md`
-7. the specific epic folder I ask you to work on, if the thread is epic-scoped
-8. `product/README.md`
-9. `product/capabilities/README.md`
-10. `product/dependencies/README.md`
-11. the specific capability or dependency folder I ask you to work on, if the thread is product-scoped
-12. `docs/design/v0_1-mvp-scope.md`
-13. `docs/design/v0_1-mvp-spec.md`
-14. `docs/remram-cortex/architecture.md`
-15. `docs/glossary.md`
+6. `projects/v0_1 MVP/acceptance-test.json`
+7. `projects/v0_1 MVP/epics/README.md`
+8. the specific epic folder I ask you to work on, if the thread is epic-scoped
+9. the active epic `implementation-plan.json` and `test-plan.json`, if they exist
+10. `product/README.md`
+11. `product/capabilities/README.md`
+12. `product/dependencies/README.md`
+13. the specific capability or dependency folder I ask you to work on, if the thread is product-scoped
+14. `docs/design/v0_1-mvp-scope.md`
+15. `docs/design/v0_1-mvp-spec.md`
+16. `docs/remram-cortex/architecture.md`
+17. `docs/glossary.md`
 
 Current capability sequence:
 1. `opensearch-service` dependency
@@ -75,6 +77,7 @@ When working in a thread:
 - preserve the existing architecture unless there is a real contradiction
 - keep designs implementable in Go and practical on OpenSearch
 - update the paired `spec.md` and `regression-plan.md` together when a stable product doc changes
+- update the structured JSON companion for any active execution-facing plan you change
 - update umbrella project docs only if the change affects sequencing, scope, or acceptance
 - optimize for debuggability, explicit contracts, and incremental delivery
 - treat the chat interface as a standalone MVP proof surface that can later be plugged into OpenClaw

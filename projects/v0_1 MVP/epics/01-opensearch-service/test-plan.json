@@ -1,0 +1,292 @@
+{
+  "plan_id": "epic-01-opensearch-service-test",
+  "plan_type": "epic-test",
+  "epic_id": "01-opensearch-service",
+  "goal": "Prove that OpenSearch is operationally ready for later Cortex MVP work.",
+  "preconditions": [
+    "The OpenSearch service definition exists in the platform deployment repos.",
+    "Moltbox gateway lifecycle commands are available on the operator machine.",
+    "The dedicated NVMe data path and backup-HDD snapshot path are available or explicitly stubbed for the target host."
+  ],
+  "tests": [
+    {
+      "test_id": "OS-TEST-001",
+      "title": "Gateway deploy and service status",
+      "objective": "Prove the service deploys through the standard Moltbox lifecycle without ad hoc Docker-only steps.",
+      "covers_deliverables": [
+        "OS-DEL-003",
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "Service metadata and compose templates are in place."
+      ],
+      "procedure": [
+        "Run `moltbox gateway service deploy opensearch`.",
+        "Run `moltbox gateway service status opensearch`.",
+        "Capture the reported service state for the run artifact."
+      ],
+      "expected_results": [
+        "Deploy succeeds through the gateway pipeline.",
+        "Status reports the service as healthy or healthy enough for further inspection."
+      ],
+      "failure_conditions": [
+        "Deploy fails through the gateway pipeline.",
+        "Status never reports a usable service state."
+      ],
+      "required_evidence": [
+        "Gateway deploy output.",
+        "Gateway status output."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-002",
+      "title": "Health, version, and plugin inventory",
+      "objective": "Prove the running service is reachable, exposes native inspection paths, and carries the required plugin or tooling set.",
+      "covers_deliverables": [
+        "OS-DEL-002",
+        "OS-DEL-003",
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "OS-TEST-001 has passed."
+      ],
+      "procedure": [
+        "Query cluster health through the documented operator path.",
+        "Run `moltbox opensearch --version`.",
+        "Inspect plugin inventory through the documented operator path.",
+        "Record the exact command path used for health and plugin inspection."
+      ],
+      "expected_results": [
+        "Cluster health is queryable after deploy.",
+        "Native CLI passthrough is reachable through Moltbox.",
+        "Required plugins are present: k-NN, Security, SQL, Index Management, and Performance Analyzer."
+      ],
+      "failure_conditions": [
+        "Cluster health cannot be queried.",
+        "Native CLI passthrough is missing or undocumented.",
+        "Required plugins are absent."
+      ],
+      "required_evidence": [
+        "Cluster health output.",
+        "Version output.",
+        "Plugin inventory output.",
+        "Recorded operator command path."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-003",
+      "title": "Resource, mount, and security posture",
+      "objective": "Prove the live service reflects the intended RAM, CPU, storage, backup, and security posture.",
+      "covers_deliverables": [
+        "OS-DEL-002",
+        "OS-DEL-004"
+      ],
+      "preconditions": [
+        "OS-TEST-001 has passed."
+      ],
+      "procedure": [
+        "Inspect the rendered service configuration or live container state.",
+        "Confirm the configured memory, CPU, and no-GPU posture.",
+        "Confirm the data path resolves to the dedicated NVMe target.",
+        "Confirm the snapshot repository path resolves to the intended backup mount.",
+        "Confirm the Security plugin is enabled and admin credentials are present through the documented secret path."
+      ],
+      "expected_results": [
+        "Service posture matches the intended 64 GiB memory allocation and 4 CPU cores.",
+        "No GPU requirement is present.",
+        "Data and backup mounts resolve to the intended devices or mount points.",
+        "Security is enabled."
+      ],
+      "failure_conditions": [
+        "Live posture drifts from the intended memory, CPU, or mount targets.",
+        "Backup path is missing or mis-mounted.",
+        "Security remains disabled."
+      ],
+      "required_evidence": [
+        "Rendered config or container inspection output.",
+        "Mount-path proof.",
+        "Security configuration proof."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-004",
+      "title": "Operator CLI smoke index lifecycle",
+      "objective": "Prove operators can create, inspect, write to, and delete a temporary index using the documented command path and credential model.",
+      "covers_deliverables": [
+        "OS-DEL-003",
+        "OS-DEL-004",
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "OS-TEST-002 has passed.",
+        "An operator credential and Cortex service-account path both exist."
+      ],
+      "procedure": [
+        "Use the documented operator path to create a temporary `cortex-smoke-<id>` index.",
+        "Insert one sentinel document into the smoke index.",
+        "Read the sentinel document back.",
+        "Delete the original smoke index.",
+        "Record the exact command path and credential path used."
+      ],
+      "expected_results": [
+        "Temporary index lifecycle works through the documented operator path.",
+        "Sentinel document is readable after write.",
+        "Command and credential paths are explicit enough for later reuse."
+      ],
+      "failure_conditions": [
+        "Operator path for index lifecycle does not exist.",
+        "Credential requirements are unclear.",
+        "Temporary index cannot be created, inspected, or deleted."
+      ],
+      "required_evidence": [
+        "Smoke index create output.",
+        "Sentinel write and read output.",
+        "Smoke index delete output.",
+        "Recorded operator command path."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-005",
+      "title": "Snapshot repository and nightly policy",
+      "objective": "Prove backup configuration is active rather than merely documented.",
+      "covers_deliverables": [
+        "OS-DEL-002",
+        "OS-DEL-004"
+      ],
+      "preconditions": [
+        "Snapshot mount path is available."
+      ],
+      "procedure": [
+        "Verify `path.repo` and the mounted snapshot path.",
+        "Register the filesystem snapshot repository.",
+        "Run repository verification.",
+        "Verify or create the nightly snapshot-management policy with explicit retention."
+      ],
+      "expected_results": [
+        "Snapshot repository registration succeeds.",
+        "Repository verification succeeds.",
+        "A nightly policy with explicit retention exists."
+      ],
+      "failure_conditions": [
+        "Repository registration or verification fails.",
+        "No nightly policy exists.",
+        "Retention is undefined."
+      ],
+      "required_evidence": [
+        "Repository registration output.",
+        "Repository verification output.",
+        "Snapshot policy definition."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-006",
+      "title": "Smoke snapshot and restore drill",
+      "objective": "Prove the backup can actually be used to restore data.",
+      "covers_deliverables": [
+        "OS-DEL-004",
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "OS-TEST-004 and OS-TEST-005 have passed."
+      ],
+      "procedure": [
+        "Trigger or await one snapshot execution that includes the smoke index.",
+        "Confirm the snapshot reaches a completed success state.",
+        "Restore into a throwaway target.",
+        "Read the sentinel document from the restore target.",
+        "Clean up the restored target."
+      ],
+      "expected_results": [
+        "One snapshot completes successfully.",
+        "Restore drill succeeds.",
+        "Sentinel data is readable from the restored target."
+      ],
+      "failure_conditions": [
+        "Smoke snapshot never completes successfully.",
+        "Restore drill fails.",
+        "Restored data is unreadable."
+      ],
+      "required_evidence": [
+        "Snapshot success output.",
+        "Restore output.",
+        "Restored sentinel read output."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-007",
+      "title": "Cortex bootstrap, aliases, and service account",
+      "objective": "Prove the Cortex service account can bootstrap the Cortex-owned indexes and aliases cleanly.",
+      "covers_deliverables": [
+        "OS-DEL-004",
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "OS-TEST-001 has passed.",
+        "Cortex service account exists."
+      ],
+      "procedure": [
+        "Authenticate with the Cortex service account.",
+        "Run the Cortex bootstrap path.",
+        "Inspect the resulting knowledge and retrieval-trace aliases and versioned indexes."
+      ],
+      "expected_results": [
+        "Cortex service account authenticates successfully.",
+        "Bootstrap is idempotent and succeeds.",
+        "Required aliases resolve to versioned indexes."
+      ],
+      "failure_conditions": [
+        "Cortex service account cannot authenticate.",
+        "Bootstrap fails or is not idempotent.",
+        "Required aliases or indexes are missing."
+      ],
+      "required_evidence": [
+        "Service-account authentication proof.",
+        "Bootstrap output.",
+        "Alias and index inspection output."
+      ]
+    },
+    {
+      "test_id": "OS-TEST-008",
+      "title": "Sample write, governance query, provenance, and traces",
+      "objective": "Prove the service can store and query Cortex-shaped data in a way later epics can rely on directly.",
+      "covers_deliverables": [
+        "OS-DEL-005"
+      ],
+      "preconditions": [
+        "OS-TEST-007 has passed."
+      ],
+      "procedure": [
+        "Index a small sample knowledge set containing one in-scope lodging idea, one unrelated same-owner document, and one similar wrong-scope document.",
+        "Index one retrieval-trace sample.",
+        "Run a governance-filtered lexical query such as `places to stay while hiking`.",
+        "Fetch the winning knowledge document by ID.",
+        "Query provenance by `artifact_id`."
+      ],
+      "expected_results": [
+        "In-scope knowledge document is indexed and returned.",
+        "Wrong-scope document is excluded by governance filters.",
+        "Knowledge document is readable by stable ID.",
+        "Provenance and retrieval trace are inspectable."
+      ],
+      "failure_conditions": [
+        "Mapping rejects Cortex-shaped documents.",
+        "Governance filters fail to exclude wrong-scope data.",
+        "ID, provenance, or trace lookups fail."
+      ],
+      "required_evidence": [
+        "Sample indexed documents.",
+        "Query request and result.",
+        "Knowledge document fetch by ID.",
+        "Provenance lookup output.",
+        "Retrieval-trace sample."
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "All OpenSearch epic tests pass.",
+    "Required evidence exists for each test case.",
+    "The service is ready to be assumed by later Cortex epics without additional explanation."
+  ],
+  "run_artifact_location": "tests/",
+  "updated_at": "2026-03-21T00:00:00Z"
+}
