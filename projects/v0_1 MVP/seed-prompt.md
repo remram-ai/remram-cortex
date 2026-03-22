@@ -10,6 +10,7 @@ Cortex is the knowledge authority layer of Remram. It owns structured memory, re
 
 Current project:
 We are working in `projects/v0_1 MVP/`.
+The stable product docs live under `product/`.
 The goal of this MVP is to land an operational memory system that can move from:
 
 "ingest this document"
@@ -22,28 +23,33 @@ without requiring the user to restate the document every time.
 
 Read these first:
 1. `projects/v0_1 MVP/README.md`
-2. `projects/v0_1 MVP/seed-prompt.md`
-3. `projects/v0_1 MVP/project-plan.md`
-4. `projects/v0_1 MVP/test-plan.md`
-5. `projects/v0_1 MVP/capabilities/README.md`
-6. the specific capability folder I ask you to work on
-7. `docs/design/v0_1-mvp-scope.md`
-8. `docs/design/v0_1-mvp-spec.md`
-9. `docs/remram-cortex/architecture.md`
-10. `docs/glossary.md`
+2. `projects/README.md`
+3. `projects/v0_1 MVP/seed-prompt.md`
+4. `projects/v0_1 MVP/project-plan.md`
+5. `projects/v0_1 MVP/acceptance-test.md`
+6. `projects/v0_1 MVP/epics/README.md`
+7. the specific epic folder I ask you to work on, if the thread is epic-scoped
+8. `product/README.md`
+9. `product/capabilities/README.md`
+10. `product/dependencies/README.md`
+11. the specific capability or dependency folder I ask you to work on, if the thread is product-scoped
+12. `docs/design/v0_1-mvp-scope.md`
+13. `docs/design/v0_1-mvp-spec.md`
+14. `docs/remram-cortex/architecture.md`
+15. `docs/glossary.md`
 
 Current capability sequence:
-1. `01-opensearch-service`
-2. `02-artifact-storage`
-3. `03-git-service`
-4. `04-git-provider`
-5. `05-google-drive-provider`
-6. `06-artifact-intake`
-7. `07-knowledge-extraction`
-8. `08-quick-capture`
-9. `09-retrieval`
-10. `10-chat-injection`
-11. `11-chat-interface`
+1. `opensearch-service` dependency
+2. `git-service` dependency
+3. `artifact-storage` capability
+4. `git-provider` capability
+5. `google-drive-provider` capability
+6. `artifact-intake` capability
+7. `knowledge-extraction` capability
+8. `quick-capture` capability
+9. `retrieval` capability
+10. `chat-injection` capability
+11. `chat-interface` capability
 
 Important architectural constraints:
 - hard governance filters before semantic scoring
@@ -65,10 +71,10 @@ Artifact and provider model:
 - provider choice is routed by artifact policy, not by source path
 
 When working in a thread:
-- stay tightly scoped to the capability or spec I ask about
+- stay tightly scoped to the capability, dependency, or spec I ask about
 - preserve the existing architecture unless there is a real contradiction
 - keep designs implementable in Go and practical on OpenSearch
-- update the capability `spec.md` and `test-plan.md` together if the capability changes
+- update the paired `spec.md` and `regression-plan.md` together when a stable product doc changes
 - update umbrella project docs only if the change affects sequencing, scope, or acceptance
 - optimize for debuggability, explicit contracts, and incremental delivery
 - treat the chat interface as a standalone MVP proof surface that can later be plugged into OpenClaw
