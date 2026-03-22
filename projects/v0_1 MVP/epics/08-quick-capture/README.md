@@ -4,7 +4,7 @@
 
 Prove that new thoughts can enter the same evidence-to-knowledge path as imported artifacts.
 
-## Product References
+## Stable Product References
 
 - [Quick Capture Spec](../../../../product/capabilities/quick-capture/spec.md)
 
@@ -21,6 +21,7 @@ Prove that new thoughts can enter the same evidence-to-knowledge path as importe
 
 ## Epic Documents
 
+- [Technical Spec](quick-capture-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

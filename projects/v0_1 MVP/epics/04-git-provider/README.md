@@ -4,7 +4,7 @@
 
 Make the local Git provider the safe default Cortex provider.
 
-## Product References
+## Stable Product References
 
 - [Git Provider Spec](../../../../product/capabilities/git-provider/spec.md)
 - [Artifact Storage Spec](../../../../product/capabilities/artifact-storage/spec.md)
@@ -22,6 +22,7 @@ Make the local Git provider the safe default Cortex provider.
 
 ## Epic Documents
 
+- [Technical Spec](git-provider-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

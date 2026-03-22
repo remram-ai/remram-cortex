@@ -4,7 +4,7 @@
 
 Turn stored knowledge into bounded, inspectable bundles that satisfy the Cortex retrieval model.
 
-## Product References
+## Stable Product References
 
 - [Retrieval Spec](../../../../product/capabilities/retrieval/spec.md)
 - [OpenSearch Service Dependency](../../../../product/dependencies/opensearch-service/README.md)
@@ -23,6 +23,7 @@ Turn stored knowledge into bounded, inspectable bundles that satisfy the Cortex 
 
 ## Epic Documents
 
+- [Technical Spec](retrieval-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

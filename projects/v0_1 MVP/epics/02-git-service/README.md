@@ -4,7 +4,7 @@
 
 Stand up the local Git substrate that later provider and artifact work can build on.
 
-## Product References
+## Stable Product References
 
 - [Git Service Dependency](../../../../product/dependencies/git-service/README.md)
 
@@ -20,6 +20,7 @@ Stand up the local Git substrate that later provider and artifact work can build
 
 ## Epic Documents
 
+- [Technical Spec](git-service-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

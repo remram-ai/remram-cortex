@@ -11,11 +11,13 @@ Deliver the first end-to-end Cortex slice that can:
 5. retrieve the resulting knowledge through the current Cortex retrieval model
 6. improve at least one ordinary chat flow through knowledge injection
 
-## 2. Canonical Product References
+## 2. Stable Product References
 
-The stable Cortex design surface now lives under `product/`.
+The stable Cortex design surface lives under `product/`.
 
-Use these as the canonical capability and dependency docs for this project:
+Use these as stable capability and dependency references for this project.
+
+The active draft technical design for implementation belongs in the project epic folder, not under `product/`. Each epic localizes the working how in `epics/<epic>/<component>-spec.md` and uses product docs as reference input rather than the current execution source of truth.
 
 ### 2.1 Dependencies
 
@@ -100,6 +102,7 @@ This project is implemented epic by epic.
 Each epic owns:
 
 - [README.md](epics/README.md) style epic charter
+- epic `<component>-spec.md`
 - epic `implementation-plan.md`
 - epic `implementation-plan.json`
 - epic `test-plan.md`

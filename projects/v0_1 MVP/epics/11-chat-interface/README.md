@@ -4,7 +4,7 @@
 
 Provide the visible proof surface for the MVP read path.
 
-## Product References
+## Stable Product References
 
 - [Chat Interface Spec](../../../../product/capabilities/chat-interface/spec.md)
 - [Chat Injection Spec](../../../../product/capabilities/chat-injection/spec.md)
@@ -21,6 +21,7 @@ Provide the visible proof surface for the MVP read path.
 
 ## Epic Documents
 
+- [Technical Spec](chat-interface-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

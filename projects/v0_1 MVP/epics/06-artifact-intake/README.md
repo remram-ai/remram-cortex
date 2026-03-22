@@ -4,7 +4,7 @@
 
 Turn imported artifacts into bounded, source-linked slices for later knowledge extraction.
 
-## Product References
+## Stable Product References
 
 - [Artifact Intake Spec](../../../../product/capabilities/artifact-intake/spec.md)
 
@@ -21,6 +21,7 @@ Turn imported artifacts into bounded, source-linked slices for later knowledge e
 
 ## Epic Documents
 
+- [Technical Spec](artifact-intake-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

@@ -4,7 +4,7 @@
 
 Stand up the OpenSearch dependency so Cortex has a usable retrieval substrate for later MVP work.
 
-## Product References
+## Stable Product References
 
 - [OpenSearch Service Dependency](../../../../product/dependencies/opensearch-service/README.md)
 - [Retrieval Capability](../../../../product/capabilities/retrieval/spec.md)
@@ -21,6 +21,7 @@ Stand up the OpenSearch dependency so Cortex has a usable retrieval substrate fo
 
 ## Epic Documents
 
+- [Technical Spec](opensearch-service-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Implementation Plan Data](implementation-plan.json)
 - [Test Plan](test-plan.md)

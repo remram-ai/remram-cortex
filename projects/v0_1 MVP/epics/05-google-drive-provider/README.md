@@ -4,7 +4,7 @@
 
 Define the collaborative document provider path without changing Cortex artifact identity.
 
-## Product References
+## Stable Product References
 
 - [Google Drive Provider Spec](../../../../product/capabilities/google-drive-provider/spec.md)
 
@@ -20,6 +20,7 @@ Define the collaborative document provider path without changing Cortex artifact
 
 ## Epic Documents
 
+- [Technical Spec](google-drive-provider-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

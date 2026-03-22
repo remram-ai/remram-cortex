@@ -48,12 +48,14 @@ The project is done when:
 ## Start Here
 
 - If you are evaluating the MVP, read this file, then [Acceptance Test](acceptance-test.md), then [Runtime Docs](runtime-docs.md).
-- If you are implementing an epic, read this file, then [Project Plan](project-plan.md), then the specific epic folder, then the relevant product spec and regression plan.
+- If you are implementing an epic, read this file, then [Project Plan](project-plan.md), then the specific epic folder with its local technical spec such as [opensearch-service-spec.md](epics/01-opensearch-service/opensearch-service-spec.md), then the supporting product references.
 - If you are starting an AI thread, read [Seed Prompt](seed-prompt.md) after this file and follow its scoped reading order.
 
-## Canonical Product References
+## Stable Product References
 
-The stable Cortex design surface now lives under [../../product/](../../product/README.md).
+The stable Cortex design surface lives under [../../product/](../../product/README.md).
+
+Those documents are product and dependency references, not the draft working design for an active epic. During implementation, the project-local component spec inside `projects/v0_1 MVP/epics/<epic>/<component>-spec.md` is the operative source of truth.
 
 The MVP still executes in this order:
 
@@ -104,7 +106,7 @@ Project artifact roles:
 - `acceptance-test.md` explains project-level acceptance
 - `acceptance-test.json` is the executable acceptance inventory with stable test IDs
 - `acceptance-tests/` stores executed acceptance and HAT records
-- `epics/` holds epic implementation plans, epic test plans, their structured companions, and epic test artifacts
+- `epics/` holds the local component technical specs, epic implementation plans, epic test plans, their structured companions, and epic test artifacts
 
 ## Design Inputs
 

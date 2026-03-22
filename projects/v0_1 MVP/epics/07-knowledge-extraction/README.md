@@ -4,7 +4,7 @@
 
 Turn intake slices into structured knowledge objects with provenance and retrieval signals.
 
-## Product References
+## Stable Product References
 
 - [Knowledge Extraction Spec](../../../../product/capabilities/knowledge-extraction/spec.md)
 
@@ -20,6 +20,7 @@ Turn intake slices into structured knowledge objects with provenance and retriev
 
 ## Epic Documents
 
+- [Technical Spec](knowledge-extraction-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

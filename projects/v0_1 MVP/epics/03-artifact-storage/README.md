@@ -4,7 +4,7 @@
 
 Establish the Cortex-owned artifact identity and provider-routing foundation.
 
-## Product References
+## Stable Product References
 
 - [Artifact Storage Spec](../../../../product/capabilities/artifact-storage/spec.md)
 
@@ -21,6 +21,7 @@ Establish the Cortex-owned artifact identity and provider-routing foundation.
 
 ## Epic Documents
 
+- [Technical Spec](artifact-storage-spec.md)
 - [Implementation Plan](implementation-plan.md)
 - [Test Plan](test-plan.md)
 - [Tests](tests/)

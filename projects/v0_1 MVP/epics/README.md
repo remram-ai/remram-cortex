@@ -7,11 +7,18 @@ Read the project [README.md](../README.md) first for the charter and [project-pl
 Each epic should contain:
 
 - `README.md`
+- `<component>-spec.md`
 - `implementation-plan.md`
 - `implementation-plan.json` once the epic enters active execution
 - `test-plan.md`
 - `test-plan.json` once the epic enters active execution
 - `tests/`
+
+The ownership rule is:
+
+- `<component>-spec.md` is the active working technical design the developer and tester use during implementation
+- product specs under `../../product/` remain stable reference inputs
+- accepted work can later be promoted back into product or platform surfaces
 
 Each epic stores its executed test artifacts directly under `tests/`, for example:
 
