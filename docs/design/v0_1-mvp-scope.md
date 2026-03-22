@@ -12,7 +12,7 @@ The first Cortex MVP should prove one closed loop:
 This MVP is centered on three inputs:
 
 - [Artifact Intake](../concepts/artifact-intake.md)
-- external dependency: `artifact-storage` from Forge
+- Cortex artifact-provider contract
 - Quick Capture as the primary proof surface
 
 The design goal is not to deliver "all of Cortex."
@@ -96,7 +96,7 @@ The MVP includes the subset of artifact storage behavior Cortex actually needs:
 - route artifacts by policy rather than by source path
 - preserve original source references as provenance without making them canonical storage paths
 
-This is a dependency contract, not a full Forge lifecycle implementation.
+This is a Cortex-owned provider contract, not a commitment to any external lifecycle or storage system.
 
 ### 5.2 Artifact Intake
 
@@ -175,7 +175,7 @@ The MVP explicitly does not need to deliver:
 - artifact promotion workflows
 - image-only OCR or rich multimodal intake guarantees
 - multi-user family sharing UX
-- complete Forge lifecycle container support beyond Cortex's immediate artifact-storage dependency
+- any broader lifecycle-container orchestration beyond Cortex's immediate artifact-provider needs
 - provider-specific collaboration sync such as Google change watching
 
 ## 7. Hard Scoping Decisions

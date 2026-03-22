@@ -16,7 +16,7 @@ Bootstrap ingestion should:
 
 It must not rewrite transcripts or store them as durable Cortex memory.
 
-Where possible, it should use controlled Gateway, Forge, or OpenClaw-managed surfaces rather than ad hoc raw runtime-store manipulation. Migration-phase direct file reads may still exist as one-time operational tooling, but they should not become the long-term public contract.
+Where possible, it should use controlled Gateway, OpenClaw-managed, export-based, or other explicit read-only surfaces rather than ad hoc raw runtime-store manipulation. Migration-phase direct file reads may still exist as one-time operational tooling, but they should not become the long-term public contract.
 
 ## Why It Exists
 

@@ -28,7 +28,7 @@ These may be exposed as dedicated APIs or as wrappers around the core Cortex sur
 
 ### 2.2 External Dependency
 
-Artifact Storage is treated as an external dependency contract sourced from Forge.
+Artifact Storage is treated as a Cortex-owned provider contract.
 
 Cortex depends on it to:
 
@@ -37,6 +37,8 @@ Cortex depends on it to:
 - return stable identifiers and deterministic internal paths
 
 Cortex does not give artifact storage authority over knowledge metadata.
+
+An implementation may later reuse or integrate with services from other repositories, but Cortex should not depend on that to define its artifact model.
 
 ## 3. MVP Architecture
 
