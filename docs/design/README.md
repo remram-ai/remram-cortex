@@ -21,6 +21,8 @@ The design docs here define how a specific slice should be delivered against tha
 - [Mem0 Complete Context Pack](mem0-complete-context.md)
 - [Mem0 on Moltbox to OpenClaw to Cortex Implementation Plan](mem0-moltbox-openclaw-implementation-plan.md)
 - [Graphiti Complete Context Pack](graphiti-complete-context.md)
+- [Graphiti Foundation Stack Architecture](graphiti-foundation-stack-architecture.md)
+- [Graphiti Foundation Implementation Strategy](graphiti-foundation-implementation-strategy.md)
 - [Graphiti on Moltbox to OpenClaw to Cortex Implementation Plan](graphiti-moltbox-openclaw-implementation-plan.md)
 - [GraphRAG on Moltbox to OpenClaw to Cortex Implementation Plan](graphrag-moltbox-openclaw-implementation-plan.md)
 - [Cognee Complete Context Pack](cognee-complete-context.md)
