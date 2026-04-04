@@ -4,6 +4,10 @@ A notion is a staged candidate memory derived from semantic checkpoints.
 
 It is the main object that sits between runtime evidence and trusted durable memory.
 
+In practical MVP terms, it can be read as:
+
+- candidate durable memory
+
 ## What A Notion Is
 
 A notion is:
@@ -74,6 +78,18 @@ That keeps durable memory:
 - more trustworthy
 - more inspectable
 - easier to supersede later
+
+## Relationship To Layer 2
+
+Notions are authored from Layer 2 evidence and semantic checkpoints, but they are not purely Layer 2 state.
+
+The cleanest model is:
+
+- Layer 2 produces the signal
+- Cortex stages the notion
+- Layer 3 decides whether it becomes trusted durable memory
+
+This is why the architecture keeps notions near the Layer 2/3 boundary instead of treating them as ordinary OpenClaw session state.
 
 ## Related Concepts
 

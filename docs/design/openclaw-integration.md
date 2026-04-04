@@ -27,6 +27,11 @@ Cortex owns:
 
 OpenClaw consumes the resulting policy bundle.
 
+The preferred split is:
+
+- hard tool-use enforcement and runtime-safe defaults in OpenClaw config or plugin config
+- higher-order composition and mutable preference-policy in Cortex
+
 ### Layer 2: Working Memory
 
 OpenClaw owns:
@@ -42,6 +47,8 @@ Cortex augments Layer 2 through:
 - High-Signal Mamba stream production
 - hooks that prepare compressed continuity ahead of compaction pressure
 
+When OpenClaw memory search is used as part of the Layer 2 posture, `QMD` is the preferred engine over the builtin indexer because it adds reranking, query expansion, extra-path indexing, and session transcript indexing while remaining OpenClaw-native.
+
 ## High-Signal Mamba Integration
 
 The Mamba stream should be produced from OpenClaw session evidence.
@@ -51,6 +58,8 @@ It should support:
 - optimistic consumption
 - on-demand consumption
 - nightly consumption
+
+This stream should be treated as continuously available infrastructure, not as an occasional checkpoint job.
 
 It should be ready when OpenClaw needs compact continuity, rather than generated only after the prompt budget is already under stress.
 
@@ -71,6 +80,8 @@ At those boundaries, Cortex should be able to:
 - stage notions
 - reconcile high-signal tentative memory
 - schedule slower maintenance work
+
+OpenClaw's experimental `Dreaming` feature is useful as a conceptual analogue for consolidation cadence, but Cortex should not rely on it as the primary Layer 3 promotion path.
 
 ## Runtime Retrieval Posture
 

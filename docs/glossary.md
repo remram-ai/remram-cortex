@@ -94,6 +94,8 @@ A durable memory object such as a belief, preference, constraint, or decision.
 
 A staged candidate memory derived from the semantic checkpoint stream.
 
+In the active design, "notion" is effectively the Cortex term for a candidate durable memory.
+
 ## O
 
 ### OpenClaw

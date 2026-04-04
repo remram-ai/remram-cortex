@@ -31,6 +31,11 @@ That means Cortex is still the authority, but different kinds of truth live in d
 - `Postgres + pgvector` is the operational substrate for runtime evidence, control-plane state, and Layer 4 decomposed knowledge.
 - `Git` is the preferred Layer 5 canonical artifact truth.
 
+Two review-driven clarifications now matter:
+
+- `QMD` is the preferred OpenClaw-native memory engine if we lean on OpenClaw memory search.
+- `OpenSearch` remains the first likely escalation path if transcript-heavy and document-heavy Layer 4 retrieval outgrow the one-store `Postgres + pgvector` posture.
+
 ## The Most Important Runtime Story
 
 The runtime model is:
@@ -42,6 +47,8 @@ The runtime model is:
 5. The stream emits candidate notions for durable memory.
 6. High-signal notions may appear early as tentative cross-thread memory.
 7. Reconciliation at session end, checkpoints, or nightly maintenance decides what becomes trusted Layer 3 memory.
+
+In plain language, a `notion` is basically a candidate durable memory.
 
 This is the key compromise:
 
@@ -71,6 +78,7 @@ This stack exists because each layer solves a different real problem:
 - the High-Signal `Mamba` stream exists because smaller-window models make raw transcript replay expensive and brittle.
 - `Graphiti + Neo4j` is the hardest part to replace because Cortex wants temporal lineage, invalidation, provenance, and graph-native durable memory.
 - `Postgres + pgvector` gives a practical substrate for evidence and decomposed operational knowledge without adding another large platform.
+- runtime evidence stays hot in `Postgres` only while it is operationally useful and should later migrate to colder storage with lookup metadata retained
 - `Git` remains the best default for canonical artifact truth and publication history.
 
 ## What The System Explicitly Avoids
@@ -118,6 +126,17 @@ It owns:
 - temporal lineage
 - invalidation and supersession
 
+What Graphiti does not clearly document as a first-class feature is an explicit confidence model that would replace Cortex trust states.
+
+So the current stack keeps explicit states such as:
+
+- `tentative`
+- `low_confidence`
+- `active`
+- `superseded`
+- `invalidated`
+- `stale_support`
+
 It does not own:
 
 - the working transcript
@@ -136,6 +155,8 @@ It branches one evidence feed into multiple products:
 4. governed preference-policy updates
 
 Oversight watches the same semantic products in parallel.
+
+OpenClaw `Dreaming` is now treated as a useful adjacent concept, not the main Layer 3 promotion path.
 
 ## The Main Build Order
 

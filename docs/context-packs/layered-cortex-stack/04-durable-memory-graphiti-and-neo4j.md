@@ -49,6 +49,11 @@ Graphiti is the chosen Layer 3 core because it provides the memory semantics Cor
 - invalidation instead of blind overwrite
 - graph-native retrieval over durable memory
 
+Recent clarification:
+
+- current Graphiti docs make lineage and time very clear
+- they do not appear to expose a first-class explicit confidence model that would replace Cortex trust states
+
 That combination is what made it hard to replace cleanly.
 
 ## Why Neo4j
@@ -89,6 +94,11 @@ The important Layer 3 states are:
 
 These states matter because they let the system be fast without lying about certainty.
 
+The clean interpretation is:
+
+- Graphiti provides lineage, support, and temporal structure
+- Cortex overlays explicit trust and confidence state
+
 ## How Runtime Evidence Enters Graphiti
 
 Graphiti should not receive the whole raw session log as its normal representation.
@@ -114,6 +124,14 @@ Graphiti should get:
 - only extracted standalone Layer 3 appropriate beliefs or support
 
 The full document body should remain outside Layer 3.
+
+Artifact lineage should also exist inside the graph.
+
+The preferred pattern is:
+
+- represent the artifact or document as an entity
+- preserve the anchor and revision pointer
+- connect beliefs, decisions, and support to that artifact entity
 
 ## Guardrails Around Layer 3
 

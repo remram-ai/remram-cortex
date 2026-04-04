@@ -89,6 +89,12 @@ Slower and deeper.
 
 Used for consolidation, reconciliation, contradiction checks, and cleanup.
 
+Recent refinement:
+
+- the stream itself should be continuously available
+- opportunistic GPU time should go mostly to embeddings, chunking, graphizing, and near-time enrichment
+- checkpoint and nightly passes can revisit full evidence plus semantic checkpoints plus staged notions
+
 ## The Stream As Shared Semantic Bus
 
 The stream is more than a context-summary trick.
@@ -139,6 +145,11 @@ The intended model is:
 4. later reconciliation confirms, merges, downgrades, or rejects it
 
 This gives the system speed without pretending speed equals truth.
+
+The preferred wording is now:
+
+- `notion` = Cortex term
+- `candidate durable memory` = plain-language meaning
 
 ## Relationship To Oversight
 

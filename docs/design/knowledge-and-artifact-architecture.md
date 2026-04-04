@@ -17,6 +17,10 @@ It holds:
 
 The default substrate is `Postgres + pgvector`.
 
+This is still the default starting point, not a dogmatic end state.
+
+If transcript-heavy and document-heavy retrieval clearly outgrow the one-store posture, `OpenSearch` is the first likely escalation path for Layer 4.
+
 ## Layer 5: Canonical Artifacts
 
 Layer 5 is the ground-truth layer.
@@ -66,6 +70,27 @@ That means:
 This is acceptable because those are all operational, queryable, revision-aware surfaces.
 
 It also keeps lexical and vector retrieval close together in one base platform before introducing a separate search engine.
+
+## Runtime Evidence Retention Tiers
+
+Runtime evidence should not stay in hot `Postgres` forever.
+
+The intended retention posture is:
+
+1. hot operational evidence in `Postgres`
+2. age-based migration to colder storage
+3. retained pointers and metadata in `Postgres` for audit and replay lookup
+
+Cold storage can be:
+
+- filesystem-backed immutable evidence bundles
+- object storage
+- another low-cost archival target
+
+The important rule is:
+
+- keep lookup metadata and stable ids hot
+- move bulky raw evidence cold once access patterns justify it
 
 ## Git Role
 

@@ -22,6 +22,11 @@ It includes:
 
 No off-the-shelf memory system was expected to solve this cleanly.
 
+Recent refinement:
+
+- hard tool-use and safety enforcement should stay as close as possible to OpenClaw agent or plugin configuration
+- Cortex policy should focus on composition, routing, approval posture, and mutable preference-policy
+
 ## Why Working Memory Stays In OpenClaw
 
 OpenClaw already owns:
@@ -35,6 +40,17 @@ OpenClaw already owns:
 That makes OpenClaw the natural Layer 2 base.
 
 The stack deliberately avoids building a separate external working-memory store in phase 1.
+
+Within OpenClaw, the preferred memory-search posture is now:
+
+- `QMD` over the builtin engine when feasible
+
+Why:
+
+- local BM25 plus vector hybrid search
+- reranking
+- extra-path indexing
+- session transcript indexing
 
 ## What Cortex Adds To Layer 2
 
@@ -68,6 +84,11 @@ The architecture is reacting to a practical issue:
 The answer is not to replace OpenClaw.
 
 The answer is to compress the session into a better semantic surface.
+
+That is also why `Honcho` and `Dreaming` are not the chosen center:
+
+- `Honcho` is too opinionated as the main memory center for this stack
+- `Dreaming` is useful conceptually, but it promotes OpenClaw memory into Markdown long-term memory rather than into Cortex Layer 3
 
 ## The Working-Memory Product Model
 

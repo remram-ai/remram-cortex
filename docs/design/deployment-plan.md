@@ -40,6 +40,12 @@ The base deployment should include:
 
 This worker is a role, not yet a locked implementation dependency.
 
+The intended compute posture is:
+
+- keep semantic checkpoint production continuously available
+- spend opportunistic GPU time on embeddings, graphizing, chunking, and near-time enrichment
+- let checkpoint and nightly passes revisit full evidence plus semantic checkpoints plus staged notions
+
 ### Graphiti + Neo4j
 
 - Layer 3 durable memory
@@ -50,6 +56,8 @@ This worker is a role, not yet a locked implementation dependency.
 - runtime evidence
 - control-plane state
 - decomposed knowledge
+
+This tier should also own evidence-retention metadata for later cold-storage migration.
 
 ### Git
 

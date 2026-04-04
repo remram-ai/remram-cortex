@@ -18,6 +18,11 @@ This document explains the main flows.
 8. Reconciliation checks tentative notions against evidence, oversight, existing memory, and artifact support.
 9. Confirmed outputs become trusted Layer 3 memory in Graphiti.
 
+Clarification:
+
+- the semantic checkpoint stream is always-on infrastructure
+- checkpoints and nightly passes can revisit full evidence plus summaries plus staged notions
+
 ## Flow 2: Cross-Thread Memory
 
 1. A checkpoint emits a strong notion.
@@ -39,6 +44,8 @@ The key idea is:
 5. Notions are reconciled.
 6. Oversight signals are applied.
 7. Durable memory is updated.
+
+Later, older evidence packages should migrate out of hot Postgres into colder storage while retaining lookup metadata.
 
 This is the main quality-control point for Layer 3.
 

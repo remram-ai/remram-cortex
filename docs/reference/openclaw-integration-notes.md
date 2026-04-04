@@ -22,6 +22,8 @@ Current upstream docs support the following assumptions:
 - Sessions and transcript continuity remain OpenClaw-owned even when a custom context engine is used.
 - Compaction writes continuity back into the session surface, which is why Cortex should prepare semantic checkpoints ahead of prompt pressure instead of waiting until context is already overflowing.
 - Memory and context-engine are separate plugin slots, which supports the current posture of leaving Layer 2 with OpenClaw while Cortex owns policy and Layer 3 separately.
+- `QMD` is a stronger OpenClaw-native memory engine than the builtin engine when you want reranking, query expansion, extra-path indexing, and session transcript indexing.
+- `Dreaming` exists in OpenClaw as an experimental background promotion pass, but it promotes short-term recalls into Markdown long-term memory and should not be confused with Cortex Layer 3 consolidation.
 
 Operational rule:
 
@@ -40,4 +42,7 @@ Official references:
 - https://docs.openclaw.ai/concepts/context
 - https://docs.openclaw.ai/compaction
 - https://docs.openclaw.ai/reference/session-management-compaction
+- https://docs.openclaw.ai/concepts/memory
+- https://docs.openclaw.ai/concepts/memory-qmd
+- https://docs.openclaw.ai/concepts/memory-dreaming
 - https://docs.openclaw.ai/tools/plugin

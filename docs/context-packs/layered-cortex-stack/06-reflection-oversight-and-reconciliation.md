@@ -30,6 +30,11 @@ Reflection branches one evidence feed into four update products:
 
 Oversight watches those products in parallel.
 
+Recent refinement:
+
+- oversight should default to the semantic checkpoint stream
+- it should escalate to evidence packages or raw backing material only when fidelity, risk, or approval posture require it
+
 ## Memory Updates
 
 The memory path is:
@@ -38,6 +43,8 @@ The memory path is:
 2. stage it
 3. optionally expose it early as tentative cross-thread memory if the signal is high
 4. reconcile it later against stronger evidence
+
+This means fast cross-thread memory is allowed, but only as explicitly tentative memory.
 
 This is the core mechanism for durable memory quality control.
 

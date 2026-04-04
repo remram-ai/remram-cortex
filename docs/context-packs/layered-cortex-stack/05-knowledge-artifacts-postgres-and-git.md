@@ -34,6 +34,8 @@ It contains:
 
 The current default substrate is `Postgres + pgvector`.
 
+This is a starting posture, not a forever commitment.
+
 ## Layer 5: Canonical Artifacts
 
 Layer 5 is the ground-truth layer for artifacts.
@@ -69,6 +71,11 @@ In the current stack, `Postgres + pgvector` is doing three jobs:
 
 That is acceptable because these are all operational, queryable, revision-aware surfaces.
 
+Recent refinement:
+
+- `Postgres` is acceptable at the start because it gives full-text search, vector search, and JSON or JSONB support in one operational store
+- `OpenSearch` remains the first escalation path if transcript or corpus retrieval pressure clearly outgrow this one-store posture
+
 ## What Git Is Doing
 
 Git is doing the canonical artifact job.
@@ -83,6 +90,12 @@ It provides:
 Git is not the decomposed operational retrieval plane.
 
 It is the canonical source plane.
+
+For runtime evidence, the canonical authority is different:
+
+- keep hot evidence in `Postgres`
+- migrate colder evidence to cheaper storage after it ages out of frequent access
+- retain ids and lookup metadata hot for replay and audit
 
 ## Artifact Indexing Pattern
 
