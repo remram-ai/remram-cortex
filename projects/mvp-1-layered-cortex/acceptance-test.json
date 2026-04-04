@@ -24,7 +24,7 @@
     {
       "test_id": "AT-005",
       "name": "Artifacts split cleanly across Layer 4 and Layer 5",
-      "expected_result": "Layer 4 decomposition is queryable while Layer 5 remains canonical."
+      "expected_result": "Layer 4 operational knowledge is usable with or without a Layer 5 artifact, while Layer 5 remains canonical only when canon is warranted."
     },
     {
       "test_id": "AT-006",

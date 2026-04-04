@@ -1,6 +1,6 @@
 {
   "epic_id": "02_high_signal_mamba_stream",
-  "objective": "Build the High-Signal Mamba Stream as the primary semantic checkpoint bus between evidence and downstream consumers.",
+  "objective": "Build the High-Signal Mamba Stream as a narrow always-on high-signal channel between session activity and downstream consumers.",
   "dependencies": [
     "01_policy_and_openclaw_integration",
     "docs/concepts/evidence-package.md",
@@ -21,8 +21,8 @@
       "id": "02",
       "name": "Production model",
       "outputs": [
-        "optimistic production",
-        "boundary production",
+        "always-on near-time listening",
+        "bounded event emission during active sessions",
         "rebuildability from evidence packages"
       ]
     },
@@ -30,9 +30,9 @@
       "id": "03",
       "name": "Consumption model",
       "outputs": [
-        "optimistic consumption",
-        "on-demand consumption",
-        "nightly consumption",
+        "working-memory assembly consumption",
+        "QMD notion update consumption",
+        "oversight and reflection consumption",
         "consumer watermark or idempotence rules"
       ]
     }

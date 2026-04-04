@@ -5,8 +5,8 @@ Use the layered Cortex architecture.
 Assume:
 
 - OpenClaw owns sessions and runtime execution
-- Cortex owns policy, semantic checkpoints, durable-memory orchestration, and artifact routing
-- the active stack is `Graphiti + Neo4j + Postgres + pgvector + Git`
+- Cortex owns policy, Layer 2 notion rules, durable-memory orchestration, and operational-knowledge routing
+- the active stack is `OpenClaw + QMD + narrow Mamba + Graphiti + Neo4j + Postgres + Git`
 
 Before changing implementation details:
 

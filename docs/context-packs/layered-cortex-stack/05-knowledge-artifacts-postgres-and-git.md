@@ -1,164 +1,87 @@
 # Knowledge, Artifacts, Postgres, And Git
 
-## The Main Decision
+## The Main Clarification
 
-Layers 4 and 5 are intentionally separate.
+Layer 4 is the operational knowledge authority.
 
-Layer 4 is:
+Layer 5 is canonical publication truth only when canon is actually warranted.
 
-- decomposed
-- operational
-- retrieval-ready
+Layer 4 is not just a projection of Layer 5.
 
-Layer 5 is:
+## What Layer 4 Holds
 
-- canonical
-- reviewable
-- publication-grade
+Layer 4 should hold:
 
-This is one of the most important distinctions in the whole architecture.
+- working or incubation workspaces
+- reference-derived knowledge bodies
+- decomposed artifact knowledge
+- active operational document state
 
-## Layer 4: Decomposed Artifact Knowledge
+This means Layer 4 can be authoritative even when there is no Layer 5 artifact at all.
 
-Layer 4 is the machine-usable artifact layer.
+## External References
 
-It contains:
+External references are distinct from authored canonical artifacts.
 
-- decomposition records
-- typed slices
-- extracted structures
-- embeddings
-- lexical fields
-- source-linked offsets
-- revision-aware retrieval payloads
+Examples:
 
-The current default substrate is `Postgres + pgvector`.
+- uploaded PDFs
+- podcast transcripts
+- articles
+- research sources
 
-This is a starting posture, not a forever commitment.
+These should not automatically become Git-backed canon.
 
-## Layer 5: Canonical Artifacts
+Instead:
 
-Layer 5 is the ground-truth layer for artifacts.
+- Layer 4 holds summaries, linked records, and extracted operational knowledge
+- Layer 3 stores only durable meaning that matters
 
-It contains:
+## Canonical Artifacts
 
-- Git-backed canonical documents
-- provider-backed authoritative source records
-- published redrafts
-- revision history
+Layer 5 is used only when publication-grade canonical authorship and revision are warranted.
 
-The default posture is to use `Git` when it fits the artifact type.
+That is where:
 
-## Why The Split Exists
+- Git-backed canon
+- reviewed redrafts
+- canonical revision history
 
-The split exists because the system needs both:
+belong.
 
-- a machine-ready operational surface
-- a human-reviewable publication truth
+Once a Layer 4 workspace is promoted, Layer 5 becomes the canonical source for that artifact.
 
-If those are collapsed into one layer, the system loses either:
+That does not make Layer 5 dead storage.
 
-- operational speed and decomposition flexibility
-- or clear publication truth and reviewability
+Meaningful canonical revision must be able to trigger:
 
-## What Postgres Is Doing
+- re-ingestion back into Layer 4 so the operational body stays aligned
+- reconciliation in Layer 3 so summaries, support, and semantic links stay current
 
-In the current stack, `Postgres + pgvector` is doing three jobs:
+## Why Postgres Matters
 
-- runtime evidence authority
-- control-plane state
-- Layer 4 decomposed knowledge
+Postgres is the operational middle-layer authority for now.
 
-That is acceptable because these are all operational, queryable, revision-aware surfaces.
+It covers:
 
-Recent refinement:
+- runtime evidence
+- Layer 4 bodies
+- reference records and summaries
+- decomposed artifact knowledge where canonical artifacts exist
+- metadata
+- workflow fields
 
-- `Postgres` is acceptable at the start because it gives full-text search, vector search, and JSON or JSONB support in one operational store
-- `OpenSearch` remains the first escalation path if transcript or corpus retrieval pressure clearly outgrow this one-store posture
+This is why the architecture is not adding `OpenSearch` now.
 
-## What Git Is Doing
+The goal is fewer moving pieces and cleaner authority boundaries.
 
-Git is doing the canonical artifact job.
+## Budding Ideas
 
-It provides:
+Budding ideas do not jump straight to Git.
 
-- explicit revisions
-- reviewable changes
-- publication truth
-- clean re-ingestion boundaries
+They live first as:
 
-Git is not the decomposed operational retrieval plane.
+- Layer 3 relationship structure
+- Layer 4 evolving workspace bodies
 
-It is the canonical source plane.
-
-For runtime evidence, the canonical authority is different:
-
-- keep hot evidence in `Postgres`
-- migrate colder evidence to cheaper storage after it ages out of frequent access
-- retain ids and lookup metadata hot for replay and audit
-
-## Artifact Indexing Pattern
-
-Artifacts should follow the same pattern as session evidence:
-
-1. keep the raw source in the canonical layer
-2. derive decomposition and retrieval structures separately
-3. send only summary plus pointer plus Layer 3 appropriate beliefs into durable memory
-
-This keeps each layer focused on its own job.
-
-## Anchor Identity
-
-Artifacts should have stable Cortex identity through an `anchor_id`.
-
-That allows:
-
-- one artifact to appear in Git, Postgres, and Graphiti without becoming separate semantic objects
-- revision-aware support tracking
-- re-ingestion and reconciliation after publication
-
-## Dirty-State And Publication
-
-Layer 4 is allowed to move ahead of Layer 5 during active work, but only with explicit dirty-state tracking.
-
-Important artifact states include:
-
-- `dirty`
-- `pending_redraft`
-- `unsynced_to_canonical`
-- `redraft_ready`
-
-Those states tell the system when the operational artifact view has outrun publication truth.
-
-## Publication Cycle
-
-The publication loop is:
-
-1. Layer 4 changes mark an anchor dirty
-2. the redraft process gathers latest Layer 4 knowledge and Layer 3 memory support
-3. review or approval happens if needed
-4. Layer 5 is updated
-5. the new revision is re-ingested
-6. Layer 3 support can be reconciled against the new revision
-
-This is how the system supports live change without collapsing publication truth.
-
-## What Layer 3 Should See From Artifacts
-
-Layer 3 should only receive:
-
-- compact summary representations
-- pointers to canonical revisions
-- standalone facts or beliefs that are appropriate for semantic memory
-
-Layer 3 should not become a shadow artifact store.
-
-## Bottom Line
-
-Layer 4 and Layer 5 exist so Cortex can reason over artifacts aggressively during active work without corrupting publication truth.
-
-Postgres powers the operational artifact plane.
-
-Git powers the canonical artifact plane.
-
-The system needs both.
+Layer 5 only appears later if canonical publication is warranted.

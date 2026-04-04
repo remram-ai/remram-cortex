@@ -2,25 +2,23 @@
 
 ## Summary
 
-This MVP replaces the earlier dependency-first plan with a layered-system bring-up.
-
-The project is about proving the architecture, not just standing up one search backend.
+This MVP proves the locked layered architecture rather than a loose collection of candidate stack ideas.
 
 ## Scope
 
 In scope:
 
 - Layer 1 policy
-- Layer 2 augmentation over OpenClaw
-- High-Signal Mamba stream
-- Layer 3 durable memory
-- Layer 4 decomposed knowledge
-- Layer 5 canonical artifact flow
-- oversight and reconciliation
+- Layer 2 OpenClaw plus QMD hot working memory
+- narrow High-Signal Mamba listening
+- Layer 3 durable semantic memory
+- Layer 4 operational knowledge
+- Layer 5 canonical artifacts when warranted
+- reflection, Dream, oversight, and promotion readiness
 
 Out of scope:
 
-- broad platform comparisons
-- alternative durable-memory foundations
-- a separate external working-memory store beside OpenClaw Layer 2
-- a second canonical artifact system beside Git and approved providers
+- OpenSearch
+- a second graph system
+- a second Graphiti usage pattern
+- pushing budding ideas into Git by default

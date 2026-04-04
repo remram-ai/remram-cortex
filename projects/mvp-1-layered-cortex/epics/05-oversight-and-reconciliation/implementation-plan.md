@@ -16,13 +16,20 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
    - emit review tasks, confidence downgrades, or approval requests
 3. Finalize session-end reconciliation.
    - close evidence packages
-   - resolve tentative notions
+   - resolve tentative QMD notions
    - update Layer 3 trust state
 4. Finalize nightly reconciliation and Dream-like maintenance.
    - deduplication
    - contradiction checks
    - stale-support cleanup
    - higher-confidence consolidation
+   - Layer 3 assisted grouping of Layer 4 workspaces
+   - promotion candidate detection
+5. Add reflection-side QMD cleanup.
+   - prune low-value notions
+   - merge notion duplicates
+   - demote stale notions
+   - keep QMD lean and fast
 
 ## Deliverables
 
@@ -30,6 +37,7 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
 - evidence-escalation path
 - session-end reconciliation loop
 - nightly reconciliation loop
+- QMD cleanup rules
 
 ## Dependencies
 

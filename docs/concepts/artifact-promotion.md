@@ -37,6 +37,13 @@ If the linked knowledge changes later, Dream may redraft the artifact and update
 
 If the provider supports watchable collaborative edits, human changes may trigger re-ingestion or reconciliation back into Cortex rather than silently drifting away from the knowledge graph.
 
+Once promotion happens, the canonical artifact should be treated as a live source, not a dead endpoint.
+
+Meaningful canonical revision must be able to:
+
+- re-enter Layer 4 operational knowledge through reprocessing
+- trigger Layer 3 semantic reconciliation where support, summaries, or supersession are affected
+
 ## Related Concepts
 
 - [Knowledge Object](knowledge-object.md)

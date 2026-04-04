@@ -1,18 +1,23 @@
 # OpenClaw Integration
 
-This document explains how Cortex integrates with OpenClaw.
+This document explains how Cortex integrates with OpenClaw after design lock.
 
 ## Boundary
 
-OpenClaw remains the runtime shell.
+OpenClaw remains the runtime shell and the chosen agentic framework.
 
 Cortex integrates with it through:
 
-- policy composition
-- session-surface observation
-- semantic checkpoint production
-- durable-memory retrieval and writes
-- knowledge tools
+- Layer 1 policy composition
+- Layer 2 hot working-memory augmentation
+- high-signal listening
+- Layer 3 durable-memory retrieval and promotion
+- Layer 4 and Layer 5 knowledge tooling
+
+The architectural rule is:
+
+- do things the OpenClaw way when that path is good enough
+- extend OpenClaw cleanly before replacing it
 
 ## Layer Mapping
 
@@ -20,94 +25,129 @@ Cortex integrates with it through:
 
 Cortex owns:
 
-- role and mode selection
-- tool policy
-- approval and escalation rules
+- role and mode composition
+- approval and escalation posture
 - prompt-budget discipline
+- mutable preference-policy
 
-OpenClaw consumes the resulting policy bundle.
+OpenClaw should own:
 
-The preferred split is:
+- hard runtime-safe defaults
+- hard workflow mechanics
+- hard tool-use enforcement where possible
 
-- hard tool-use enforcement and runtime-safe defaults in OpenClaw config or plugin config
-- higher-order composition and mutable preference-policy in Cortex
+This split should stay hard.
 
 ### Layer 2: Working Memory
 
-OpenClaw owns:
+OpenClaw still owns:
 
 - sessions
 - transcript continuity
-- native compaction
+- compaction
 - runtime execution state
 
-Cortex augments Layer 2 through:
+Cortex now augments Layer 2 with:
 
-- policy-aware context assembly
-- High-Signal Mamba stream production
-- hooks that prepare compressed continuity ahead of compaction pressure
+- `QMD` as the hot working-memory retrieval substrate
+- notion storage in `QMD`
+- high-signal continuity and notion inputs from the Mamba stream
+- policy-aware bounded context assembly
 
-When OpenClaw memory search is used as part of the Layer 2 posture, `QMD` is the preferred engine over the builtin indexer because it adds reranking, query expansion, extra-path indexing, and session transcript indexing while remaining OpenClaw-native.
+This is the locked Layer 2 posture.
+
+It replaces the earlier passive "OpenClaw-native only" wording.
+
+#### QMD Role
+
+`QMD` is part of the hot working-memory surface.
+
+It is used for:
+
+- retrieving hot working continuity
+- storing notions
+- supporting tentative cross-thread continuity
+- staying lightweight and fast through continuous cleanup
+
+`QMD` should not become a shadow durable-memory system.
 
 ## High-Signal Mamba Integration
 
-The Mamba stream should be produced from OpenClaw session evidence.
+The High-Signal Mamba stream should read session activity continuously and emit a typed high-signal channel.
 
-It should support:
+It is:
 
-- optimistic consumption
-- on-demand consumption
-- nightly consumption
+- narrow
+- always-on
+- Layer 2-adjacent
 
-This stream should be treated as continuously available infrastructure, not as an occasional checkpoint job.
+It is not:
 
-It should be ready when OpenClaw needs compact continuity, rather than generated only after the prompt budget is already under stress.
+- a general reflection engine
+- the document decomposition engine
+- the broad artifact interpreter
 
-## Hooks And Checkpoints
+The preferred implementation pattern is:
 
-The main integration points are:
+- a small continuous sensor
+- plus a larger writer or reasoning model only when bounded high-signal windows justify it
+
+## Hooks And Boundaries
+
+The main OpenClaw integration points remain:
 
 - turn-end or after-turn observation
 - compaction boundaries
 - `/stop`
 - `/reset`
-- explicit checkpoint flows
+- explicit checkpoints
 
 At those boundaries, Cortex should be able to:
 
-- close the current evidence window
-- emit semantic checkpoints
-- stage notions
-- reconcile high-signal tentative memory
-- schedule slower maintenance work
-
-OpenClaw's experimental `Dreaming` feature is useful as a conceptual analogue for consolidation cadence, but Cortex should not rely on it as the primary Layer 3 promotion path.
+- emit high-signal continuity objects
+- stage and clean notions in `QMD`
+- reconcile candidate durable memory
+- update Layer 4 operational workspaces
+- schedule slower Dream work
 
 ## Runtime Retrieval Posture
 
 OpenClaw should receive a bounded startup bundle:
 
 - policy
-- working-memory continuity
-- compact durable-memory bundle
-- knowledge pointers, not full corpora
+- Layer 2 hot continuity
+- compact Layer 3 durable-memory orientation
+- Layer 4 knowledge pointers or briefs
 
-Deeper artifact-backed knowledge should remain tool-driven.
+It should not receive:
 
-## Implementation Rule
+- full transcript replay by default
+- whole workspace bodies by default
+- full artifact bodies by default
 
-Do not replace OpenClaw Layer 2 mechanics unless OpenClaw itself becomes the blocker.
+Deeper knowledge remains tool-driven or deliberate.
 
-The default posture is:
+## Dreaming And Other OpenClaw Memory Features
 
-- let OpenClaw do its thing
-- hook into it cleanly
-- add semantic compression and policy above it
+OpenClaw features like `Dreaming` are relevant as adjacent concepts and may inform cadence or UX.
 
-That still implies a custom Cortex context-engine posture.
+They are not the center of Cortex durable memory.
 
-Why:
+Cortex still treats:
 
-- OpenClaw provides the right Layer 2 mechanics
-- Cortex still needs smaller-window bounded assembly and precomputed semantic continuity
-- those are augmentation problems, not reasons to replace OpenClaw session ownership
+- QMD as the hot Layer 2 working-memory substrate
+- Graphiti as the Layer 3 durable-memory center
+
+## Bottom Line
+
+OpenClaw owns runtime mechanics.
+
+Cortex adds:
+
+- policy
+- QMD-backed hot working memory
+- a narrow Mamba listener
+- durable-memory promotion
+- operational knowledge organization
+
+That is the clean framework-first integration posture.

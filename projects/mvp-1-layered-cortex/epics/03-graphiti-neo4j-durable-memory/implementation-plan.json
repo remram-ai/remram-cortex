@@ -1,6 +1,6 @@
 {
   "epic_id": "03_graphiti_neo4j_durable_memory",
-  "objective": "Stand up Layer 3 durable memory with Graphiti and Neo4j, including notion staging and reconciliation.",
+  "objective": "Stand up Layer 3 durable memory with Graphiti and Neo4j, including reconciliation from QMD notions into trusted durable memory.",
   "dependencies": [
     "02_high_signal_mamba_stream",
     "docs/design/graphiti-neo4j-durable-memory.md"
@@ -17,9 +17,9 @@
     },
     {
       "id": "02",
-      "name": "Notion and memory state model",
+      "name": "Durable-memory trust model",
       "outputs": [
-        "candidate notion shape",
+        "QMD notion input shape",
         "tentative and active states",
         "supersession and invalidation states"
       ]
@@ -35,7 +35,7 @@
     }
   ],
   "exit_criteria": [
-    "High-signal notions can appear as tentative cross-thread memory.",
+    "High-signal QMD notions can appear as tentative cross-thread memory.",
     "Reconciliation can promote or reject tentative memory.",
     "Graphiti receives bounded evidence packages rather than raw log dumps."
   ],

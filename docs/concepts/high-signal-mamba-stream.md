@@ -1,167 +1,84 @@
 # High-Signal Mamba Stream
 
-The High-Signal Mamba Stream is Cortex's primary semantic checkpoint stream.
+The High-Signal Mamba Stream is Cortex's always-on high-signal channel.
 
-It is a derived, typed, source-linked stream built from raw evidence.
-
-It is not the raw evidence log itself.
-
-## Purpose
-
-The stream exists so Cortex does not need to replay large raw session logs or artifact histories every time a downstream consumer needs continuity.
-
-It gives the system one compact semantic surface for:
-
-- working-memory assembly
-- tentative cross-thread memory staging
-- oversight
-- artifact-impact hints
-- nightly reconciliation
+It is a narrow Layer 2-adjacent listener built from session activity.
 
 ## What It Is
 
-The stream should be treated as:
+The stream is:
 
-- high signal
-- compressed
+- always-on
 - typed
-- rebuildable
 - source-linked
-- operational
+- narrow by design
+- consumed by downstream systems
 
-The best mental model is:
+It is not the raw evidence log itself.
 
-- raw evidence = journal or canonical source
-- High-Signal Mamba Stream = materialized semantic checkpoint stream
+## What It Does
 
-## What It Is Not
+The stream reads session activity and emits a typed high-signal channel for:
 
-It is not:
+- working-memory assembly
+- notion updates
+- oversight
+- reflection
 
-- a second authority
-- a freeform prose summary layer
-- a replacement for canonical artifacts
-- a replacement for raw runtime evidence
+That is all.
 
-If the compression logic changes, the stream should be regenerable from the underlying evidence.
+## What It Does Not Do
 
-## Inputs
+The stream is not:
 
-The stream is primarily derived from:
+- a universal reasoning layer
+- the broad reflection engine
+- the document decomposition engine
+- the full artifact interpretation engine
 
-- OpenClaw session evidence
-- tool results and agent actions
-- checkpoint or compaction boundaries
-- canonical artifact revisions when they are ingested or updated
+Do not describe it as doing broad magical system work.
 
-Raw runtime evidence will usually be retained in `Postgres`.
+## Implementation Pattern
 
-Canonical document evidence will usually remain in `Git` or the provider source.
+The strongest implementation pattern is:
 
-## Typical Payload
+- a small always-on listener or sensor
+- plus larger bounded downstream writers only when a high-signal window is worth further work
 
-A High-Signal Mamba Stream item may contain:
+## Relationship To Layer 2
 
-- active goals
-- open loops
-- current assumptions
-- recent decisions
-- entities and threads in focus
-- handoff state
-- candidate notions
-- artifact-impact hints
-- oversight flags
-- source references back to raw evidence or canonical revisions
+The stream is Layer 2-adjacent.
 
-These payloads should be typed rather than treated as generic summary text.
+It helps:
 
-## Consumption Modes
+- keep hot continuity usable
+- feed notions in `QMD`
+- support bounded context assembly
 
-The same stream should support multiple service levels:
+It does not replace `QMD`.
 
-- optimistic
-  - near-time, best effort, cheap
-- on-demand
-  - pulled when a thread or workflow needs it
-- nightly
-  - slower, deeper, consistency-oriented
+It does not replace OpenClaw sessions.
 
-This lets Cortex use one semantic bus instead of inventing separate systems for each timing mode.
+## Relationship To Reflection
 
-## Relationship To Working Memory
+Reflection may consume the stream.
 
-Working memory should remain anchored on the OpenClaw session surface.
+That does not make the stream the reflection engine.
 
-The High-Signal Mamba Stream improves that layer by giving the context engine compact continuity objects instead of forcing raw transcript replay.
+The stream produces signal.
 
-## Relationship To Durable Memory
-
-The stream is the default staging surface for Layer 3 memory.
-
-It should usually produce:
-
-- candidate notions
-- tentative beliefs
-- support signals
-
-These should not become trusted durable memory just by existing.
-
-By default, they should be reconciled at:
-
-- session end
-- checkpoint hooks
-- nightly maintenance
-
-High-signal items may be written early for cross-thread continuity, but they should be marked as:
-
-- `tentative`
-- `low_confidence`
-- `unreconciled`
-
-## Relationship To Oversight
-
-Oversight should consume the High-Signal Mamba Stream by default.
-
-It can escalate to raw evidence when:
-
-- confidence is low
-- impact is high
-- approval is required
-- provenance is disputed
+Reflection decides what to do with it.
 
 ## Relationship To Artifacts
 
-Document artifacts should follow the same high-signal pattern.
+The stream may emit signal that later helps artifact-related workflows.
 
-The durable-memory layer should usually receive:
-
-- one compact summary node or episode-level representation
-- a pointer to the canonical artifact revision
-- only extracted Layer 3 appropriate standalone facts or beliefs
-
-The full document body should remain in the canonical artifact layer.
-
-## Relationship To Evidence Packages
-
-The stream should point back to closed evidence packages or canonical revisions rather than becoming a second authority.
-
-That is what makes it:
-
-- rebuildable
-- auditable
-- safe to consume optimistically
+It should not itself be described as doing full document parsing or broad artifact decomposition.
 
 ## Design Principle
 
-Most consumers should subscribe to the High-Signal Mamba Stream.
+Keep Mamba narrow.
 
-Very few consumers should read raw evidence directly.
+Let downstream systems consume the signal.
 
-That keeps Cortex efficient on smaller-window models while preserving a path back to exact evidence when it matters.
-
-## Related Concepts
-
-- [Evidence Package](evidence-package.md)
-- [Notion](notion.md)
-- [Oversight](oversight.md)
-- [Reflection](reflection.md)
+Do not let the architecture blur that boundary.

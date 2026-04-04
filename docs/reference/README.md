@@ -11,6 +11,7 @@ Historical fit analyses and superseded reference packages were moved to the arch
 - [OpenClaw Integration Notes](openclaw-integration-notes.md)
 - [Graphiti And Neo4j Notes](graphiti-neo4j-notes.md)
 - [Evidence, Knowledge, And Artifacts](evidence-knowledge-and-artifacts.md)
+- [Mamba And SSM Stream Notes](mamba-ssm-stream-notes.md)
 
 ## Use
 

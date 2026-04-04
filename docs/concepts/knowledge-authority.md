@@ -9,10 +9,10 @@ In Remram, Cortex is that authority.
 Cortex owns:
 
 - Layer 3 durable-memory contracts
-- notion staging and reconciliation
+- notion governance and reconciliation
 - semantic retrieval over durable memory
 - reflection and maintenance
-- the split between decomposed knowledge and canonical artifacts
+- the split between operational knowledge and canonical artifacts
 
 ## What Cortex Does Not Own
 
@@ -39,7 +39,7 @@ Cortex prevents that drift by enforcing the layer split:
 
 1. working memory is operational
 2. durable memory is semantic
-3. decomposed knowledge is retrieval-oriented
+3. operational knowledge bodies remain operational
 4. canonical artifacts remain ground truth
 
 ## Related Concepts

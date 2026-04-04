@@ -1,76 +1,75 @@
 # Reflection
 
-Reflection is the branching post-runtime interpretation layer.
+Reflection is the near-time interpretation and maintenance path.
 
-It is how runtime evidence becomes:
+It is how Cortex turns high-signal runtime activity into staged memory, Layer 4 workspace updates, and hot-memory cleanup.
 
-- staged notions for durable memory
-- artifact impacts
-- semantic checkpoints and continuity compression
-- governed preference-policy updates
+## What Reflection Does
 
-Oversight observes these products in parallel rather than replacing them.
+Reflection is allowed to:
 
-## Trigger
+- update or stage notions
+- prune notions
+- merge notions
+- demote stale notions
+- expire low-value notions
+- update Layer 4 operational workspaces
+- use Layer 3 relationships to help organize Layer 4 work
+- detect promotion candidates
 
-Reflection runs after execution boundaries such as:
+## What Reflection Reads
 
-- turn end
-- session end
-- explicit checkpoints
-- compaction-related boundaries when needed
+Reflection may read:
 
-## Inputs
-
-Reflection should read:
-
-- raw evidence from the runtime evidence log
+- raw runtime evidence
 - the High-Signal Mamba stream
-- closed evidence packages when a boundary has already been sealed
-- existing durable memory when reconciliation requires it
-- artifact support when the update touches Layer 4 or Layer 5
-
-## Outputs
-
-Reflection should branch one evidence feed into:
-
-1. memory updates
-2. artifact impacts
-3. context compression products
-4. governed preference-policy updates
-
-Oversight should observe the same semantic products in parallel.
-
-## Memory Path
-
-The normal reflection memory path is:
-
-1. derive a candidate notion from the semantic checkpoint stream
-2. stage it
-3. optionally expose it early as tentative cross-thread memory if the signal is high
-4. reconcile it later against stronger evidence
-
-## Compression Path
-
-Reflection is also where the High-Signal Mamba stream is produced.
-
-That stream exists so most consumers do not need raw evidence directly.
+- Layer 2 notions in `QMD`
+- existing Layer 3 semantic structure
+- Layer 4 workspace state
 
 ## What Reflection Does Not Do
 
-Reflection does not make every semantic output automatically durable.
+Reflection is not:
 
-It also does not replace the slower reconciliation and maintenance work of the dream cycle.
+- the always-on listener
+- the only long-horizon maintenance path
+- a reason to turn Layer 3 into a body store
+
+Mamba emits signal.
+
+Reflection consumes signal.
+
+Dream does the slower consolidation pass.
+
+## Reflection And Layer 3
+
+Reflection is allowed to use Layer 3 relationships to help Layer 4 organize itself.
+
+That includes:
+
+- identifying related threads
+- identifying related workspaces
+- detecting that several threads belong to the same emerging concept
+- suggesting that a workspace is becoming a promotion candidate
+
+The bodies remain in Layer 4.
+
+## Reflection And Layer 2
+
+Reflection is explicitly allowed to maintain the health of Layer 2.
+
+This is where:
+
+- notion cleanup
+- notion pruning
+- notion merging
+- hot-memory hygiene
+
+should happen.
 
 ## Related Concepts
 
-- [Knowledge Object](knowledge-object.md)
 - [Notion](notion.md)
-- [Evidence Package](evidence-package.md)
-- [Semantic Signature](semantic-signature.md)
-- [Typed Signals](typed-signals.md)
-- [Artifact Intake](artifact-intake.md)
-- [Dream Cycle](dream-cycle.md)
-- [Artifact Promotion](artifact-promotion.md)
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
-- [Oversight](oversight.md)
+- [Dream Cycle](dream-cycle.md)
+- [Evidence Package](evidence-package.md)

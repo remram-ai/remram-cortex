@@ -1,113 +1,221 @@
 # Knowledge And Artifact Architecture
 
-This document defines Layers 4 and 5.
+This document defines the locked relationship between Layer 4 and Layer 5.
 
-## Layer 4: Decomposed Artifact Knowledge
+## Core Rule
 
-Layer 4 is the operational knowledge layer.
+Layer 4 is the operational knowledge authority.
 
-It holds:
+Layer 5 is the canonical publication authority when canon is actually warranted.
 
-- decomposition records
-- typed slices
-- embeddings
-- lexical fields
-- source-linked offsets
-- revision-aware retrieval payloads
+That is the central clarification in this design pass.
 
-The default substrate is `Postgres + pgvector`.
+## Layer 4: Operational Knowledge Authority
 
-This is still the default starting point, not a dogmatic end state.
+Layer 4 is not merely a projection of canonical artifacts.
 
-If transcript-heavy and document-heavy retrieval clearly outgrow the one-store posture, `OpenSearch` is the first likely escalation path for Layer 4.
-
-## Layer 5: Canonical Artifacts
-
-Layer 5 is the ground-truth layer.
-
-It holds:
-
-- Git-backed canonical artifacts
-- provider-backed authoritative source documents
-- publication-grade redrafts
-- revision history
-
-Layer 5 is where publication truth lives.
-
-## Design Rule
-
-Layer 4 can move ahead of Layer 5 during active work.
-
-That is allowed only if:
-
-- the artifact anchor is explicit
-- the canonical revision is known
-- dirty-state tracking is explicit
-- publication and re-ingestion can catch back up later
-
-## Artifact Indexing Pattern
-
-Artifacts should be treated the same way session evidence is treated:
-
-- keep the raw source in the canonical layer
-- build decomposed operational knowledge separately
-- send only compact summary + pointer + Layer 3 appropriate beliefs into durable memory
+It is authoritative for operational content.
 
 That means:
 
-- full documents stay in Layer 5
-- retrieval-ready slices live in Layer 4
-- durable memory receives only what is appropriate for semantic memory
+- if there is no Layer 5 artifact, Layer 4 is the authority for that content
+- if there is a Layer 5 artifact, Layer 4 is still the authority for active work and retrieval
+- Layer 5 becomes relevant when publication-grade canon is required
+
+Layer 4 should hold:
+
+- incubation workspaces
+- working synthesis bodies
+- reference-derived knowledge bodies
+- decomposed artifact knowledge
+- active operational document state
+- retrieval-ready operational bodies
+
+## Layer 4 Content Classes
+
+Layer 4 should explicitly support at least three content classes:
+
+### 1. Working Or Incubation Workspaces
+
+These are the medium-horizon operational bodies that may span many threads.
+
+They are:
+
+- incomplete
+- unstable
+- evolving
+- operationally authoritative
+
+They are not bugs in the architecture.
+
+They are a core problem the architecture is explicitly solving.
+
+### 2. External Reference Material
+
+External materials are distinct from authored canonical artifacts.
+
+Examples:
+
+- uploaded PDFs used for reference
+- podcast transcripts
+- external articles
+- factual sources
+- research materials the user does not own
+
+These should not automatically become Git-backed canonical artifacts.
+
+Instead, Layer 4 may hold:
+
+- summaries
+- linked reference records
+- extracted operational knowledge
+- retrieval-ready material
+
+Layer 3 stores only the durable meaning that matters.
+
+### 3. Authored Artifact Knowledge
+
+These are operational bodies connected to things that may eventually become canonical artifacts.
+
+Examples:
+
+- business-plan workspaces
+- draft product direction notes
+- evolving dossiers
+- authored synthesis documents
+
+These may later promote into Layer 5 when canonical publication becomes warranted.
+
+## Layer 5: Canonical Publication Truth
+
+Layer 5 exists for publication-grade canonical artifacts.
+
+It is not the default destination for every useful idea.
+
+It should hold:
+
+- Git-backed canonical artifacts
+- provider-backed canonical records when appropriate
+- reviewable published bodies
+- canonical revision history
+
+Layer 5 is used only when canonical authorship and revision really matter.
 
 ## Postgres Role
 
-`Postgres` is doing three jobs in the current design:
+`Postgres` is the operational middle-layer authority for now.
+
+It should cover:
 
 - runtime evidence authority
-- control-plane state
+- Layer 4 workspace bodies
+- reference summaries and links
 - decomposed artifact knowledge
+- retrieval metadata
+- workflow fields
+- dirty-state and sync tracking
 
-This is acceptable because those are all operational, queryable, revision-aware surfaces.
+This is why `OpenSearch` is not in the current architecture.
 
-It also keeps lexical and vector retrieval close together in one base platform before introducing a separate search engine.
+`OpenSearch` is attractive for some retrieval slices, but it is too small a slice of the total system problem to justify another standing service right now.
 
-## Runtime Evidence Retention Tiers
+## No OpenSearch For Now
 
-Runtime evidence should not stay in hot `Postgres` forever.
+Make this explicit:
 
-The intended retention posture is:
+- do not add `OpenSearch` now
+- do not design around a standing `OpenSearch` service
+- keep the architecture centered on fewer moving pieces
 
-1. hot operational evidence in `Postgres`
-2. age-based migration to colder storage
-3. retained pointers and metadata in `Postgres` for audit and replay lookup
+If artifact retrieval ever becomes dominant enough to justify a dedicated search substrate later, that can be reconsidered then.
 
-Cold storage can be:
+It is not part of the active stack or MVP.
 
-- filesystem-backed immutable evidence bundles
-- object storage
-- another low-cost archival target
+## Dirty-State And Sync Rules
 
-The important rule is:
+Because Layer 4 is operationally authoritative and Layer 5 is canon only when applicable, the gap between them must be governed explicitly.
 
-- keep lookup metadata and stable ids hot
-- move bulky raw evidence cold once access patterns justify it
+Useful fields include:
 
-## Git Role
+- `dirty`
+- `pending_redraft`
+- `unsynced_to_canonical`
+- `redraft_ready`
+- `published`
 
-`Git` remains the preferred canonical artifact posture because it gives:
+These fields explain whether:
 
-- reviewable revisions
-- clean publication
-- explicit redraft flow
-- easy inspection
+- Layer 4 is ahead of Layer 5
+- redraft is needed
+- publication is pending
+- Layer 5 exists at all
 
-## Publication Cycle
+## Budding Ideas Do Not Jump Straight To Git
 
-The publication loop is:
+This is a hard architecture rule.
 
-1. decomposition changes mark the anchor dirty
-2. redraft gathers latest Layer 4 knowledge and Layer 3 memory support
-3. review or approval happens if needed
-4. canonical artifact is updated
-5. new revision is re-ingested
-6. stale support in Layer 3 is reconciled
+A spark of an idea may begin as a sentence and evolve across many threads.
+
+That should first become:
+
+- a Layer 3 concept relationship network
+- a Layer 4 evolving workspace body
+
+It should not immediately become:
+
+- a Git-backed canonical artifact
+
+Layer 5 is for canonical publication once the work is actually ready.
+
+## Layer 3 Relationship To Layer 4
+
+Layer 3 helps Layer 4 organize itself.
+
+It can help identify:
+
+- that many threads belong to the same emerging concept
+- that multiple workspaces should merge
+- that a workspace is becoming a promotion candidate
+- that certain references support the same operational body
+
+Layer 4 may receive connector fields such as:
+
+- `idea_cluster_id`
+- `related_workspace_ids`
+- `candidate_for_promotion`
+- `promotion_readiness`
+
+The bodies stay in Layer 4.
+
+## Canonical Artifact Pattern
+
+When a Layer 5 artifact exists, the pattern should be:
+
+1. Layer 4 remains the operational working body
+2. Layer 3 stores the durable semantic truth and support structure around it
+3. Layer 5 stores the canonical publication body
+4. dirty-state and sync rules govern the gap
+
+## Bottom-Up Canonical Reprocessing Loop
+
+Promotion to Layer 5 is not a one-way archival move.
+
+Once a Layer 4 workspace is promoted, Layer 5 becomes the canonical source for that artifact.
+
+After that point, meaningful Layer 5 revision must be able to trigger:
+
+1. re-ingestion back into Layer 4 so operational knowledge stays aligned with canonical truth
+2. reconciliation of Layer 3 summaries, support links, supersession, and related semantic structure
+3. dirty-state clearing or re-marking depending on whether the canonical revision resolves or deepens the gap
+
+This rule prevents Layer 5 from becoming dead storage.
+
+Canonical artifacts must remain able to update lower operational layers through reprocessing.
+
+## Bottom Line
+
+Layer 4 is the operational knowledge authority.
+
+Layer 5 is canonical publication truth only when applicable.
+
+External references, incubation workspaces, and authored operational bodies all belong first-class inside Layer 4, without requiring a sixth layer.

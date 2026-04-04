@@ -2,1197 +2,630 @@
 
 ## Purpose
 
-This document defines the layered memory architecture for Remram Cortex.
+This document defines the locked layered architecture for Remram Cortex.
 
-The goal is to stop forcing all memory, context, and knowledge behavior through one substrate or one mental model.
+The architecture is no longer trying to force runtime continuity, durable memory, operational knowledge, and canonical artifacts through one substrate.
 
-The system should instead operate as a coordinated stack of distinct layers under a single knowledge authority.
+It is now organized around five explicit layers with sharper authority boundaries and cleaner lifecycle rules.
 
-The core shift is:
-
-- not one storage model
-- not one memory product doing every job
-- one authority coordinating multiple specialized layers
-
-The correct framing is:
+The governing phrase remains:
 
 **one authority, multiple memory surfaces**
 
 More precisely:
 
-**Cortex is a single knowledge authority coordinating multiple specialized layers with different jobs**
+**Cortex is one knowledge authority coordinating five layers that each own a different kind of truth.**
 
 ## Executive Summary
 
-The system should separate:
+The active layer model is:
 
-1. `policy`
-2. `working memory`
-3. `durable memory`
-4. `decomposed artifact knowledge`
-5. `canonical artifacts`
+1. `Policy`
+2. `Working Memory`
+3. `Durable Memory`
+4. `Operational Knowledge`
+5. `Canonical Artifacts`
 
-This gives the full stack:
+Those layers now have explicit authority boundaries:
 
-**policy -> working memory -> durable memory -> decomposed artifact knowledge -> canonical artifacts**
+- Layer 1 owns behavioral truth
+- Layer 2 owns hot working continuity
+- Layer 3 owns durable semantic truth
+- Layer 4 owns operational knowledge truth
+- Layer 5 owns canonical publication truth
 
-This architecture is meant to support:
+This architecture is designed to support:
 
-- low-latency live work during active sessions
-- durable memory that compounds over time
-- artifact-backed knowledge with clear temporal authority
-- explicit separation between policy, working state, memory, and knowledge
-- clean redraft and publication workflows for collaborative artifact evolution
-- bounded runtime injection rather than prompt sprawl
+- live bounded runtime work
+- cross-thread continuity without pretending it is already trusted truth
+- durable semantic memory with lineage and supersession
+- medium-horizon evolving workspaces that span many threads
+- clean separation between operational knowledge and canonical publication
+- fewer standing services and less architecture tax
 
-## What This Document Does And Does Not Decide
+## OpenClaw Selection Principle
 
-This document defines the architecture and layer contracts.
+`OpenClaw` was not chosen because Cortex compared orchestrators and decided it was the abstract best chat shell.
 
-It is intentionally more stable than any one technology document.
+It was chosen because it is the agentic framework Remram intends to build around.
 
-The current chosen stack is documented separately in:
+That means the architectural rule is:
 
-- [Technology Stack](technology-stack.md)
-- [OpenClaw Integration](openclaw-integration.md)
-- [Graphiti + Neo4j Durable Memory](graphiti-neo4j-durable-memory.md)
-- [Knowledge And Artifact Architecture](knowledge-and-artifact-architecture.md)
+- do things the OpenClaw way when that path is good enough
+- extend OpenClaw cleanly before replacing it
+- treat memory and knowledge as add-ons to the framework boundary, not as the reason to swap frameworks
 
-## Design Principles
-
-1. Do not force all layers into one substrate.
-2. Keep policy separate from memory.
-3. Keep working memory separate from durable memory.
-4. Let durable memory own the reasoning graph.
-5. Keep canonical artifacts authoritative and versioned.
-6. Allow decomposed artifact knowledge to move ahead of canonical artifacts during active work.
-7. Use one stable Cortex identity across all layers.
-8. Do not make every decomposed object a graph node.
-9. Run memory updates and artifact-impact updates from the same evidence feed.
-10. Treat redraft and publication as a later pipeline, not as the source of live thought.
-11. Re-ingest from canonical artifact revisions after publication.
-12. Keep deep knowledge retrieval tool-based or deliberate rather than injected by default.
-
-## Layer Overview
+## Layer Model
 
 ### Layer 1: Policy
 
-Policy defines how the system should behave.
+Layer 1 is custom policy.
 
-This is not memory. It is configuration, control, and guardrail logic.
+It is intentionally small compared with the broader operational knowledge surfaces.
 
-It should contain:
+It owns:
 
-- role definitions
-- persona definitions
+- role and mode composition
 - tool-use rules
-- escalation rules
-- routing rules
-- safety and permission rules
-- mode packs such as coding mode, research mode, customer mode, or strategy mode
-- prompt assembly discipline
-- token budget policy
-- reflection and artifact workflow policy
+- approval and escalation posture
+- prompt-budget discipline
+- mutable preference-policy through governed workflows
 
-Policy is relatively stable compared with live context and learned memory.
+Layer 1 is not a memory layer.
 
-It should remain in orchestration and configuration space.
+Hard runtime and workflow enforcement should stay as close as possible to OpenClaw agent or plugin configuration.
 
-Policy is not uniformly mutable.
+Cortex policy should focus on:
 
-It should be split conceptually into:
-
-- stable access and safety policy
-- mutable preference-policy and operating preferences
-
-Mutable preference-policy can change through a governed reflection path.
-
-Access policy should require explicit approval-oriented workflows.
+- composition
+- routing
+- approval posture
+- preference-policy
+- prompt-budget discipline
 
 ### Layer 2: Working Memory
 
-Working memory is the hot, temporary, low-latency runtime layer.
+Layer 2 is the hot working-memory layer.
 
-It exists to support live execution, active conversation continuity, and in-flight agent coordination.
+It remains anchored on OpenClaw runtime sessions, transcript continuity, and execution mechanics.
 
-It should contain:
+The locked design change is:
 
-- current task state
-- active session continuity
-- rolling summaries
-- recent handoff notes
-- temporary assumptions
-- recent tool outcomes
-- branch-local context
-- in-progress planning state
-- streamed compression products from chat or agent loops
+- Layer 2 uses `QMD` as the hot working-memory retrieval substrate
+- notions live in `QMD`
+- `QMD` is part of the hot working-memory surface
+- `QMD` must be kept lean through continuous cleanup
 
-Working memory is:
+Layer 2 owns:
+
+- live continuity
+- hot retrieval over recent session and related thread context
+- current task and handoff state
+- transient working memory objects
+- notions before they are reconciled into Layer 3
+
+Layer 2 does not own durable truth.
+
+It is allowed to be:
 
 - fast
+- lossy
 - mutable
-- local to the active run or session
-- low-latency
-- allowed to be lossy
-- optimized for runtime usefulness, not historical perfection
+- aggressively pruned
 
-It is not the durable source of truth.
+#### QMD Role
 
-### Working Memory Posture
+`QMD` is not a giant second memory architecture.
 
-In OpenClaw terms, working memory should be anchored on the native session surface.
+It is the pragmatic hot-memory choice inside the OpenClaw-centered stack.
 
-That means:
+The reason to choose it explicitly is:
 
-- the session transcript remains the evidence surface
-- OpenClaw remains the primary working-memory implementation
-- working continuity is session-scoped by default
-- Cortex augments that layer through policy and semantic compression rather than replacing it
+- it stays within the OpenClaw posture
+- it gives a better working-memory retrieval surface than the builtin engine
+- it is a natural home for notions and other hot continuity objects
 
-The system should not assume that raw session replay is the working-memory product.
+#### Notions In Layer 2
 
-Instead, the context engine should assemble bounded working memory from:
+A notion is a staged candidate durable memory.
 
-- recent session evidence
-- rolling continuity summaries
-- active runtime state
-- compressed continuity objects
+In the locked design, notions are physically part of the Layer 2 hot working-memory surface through `QMD`.
 
-The raw session evidence should remain a journal, not the main consumer surface.
+They should be:
 
-The main operational surface should be a derived semantic checkpoint stream built from that evidence.
+- fast to retrieve
+- fast to expire
+- fast to merge
+- fast to invalidate
+- visible cross-thread only under tighter rules
 
-An external hot store should not be assumed.
+They are not silently authoritative durable memory.
 
-The default posture should be to let OpenClaw own working memory and to augment it through semantic compression and policy-aware assembly.
+#### Mamba In Layer 2
 
-### Context Compression
+`Mamba` is narrow by design.
 
-Working memory quality should improve through rolling compression.
+It is:
 
-This is the best place for a Mamba-style or other compression-oriented model.
+- a small always-on listener
+- a Layer 2-adjacent high-signal producer
+- a stream that reads session activity and emits a typed high-signal channel
 
-That compression layer should produce compact continuity objects such as:
+It is not:
 
-- active goals
-- open loops
-- current assumptions
-- recent decisions
-- active entities and threads
-- handoff state
-- candidate notions
-- artifact-impact hints
-- oversight flags
+- a universal reflection engine
+- the document decomposition engine
+- a broad semantic authority
 
-This is how the system gets an effectively larger context window without pretending the model has infinite prompt budget.
+Its job is to keep a narrow, continuous, high-signal stream available for downstream consumers.
 
-### Raw Evidence And Semantic Checkpoint Model
+#### Reflection And Layer 2 Cleanup
 
-The architecture should distinguish clearly between:
+Reflection is allowed to maintain the health of Layer 2.
 
-- raw evidence
-- the semantic checkpoint stream
+That includes:
 
-For runtime conversations and agent activity:
+- pruning notions
+- merging notions
+- demoting stale notions
+- expiring low-value notions
+- keeping `QMD` lean and fast
 
-- raw evidence should close into an immutable evidence record, typically in `Postgres`
-- the semantic checkpoint stream should be the primary operational consumer surface
-
-For documents and other canonical artifacts:
-
-- raw evidence should remain the canonical artifact body and revision history, typically in `Git`
-- derived semantic checkpoints should still be the primary operational consumer surface
-
-The best mental model is:
-
-- raw evidence = journal or canonical source
-- semantic checkpoint stream = materialized semantic checkpoint
-
-Consumers should prefer the semantic checkpoint stream by default and escalate back to raw evidence only when exact verification is needed.
+This is a first-class part of the architecture, not an afterthought.
 
 ### Layer 3: Durable Memory
 
-Durable memory is the real memory authority.
+Layer 3 is the durable semantic authority.
 
-It stores the structured, evolving, long-lived knowledge that should persist beyond sessions, compaction, resets, and transient runtime noise.
+It is implemented as one `Graphiti` memory system on `Neo4j`.
 
-It should contain:
+There is no second Graphiti and no separate "concept mapping graph."
 
-- preferences
-- constraints
-- decisions
-- corrections
-- beliefs
-- recurring patterns
-- project truths
-- customer posture summaries
-- user operating profile
-- relationship-bearing knowledge
-- other durable memory objects
+Layer 3 naturally owns:
 
-Durable memory is:
+- concepts
+- identities
+- relationships
+- support
+- supersession
+- invalidation
+- continuity across threads and sessions
 
-- structured
-- persistent
-- provenance-aware
-- confidence-aware
-- relationship-capable
-- incrementally updated
-- reconciled over time
+Layer 3 stores:
 
-This is where reflection and Dream-like maintenance belong.
+- durable concepts
+- stable relationships
+- semantic continuity
+- support and provenance links
+- promotion readiness signals
+- concept-level clustering and identity
 
-### Layer 4: Decomposed Artifact Knowledge
+Layer 3 does not store:
 
-This is the machine-usable derived layer built from canonical artifacts.
+- transcript bodies
+- workspace bodies
+- document bodies
+- full operational knowledge content
 
-It is the operational knowledge layer the system can inspect, cite, retrieve from, and reason over at higher fidelity without pulling whole source artifacts into runtime.
+Hard rule:
 
-It should contain:
+**Layer 3 stores concepts and semantic relationships, not whole content bodies.**
 
-- typed slices
-- extracted structures
-- sections
-- entities
-- fields
-- embeddings
-- lexical retrieval surfaces
-- source-linked offsets and locators
-- decomposition metadata
-- retrieval-ready payloads
+#### One Graphiti Memory System
 
-This layer is allowed to be mutable in near time and may temporarily move ahead of the canonical artifact during active work.
+This means `Graphiti` can naturally represent:
 
-It is not the final published artifact truth.
+- several threads belonging to one budding business idea
+- several workspaces being related or merged
+- one draft superseding another
+- certain references supporting a concept
+- a workspace becoming a candidate for promotion
 
-It is derived working knowledge.
+Useful type distinctions inside Layer 3 may include:
 
-### Layer 5: Canonical Artifacts
+- `concept`
+- `idea_cluster`
+- `workspace_anchor`
+- `artifact_anchor`
+- `reference_anchor`
 
-Canonical artifacts are the official human-facing or system-facing source objects.
+These are not separate subsystems.
 
-Examples:
+They are type distinctions inside one Layer 3 graph.
 
-- Markdown specs
-- plans
-- research notes
-- CRM dossiers
-- project records
-- meeting notes
-- source documents
-- exported artifacts
+#### Trust Model
 
-Git is the preferred temporal authority for official artifacts when that storage posture fits.
+Graphiti gives the architecture:
 
-Canonical artifacts are:
+- lineage
+- support
+- point-in-time semantics
+- invalidation
+- supersession
 
-- versioned
-- reviewable
-- historically traceable
-- human-manageable
-- publication-oriented
-
-## Unified Authority Model
-
-The system still requires a single authority boundary.
-
-That boundary remains Cortex.
-
-But Cortex should be understood as a coordinating authority over multiple specialized memory and knowledge surfaces, not as one database or one index.
-
-The correct statement is:
-
-**Cortex is a single knowledge authority with multiple internal storage layers, not a single storage substrate.**
-
-This allows:
-
-- policy to remain stable and explicit
-- working memory to remain fast and cheap
-- durable memory to remain structured and graph-aware
-- artifacts to remain versioned and authoritative
-- decomposition to remain retrieval-optimized
-
-without split-brain ownership.
-
-## Layer Ownership Rules
-
-Each layer must own a different class of truth.
-
-### Policy Owns
-
-- behavior rules
-- routing rules
-- mode overlays
-- token and tool policy
-
-### Working Memory Owns
-
-- immediate continuity
-- runtime coordination state
-- hot summaries
-- active execution state
-
-### Durable Memory Owns
-
-- learned long-lived memory objects
-- relationship-bearing memory structures
-- corrections and supersession
-- the reasoning graph
-
-### Canonical Artifacts Own
-
-- official document body
-- reviewable revision history
-- publication truth
-
-### Decomposed Artifact Knowledge Owns
-
-- retrieval-ready machine views of artifacts
-- typed slices and extracted structure
-- embeddings and lexical surfaces
-- source-linked derived payloads
-
-## Cross-Layer Identity Model
-
-### Core Rule
-
-One real-world thing gets one stable Cortex identity even if it has multiple storage representations.
-
-The identity is not:
-
-- the Git path
-- the graph node id
-- the vector row id
-- the provider-native file id
-
-Instead, Cortex assigns a stable anchor identity.
-
-### Anchor Identity
-
-A top-level anchor object represents the smallest cross-layer unit worthy of stable identity.
-
-Examples:
-
-- a document
-- a repo
-- a customer dossier
-- a conversation thread summary object
-- a meeting bundle
-- a workspace page
-- a ticket
-- a project artifact
-
-Suggested fields:
-
-- `anchor_id`
-- `anchor_kind`
-- `provider_kind`
-- `provider_ref`
-- `canonical_uri`
-- `current_revision`
-- `title`
-- `scope`
-- `status`
-
-### Child Decomposition Objects
-
-Decomposition objects point back to the anchor.
-
-Suggested fields:
-
-- `decomposition_id`
-- `anchor_id`
-- `revision_id`
-- `kind`
-- `source_locator`
-- `typed_payload`
-- `embedding_ref`
-- `lexical_index_fields`
-- `extraction_version`
-
-### Memory Objects
-
-Memory objects may reference one or more anchors without becoming the anchors themselves.
-
-Suggested fields:
-
-- `memory_id`
-- `statement`
-- `kind`
-- `anchor_ids[]`
-- `confidence`
-- `freshness`
-- `provenance`
-- `graph_links`
-
-### Identity Principle
-
-Every anchor gets identity.
-
-Some anchors get graph nodes.
-
-Children inherit linkage.
-
-Not every decomposed object becomes a graph node.
-
-## Layer Interfaces
-
-The architecture only stays clean if the interfaces are explicit.
-
-The following interfaces are the minimum layer contracts Cortex must own.
-
-### 1. Policy Interface
-
-This interface assembles runtime behavior overlays.
-
-Core responsibilities:
-
-- resolve base role
-- resolve mode packs
-- resolve safety and routing policy
-- expose bounded startup overlays
-
-Suggested operations:
-
-- `resolve_policy(run_context) -> policy_bundle`
-- `resolve_mode_overlays(run_context) -> overlays[]`
-- `resolve_tool_policy(run_context) -> tool_policy`
-- `resolve_prompt_budget(run_context) -> token_budget_policy`
-
-Write authority:
-
-- human editors
-- system configuration workflows
-
-Direct writes from memory or artifact layers are not allowed.
-
-### 2. Working Memory Interface
-
-This interface owns hot session continuity and active runtime coordination.
-
-Core responsibilities:
-
-- store active continuity state
-- expose recent high-signal runtime context
-- maintain queue and handoff state
-- support bounded hot retrieval
-
-Implementation note:
-
-- this interface should be anchored on the OpenClaw session surface
-- OpenClaw should remain the primary working-memory implementation
-- Cortex should contribute policy overlays and Mamba-style semantic compression
-- external hot storage is not assumed
-
-Suggested operations:
-
-- `append_event(session_id, event)`
-- `get_hot_window(session_id, limit) -> events[]`
-- `get_working_snapshot(session_id) -> working_snapshot`
-- `put_working_summary(session_id, summary)`
-- `put_runtime_state(session_id, state_patch)`
-- `get_runtime_state(session_id) -> state`
-- `ack_graphization(cursor_or_event_id)`
-
-Write authority:
-
-- runtime orchestrator
-- compression sidecar
-- reflection queue handlers
-
-Durable-memory systems must not treat this layer as canonical truth.
-
-### 3. Raw Evidence Interface
-
-Raw evidence is the canonical recovery and audit surface.
-
-It is not the main subscribeable bus.
-
-Core responsibilities:
-
-- append immutable evidence records
-- support replay and audit
-- support checkpoint close and evidence packaging
-- support exact verification when semantic outputs are disputed
-
-Suggested operations:
-
-- `append_evidence(event)`
-- `close_evidence_window(scope_id) -> evidence_record`
-- `get_evidence(evidence_id) -> evidence_record`
-- `fetch_evidence(range_or_filter) -> evidence[]`
-- `replay(range_or_filter) -> events[]`
-
-### 4. Semantic Checkpoint Stream Interface
-
-This is the main operational stream for downstream consumers.
-
-It is derived from raw evidence and rebuildable from it.
-
-Core responsibilities:
-
-- emit typed semantic checkpoints
-- preserve source references back to raw evidence
-- support optimistic, on-demand, and nightly consumption
-- support notion staging and lightweight oversight
-
-Suggested operations:
-
-- `append_checkpoint(checkpoint) -> checkpoint_id`
-- `read_checkpoints(cursor, filters) -> checkpoints[]`
-- `get_checkpoint(checkpoint_id) -> checkpoint`
-- `mark_checkpoint_state(checkpoint_id, state)`
-
-Suggested checkpoint states:
-
-- `captured`
-- `continuity_available`
-- `notion_staged`
-- `artifact_impact_applied`
-- `oversight_reviewed`
-- `reconciled`
-- `verified`
-- `rejected`
-
-### 5. Durable Memory Interface
-
-This is the primary memory authority contract.
-
-Core responsibilities:
-
-- ingest staged notions and durable memory candidates
-- update or supersede prior memory objects
-- store provenance and support references
-- expose graph-shaped retrieval and navigation
-- support maintenance and reconciliation
-
-Suggested operations:
-
-- `stage_notion(notion) -> notion_result`
-- `upsert_memory(memory_delta) -> memory_result`
-- `invalidate_memory(memory_id, reason)`
-- `search_memory(query, scope, filters) -> memory_bundle`
-- `get_memory(memory_id) -> memory_object`
-- `get_related_memory(memory_id, depth, filters) -> related_bundle`
-- `reconcile_support(anchor_id, revision_id) -> reconciliation_result`
-- `run_maintenance(scope) -> maintenance_result`
-
-Write authority:
-
-- reflection pipeline
-- approved correction workflows
-- controlled maintenance routines
-
-Direct runtime writes are not allowed unless they pass through the durable-memory contract.
-
-High-signal cross-thread writes may be staged in near time, but they should be marked as:
+Cortex should keep a minimal trust overlay on top of that:
 
 - `tentative`
 - `low_confidence`
-- `unreconciled`
-
-Only reconciliation should promote them to trusted Layer 3 memory.
-
-### 6. Artifact Registry Interface
-
-This interface manages stable artifact anchors and canonical revisions.
-
-Core responsibilities:
-
-- register anchors
-- map provider references to anchor ids
-- track canonical revisions
-- expose artifact state
-
-Suggested operations:
-
-- `register_anchor(anchor_descriptor) -> anchor_id`
-- `resolve_anchor(provider_ref_or_uri) -> anchor_id`
-- `record_revision(anchor_id, revision_descriptor) -> revision_id`
-- `set_anchor_state(anchor_id, state)`
-- `get_anchor(anchor_id) -> anchor_record`
-
-Write authority:
-
-- intake workflows
-- publication workflows
-- provider sync jobs
-
-### 7. Knowledge Decomposition Interface
-
-This interface owns machine-usable derived views of artifacts.
-
-Core responsibilities:
-
-- decompose canonical revisions
-- maintain typed slices
-- maintain vector and lexical retrieval surfaces
-- support revision-aware lookup
-
-Suggested operations:
-
-- `decompose_revision(anchor_id, revision_id) -> decomposition_result`
-- `apply_artifact_impacts(anchor_id, impact_set) -> impact_result`
-- `search_decomposition(query, anchor_scope, filters) -> decomposition_bundle`
-- `get_slice(slice_id) -> decomposition_record`
-- `replace_revision_projection(anchor_id, revision_id) -> refresh_result`
-
-Write authority:
-
-- artifact intake
-- reflection artifact-impact branch
-- re-ingestion after publication
-
-### 8. Publication Interface
-
-This interface handles redraft and canonical publication.
-
-Core responsibilities:
-
-- gather dirty anchors
-- synthesize redrafts
-- request or perform review
-- publish canonical updates
-- trigger re-ingestion
-
-Suggested operations:
-
-- `queue_redraft(anchor_id)`
-- `build_redraft(anchor_id) -> redraft_candidate`
-- `publish_revision(anchor_id, body, metadata) -> revision_id`
-- `finalize_publication(anchor_id, revision_id)`
-
-Write authority:
-
-- scheduled consolidation jobs
-- explicit user-initiated publication flows
-
-### 9. Runtime Context Assembly Interface
-
-This interface is how the orchestrator composes bounded startup and prompt context from the layers.
-
-Core responsibilities:
-
-- assemble the startup stance
-- inject bounded continuity
-- include compact memory bundles
-- include knowledge briefs or pointers instead of full corpora by default
-
-Suggested operations:
-
-- `assemble_startup_stance(run_context) -> stance_bundle`
-- `assemble_turn_context(run_context) -> context_bundle`
-- `request_deep_knowledge(run_context, target) -> knowledge_bundle`
-
-## Cross-Layer Write Rules
-
-These rules are mandatory.
-
-### Rule 1
-
-Working memory can influence durable memory, but it cannot become durable memory by existing long enough.
-
-Promotion must be explicit through reflection.
-
-### Rule 2
-
-Artifact-derived working updates can mark anchors dirty and update decomposition immediately, but they do not silently replace canonical artifact truth.
-
-### Rule 3
-
-Durable memory can reference artifacts and revisions, but it does not own the artifact body.
-
-### Rule 4
-
-Decomposition can outrun canonical artifacts temporarily, but only under explicit dirty-state tracking.
-
-### Rule 5
-
-Re-ingestion from a new canonical revision must be allowed to supersede stale derived decomposition and trigger memory support reconciliation.
-
-### Rule 6
-
-No layer is allowed to write directly into another layer's storage implementation while bypassing Cortex contracts.
-
-### Rule 7
-
-Cross-thread memory can appear before reconciliation only as tentative staged memory.
-
-Layer 1 and Layer 2 may publish high-signal notions into the shared pipeline, but Layer 3 remains the authority that confirms, merges, rejects, or supersedes them.
-
-## Assembled Startup Stance
-
-An agent should not boot from one giant monolithic prompt.
-
-It should boot from an assembled context stack.
-
-The startup stance should be composed from multiple layers.
-
-### Startup Formula
-
-**startup stance = policy + working memory snapshot + durable memory bundle + knowledge brief/pointers**
-
-More concretely:
-
-1. base role profile
-2. policy and mode overlays
-3. retrieved operating profile and durable memory
-4. subject or entity brief such as customer or project context
-5. live working continuity block
-
-### Injection Rule
-
-Only bounded memory should be injected by default.
-
-Broader knowledge should usually be accessed via tools or deliberate retrieval calls.
-
-By default, inject:
-
-- policy
-- working-memory continuity
-- durable-memory bundle
-- compact knowledge brief or pointers
-
-By default, do not inject:
-
-- full artifact bodies
-- full decomposition records
-- full CRM-style corpora
-- large knowledge warehouses
-
-## Graph Strategy
-
-The graph should primarily live in the durable-memory layer.
-
-The decomposition layer should remain typed and retrieval-optimized rather than fully graph-native.
-
-This gives the system the benefits of graph reasoning without forcing every storage layer to carry graph semantics.
-
-### Likely Graph-Worthy Objects
-
-- durable memory objects
-- major entities
-- artifact anchors
-- projects
-- customers
-- users
-- repositories
-- important continuity objects if promoted
-- promoted or consolidated knowledge structures
-
-### Usually Off-Graph Unless Promoted
-
-- every chunk
-- every section
-- every extracted field
-- every decomposition record
-- every temporary working slice
-
-### Graph Principle
-
-The graph is a reasoning index over knowledge, not a duplication of all knowledge internals.
-
-## Reflection Split: Four Products Plus Oversight
-
-Reflection should not produce only memory deltas.
-
-It should branch the same evidence stream into four output types:
-
-1. memory updates
-2. artifact impacts
-3. context compression
-4. governed instructions or policy updates
-
-Oversight should consume the same semantic checkpoint stream in parallel, but it is not itself a normal write branch.
-
-### Memory Updates
-
-These should usually begin as staged notions derived from the semantic checkpoint stream.
-
-Examples:
-
-- new preference
-- changed decision
-- new customer posture
-- updated operating belief
-- new constraint
-
-By default, durable memory should be reconciled at:
-
-- session end
-- checkpoint hooks
-- nightly maintenance
-
-Near-time durable writes should happen only for high-signal items, and those writes should remain tentative until later reconciliation.
-
-### Artifact Impacts
-
-These update the decomposed artifact-knowledge layer immediately and mark the relevant anchor dirty.
-
-Examples:
-
-- affected artifact id
-- likely changed sections
-- suggested section-level edits
-- confidence
-- urgency
-- whether a redraft should be queued now
-
-### Context Compression
-
-This branch should continuously distill noisy session evidence into compact working-memory objects.
-
-This is the natural home for:
-
-- rolling continuity summaries
-- open-loop compression
-- active-thread distillation
-- Mamba-style continuity products
-
-These outputs improve working memory.
-
-They do not become durable memory just by existing.
-
-They are also the default input surface for:
-
-- oversight
-- notion staging
-- artifact-impact hints
-- low-cost ongoing monitoring
-
-### Governed Instructions Or Policy Updates
-
-Some policy-like state is mutable and should be learned over time.
-
-Examples:
-
-- user preferences
-- preferred operating style
-- stable formatting tendencies
-- mode bias adjustments
-
-These should not share a write path with access control or safety-critical rules.
-
-Access-policy changes should require explicit approval-oriented workflows.
-
-### Oversight Consumer
-
-Oversight should consume the semantic checkpoint stream by default.
-
-It should be able to escalate back to raw evidence when:
-
-- confidence is low
-- impact is high
-- approval is required
-- provenance is disputed
-- memory reconciliation needs exact verification
-
-Oversight responsibilities include:
-
-- flag suspicious memory writes
-- detect policy violations
-- open review tasks
-- downgrade confidence
-- veto sensitive updates when required
-- maintain audit traces
-
-### Reflection Principle
-
-Use one evidence feed.
-
-Branch it into:
-
-- durable-memory updates
-- knowledge and artifact updates
-- working-memory compression products
-- governed preference-policy updates
-
-Let oversight observe the same semantic products in parallel.
-
-## Artifact Lifecycle And Collaboration Model
-
-### Canonical Truth
-
-Git-backed artifacts remain the canonical temporal truth for official artifacts.
-
-A document can evolve through collaboration, and Git preserves the authoritative body and revision history.
-
-### Near-Time Derived Working Knowledge
-
-Decomposed artifact knowledge is allowed to move ahead of Git during active work.
-
-Once a business plan or similar artifact is ingested, the user should be able to say:
-
-- "I had an idea on the business plan."
-- "Update the assumptions section."
-- "This changes our market posture."
-
-The system should update derived artifact knowledge immediately so reasoning and retrieval stay current.
-
-Document artifacts should be indexed into the durable-memory layer with the same restraint used for session evidence:
-
-- one compact summary node or episode-level representation
-- a pointer back to the canonical artifact revision
-- only extracted Layer 3 appropriate standalone facts, beliefs, or support relationships
-
-The full artifact body should remain outside the durable-memory layer.
-
-### Dirty State
-
-When the decomposed artifact layer changes ahead of Git, the artifact anchor should be marked with states such as:
-
-- `dirty`
-- `pending_redraft`
-- `unsynced_to_canonical`
-- `redraft_ready`
-
-### Consolidation And Redraft
-
-A slower consolidation process can then:
-
-1. gather all dirty anchors
-2. collect latest derived knowledge and related durable-memory context
-3. reconcile contradictions
-4. generate a coherent redraft of the canonical artifact
-5. request review if required
-6. commit to Git or publish through the canonical provider
-7. re-ingest the new revision
-
-This process can run:
-
-- nightly by default
-- on demand when explicitly requested
-
-### Artifact Principle
-
-Artifact-derived working knowledge may move first.
-
-Canonical artifact publication catches up later.
-
-## Revision-Aware Knowledge Model
-
-A collaborative artifact lifecycle only works if decomposition and support are revision-aware.
-
-The system needs to know not just which anchor a decomposed record came from, but which revision.
-
-### Decomposition Requirements
-
-Decomposition records should carry:
-
-- `anchor_id`
-- `revision_id`
-- `slice_id`
-- `source_locator`
-- typed extracted payload
-
-### Durable Memory Support Requirements
-
-Memory objects that depend on artifacts should also know which revisions support them.
-
-This enables:
-
-- confidence adjustment
-- stale support detection
-- contradiction analysis
-- clean re-ingestion from Git after redraft
-
-## Evidence Packaging And Graph Ingestion
-
-At session end or other reconciliation checkpoints, the system should:
-
-1. close the session evidence window
-2. persist the evidence package as immutable runtime evidence, typically in `Postgres`
-3. reconcile staged notions against:
-   - existing durable memory
-   - oversight outcomes
-   - artifact support
-   - the closed evidence package
-4. ingest a compact evidence package into the durable-memory graph
-
-For `Graphiti`, that evidence package should usually contain:
-
-- a compact summary
-- source pointers to the evidence record
-- timestamps and thread identifiers
-- selected extracted beliefs or support only when they are Layer 3 appropriate
-
-For document artifacts, the comparable raw evidence surface remains the canonical artifact revision in `Git` or the provider source, not `Postgres`.
-
-## Retrieval Order
-
-A good retrieval order is:
-
-1. durable-memory graph first
-2. linked anchor selection second
-3. decomposition retrieval third
-4. canonical artifact body only when needed
-
-This means the graph gives the system fast orientation, and the decomposition layer provides fine-grained evidence only when the query requires it.
-
-### Example
-
-For a business-plan revision question:
-
-- durable memory may know the plan is shifting toward enterprise positioning
-- an anchor node identifies the business-plan artifact
-- the decomposition layer returns relevant sections and updated typed assumptions
-- the canonical Git artifact is consulted or redrafted only when publication-level output is needed
-
-## State Models
-
-### Artifact Anchor States
-
-Suggested artifact states:
-
-- `canonical`
-- `derived_current`
-- `dirty`
-- `pending_redraft`
-- `redraft_ready`
-- `published`
-- `stale`
-
-These make it possible to reason clearly about:
-
-- whether the derived layer is ahead of the canonical artifact
-- whether a redraft is needed
-- whether re-ingestion is pending
-- whether working knowledge is currently trustworthy
-
-### Evidence Pipeline States
-
-Suggested evidence states:
-
-- `captured`
-- `continuity_available`
-- `notion_staged`
-- `artifact_impact_applied`
-- `oversight_reviewed`
-- `reconciled`
-- `verified`
-- `rejected`
-
-### Durable Memory States
-
-Suggested durable-memory status fields:
-
 - `active`
-- `tentative`
 - `superseded`
 - `invalidated`
 - `stale_support`
 
-These states should be explicit, not inferred only from timestamps.
+Do not build a giant second semantic system on top of Graphiti.
 
-## Suggested Implementation Posture By Layer
+### Layer 4: Operational Knowledge
 
-### Policy
+Layer 4 is the operational knowledge authority.
 
-Likely implementation surfaces:
+This is a major locked clarification.
 
-- orchestration config
-- mode packs
-- role profiles
-- routing rules
-- tool policy
+Layer 4 is not merely a projection of Layer 5.
 
-### Working Memory
+It is authoritative for operational content.
 
-Likely implementation surfaces:
+That means:
 
-- OpenClaw session surface
-- native compaction and session continuity
-- runtime continuity objects
-- streaming compression sidecar
+- if there is no Layer 5 artifact, Layer 4 is the authority for that content
+- if there is a Layer 5 artifact, Layer 4 is still the operational authority for active work and retrieval
+- Layer 5 is only the canonical publication authority when applicable
 
-Implementation note:
+Layer 4 is authoritative for:
 
-- working memory should stay OpenClaw-native by default
-- Cortex should augment it through semantic checkpoint production and policy-aware assembly
-- the append-only evidence log may be disk-backed
-- working memory should be treated as operational infrastructure, not durable authority
+- evolving idea workspaces
+- working synthesis bodies
+- reference-derived knowledge bodies
+- decomposed artifact knowledge
+- active operational document state
+- incubation workspaces that span many threads
 
-### Durable Memory
+Layer 4 is not authoritative for durable semantic conclusions about that content.
 
-Likely implementation surfaces:
+Those belong in Layer 3.
 
-- graph-oriented memory substrate
-- structured memory objects
-- reflection and Dream-style maintenance
-- graph for reasoning and navigation
+#### Classes Inside Layer 4
 
-### Canonical Artifacts
+Layer 4 should explicitly support at least three operational content classes:
 
-Likely implementation surfaces:
+1. `working/incubation workspaces`
+2. `external reference material`
+3. `authored artifact knowledge`
 
-- Git
-- provider-backed authoritative documents
-- source records with revision history
+Not all Layer 4 bodies have a Layer 5 counterpart.
 
-### Decomposed Artifact Knowledge
+That is expected.
 
-Likely implementation surfaces:
+#### Medium-Horizon Workspace
 
-- typed database
-- vector index
-- lexical search fields
-- source-linked slices
-- revision-aware decomposition records
+The architecture now treats the medium workspace as first-class.
 
-## Guardrails And Failure Modes
+A spark of an idea may begin as a sentence and evolve across many threads.
 
-### Failure Mode 1: Split-Brain Authority
+That medium-horizon body is:
 
-This happens if:
+- larger than Layer 3
+- less formal than Layer 5
+- incomplete
+- unstable
+- evolving
 
-- durable memory and decomposition both try to own the same truth
-- working memory starts acting like durable memory
-- direct storage writes bypass Cortex contracts
+That space belongs in Layer 4.
 
-Guardrail:
+Layer 3 helps identify that many threads belong to the same emerging concept.
 
-- enforce layer write interfaces
-- require provenance and revision references
+Layer 4 holds the evolving workspace body for that concept.
 
-### Failure Mode 2: Graph Inflation
+Layer 5 only becomes relevant when the work is ready for canonical publication.
 
-This happens if every decomposed slice becomes a node.
+#### External Reference Material
 
-Guardrail:
+External reference material is distinct from authored canonical artifacts.
 
-- graph only durable memory, anchors, and promoted high-value structures
+Examples:
 
-### Failure Mode 3: Artifact Drift Without Redraft Discipline
+- podcast transcripts
+- uploaded PDFs used as references
+- external articles
+- factual sources
+- research materials the user does not own
 
-This happens if decomposition outruns canonical artifacts with no dirty-state and publication process.
+These should not automatically become Git-backed canonical artifacts.
 
-Guardrail:
+Instead:
 
-- explicit artifact states
-- explicit redraft queue
-- required re-ingestion after publication
+- Layer 4 may hold summaries, linked reference records, extracted operational knowledge, and retrieval-ready material
+- Layer 3 stores only durable meaning that actually matters
+- the system may later ask whether a valuable reference should be retained more intentionally
 
-### Failure Mode 4: Prompt Bloat
+This is a category distinction inside the operational knowledge model, not a sixth layer.
 
-This happens if full corpora or full decomposition records are injected by default.
+### Layer 5: Canonical Artifacts
 
-Guardrail:
+Layer 5 is canonical publication truth when publication-grade authorship and revision are needed.
 
-- bounded startup stance
-- deliberate deep retrieval only
+It is not the default destination for every useful idea.
 
-## Bottom Line
+It exists for:
 
-The system should not behave like one giant memory bucket.
+- authored canonical artifacts
+- reviewable revisions
+- publication-grade bodies
+- Git-backed or provider-backed canonical truth
 
-It should behave like a coordinated layered architecture where:
+Budding ideas do not jump straight to Git.
 
-- policy governs behavior
-- working memory supports live thought
-- durable memory compounds learned understanding
-- canonical artifacts preserve official temporal truth
-- decomposed artifact knowledge supports fine-grained reasoning and retrieval
-- reflection branches one evidence stream into multiple update products
-- redraft and publication happen later without blocking live learning
+Layer 5 is only used when canonical publication is actually warranted.
 
-This architecture is cleaner, more honest about the jobs the system actually has, and more likely to scale without turning memory into a junk drawer.
+## Authority Boundaries
+
+The clean authority model is:
+
+- Layer 1 = behavioral truth
+- Layer 2 = hot working continuity
+- Layer 3 = durable semantic truth
+- Layer 4 = operational knowledge truth
+- Layer 5 = canonical publication truth
+
+This is the main architecture rule to protect.
+
+### Cross-Layer Authority Rules
+
+1. Layer 2 may surface tentative continuity and notions, but it does not become durable truth automatically.
+2. Layer 3 may organize and connect workspaces, but it does not own their bodies.
+3. Layer 4 may move fast and be operationally authoritative, but it does not silently replace Layer 5 when canonical publication exists.
+4. Layer 5 is canonical only when there is a publication-grade artifact to own.
+
+## Storage And Service Posture
+
+The active stack is:
+
+- `OpenClaw`
+- Cortex policy layer
+- `QMD` for Layer 2 hot working memory and notions
+- narrow High-Signal `Mamba` stream
+- `Graphiti + Neo4j` for Layer 3
+- `Postgres` for the operational middle of the stack
+- `Git` when canonical artifact publication is warranted
+
+### Postgres As Middle-Layer Authority
+
+`Postgres` remains the practical operational substrate for the middle of the stack.
+
+It should cover:
+
+- Layer 1 policy and control data
+- runtime evidence authority
+- Layer 4 operational knowledge bodies
+- incubation workspaces
+- reference summaries and links
+- decomposed artifact knowledge
+- retrieval metadata
+- dirty-state and workflow fields
+
+No `OpenSearch` for now.
+
+That is explicit.
+
+Do not design around a standing `OpenSearch` service.
+
+The architecture should center on fewer moving pieces.
+
+## Identity And Relationship Model
+
+One stable Cortex identity should still exist across layers.
+
+That identity usually begins with an `anchor_id`.
+
+Useful anchor and concept distinctions now include:
+
+- `concept`
+- `idea_cluster`
+- `workspace_anchor`
+- `artifact_anchor`
+- `reference_anchor`
+
+Layer 3 may use these distinctions to express:
+
+- same emerging idea
+- related workspace
+- supporting reference
+- supersedes
+- candidate for promotion
+
+Layer 4 may receive lightweight connector fields from that process, for example:
+
+- `idea_cluster_id`
+- `related_workspace_ids`
+- `candidate_for_promotion`
+- `promotion_readiness`
+
+The bodies remain in Layer 4.
+
+The conceptual relationship network remains in Layer 3.
+
+## Lifecycles
+
+### Flow 1: Live Session To Layer 2
+
+1. OpenClaw runs the session.
+2. The transcript and runtime events remain the evidence surface.
+3. `QMD` provides hot working-memory retrieval and notion storage.
+4. the High-Signal Mamba stream listens continuously and emits typed high-signal events.
+5. Layer 2 continuity is assembled from session state, `QMD`, and the high-signal stream.
+
+### Flow 2: Layer 2 To Layer 3
+
+1. a high-signal event contributes to a notion in `QMD`
+2. the notion is queryable for continuity and cross-thread use under tighter rules
+3. reflection evaluates the notion against evidence and current semantic structure
+4. high-value meaning is promoted into Layer 3 when warranted
+5. stale or low-value notions are pruned or demoted
+
+### Flow 3: Many Threads To One Emerging Idea
+
+1. several chat threads contain fragments of one emerging concept
+2. Layer 3 identifies that they belong to the same idea cluster or concept relationship network
+3. Layer 4 holds the evolving workspace body for that idea
+4. reflection and Dream use Layer 3 relationships to keep that workspace organized
+5. if the workspace matures, it may become a candidate for canonical publication
+
+This is a core problem the architecture is explicitly designed to solve.
+
+### Flow 4: External Reference Material
+
+1. an external source is introduced
+2. Layer 4 stores summaries, linked reference records, extracted operational knowledge, and retrieval-ready material
+3. Layer 3 stores only durable meaning that matters
+4. the reference may later be retained more intentionally, but it does not automatically become a canonical artifact
+
+### Flow 5: Working Workspace To Canonical Artifact
+
+1. a Layer 4 workspace matures
+2. Layer 3 relationships and support indicate promotion readiness
+3. a redraft or publication workflow is initiated
+4. Layer 5 receives the canonical artifact only when publication-grade authorship is warranted
+5. once promoted, Layer 5 becomes the canonical source for that artifact
+6. later meaningful Layer 5 revisions can trigger re-ingestion back into Layer 4
+7. Layer 3 support, summaries, and semantic links are then reconciled as needed
+
+## Reflection And Dream
+
+### Reflection
+
+Reflection is the near-time path.
+
+It is allowed to:
+
+- stage and update notions
+- prune and merge notions in `QMD`
+- demote stale notions
+- keep Layer 2 lean
+- update Layer 4 operational workspaces
+- use Layer 3 concept relationships to organize Layer 4 workspaces
+- detect early promotion candidates
+
+### Dream
+
+Dream is the slower consolidation path.
+
+It is allowed to:
+
+- revisit Layer 3 concept relationships more deeply
+- consolidate or merge idea clusters
+- identify whether multiple workspaces should merge
+- identify whether a workspace is ripening into a promotion candidate
+- harden support, supersession, and invalidation
+
+Both Reflection and Dream use Layer 3 to help organize Layer 4.
+
+Neither should turn Layer 3 into a shadow document store.
+
+## Service Simplicity
+
+Reducing unnecessary service count is an explicit design goal.
+
+That is why:
+
+- `OpenSearch` is excluded for now
+- the architecture does not assume a standing extra projection service
+- the operational middle of the stack stays centered on `Postgres`
+
+## Hot And Cold Evidence
+
+Runtime evidence should stay hot only for a bounded recent window.
+
+Locked retention posture:
+
+- keep full transcripts hot for roughly `90` to `120` days since last access
+- then move them to cold storage
+- keep compact metadata and semantic checkpoints hot much longer
+
+Layer 3 durable memory and Layer 4 operational knowledge should not depend on raw transcript bodies staying hot forever.
+
+## What The Architecture Explicitly Avoids
+
+The revised architecture explicitly avoids:
+
+- passive Layer 2 with no chosen hot-memory substrate
+- using Mamba as a broad semantic engine
+- treating Layer 4 as only a projection of Layer 5
+- pushing budding ideas into Git too early
+- treating external references like authored canonical artifacts
+- introducing `OpenSearch` into the near-term stack
+- creating a second Graphiti usage pattern or shadow graph
+
+## The 10 Design-Lock Answers
+
+### 1. Do we explicitly choose QMD as the Layer 2 memory engine for MVP 1, or keep it as preferred if needed?
+
+Choose `QMD` explicitly for Layer 2 hot working memory and notions.
+
+### 2. Where does the notion ledger live physically?
+
+In `QMD` as part of the Layer 2 hot working-memory surface.
+
+It is not a separate Postgres-first ledger and not a separate Graphiti-first ledger.
+
+### 3. What are the exact retrieval rules for tentative cross-thread memory?
+
+Tentative cross-thread memory is allowed under tighter retrieval rules, but it is not silently authoritative before reconciliation.
+
+It may guide continuity, but high-impact conclusions still depend on reconciliation and stronger evidence.
+
+### 4. Is Layer 4 staying Postgres + pgvector first, with OpenSearch additive later, or do we want to start with both now?
+
+No `OpenSearch` for now.
+
+`Postgres` remains the operational middle-layer authority for MVP.
+
+Do not introduce `OpenSearch` into the active stack yet.
+
+### 5. What is the hot-to-cold evidence retention policy?
+
+Keep full transcripts hot only for a bounded recent window, roughly `90` to `120` days since last access, then move them to cold storage.
+
+Keep compact metadata and semantic checkpoints hot much longer.
+
+### 6. How explicit do we want the Cortex trust model to be on top of Graphiti?
+
+Keep the trust model minimal.
+
+Use the established memory states and avoid inventing a giant second semantics system.
+
+Optional per-edge or per-support confidence signals are acceptable if they stay lightweight.
+
+### 7. What is the canonical artifact lineage schema in Graphiti?
+
+Use stable anchor identity and pointer-based relationships.
+
+Graphiti should represent concept relationships, support, supersession, and links to workspaces or artifacts, but not become a document body store.
+
+### 8. How hard is the split between OpenClaw config and Cortex policy?
+
+Keep the split hard.
+
+OpenClaw owns runtime and workflow mechanics.
+
+Cortex owns memory, policy composition, reconciliation, and governed preference-policy behavior.
+
+### 9. What exactly is “Mamba” in implementation terms?
+
+Mamba is a narrow always-on Layer 2 listener that emits a high-signal stream from session activity.
+
+It is not a general artifact parser or universal semantic subsystem.
+
+### 10. What is in MVP 1 versus intentionally deferred?
+
+MVP 1 includes:
+
+- `OpenClaw`
+- Cortex policy layer
+- `QMD` hot working memory
+- Mamba high-signal stream
+- `Graphiti + Neo4j` durable memory
+- `Postgres` operational middle layer
+- `Git` canonical artifacts when applicable
+
+`OpenSearch` is deferred.
+
+Additional service expansion is deferred.

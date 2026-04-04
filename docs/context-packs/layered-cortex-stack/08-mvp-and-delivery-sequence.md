@@ -2,101 +2,42 @@
 
 ## MVP Goal
 
-The first MVP is not "stand up a search backend."
+MVP 1 proves the simplified locked stack:
 
-The first MVP is to prove the layered Cortex spine.
-
-The system is considered successful when it demonstrates:
-
-- custom policy on top of OpenClaw
-- OpenClaw-native working memory with bounded context assembly
-- a usable High-Signal Mamba Stream
-- tentative notion staging and later reconciliation
-- Graphiti plus Neo4j durable memory
-- Postgres plus pgvector decomposed knowledge
-- Git-backed canonical artifact flow
-- inspectable oversight and acceptance surfaces
+- `OpenClaw`
+- Cortex policy layer
+- `QMD` hot working memory
+- narrow Mamba high-signal stream
+- `Graphiti + Neo4j` durable memory
+- `Postgres` operational middle layer
+- `Git` canonical artifacts when applicable
 
 ## Epic Order
 
-The current build order is:
-
 1. policy and OpenClaw integration
-2. High-Signal Mamba Stream
+2. QMD-backed Layer 2 and Mamba stream
 3. Graphiti plus Neo4j durable memory
-4. knowledge plane and artifacts
-5. oversight and reconciliation
+4. Layer 4 operational knowledge
+5. reflection, Dream, oversight, and promotion readiness
 
-## Why The Build Order Looks Like This
+## What MVP Explicitly Excludes
 
-The order is driven by dependency logic.
+MVP excludes:
 
-Policy and OpenClaw integration come first because the system needs a stable Layer 1 and Layer 2 posture before it can feed good semantic checkpoints.
+- OpenSearch
+- a second graph system
+- a second Graphiti mode
+- premature canonicalization of budding ideas
 
-The Mamba Stream comes second because durable memory and oversight depend on it.
+## The 10 Design-Lock Answers
 
-Durable memory comes third because semantic checkpoints need somewhere trustworthy to land.
-
-Knowledge and artifacts come fourth because their flows depend on the layer contracts already being stable.
-
-Oversight and reconciliation come fifth because they harden the system after the main data flows exist.
-
-## Phase 1 Deployment Shape
-
-The base deployment includes:
-
-- OpenClaw
-- Cortex policy and integration layer
-- High-Signal Mamba stream worker
-- Graphiti
-- Neo4j
-- Postgres plus pgvector
-- Git working repository or provider-backed artifact source
-
-## What Phase 1 Explicitly Excludes
-
-Phase 1 explicitly excludes:
-
-- a separate external working-memory store beside OpenClaw Layer 2
-- a second graph system beside Layer 3
-- a separate search platform unless Layer 4 proves it needs one
-- broad candidate-comparison work
-
-## Proof Surface
-
-The runtime proof surface should demonstrate:
-
-- OpenClaw session flow
-- policy injection points
-- semantic checkpoint generation
-- tentative notion staging
-- reconciliation checkpoints
-- artifact intake
-- redraft and publication loop
-
-## What Success Looks Like
-
-Success looks like a system where:
-
-- live sessions stay bounded
-- continuity survives smaller context windows
-- high-signal memory can cross threads tentatively
-- trusted memory emerges through reconciliation
-- artifacts are operationally usable before publication
-- canonical truth remains clean
-
-## The Most Important Implementation Pressure
-
-The most important implementation pressure is not "how many features exist."
-
-It is whether the semantic checkpoint stream is good enough to support:
-
-- working-memory compression
-- notion staging
-- oversight
-- artifact impacts
-- reconciliation
-
-If that layer is weak, the rest of the stack becomes noisy.
-
-If that layer is strong, the rest of the stack becomes tractable.
+1. Choose `QMD` explicitly for Layer 2 hot working memory and notions.
+2. The notion ledger lives in `QMD`.
+3. Tentative cross-thread memory is allowed under tighter retrieval rules, but it is not silently authoritative before reconciliation.
+4. No `OpenSearch` for now. `Postgres` remains the operational middle-layer authority for MVP.
+5. Keep full transcripts hot for roughly `90` to `120` days since last access, then move them to cold storage. Keep compact metadata and semantic checkpoints hot much longer.
+6. Keep the trust model minimal. Use lightweight states and avoid inventing a giant second semantics system.
+7. Use stable anchor identity and pointer-based relationships in Graphiti. Do not turn Graphiti into a document body store.
+8. Keep the split hard. OpenClaw owns runtime and workflow mechanics. Cortex owns memory, policy composition, reconciliation, and governed preference-policy behavior.
+9. Mamba is a narrow always-on Layer 2 listener that emits a high-signal stream from session activity.
+10. MVP 1 includes OpenClaw, Cortex policy, QMD, Mamba, Graphiti plus Neo4j, Postgres, and Git when canon is warranted. OpenSearch and additional service expansion are deferred.

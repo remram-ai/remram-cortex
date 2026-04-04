@@ -4,7 +4,7 @@ This document defines the stable product posture for oversight and reconciliatio
 
 ## Oversight
 
-Oversight is a consumer of the semantic checkpoint stream.
+Oversight is a control consumer of the semantic checkpoint stream and related staged state.
 
 Its responsibilities include:
 
@@ -14,7 +14,7 @@ Its responsibilities include:
 - confidence downgrades
 - approval-oriented veto paths where required
 
-Oversight should consume semantic checkpoints by default and escalate to evidence packages only when fidelity or approval requirements demand it.
+Oversight should consume high-signal checkpoints and notion activity by default and escalate to evidence packages only when fidelity or approval requirements demand it.
 
 ## Reconciliation
 
@@ -27,6 +27,16 @@ It should run at:
 - nightly maintenance
 
 Session-end reconciliation is the primary trust boundary for fast cross-thread memory.
+
+Reflection is also allowed to:
+
+- prune notions
+- merge notions
+- demote stale notions
+- expire low-value notions
+- keep `QMD` lean and fast
+
+Reflection and Dream may both use Layer 3 semantic relationships to help organize Layer 4 workspaces, but they do not turn Layer 3 into a body store.
 
 ## Product Rule
 

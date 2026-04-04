@@ -3,7 +3,7 @@
 The current stack splits evidence and knowledge cleanly:
 
 - runtime raw evidence closes into `Postgres`
-- decomposed operational knowledge lives in `Postgres + pgvector`
+- Layer 4 operational knowledge lives in `Postgres + pgvector`
 - canonical artifacts live in `Git` or another authoritative provider
 
 Design rule:
@@ -27,8 +27,17 @@ That is why the current default is:
 Operational rule:
 
 - treat runtime evidence packages and canonical artifact revisions as different backing stores behind one logical evidence contract
-- keep `Postgres` as the operational evidence and decomposition authority
+- keep `Postgres` as the operational evidence and Layer 4 authority
 - keep `Git` or the provider source as the canonical artifact authority
+
+Do not treat all Layer 4 records as proto-artifacts.
+
+Layer 4 includes:
+
+- incubation workspaces
+- external reference material
+- authored work that is not ready for canon yet
+- decomposed artifact knowledge when canonical artifacts do exist
 
 Official references:
 

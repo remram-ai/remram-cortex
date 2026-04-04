@@ -1,6 +1,6 @@
 # Graphiti + Neo4j Durable Memory
 
-This document defines the active Layer 3 durable-memory posture.
+This document defines the active Layer 3 posture after design lock.
 
 ## Role
 
@@ -8,49 +8,97 @@ Layer 3 is the durable semantic authority.
 
 It owns:
 
-- durable beliefs
-- preferences
-- constraints
-- decisions
+- concepts
+- identities
+- relationships
+- support
+- supersession
+- invalidation
+- durable semantic continuity across threads and sessions
+
+It is implemented as one `Graphiti` memory system on `Neo4j`.
+
+## What Layer 3 Stores
+
+Layer 3 stores:
+
+- durable concepts
+- idea clusters
+- workspace relationships
+- artifact and reference anchors
 - support relationships
-- supersession and invalidation
-- temporal lineage
+- promotion readiness signals
+- semantic supersession and invalidation
+
+Layer 3 does not store:
+
+- transcript bodies
+- workspace bodies
+- document bodies
+- full operational knowledge records
+
+Hard rule:
+
+**Layer 3 stores concepts and semantic relationships, not whole content bodies.**
 
 ## Why Graphiti
 
-`Graphiti` is the chosen Layer 3 core because it provides:
+`Graphiti` remains the Layer 3 center because it already aligns with Cortex needs:
 
 - episode-backed provenance
-- point-in-time memory semantics
-- invalidation instead of blind overwrite
-- graph-native retrieval over durable memory
+- temporal validity
+- invalidation rather than blind overwrite
+- durable graph-native relationships
+- continuity across threads and sessions
 
-This is the capability that was hardest to reproduce cleanly elsewhere.
+That means Cortex does not need a second concept-mapping graph.
+
+The same Layer 3 system can naturally represent:
+
+- that several threads belong to one budding idea
+- that two workspaces are related or merged
+- that one workspace supersedes another
+- that references support a concept
+- that a workspace is becoming a promotion candidate
+
+## Useful Type Distinctions
+
+Useful type distinctions inside Layer 3 may include:
+
+- `concept`
+- `idea_cluster`
+- `workspace_anchor`
+- `artifact_anchor`
+- `reference_anchor`
+
+These are not separate memory systems.
+
+They are type distinctions inside one Layer 3 graph.
 
 ## Why Neo4j
 
-`Neo4j` is the current backend because:
+`Neo4j` remains the backend because it is:
 
-- it is durable and disk-backed
-- it fits Layer 3 authority better than an in-memory primary graph store
-- it is the safer integrity posture for long-lived memory
+- durable
+- disk-backed
+- aligned with long-lived memory integrity
+
+The architecture is optimizing Layer 3 for durable semantic truth, not for RAM-heavy graph speed.
 
 ## Confidence And Trust
 
-The current Graphiti docs clearly support:
+Graphiti clearly provides:
 
 - temporal lineage
-- episode-backed provenance
-- invalidation and supersession
+- support structure
+- invalidation
+- supersession
 
-I do not see a documented first-class Graphiti confidence model that replaces Cortex trust states.
+It does not need a giant second semantics layer on top of it.
 
-So the active architecture should assume:
+The Cortex trust model should stay minimal.
 
-- Graphiti provides lineage, support, and temporal structure
-- Cortex provides explicit trust and confidence states around staged and durable memory
-
-That is why Layer 3 still carries notions and memory-adjacent states such as:
+Use lightweight states such as:
 
 - `tentative`
 - `low_confidence`
@@ -59,74 +107,67 @@ That is why Layer 3 still carries notions and memory-adjacent states such as:
 - `invalidated`
 - `stale_support`
 
-## Notion Staging
+Optional per-edge or per-support confidence signals are acceptable if they remain lightweight.
 
-Durable memory should not be written naively from raw runtime traffic.
+## Layer 3 And Layer 4
 
-The default path is:
+Layer 3 helps Layer 4 organize itself.
 
-1. raw runtime evidence closes into an evidence package
-2. the High-Signal Mamba stream emits candidate notions
-3. high-signal notions may be written early as tentative cross-thread memory
-4. reconciliation confirms, merges, downgrades, or rejects them
-5. confirmed outputs become trusted Layer 3 memory
+It may represent:
 
-Suggested status fields:
+- same emerging idea
+- related workspace
+- supporting reference
+- supersedes
+- candidate for promotion
 
-- `tentative`
-- `low_confidence`
-- `active`
-- `superseded`
-- `invalidated`
-- `stale_support`
+Layer 4 may receive lightweight connector fields from this process, for example:
 
-## Artifact Lineage In Layer 3
+- `idea_cluster_id`
+- `related_workspace_ids`
+- `candidate_for_promotion`
+- `promotion_readiness`
 
-Artifact lineage should be represented in Graphiti as well.
+The bodies remain in Layer 4.
+
+The conceptual relationship network remains in Layer 3.
+
+## Artifact And Reference Lineage
+
+Artifact and reference lineage should both exist in Layer 3.
 
 The clean pattern is:
 
-- represent the artifact or document as an entity in the graph
-- keep revision pointers back to the Layer 5 canonical source
-- connect Layer 3 beliefs, support, or decisions back to the artifact anchor and revision
+- represent the artifact or reference as an anchor entity
+- keep pointer-based links back to Layer 4 or Layer 5
+- connect concepts, support, and supersession through those anchors
 
-This gives Layer 3 the same lineage discipline for artifacts that it already wants for runtime evidence.
+Graphiti should not become a body store.
 
-## Episode Packaging
+It should remain a semantic relationship system with stable pointers outward.
 
-`Graphiti` should not receive full raw logs as its normal representation.
+## Promotion Model
 
-For runtime evidence, it should receive a compact evidence package containing:
+Layer 3 promotion should happen from:
 
-- summary
-- timestamps
-- thread or session ids
-- pointer back to the canonical evidence record
-- only Layer 3 appropriate beliefs or support
+- reconciled notions from Layer 2
+- stable semantic conclusions from Layer 4 operational workspaces
+- durable meaning extracted from external references
 
-For documents, the parallel pattern is:
-
-- one summary representation
-- pointer to the canonical artifact revision
-- only extracted standalone Layer 3 appropriate beliefs or support
-
-In practice, this should usually mean an artifact or document node plus support edges, not a shadow copy of the full document body.
-
-## Guardrails
-
-Layer 3 should be protected by:
-
-- staged notion writes
-- oversight review surfaces
-- session-end or checkpoint reconciliation
-- nightly maintenance
-- support-aware invalidation when artifacts change
+Layer 3 should not receive raw transcript or workspace bodies as its normal representation.
 
 ## Non-Goals
 
 Layer 3 is not:
 
-- working memory
-- the full artifact store
-- the full decomposition corpus
-- a transcript archive
+- the hot notion ledger
+- the transcript archive
+- the workspace body store
+- the artifact body store
+- a second document management system
+
+## Bottom Line
+
+Layer 3 remains one Graphiti memory system.
+
+It owns durable semantic truth and the concept relationship network that helps Layer 4 organize operational content.

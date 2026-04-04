@@ -2,7 +2,7 @@
 
 ## Objective
 
-Build the High-Signal Mamba Stream as Cortex's semantic checkpoint bus between raw evidence and downstream consumers.
+Build the High-Signal Mamba Stream as Cortex's narrow always-on high-signal channel between live session activity and downstream consumers.
 
 ## Workstreams
 
@@ -12,18 +12,19 @@ Build the High-Signal Mamba Stream as Cortex's semantic checkpoint bus between r
    - confidence and timing fields
    - notion and oversight hints
 2. Build checkpoint production from OpenClaw evidence.
-   - near-time production when cheap
-   - checkpoint production at session boundaries
-   - rebuildability from evidence packages
-3. Support three consumption modes.
-   - optimistic
-   - on-demand
-   - nightly
+   - always-on near-time listening
+   - bounded event emission during active sessions
+   - rebuildability from evidence packages when needed
+3. Support downstream consumption modes.
+   - working-memory assembly
+   - notion staging in `QMD`
+   - reflection and oversight
+   - later checkpoint and nightly consumers
 4. Integrate the stream with downstream consumers.
-   - context-engine continuity assembly
-   - Layer 3 notion staging
+   - context continuity assembly
+   - `QMD` notion staging
    - oversight
-   - knowledge-impact hints
+   - reflection and Layer 4 workspace hints
 
 ## Deliverables
 
@@ -47,3 +48,5 @@ Build the High-Signal Mamba Stream as Cortex's semantic checkpoint bus between r
 
 - The stream is the primary consumer surface.
 - Raw evidence remains a backing journal, not the normal subscribe surface.
+- Mamba is narrow by design.
+- It is not the general reflection engine or the document decomposition engine.

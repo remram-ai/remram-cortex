@@ -2,190 +2,156 @@
 
 ## Cortex In One Sentence
 
-Cortex is a layered knowledge authority built around custom policy, OpenClaw-native working memory, Graphiti plus Neo4j durable memory, Postgres plus pgvector decomposed knowledge, and Git-backed canonical artifacts.
+Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, a narrow always-on Mamba signal stream, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and Git-backed canon only when canonical publication is actually warranted.
 
 ## The Main Architectural Move
 
-The system is no longer trying to force all memory, knowledge, and runtime context through one substrate.
+The architecture is no longer trying to force all context, memory, and artifacts through one substrate.
 
-Instead, it separates five layers:
+It now separates:
 
 1. `Policy`
 2. `Working Memory`
 3. `Durable Memory`
-4. `Decomposed Artifact Knowledge`
+4. `Operational Knowledge`
 5. `Canonical Artifacts`
 
-The entire stack is organized around one rule:
+The clean authority model is:
 
-**one authority, multiple memory surfaces**
-
-That means Cortex is still the authority, but different kinds of truth live in different places.
+- Layer 1 = behavioral truth
+- Layer 2 = hot working continuity
+- Layer 3 = durable semantic truth
+- Layer 4 = operational knowledge truth
+- Layer 5 = canonical publication truth
 
 ## The Chosen Stack
 
-- `OpenClaw` is the runtime shell and the default Layer 2 working-memory engine.
-- Cortex owns `Policy` above OpenClaw.
-- A High-Signal `Mamba` stream turns noisy runtime evidence into a semantic checkpoint stream.
+- `OpenClaw` is the chosen agentic framework.
+- Cortex owns Layer 1 policy composition.
+- `QMD` is the Layer 2 hot working-memory substrate and notion store.
+- a narrow High-Signal `Mamba` listener emits a typed high-signal stream from session activity.
 - `Graphiti + Neo4j` is Layer 3 durable memory.
-- `Postgres + pgvector` is the operational substrate for runtime evidence, control-plane state, and Layer 4 decomposed knowledge.
-- `Git` is the preferred Layer 5 canonical artifact truth.
+- `Postgres` is the operational middle-layer authority.
+- `Git` is used only when canonical artifact publication is warranted.
 
-Two review-driven clarifications now matter:
+## The Biggest Locked Clarifications
 
-- `QMD` is the preferred OpenClaw-native memory engine if we lean on OpenClaw memory search.
-- `OpenSearch` remains the first likely escalation path if transcript-heavy and document-heavy Layer 4 retrieval outgrow the one-store `Postgres + pgvector` posture.
+- Layer 2 explicitly uses `QMD`.
+- notions live in Layer 2, not in a separate Postgres-first or Graphiti-first ledger.
+- Mamba is narrow by design and should not absorb broad reflection or artifact parsing work.
+- Layer 3 remains one Graphiti memory system.
+- Layer 4 is the operational knowledge authority.
+- Layer 5 is only canonical publication truth when applicable.
+- `OpenSearch` is not part of the active stack.
 
-## The Most Important Runtime Story
+## The Main Runtime Story
 
-The runtime model is:
+1. OpenClaw runs the session.
+2. QMD supports hot working-memory retrieval and notion storage.
+3. the Mamba listener continuously emits typed high-signal events from session activity.
+4. those signals can update notions, oversight, and bounded continuity.
+5. reflection uses Layer 3 relationships to help organize Layer 4 workspaces.
+6. high-value meaning promotes into Graphiti durable memory when warranted.
+7. Dream does slower consolidation and promotion readiness work.
 
-1. OpenClaw runs the live session.
-2. The session transcript is the evidence surface.
-3. Cortex observes that session and produces a High-Signal Mamba stream.
-4. That stream is the main semantic consumer surface.
-5. The stream emits candidate notions for durable memory.
-6. High-signal notions may appear early as tentative cross-thread memory.
-7. Reconciliation at session end, checkpoints, or nightly maintenance decides what becomes trusted Layer 3 memory.
+## The Main Workspace Story
 
-In plain language, a `notion` is basically a candidate durable memory.
+A budding idea can span many threads.
 
-This is the key compromise:
+That is not a bug to hand-wave away.
 
-- fast enough for cross-thread continuity
-- conservative enough to protect memory integrity
+The architecture solves it like this:
 
-## The Most Important Artifact Story
+- Layer 3 identifies that many threads belong to the same emerging concept
+- Layer 4 holds the evolving workspace body for that concept
+- Layer 5 only becomes relevant if the work is ready for canonical publication
 
-Artifacts follow the same pattern as sessions:
+This is the medium-horizon operational space that earlier versions of the architecture underdefined.
 
-- keep the raw source in the canonical layer
-- build a decomposed operational layer separately
-- only send compact summary plus pointer plus Layer 3 appropriate beliefs into durable memory
+## The Main Artifact Story
 
-For documents, that means:
+Not all operational knowledge bodies are canonical artifacts.
 
-- Layer 5 keeps the canonical body and revision history
-- Layer 4 keeps slices, embeddings, lexical fields, and typed extracted structures
-- Layer 3 only gets what belongs in semantic memory
+Layer 4 can hold:
 
-## Why This Stack
+- working or incubation workspaces
+- external reference material
+- authored operational artifact bodies
 
-This stack exists because each layer solves a different real problem:
+Layer 5 only exists when publication-grade canon is warranted.
 
-- `Policy` is custom because Cortex behavior is custom.
-- `OpenClaw` already solves the runtime and session problem well enough that Cortex should not replace it casually.
-- the High-Signal `Mamba` stream exists because smaller-window models make raw transcript replay expensive and brittle.
-- `Graphiti + Neo4j` is the hardest part to replace because Cortex wants temporal lineage, invalidation, provenance, and graph-native durable memory.
-- `Postgres + pgvector` gives a practical substrate for evidence and decomposed operational knowledge without adding another large platform.
-- runtime evidence stays hot in `Postgres` only while it is operationally useful and should later migrate to colder storage with lookup metadata retained
-- `Git` remains the best default for canonical artifact truth and publication history.
+External references do not automatically become Git-backed canonical artifacts.
 
-## What The System Explicitly Avoids
+## What Layer 3 Does For Layer 4
 
-The active posture avoids:
+Layer 3 helps Layer 4 organize itself.
 
-- one giant universal memory bucket
-- a separate external working-memory store in phase 1
-- storing raw transcripts inside durable memory
-- storing full artifact bodies inside durable memory
-- forcing every decomposed slice into the graph
-- making Layer 4 and Layer 5 compete for authority
+It can represent:
 
-## The Main Idea Behind The High-Signal Mamba Stream
+- same emerging idea
+- related workspace
+- supporting reference
+- supersedes
+- candidate for promotion
 
-The High-Signal Mamba stream is a semantic checkpoint stream built from raw evidence.
+The bodies remain in Layer 4.
+
+The conceptual relationship network remains in Layer 3.
+
+## Why QMD Matters
+
+QMD is the pragmatic hot-memory choice inside the OpenClaw-centered stack.
+
+It gives Cortex:
+
+- hot retrieval
+- notion storage
+- tentative cross-thread continuity under tighter rules
+- a Layer 2 memory surface that can be kept lean through reflection cleanup
+
+## Why Mamba Matters
+
+Mamba is not a broad semantic engine.
 
 It is:
 
-- typed
-- compressed
-- source-linked
-- rebuildable
-- the default consumer surface for most downstream systems
+- a small always-on listener
+- a high-signal producer
+- a bounded trigger surface for downstream systems
 
-It is not:
+It should stay narrow.
 
-- the raw evidence log
-- a second authority
-- a freeform summary layer
+## Why Postgres Matters
 
-Most of the stack should read the Mamba stream, not raw evidence.
+Postgres is not just a decomposition database.
 
-## The Main Idea Behind Durable Memory
+It is the operational middle-layer authority for:
 
-Durable memory is where long-lived semantic truth lives.
+- runtime evidence
+- Layer 4 bodies
+- reference records and summaries
+- decomposed artifact knowledge where canonical artifacts exist
+- metadata
+- workflow state
 
-It owns:
+This is why the architecture avoids `OpenSearch` for now.
 
-- durable beliefs
-- preferences
-- constraints
-- decisions
-- support relationships
-- temporal lineage
-- invalidation and supersession
+## The Most Important Exclusions
 
-What Graphiti does not clearly document as a first-class feature is an explicit confidence model that would replace Cortex trust states.
+The active design explicitly avoids:
 
-So the current stack keeps explicit states such as:
-
-- `tentative`
-- `low_confidence`
-- `active`
-- `superseded`
-- `invalidated`
-- `stale_support`
-
-It does not own:
-
-- the working transcript
-- the evidence log
-- the full artifact corpus
-
-## The Main Idea Behind Reflection
-
-Reflection is not just "write memory."
-
-It branches one evidence feed into multiple products:
-
-1. memory updates
-2. artifact impacts
-3. context compression
-4. governed preference-policy updates
-
-Oversight watches the same semantic products in parallel.
-
-OpenClaw `Dreaming` is now treated as a useful adjacent concept, not the main Layer 3 promotion path.
-
-## The Main Build Order
-
-The delivery order is:
-
-1. policy and OpenClaw integration
-2. High-Signal Mamba stream
-3. Graphiti plus Neo4j durable memory
-4. knowledge plane and artifacts
-5. oversight and reconciliation
-
-That order matters because the system should not write durable memory before it has a stable semantic checkpoint surface.
-
-## The Most Important Risks
-
-- working-memory prompt bloat if the Mamba stream is weak
-- bad notion quality if compression is noisy
-- durable-memory corruption if tentative writes are treated as trusted truth
-- artifact drift if Layer 4 outruns Layer 5 without dirty-state tracking and redraft discipline
-- split-brain authority if layers write into each other directly instead of through Cortex contracts
+- OpenSearch in the near-term stack
+- a second Graphiti usage pattern
+- pushing budding ideas into Git too early
+- treating external references like authored canonical artifacts
+- making Mamba a universal reasoning engine
 
 ## Bottom Line
 
-The stack is now clear:
+The architecture is now cleaner:
 
-- OpenClaw handles runtime execution and session mechanics
-- Cortex adds policy and semantic checkpointing
-- Graphiti plus Neo4j handles durable semantic memory
-- Postgres plus pgvector handles operational evidence and decomposed knowledge
-- Git handles canonical artifact truth
-
-The whole architecture is designed so the system can think live, remember durably, and reason over grounded artifacts without pretending one store can do every job.
+- OpenClaw at the framework center
+- QMD for hot working continuity and notions
+- Graphiti for durable semantic truth
+- Postgres for operational knowledge truth
+- Git only for canonical publication when that is actually needed

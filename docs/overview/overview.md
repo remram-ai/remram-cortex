@@ -2,66 +2,72 @@
 
 Remram Cortex is the knowledge authority layer for Remram.
 
-It coordinates policy, working memory, durable memory, decomposed knowledge, and canonical artifacts so the system can think in the moment, remember over time, and work against real grounded source material without collapsing everything into one storage model.
+It coordinates policy, hot working continuity, durable semantic memory, operational knowledge, and canonical publication without collapsing them into one storage model.
 
-The current architectural posture is:
-
-**one authority, multiple memory surfaces**
-
-## Active Layer Model
+The architecture is now centered on five layers:
 
 1. `Policy`
 2. `Working Memory`
 3. `Durable Memory`
-4. `Decomposed Artifact Knowledge`
+4. `Operational Knowledge`
 5. `Canonical Artifacts`
 
-The important distinction is:
+The clean authority model is:
 
-- Layer 2 is operational and session-shaped
-- Layer 3 is durable and semantic
-- Layer 4 is decomposed and retrieval-optimized
-- Layer 5 is canonical and publication-grade
+- Layer 1 = behavioral truth
+- Layer 2 = hot working continuity
+- Layer 3 = durable semantic truth
+- Layer 4 = operational knowledge truth
+- Layer 5 = canonical publication truth
 
 ## Chosen Stack
 
-The current active stack direction is:
+The active stack direction is:
 
-- `OpenClaw` for runtime execution and working-memory mechanics
-- Cortex-owned policy composition
-- a High-Signal `Mamba` stream for semantic checkpoints and compression
-- `Graphiti + Neo4j` for durable memory
-- `Postgres + pgvector` for runtime evidence, control-plane state, and decomposed knowledge
-- `Git` for canonical artifacts
+- `OpenClaw` as the chosen agentic framework
+- Cortex-owned Layer 1 policy
+- `QMD` for Layer 2 hot working memory and notions
+- a narrow High-Signal `Mamba` stream as the always-on listener
+- `Graphiti + Neo4j` for Layer 3 durable memory
+- `Postgres` for the operational middle of the stack
+- `Git` for Layer 5 canonical artifacts when canonical publication is warranted
 
 ## What Cortex Owns
 
 Cortex owns:
 
-- policy composition above runtime execution
-- the semantic checkpoint stream
-- durable memory contracts and reconciliation
-- the split between decomposed knowledge and canonical artifacts
-- notion staging, oversight, and promotion rules
+- policy composition
+- Layer 2 notion and high-signal lifecycle rules
+- Layer 3 durable-memory contracts
+- Layer 4 operational knowledge authority rules
+- the split between operational knowledge and canonical publication
+- reflection, Dream, oversight, and promotion behavior
 
-## What Cortex Does Not Own
+## OpenClaw Principle
 
-Cortex does not own:
+`OpenClaw` was not chosen because Cortex benchmarked orchestrators and decided it was the abstract best shell.
 
-- raw OpenClaw execution
-- prompt-time runtime mechanics below the OpenClaw boundary
-- canonical artifact authoring outside approved publication workflows
-- durable memory truth outside Layer 3 contracts
+It was chosen because it is the framework Remram intends to build around.
+
+That means the architectural rule is:
+
+- do things the OpenClaw way when that path is good enough
+- extend OpenClaw cleanly before replacing it
+- add memory and knowledge behavior around the framework boundary
+
+## What Changed In The Locked Design
+
+The biggest clarifications now are:
+
+- Layer 2 explicitly uses `QMD`
+- Mamba is narrow by design
+- Layer 3 stays one Graphiti memory system
+- Layer 4 is the operational knowledge authority
+- Layer 5 is only canonical publication truth when canon is warranted
+- `OpenSearch` is not part of the near-term stack
 
 ## Repository Direction
 
-This repository has been reset around the layered architecture.
+The repository now aims to describe one coherent architecture rather than a stack-comparison process.
 
-The active surfaces now aim to be:
-
-- fewer
-- cleaner
-- technology-specific only where the stack is actually chosen
-- free of older decision clutter in the active tree
-
-Historical alternatives, pre-reset plans, and superseded design packages live in the top-level archive.
+Historical alternatives and superseded packages live in the top-level archive.

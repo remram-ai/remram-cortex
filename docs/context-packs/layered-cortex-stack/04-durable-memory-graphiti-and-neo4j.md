@@ -2,88 +2,70 @@
 
 ## The Main Decision
 
-Layer 3 durable memory is built around:
+Layer 3 remains one `Graphiti` memory system on `Neo4j`.
 
-- `Graphiti`
-- `Neo4j`
-
-This is the semantic memory center of the chosen stack.
-
-## Why Layer 3 Exists
-
-Layer 3 exists to store long-lived semantic knowledge that should survive:
-
-- session resets
-- compaction
-- short-term runtime noise
-- transient working-memory state
-
-It is the durable semantic authority.
+There is no second Graphiti and no separate concept-mapping graph.
 
 ## What Layer 3 Owns
 
 Layer 3 owns:
 
-- durable beliefs
-- preferences
-- constraints
-- decisions
-- relationship-bearing memory
-- support references
-- temporal lineage
-- invalidation and supersession
+- concepts
+- identities
+- relationships
+- support
+- supersession
+- invalidation
+- durable continuity across threads and sessions
+
+## What Layer 3 Does Not Own
 
 Layer 3 does not own:
 
-- the working transcript
-- raw evidence logs
-- full document bodies
-- the full decomposition corpus
+- transcript bodies
+- workspace bodies
+- document bodies
+- the full operational knowledge corpus
 
-## Why Graphiti
+It stores concepts and semantic relationships, not whole content bodies.
 
-Graphiti is the chosen Layer 3 core because it provides the memory semantics Cortex cares about most:
+## Why Graphiti Still Fits
 
-- episode-backed provenance
-- temporal memory
-- invalidation instead of blind overwrite
-- graph-native retrieval over durable memory
+Graphiti already provides what Cortex needs most:
 
-Recent clarification:
+- lineage
+- support structure
+- point-in-time semantics
+- invalidation
+- supersession
 
-- current Graphiti docs make lineage and time very clear
-- they do not appear to expose a first-class explicit confidence model that would replace Cortex trust states
+That means Graphiti can naturally express:
 
-That combination is what made it hard to replace cleanly.
+- same emerging idea
+- related workspace
+- supporting reference
+- supersedes
+- candidate for promotion
 
-## Why Neo4j
+without inventing a second graph subsystem.
 
-Neo4j is the backend because it is:
+## Type Distinctions
 
-- disk-backed
-- durable
-- better aligned with integrity than an in-memory primary graph store
+Useful type distinctions include:
 
-The current posture is that Layer 3 should optimize for integrity and temporal memory behavior, not for the fastest possible RAM-heavy graph substrate.
+- `concept`
+- `idea_cluster`
+- `workspace_anchor`
+- `artifact_anchor`
+- `reference_anchor`
 
-## Notion Staging
+These are types inside one Layer 3 graph, not separate storage systems.
 
-Layer 3 should not ingest raw runtime traffic directly.
+## Trust Model
 
-The intended path is:
+The trust model on top of Graphiti should stay minimal.
 
-1. raw evidence closes into an evidence package
-2. the High-Signal Mamba Stream emits candidate notions
-3. high-signal notions may be written early as tentative cross-thread memory
-4. reconciliation decides what becomes trusted durable memory
-
-This means durable memory is not a naive real-time extraction sink.
-
-It is a staged semantic authority.
-
-## Memory States
-
-The important Layer 3 states are:
+Useful states include:
 
 - `tentative`
 - `low_confidence`
@@ -92,81 +74,21 @@ The important Layer 3 states are:
 - `invalidated`
 - `stale_support`
 
-These states matter because they let the system be fast without lying about certainty.
+Do not build a giant second semantics system.
 
-The clean interpretation is:
+## How Layer 3 Helps Layer 4
 
-- Graphiti provides lineage, support, and temporal structure
-- Cortex overlays explicit trust and confidence state
+Layer 3 helps Layer 4 organize itself by mapping concept relationships across:
 
-## How Runtime Evidence Enters Graphiti
+- many threads
+- many workspaces
+- many references
 
-Graphiti should not receive the whole raw session log as its normal representation.
+Layer 4 may receive connector fields such as:
 
-Instead, a runtime evidence package should usually contain:
+- `idea_cluster_id`
+- `related_workspace_ids`
+- `candidate_for_promotion`
+- `promotion_readiness`
 
-- a compact summary
-- timestamps
-- thread or session ids
-- a pointer back to the canonical evidence record
-- only Layer 3 appropriate beliefs or support
-
-This keeps Graphiti focused on semantic memory rather than transcript storage.
-
-## How Document Evidence Enters Graphiti
-
-Document artifacts should follow the same restraint.
-
-Graphiti should get:
-
-- one compact summary representation
-- a pointer to the canonical artifact revision
-- only extracted standalone Layer 3 appropriate beliefs or support
-
-The full document body should remain outside Layer 3.
-
-Artifact lineage should also exist inside the graph.
-
-The preferred pattern is:
-
-- represent the artifact or document as an entity
-- preserve the anchor and revision pointer
-- connect beliefs, decisions, and support to that artifact entity
-
-## Guardrails Around Layer 3
-
-Layer 3 should be protected by:
-
-- notion staging
-- oversight review
-- checkpoint and session-end reconciliation
-- nightly maintenance
-- support-aware invalidation when artifacts change
-
-This is how the system avoids letting a few bad extractions poison the whole semantic memory layer.
-
-## Why Layer 3 Is Not Working Memory
-
-Layer 3 is deliberately slower and more trusted than working memory.
-
-Working memory supports the current session.
-
-Layer 3 supports durable cross-session and cross-thread orientation.
-
-If Layer 3 is treated like working memory, the graph fills with noise.
-
-If working memory is treated like Layer 3, runtime continuity becomes too slow and rigid.
-
-## What Makes This The Memory Core
-
-If one part of the stack is the semantic heart, it is Layer 3.
-
-Policy lives above it.
-
-OpenClaw working memory lives beside it.
-
-Artifacts live below it.
-
-But durable semantic truth compounds here.
-
-That is why Graphiti plus Neo4j is the center of the chosen memory posture.
+The bodies stay in Layer 4.

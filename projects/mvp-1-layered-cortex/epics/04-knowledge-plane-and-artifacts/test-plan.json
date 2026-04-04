@@ -3,14 +3,30 @@
   "scenarios": [
     {
       "id": "01",
-      "name": "Revision-aware decomposition",
+      "name": "Layer 4 operational workspace",
+      "assertions": [
+        "An incubation workspace can exist without a Layer 5 artifact.",
+        "Operational bodies remain explicit about anchor identity and workflow state."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "External reference handling",
+      "assertions": [
+        "External references can remain Layer 4 operational material.",
+        "The system does not force external references into Git canon."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Revision-aware artifact knowledge",
       "assertions": [
         "Layer 4 slices link back to explicit artifact revisions.",
         "Source locators remain inspectable."
       ]
     },
     {
-      "id": "02",
+      "id": "04",
       "name": "Canonical truth boundary",
       "assertions": [
         "Layer 5 remains the canonical publication surface.",
@@ -18,16 +34,25 @@
       ]
     },
     {
-      "id": "03",
+      "id": "05",
       "name": "Re-ingestion loop",
       "assertions": [
         "Revision changes can trigger re-ingestion.",
         "Stale support can be detected after canonical changes."
       ]
+    },
+    {
+      "id": "06",
+      "name": "Bottom-up canonical reprocessing",
+      "assertions": [
+        "After promotion, Layer 5 acts as the canonical source.",
+        "Meaningful canonical revision can trigger Layer 4 re-ingestion and Layer 3 reconciliation."
+      ]
     }
   ],
   "non_goals": [
     "Treating Layer 4 as the publication source of truth",
-    "Copying full artifacts into Layer 3 durable memory"
+    "Copying full artifacts into Layer 3 durable memory",
+    "Forcing every Layer 4 record into Git canon"
   ]
 }

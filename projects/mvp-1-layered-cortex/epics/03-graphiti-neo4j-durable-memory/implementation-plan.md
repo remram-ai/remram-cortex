@@ -2,7 +2,7 @@
 
 ## Objective
 
-Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including staged notions, tentative cross-thread memory, and reconciliation into trusted memory.
+Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including reconciliation from `QMD` notions, tentative cross-thread memory, and promotion into trusted durable memory.
 
 ## Workstreams
 
@@ -10,8 +10,8 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including staged notion
    - `Neo4j` deployment and connection posture
    - `Graphiti` service configuration
    - evidence package to episode mapping
-2. Define the notion and durable-memory state model.
-   - candidate notion shape
+2. Define the durable-memory trust model.
+   - QMD notion input shape
    - tentative and low-confidence states
    - active, superseded, invalidated, and stale-support states
 3. Implement bounded Graphiti episode packaging.
@@ -26,7 +26,7 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including staged notion
 ## Deliverables
 
 - running `Graphiti + Neo4j` Layer 3 environment
-- notion schema and lifecycle rules
+- Layer 3 trust-state and promotion rules
 - episode packaging contract
 - reconciliation flow for tentative cross-thread memory
 
@@ -37,7 +37,7 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including staged notion
 
 ## Exit Criteria
 
-- high-signal notions can appear cross-thread as tentative memory
+- high-signal QMD notions can appear cross-thread as tentative memory
 - reconciliation can promote, merge, or reject them
 - Graphiti receives bounded evidence packages instead of raw log dumps
 

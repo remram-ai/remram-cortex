@@ -13,16 +13,25 @@
       "id": "02",
       "name": "Session-end reconciliation",
       "assertions": [
-        "Tentative memory can be promoted, downgraded, or rejected.",
+        "Tentative QMD notions can be promoted, downgraded, or rejected.",
         "Trust state changes remain inspectable."
       ]
     },
     {
       "id": "03",
+      "name": "QMD cleanup",
+      "assertions": [
+        "Reflection can prune, merge, and demote low-value notions.",
+        "QMD remains lean without becoming the durable authority."
+      ]
+    },
+    {
+      "id": "04",
       "name": "Nightly maintenance",
       "assertions": [
         "Nightly reconciliation can merge, supersede, or invalidate memory safely.",
-        "Provenance and support links remain intact."
+        "Provenance and support links remain intact.",
+        "Layer 3 relationships can inform Layer 4 grouping and promotion candidate detection."
       ]
     }
   ],

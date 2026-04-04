@@ -2,169 +2,126 @@
 
 ## Core System Statement
 
-Cortex is a single knowledge authority coordinating multiple specialized layers.
+Cortex is a single knowledge authority coordinating five specialized layers.
 
-The key phrase is:
+The operative phrase is:
 
 **one authority, multiple memory surfaces**
-
-This means the system has one semantic center, but not one storage substrate.
 
 ## The Five Layers
 
 ### Layer 1: Policy
 
-Layer 1 defines how the system should behave.
+Layer 1 is small and custom.
 
-It contains:
+It owns:
 
-- role definitions
-- mode packs
+- role and mode composition
 - tool-use rules
-- approval rules
-- escalation rules
+- approval and escalation posture
 - prompt-budget discipline
-- mutable preference-policy through governed workflows
+- mutable preference-policy
 
-Layer 1 is not memory.
+Layer 1 is behavioral truth, not memory.
 
 ### Layer 2: Working Memory
 
-Layer 2 supports active live work.
+Layer 2 is hot working continuity.
 
-It contains:
+It uses:
 
-- session continuity
-- current task state
-- rolling summaries
-- recent tool outcomes
-- handoff state
-- temporary assumptions
-- compact continuity objects
+- OpenClaw sessions and runtime continuity
+- `QMD` for hot retrieval and notion storage
+- a narrow high-signal Mamba listener
 
-Layer 2 is fast and lossy.
-
-It is not the durable source of truth.
+Layer 2 is fast, pruneable, and not durably authoritative.
 
 ### Layer 3: Durable Memory
 
-Layer 3 stores long-lived semantic memory.
+Layer 3 is durable semantic truth.
 
-It contains:
+It owns:
 
-- beliefs
-- preferences
-- constraints
-- decisions
+- concepts
+- identities
 - relationships
-- support references
-- supersession and invalidation state
+- support
+- supersession
+- invalidation
 
-Layer 3 is where durable semantic truth compounds.
+This is one `Graphiti` memory system on `Neo4j`.
 
-### Layer 4: Decomposed Artifact Knowledge
+### Layer 4: Operational Knowledge
 
-Layer 4 is the operational retrieval layer for artifacts.
+Layer 4 is the operational knowledge authority.
 
-It contains:
+It owns:
 
-- typed slices
-- extracted structures
-- embeddings
-- lexical fields
-- source-linked offsets
-- revision-aware retrieval payloads
+- working and incubation workspaces
+- reference-derived knowledge bodies
+- decomposed artifact knowledge
+- active operational document state
 
-Layer 4 is derived and allowed to move ahead of canonical artifacts during active work.
+Layer 4 is authoritative for operational content even when there is no Layer 5 counterpart.
 
 ### Layer 5: Canonical Artifacts
 
-Layer 5 is the ground-truth layer for artifacts.
+Layer 5 is canonical publication truth when publication-grade canon is actually warranted.
 
-It contains:
-
-- reviewable documents
-- revision history
-- provider-backed authoritative artifacts
-- approved redrafts and published outputs
+It should not be treated as the default destination for every useful idea.
 
 ## Authority By Layer
 
-Each layer owns a different kind of truth.
+Each layer owns a different kind of truth:
 
-Layer 1 owns behavioral truth.
+- Layer 1 = behavioral truth
+- Layer 2 = hot working continuity
+- Layer 3 = durable semantic truth
+- Layer 4 = operational knowledge truth
+- Layer 5 = canonical publication truth
 
-Layer 2 owns live operational continuity.
+## Why These Boundaries Matter
 
-Layer 3 owns durable semantic truth.
+If the boundaries blur:
 
-Layer 4 owns retrieval-ready operational artifact views.
+- policy becomes memory
+- hot continuity becomes durable truth
+- Graphiti becomes a document body store
+- operational workspaces jump to canon too early
+- external references get treated like authored artifacts
 
-Layer 5 owns canonical artifact truth.
+The locked architecture prevents that.
 
-## Why The Layers Exist
+## Cross-Layer Identity
 
-The architecture exists because these jobs conflict if forced into one store.
+The same real-world thing should keep one stable Cortex identity across layers.
 
-If policy lives in memory, behavior gets muddy.
+Useful distinctions include:
 
-If working memory becomes durable memory, noise becomes truth.
+- `concept`
+- `idea_cluster`
+- `workspace_anchor`
+- `artifact_anchor`
+- `reference_anchor`
 
-If durable memory stores whole artifacts, the graph becomes junk.
+Layer 3 uses those identities to organize meaning.
 
-If decomposed knowledge replaces canonical artifacts, publication truth disappears.
+Layer 4 uses them to organize bodies.
 
-The layered model prevents those failures.
+## The Medium-Horizon Workspace
 
-## Stable Identity Across Layers
+One of the most important clarifications is that a budding concept may span many threads before it ever becomes a canonical artifact.
 
-The same real-world thing should keep one stable Cortex identity across all layers.
+That medium-horizon workspace belongs in Layer 4.
 
-That identity is the `anchor_id`.
+Layer 3 helps identify that the threads belong together.
 
-Important consequences:
-
-- the same artifact can have a Git revision, a Postgres decomposition, and a Graphiti representation without becoming three separate "things"
-- memory can reference artifact anchors without owning artifact bodies
-- publication and re-ingestion can update support cleanly
+Layer 5 is only relevant later if the work becomes canon-worthy.
 
 ## Startup Stance
 
-An agent should not boot from one giant prompt.
+The runtime startup stance is:
 
-The startup stance is:
+**policy + hot working continuity + durable-memory orientation + Layer 4 knowledge pointers**
 
-**policy + working memory snapshot + durable memory bundle + knowledge brief or pointers**
-
-This means:
-
-- policy shapes behavior
-- working memory gives continuity
-- durable memory gives orientation and learned context
-- knowledge gives deeper evidence only when needed
-
-## Retrieval Order
-
-The intended retrieval order is:
-
-1. durable-memory graph
-2. linked anchor selection
-3. decomposed artifact retrieval
-4. canonical artifact body only when necessary
-
-This keeps runtime retrieval bounded and prevents the system from dragging whole corpora into context too early.
-
-## Cross-Layer Rules
-
-The most important cross-layer rules are:
-
-- working memory never becomes durable truth automatically
-- artifact impacts can update Layer 4 immediately, but not silently rewrite Layer 5
-- Layer 3 can reference artifacts, but not own their bodies
-- Layer 4 can move ahead of Layer 5 only with explicit dirty-state tracking
-- re-ingestion after publication must be able to reconcile stale support
-- no layer should bypass Cortex contracts and write directly into another layer's store
-
-## The Architecture In One Operational Sentence
-
-Cortex uses policy to govern live OpenClaw sessions, compresses those sessions into a semantic checkpoint stream, promotes trusted meaning into Graphiti durable memory, keeps detailed artifact knowledge in Postgres, and preserves official source truth in Git.
+That keeps runtime bounded while still giving the agent continuity and grounding.

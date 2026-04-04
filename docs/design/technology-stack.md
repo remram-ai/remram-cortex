@@ -1,141 +1,148 @@
 # Technology Stack
 
-This document records the active Cortex stack.
+This document records the active Cortex stack after design lock.
 
 It is not a comparison memo.
 
-It describes the technologies the repository is currently being organized around.
+It describes the stack the repository is now being organized around.
 
 ## Chosen Stack
 
-- `OpenClaw` for runtime execution and Layer 2 working-memory mechanics
-- Cortex-owned `Policy` layer above OpenClaw
-- High-Signal `Mamba` stream for semantic checkpointing and rolling compression
-- `Graphiti + Neo4j` for Layer 3 durable memory
-- `Postgres + pgvector` for:
-  - runtime evidence
-  - control-plane state
-  - Layer 4 decomposed knowledge
-- `Git` for Layer 5 canonical artifacts
+- `OpenClaw` as the chosen agentic framework
+- Cortex-owned Layer 1 policy composition
+- `QMD` for Layer 2 hot working memory and notions
+- a narrow High-Signal `Mamba` stream as the always-on Layer 2 listener
+- `Graphiti + Neo4j` for Layer 3 durable semantic memory
+- `Postgres` as the operational middle-layer authority
+- `Git` for Layer 5 canonical artifacts when publication-grade canon is actually warranted
 
 ## Why This Stack
 
 ### OpenClaw
 
-OpenClaw already owns:
+`OpenClaw` is the chosen agentic framework for Remram.
 
+That means the selection logic is:
+
+- build around OpenClaw as the framework center
+- prefer native OpenClaw patterns when they are good enough
+- add Cortex memory and knowledge behavior around that boundary
+
+OpenClaw remains responsible for:
+
+- runtime execution
 - sessions
+- transcript continuity
 - hooks
 - compaction
-- context-engine surfaces
-- runtime execution
-
-That makes it the right Layer 2 base.
-
-Cortex should augment it rather than replace it.
-
-The preferred Layer 2 memory posture inside OpenClaw is:
-
-- keep sessions and compaction OpenClaw-native
-- prefer the `QMD` memory engine over the builtin engine if local resources and ops posture allow
-- treat `Honcho` and `Dreaming` as informative reference points, not the main Cortex durable-memory center
 
 ### Policy In Cortex
 
-Policy remains custom because it is where Cortex-specific behavior lives:
+Layer 1 remains custom because Cortex-specific behavior lives there.
 
-- mode composition
+It owns:
+
+- role and mode composition
+- approval posture
+- escalation posture
 - prompt-budget discipline
-- approval rules
 - mutable preference-policy
-- routing logic
 
-But the split inside Layer 1 should be sharper than before:
+Hard runtime and tool-use enforcement should remain as close as possible to OpenClaw agent or plugin configuration.
 
-- hard runtime and tool-use enforcement should stay as close as possible to OpenClaw agent or plugin configuration
-- Cortex policy should focus on composition, preference-policy, routing, approval posture, and prompt-budget discipline
+### QMD In Layer 2
+
+`QMD` is now the explicit Layer 2 hot working-memory substrate.
+
+It is used for:
+
+- hot working-memory retrieval
+- notion storage
+- fast cross-thread continuity under tighter retrieval rules
+- short-horizon continuity around the OpenClaw session surface
+
+This is not a giant new memory architecture.
+
+It is the pragmatic hot-memory choice inside an OpenClaw-centered stack.
 
 ### High-Signal Mamba Stream
 
-The Mamba stream is the main semantic checkpoint surface.
+The Mamba stream is narrow by design.
 
-It exists to:
+It is:
 
-- keep smaller-window models viable
-- avoid raw transcript replay as the normal consumer path
-- stage notions for durable memory
-- support oversight and nightly reconciliation
+- a small always-on listener
+- a typed high-signal channel
+- a Layer 2-adjacent signal producer
 
-`Mamba` here is an architectural role, not yet a locked implementation choice.
+It is not:
 
-The important commitment is:
+- a universal reflection engine
+- the document decomposition engine
+- a general-purpose semantic authority
 
-- rolling semantic compression
-- typed checkpoints
-- source-linked rebuildability
+The strongest implementation pattern is:
 
-The exact model or library can still change as long as it preserves that contract.
-
-The compute posture should also be clearer:
-
-- semantic checkpoint production should run continuously
-- optimistic GPU offload should be spent on embeddings, graphizing, chunking, and near-time enrichment
-- checkpoint and nightly passes should be allowed to revisit full evidence plus semantic checkpoints plus staged notions
+- a small continuous sensor
+- plus a larger bounded writer path that is only invoked on high-signal windows
 
 ### Graphiti + Neo4j
 
-This remains the chosen Layer 3 posture because it gives:
+Layer 3 stays centered on `Graphiti + Neo4j` because it gives:
 
-- temporal durable memory
-- episode-backed provenance
-- invalidation and supersession semantics
-- graph-native retrieval over durable memory
+- durable semantic memory
+- temporal lineage
+- support relationships
+- invalidation and supersession
+- concept and identity relationships across threads and workspaces
 
-`Neo4j` is the durable graph backend because it is disk-backed and better aligned with integrity than an in-memory primary graph store.
+There is only one Graphiti memory system.
 
-### Postgres + pgvector
+It is used for normal durable-memory behavior, including concept clustering and workspace relationship mapping.
 
-This is the default Layer 4 substrate because it gives:
+### Postgres
 
-- typed relational control
-- evidence storage
-- revision-aware decomposition records
-- vector search without introducing a second major platform
-- lexical search through native Postgres full-text capabilities
-- a credible hybrid-search posture inside one operational store
-- JSON and JSONB document support for transcript and evidence packaging
+`Postgres` remains the practical operational middle-layer authority.
 
-If later lexical retrieval requirements exceed what this posture handles well, a dedicated search layer can be added deliberately.
+It covers:
 
-That is an intentional tradeoff:
+- policy and control data
+- runtime evidence
+- Layer 4 operational knowledge bodies
+- incubation workspaces
+- reference summaries and links
+- decomposed artifact knowledge
+- retrieval metadata
+- workflow and dirty-state fields
 
-- start with one operational Layer 4 platform
-- measure where it breaks
-- only then add a second search substrate
+This is not being justified as the final winner for document retrieval in the abstract.
 
-The first escalation path, if Layer 4 retrieval pressure outgrows this posture, is `OpenSearch`.
-
-That would be justified when:
-
-- transcript or document retrieval becomes a dominant workload
-- Postgres relevance tuning becomes too bespoke
-- operational filters, hybrid ranking, or corpus scale clearly exceed the one-store posture
+It is being chosen because it keeps the near-term service count lower and covers the mixed operational middle of the stack well enough.
 
 ### Git
 
-Git remains the canonical artifact truth because it gives:
+`Git` remains the Layer 5 canonical publication surface when publication-grade artifacts are warranted.
 
-- reviewable revisions
-- explicit publication
-- clear promotion boundaries
-- inspectable history
+It should not be treated as the default destination for every useful idea or every external reference.
+
+## What Is Not In The Active Stack
+
+The active stack explicitly excludes:
+
+- `OpenSearch`
+- a second graph system
+- a second Graphiti usage pattern
+- a separate giant external working-memory service
+
+`OpenSearch` may remain a future option if artifact retrieval becomes dominant enough to justify it, but it is not part of the current architecture or MVP.
 
 ## Stack Summary
 
-The design rule is:
+The active rule is:
 
-- let OpenClaw do Layer 2
-- let Cortex own policy and semantic checkpointing
+- let OpenClaw own runtime mechanics
+- let QMD own hot working-memory retrieval and notions
+- let the Mamba stream stay narrow
 - let Graphiti own durable semantic memory
-- let Postgres own evidence and decomposed operational knowledge
-- let Git own publication truth
+- let Postgres own the operational middle
+- let Git own canonical publication only when canon is warranted

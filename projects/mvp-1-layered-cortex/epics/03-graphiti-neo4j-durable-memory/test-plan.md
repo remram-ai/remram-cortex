@@ -3,7 +3,7 @@
 ## Core Scenarios
 
 1. Evidence packages are turned into bounded Graphiti episodes.
-2. High-signal notions can be written early as tentative cross-thread memory.
+2. High-signal QMD notions can be written early as tentative cross-thread memory.
 3. Reconciliation promotes, merges, downgrades, or rejects tentative memory correctly.
 4. Durable memory remains provenance-aware and support-linked.
 
@@ -12,6 +12,7 @@
 - raw transcripts should not be used as the normal Graphiti payload
 - tentative memory should not be treated as fully trusted by default
 - stale support should be detectable when artifacts or evidence change
+- Layer 3 should not become the notion ledger or workspace body store
 
 ## Evidence Of Completion
 

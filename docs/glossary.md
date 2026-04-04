@@ -44,10 +44,6 @@ The Remram knowledge authority layer.
 
 ## D
 
-### Decomposed Artifact Knowledge
-
-The Layer 4 operational retrieval surface built from canonical artifacts.
-
 ### Dream Cycle
 
 The slower reconciliation and maintenance layer that consolidates and hardens memory over time.
@@ -65,6 +61,10 @@ Raw material the system can learn from, such as transcripts, tool outputs, or so
 ### Evidence Package
 
 A closed, immutable record used for audit, replay, and reconciliation.
+
+### External Reference Material
+
+Reference material the user does not necessarily own or intend to canonize, such as uploaded PDFs, podcasts, articles, or research sources.
 
 ## G
 
@@ -97,6 +97,10 @@ A staged candidate memory derived from the semantic checkpoint stream.
 In the active design, "notion" is effectively the Cortex term for a candidate durable memory.
 
 ## O
+
+### Operational Knowledge
+
+Layer 4 operational knowledge truth, including workspaces, reference-derived knowledge, and decomposed artifact knowledge.
 
 ### OpenClaw
 
@@ -140,4 +144,8 @@ A semantic retrieval field used for soft routing and discovery.
 
 ### Working Memory
 
-Layer 2 operational continuity. In the active design, it remains OpenClaw-native and is augmented by Cortex rather than replaced.
+Layer 2 hot continuity. In the active design, it is OpenClaw-centered, uses QMD for hot retrieval and notions, and is augmented by Cortex rather than replaced.
+
+### Workspace
+
+A medium-horizon operational body in Layer 4 that may span many threads and evolve before canonical publication is warranted.

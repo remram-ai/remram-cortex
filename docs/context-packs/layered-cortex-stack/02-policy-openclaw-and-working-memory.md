@@ -2,162 +2,94 @@
 
 ## The Main Decision
 
-Layer 1 is custom.
+Layer 1 remains custom.
 
-Layer 2 stays OpenClaw-native by default.
+Layer 2 now explicitly uses `QMD`.
 
-This is one of the most important choices in the current stack.
+OpenClaw remains the chosen framework and still owns runtime sessions, transcript continuity, compaction, and execution mechanics.
 
-## Why Policy Is Custom
+## Layer 1
 
-Policy is where Cortex-specific behavior lives.
-
-It includes:
+Layer 1 owns:
 
 - role and mode composition
-- approval and escalation rules
-- tool policy
+- tool-use rules
+- approval posture
+- escalation posture
 - prompt-budget discipline
-- mutable preference-policy through a governed path
+- mutable preference-policy
 
-No off-the-shelf memory system was expected to solve this cleanly.
+The split with OpenClaw should stay hard:
 
-Recent refinement:
+- hard runtime-safe and workflow enforcement in OpenClaw config
+- policy composition and preference-policy in Cortex
 
-- hard tool-use and safety enforcement should stay as close as possible to OpenClaw agent or plugin configuration
-- Cortex policy should focus on composition, routing, approval posture, and mutable preference-policy
+## Layer 2
 
-## Why Working Memory Stays In OpenClaw
+Layer 2 is hot working continuity.
 
-OpenClaw already owns:
+Its substrate is:
 
-- sessions
-- transcript continuity
-- compaction
-- runtime execution
-- context-engine surfaces
+- OpenClaw sessions
+- `QMD`
 
-That makes OpenClaw the natural Layer 2 base.
+QMD now explicitly owns:
 
-The stack deliberately avoids building a separate external working-memory store in phase 1.
+- hot working-memory retrieval
+- notion storage
+- tentative continuity across threads under tighter rules
 
-Within OpenClaw, the preferred memory-search posture is now:
+## Why QMD
 
-- `QMD` over the builtin engine when feasible
+QMD is the practical hot-memory choice because it stays within the OpenClaw-centered posture while giving Cortex a better Layer 2 retrieval surface.
 
-Why:
+It should stay:
 
-- local BM25 plus vector hybrid search
-- reranking
-- extra-path indexing
-- session transcript indexing
+- light
+- fast
+- continuously cleaned up
 
-## What Cortex Adds To Layer 2
+It should not become a shadow durable-memory system.
 
-Cortex does not replace OpenClaw working memory.
+## Notions
 
-Cortex augments it through:
+Notions live in QMD.
 
-- policy-aware context assembly
-- semantic checkpoint generation
-- compressed continuity objects
-- hooks that prepare continuity before compaction pressure becomes painful
+They are:
 
-## The Session Surface
+- hot candidate durable memories
+- source-linked
+- fast to merge
+- fast to prune
+- not silently authoritative
 
-OpenClaw sessions remain the evidence surface for live runtime behavior.
+They are allowed to support continuity and tentative cross-thread retrieval, but they still need reconciliation before becoming Layer 3 truth.
 
-That means:
+## Mamba In This Layer
 
-- the transcript is still the base runtime journal
-- compaction is still an OpenClaw concern
-- Cortex should plug into that surface rather than fork it immediately
+Mamba is the always-on high-signal listener.
 
-## The Problem This Solves
+It is:
 
-The architecture is reacting to a practical issue:
+- narrow
+- typed
+- continuous
 
-- smaller context windows fill quickly
-- raw transcript replay is expensive
-- the system needs bounded continuity that still feels long-lived
+It is not:
 
-The answer is not to replace OpenClaw.
+- the reflection engine
+- the artifact parser
+- the broad semantic engine
 
-The answer is to compress the session into a better semantic surface.
+## Cleanup
 
-That is also why `Honcho` and `Dreaming` are not the chosen center:
+Reflection is explicitly allowed to keep QMD healthy.
 
-- `Honcho` is too opinionated as the main memory center for this stack
-- `Dreaming` is useful conceptually, but it promotes OpenClaw memory into Markdown long-term memory rather than into Cortex Layer 3
+That includes:
 
-## The Working-Memory Product Model
+- pruning notions
+- merging notions
+- demoting stale notions
+- expiring low-value notions
 
-The intended working-memory model is:
-
-- OpenClaw keeps the session and compaction machinery
-- Cortex emits compact continuity objects from the session stream
-- runtime context is assembled from those continuity objects rather than from raw replay alone
-
-The result is an "effectively larger context window" without pretending the model has infinite prompt budget.
-
-## What Lives In Policy Versus Working Memory
-
-Policy owns:
-
-- persistent rules
-- behavior constraints
-- role posture
-- approval requirements
-- mode overlays
-
-Working memory owns:
-
-- recent continuity
-- active goals
-- recent decisions
-- short-horizon assumptions
-- in-flight runtime state
-
-The system should not confuse the two.
-
-## Mutable Preference Policy
-
-Some policy-like state is allowed to change.
-
-Examples:
-
-- formatting preferences
-- style preferences
-- operating preferences
-- stable mode biases
-
-But access policy and other safety-critical rules should not share the same write path.
-
-Preference-policy can update through a governed reflection path.
-
-Access policy should require stronger approval.
-
-## The Context Formula
-
-The runtime context formula is:
-
-**policy + working-memory continuity + durable-memory bundle + knowledge pointers**
-
-This means working memory is not the whole startup context.
-
-It is one bounded part of the full assembled stance.
-
-## Why There Is No Redis In The Base Stack
-
-The current design intentionally avoids a separate Redis working-memory store because:
-
-- OpenClaw already has a session surface
-- the real pain is context quality, not just storage
-- the High-Signal Mamba stream solves the larger problem more directly
-- another store would add complexity before it proves value
-
-The architecture can revisit an external hot store later if OpenClaw becomes the blocker.
-
-For now, the rule is:
-
-**let OpenClaw do Layer 2, and let Cortex augment it intelligently**
+This is a designed part of Layer 2, not just operational hygiene.

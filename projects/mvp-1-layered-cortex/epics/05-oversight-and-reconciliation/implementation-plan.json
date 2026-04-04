@@ -31,7 +31,17 @@
       "outputs": [
         "session-end reconciliation",
         "checkpoint reconciliation",
-        "nightly maintenance and consolidation"
+        "nightly maintenance and consolidation",
+        "Layer 3 assisted Layer 4 grouping and promotion candidate detection"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "QMD cleanup",
+      "outputs": [
+        "notion prune rules",
+        "notion merge rules",
+        "stale notion demotion and expiration rules"
       ]
     }
   ],

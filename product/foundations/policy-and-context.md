@@ -14,29 +14,33 @@ It includes:
 - prompt-budget discipline
 - mutable preference-policy through governed workflows
 
+Layer 1 is intentionally small.
+
+It is behavioral truth, not a memory layer.
+
 ## Layer 2: Working Memory
 
-Working memory stays OpenClaw-native by default.
+OpenClaw still owns runtime sessions, transcript continuity, and execution mechanics.
 
-Cortex does not replace OpenClaw session mechanics.
+Cortex augments that runtime with:
 
-Instead, Cortex adds:
-
-- policy-aware assembly
-- High-Signal Mamba checkpoints
-- compression-ready continuity products
+- `QMD` as the hot working-memory retrieval substrate
+- notions stored directly in `QMD`
+- policy-aware working-memory assembly
+- a narrow High-Signal Mamba listener that emits typed high-signal events
 
 The stable intent is:
 
 - let OpenClaw own session continuity
-- prepare compact continuity ahead of compaction pressure
+- let `QMD` hold the hot notion and retrieval surface
 - keep smaller-window runtime bundles viable without transcript replay by default
+- keep the hot layer lean through reflection-driven cleanup
 
 ## Product Rule
 
 The stable product contract is:
 
-- OpenClaw owns working-memory mechanics
-- Cortex owns policy and semantic augmentation
+- OpenClaw owns runtime and workflow mechanics
+- Cortex owns policy composition, hot-memory augmentation, and semantic continuity
 
 That line should not be blurred casually.

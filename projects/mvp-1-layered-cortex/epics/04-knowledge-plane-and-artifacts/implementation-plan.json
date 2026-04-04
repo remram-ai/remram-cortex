@@ -1,6 +1,6 @@
 {
   "epic_id": "04_knowledge_plane_and_artifacts",
-  "objective": "Stand up Layer 4 decomposition and Layer 5 canonical artifact flow with explicit anchor, revision, and re-ingestion contracts.",
+  "objective": "Stand up Layer 4 operational knowledge and Layer 5 canonical artifact flow with explicit anchor, revision, and re-ingestion contracts.",
   "dependencies": [
     "03_graphiti_neo4j_durable_memory",
     "docs/design/knowledge-and-artifact-architecture.md"
@@ -17,11 +17,11 @@
     },
     {
       "id": "02",
-      "name": "Layer 4 decomposition",
+      "name": "Layer 4 operational knowledge",
       "outputs": [
-        "typed slices",
-        "source locators",
-        "embeddings and lexical fields",
+        "incubation workspaces",
+        "external reference records and summaries",
+        "decomposed artifact knowledge when canon exists",
         "retrieval-ready payloads"
       ]
     },
@@ -33,15 +33,25 @@
         "redraft and publication loop",
         "re-ingestion after revision changes"
       ]
+    },
+    {
+      "id": "04",
+      "name": "Bottom-up canonical reprocessing",
+      "outputs": [
+        "Layer 5 becomes the canonical source after promotion",
+        "meaningful canonical revisions trigger Layer 4 re-ingestion",
+        "Layer 3 support and summaries reconcile after canonical changes"
+      ]
     }
   ],
   "exit_criteria": [
     "Artifacts have stable anchor and revision identity.",
-    "Layer 4 remains revision-aware and source-linked.",
-    "Layer 5 remains canonical publication truth."
+    "Layer 4 operational knowledge remains source-linked and revision-aware where applicable.",
+    "Layer 5 remains canonical publication truth.",
+    "Canonical revisions can drive reprocessing back into Layer 4 and Layer 3."
   ],
   "risks": [
-    "Allowing Layer 4 slices to masquerade as canonical artifacts.",
+    "Allowing Layer 4 operational work to masquerade as canonical artifacts.",
     "Failing to invalidate stale Layer 3 support after revision changes."
   ]
 }
