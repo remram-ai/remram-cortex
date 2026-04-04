@@ -1,23 +1,21 @@
 # Reference
 
-`docs/reference/` holds external technical references that inform Cortex design.
+`docs/reference/` holds curated technical notes for the technologies currently in the active Cortex stack.
 
-These documents are not canonical architecture. They capture useful outside material, implementation patterns, and candidate techniques that may influence Cortex decisions.
+This folder is no longer a general candidate-analysis dump.
 
-Documents in this folder:
+Historical fit analyses and superseded reference packages were moved to the archive.
 
-- [Cole Medin RAG Strategies Guide](cole-medin-rag-strategies.md)
-- [memU Gap Analysis](memu-gap-analysis.md)
-- [memU Fork Feasibility](memu-fork-feasibility.md)
-- [LlamaIndex Cortex Fit Analysis](llamaindex-cortex-fit-analysis.md)
-- [Microsoft GraphRAG Memory System Context](microsoft-graphrag-memory-system-context.md)
-- [Microsoft GraphRAG Cortex Fit Analysis](microsoft-graphrag-cortex-fit-analysis.md)
-- [Neo4j Cortex Fit Analysis](neo4j-cortex-fit-analysis.md)
-- [Weaviate Cortex Fit Analysis](weaviate-cortex-fit-analysis.md)
-- [Cognee Cortex Fit Analysis](cognee-cortex-fit-analysis.md)
-- [OpenClaw Thread Option Signal Review](openclaw-thread-option-signal-review.md)
+## Active References
 
-Go next:
+- [OpenClaw Integration Notes](openclaw-integration-notes.md)
+- [Graphiti And Neo4j Notes](graphiti-neo4j-notes.md)
+- [Evidence, Knowledge, And Artifacts](evidence-knowledge-and-artifacts.md)
 
-- [Concepts](../concepts/README.md) for normalized Cortex vocabulary
-- [Architecture](../remram-cortex/architecture.md) for the canonical system design
+## Use
+
+Use this folder when you need:
+
+- quick implementation-facing notes on the chosen stack
+- a reminder of why a given technology is in the active architecture
+- a concise reference surface without reopening the older decision corpus

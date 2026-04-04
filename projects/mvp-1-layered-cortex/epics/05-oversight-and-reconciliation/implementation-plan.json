@@ -1,0 +1,8 @@
+{
+  "epic_id": "05_oversight_and_reconciliation",
+  "deliverables": [
+    "oversight trigger model",
+    "semantic checkpoint review path",
+    "nightly reconciliation loop"
+  ]
+}

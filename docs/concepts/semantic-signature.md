@@ -44,4 +44,4 @@ If signature matching becomes a strict gate, recall will collapse.
 - [Typed Signals](typed-signals.md)
 - [Bounded Retrieval](bounded-retrieval.md)
 - [Reflection](reflection.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)

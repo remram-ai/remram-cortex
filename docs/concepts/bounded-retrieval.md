@@ -39,4 +39,4 @@ Cortex returns a knowledge bundle, not a transcript. Orchestration decides how t
 - [Memory Versus Context](memory-vs-context.md)
 - [Knowledge Object](knowledge-object.md)
 - [Reflection](reflection.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)

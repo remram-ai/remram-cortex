@@ -1,27 +1,22 @@
 # Docs
 
-`docs/` is the human-readable design layer for `remram-cortex`.
+`docs/` is the active architectural documentation surface for `remram-cortex`.
 
-This repository is still early, so the documentation tree is organized around a clear conceptual baseline instead of a large implementation tree.
+The repository has been reset around the layered architecture and the current chosen stack.
 
-## Current Structure
+## Structure
 
-- `overview/` explains what Cortex is and why the repository exists
-- `glossary.md` locks the shared Cortex vocabulary
-- `concepts/` defines the canonical Cortex vocabulary
-- `design/` holds scoped design packages for active delivery slices
-- `reference/` captures external technical references that inform Cortex design
-- `remram-cortex/` contains the authoritative Cortex design documents
+- [overview/](overview/README.md): what Cortex is, why it exists, and how the repository is organized
+- [glossary.md](glossary.md): locked shared terminology
+- [concepts/](concepts/README.md): stable concept definitions that survive implementation changes
+- [design/](design/README.md): the active architecture, stack, integration, and deployment docs
+- [reference/](reference/README.md): curated technical notes for the core technologies currently in use
 
 ## Start Here
 
-- read [overview/](overview/README.md) for the high-level role and repository boundary
-- read [design/layered-memory-architecture.md](design/layered-memory-architecture.md) for the current foundational architecture direction
-- read [glossary.md](glossary.md) to align on locked terminology
-- read [concepts/](concepts/README.md) for short concept definitions built on that glossary
-- read [concepts/high-signal-mamba-stream.md](concepts/high-signal-mamba-stream.md) for the current semantic checkpoint-stream model
-- use [design/](design/README.md) for the active stack options and current architecture packages
-- read [architecture.md](remram-cortex/architecture.md) for the older canonical system design until it is fully reconciled to the layered approach
-- use [inconsistencies.md](remram-cortex/inconsistencies.md) to see whether any active inconsistencies remain and where prior ones were archived
-- use [reference/](reference/README.md) for external guides and supporting material that inform design choices
-- read [remram-cortex/](remram-cortex/README.md) for the local document map
+- [overview/overview.md](overview/overview.md)
+- [design/layered-memory-architecture.md](design/layered-memory-architecture.md)
+- [design/technology-stack.md](design/technology-stack.md)
+- [concepts/high-signal-mamba-stream.md](concepts/high-signal-mamba-stream.md)
+
+Historical material removed from the active tree now lives under the top-level [archive/](../archive/README.md).

@@ -18,7 +18,7 @@ This field set is intentionally small and slow-changing.
 
 ## Why Typed Signals Exist
 
-Typed signals give OpenSearch a structured multi-field surface for scoring without forcing Cortex into brittle taxonomies.
+Typed signals give the knowledge plane a structured multi-field surface for scoring without forcing Cortex into brittle taxonomies.
 
 They let Cortex ask:
 

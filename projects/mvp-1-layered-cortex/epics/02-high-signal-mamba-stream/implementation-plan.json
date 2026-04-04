@@ -1,0 +1,8 @@
+{
+  "epic_id": "02_high_signal_mamba_stream",
+  "deliverables": [
+    "checkpoint schema",
+    "stream consumption modes",
+    "raw evidence linkage"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "epic_id": "04_knowledge_plane_and_artifacts",
+  "tests": [
+    "revision-aware decomposition works",
+    "canonical artifact truth remains separate"
+  ]
+}

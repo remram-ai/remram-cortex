@@ -1,37 +1,46 @@
 # Knowledge Authority
 
-The knowledge authority is the system layer that decides what counts as durable memory.
+The knowledge authority is the layer that decides what counts as durable semantic truth.
 
-In Remram, Cortex is that layer.
+In Remram, Cortex is that authority.
 
 ## What Cortex Owns
 
 Cortex owns:
 
-- structured memory
-- semantic retrieval over that memory
-- reflection that extracts knowledge from runtime evidence
-- dream-cycle reconciliation across accumulated knowledge
-- the only authoritative retrieval surface for durable Remram memory
-- the only mutation path for durable knowledge objects
+- Layer 3 durable-memory contracts
+- notion staging and reconciliation
+- semantic retrieval over durable memory
+- reflection and maintenance
+- the split between decomposed knowledge and canonical artifacts
 
 ## What Cortex Does Not Own
 
 Cortex does not own:
 
-- execution
-- runtime packaging
-- behavior or prompt policy
+- OpenClaw execution
+- OpenClaw session mechanics
+- canonical artifact truth by mere possession of a copy
 
-OpenClaw executes. Orchestration decides behavior. Cortex remembers.
+OpenClaw executes.
+Git or another authoritative provider may hold canonical artifact truth.
+Cortex decides what becomes durable semantic memory.
 
 ## Why This Boundary Matters
 
-Without a single memory authority, transcripts, prompts, and runtime state get confused with actual knowledge. Cortex prevents that drift by making extracted knowledge objects the default durable memory unit inside the broader concept of memory.
+Without a single knowledge authority, systems drift toward:
 
-All durable semantic recall flows through Cortex. Other runtime memory features may exist as implementation details, and storage backends such as Git or OpenSearch may hold originals or indexes, but they do not become competing knowledge authorities or mutation paths.
+- transcript as memory
+- prompt state as truth
+- retrieval indexes as semantic authority
+- derived slices masquerading as canonical artifacts
 
-Cortex is also not a vector store that defines truth. Vectors help rank knowledge during retrieval, but governance fields, typed signals, provenance, and confidence still govern memory.
+Cortex prevents that drift by enforcing the layer split:
+
+1. working memory is operational
+2. durable memory is semantic
+3. decomposed knowledge is retrieval-oriented
+4. canonical artifacts remain ground truth
 
 ## Related Concepts
 
@@ -41,4 +50,4 @@ Cortex is also not a vector store that defines truth. Vectors help rank knowledg
 - [Memory Versus Context](memory-vs-context.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)

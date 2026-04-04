@@ -1,0 +1,35 @@
+{
+  "project_id": "mvp_1_layered_cortex",
+  "tests": [
+    {
+      "test_id": "AT-001",
+      "name": "Policy overlays shape runtime behavior",
+      "expected_result": "OpenClaw runtime behavior changes through Cortex policy without replacing OpenClaw session mechanics."
+    },
+    {
+      "test_id": "AT-002",
+      "name": "Semantic checkpoints reduce context pressure",
+      "expected_result": "The Mamba stream produces compact continuity objects that support smaller-window runs."
+    },
+    {
+      "test_id": "AT-003",
+      "name": "Tentative cross-thread memory works",
+      "expected_result": "High-signal notions can be seen cross-thread as tentative memory before reconciliation."
+    },
+    {
+      "test_id": "AT-004",
+      "name": "Reconciliation hardens durable memory",
+      "expected_result": "Session-end or checkpoint reconciliation confirms, merges, downgrades, or rejects tentative memory."
+    },
+    {
+      "test_id": "AT-005",
+      "name": "Artifacts split cleanly across Layer 4 and Layer 5",
+      "expected_result": "Layer 4 decomposition is queryable while Layer 5 remains canonical."
+    },
+    {
+      "test_id": "AT-006",
+      "name": "Oversight consumes semantic checkpoints",
+      "expected_result": "Oversight can consume semantic checkpoints and trigger review or downgrade paths."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Artifact Intake
 
-Artifact intake is the multimodal evidence path that turns external documents and images into Cortex memory.
+Artifact intake is the multimodal evidence path that turns external documents and images into Cortex evidence, decomposed knowledge, and eventually durable memory where appropriate.
 
 It gives Cortex one consistent entry point for imported artifacts instead of treating every upload as an opaque attachment.
 
@@ -13,9 +13,9 @@ Artifact intake should:
 - create or update a Cortex-managed artifact record and assign a stable internal `artifact_id`
 - run an Artifact Parser over the source to extract structure and meaning
 - emit a summary, highlights, and bounded source-linked import slices
-- deduplicate those slices against existing memory
-- create or reinforce knowledge objects from the resulting evidence
-- index the resulting memory and intake metadata in OpenSearch
+- deduplicate those slices against existing memory and existing decomposition
+- create or reinforce Layer 3 appropriate knowledge from the resulting evidence
+- index the resulting decomposition and intake metadata in the knowledge plane
 
 A Qwen-VL-class model is a likely fit for the first Artifact Parser profile because the same intake path should be able to read both documents and images.
 
@@ -50,9 +50,9 @@ That separation matters because imported source systems are allowed to drift. Fi
 
 ## Storage Boundary
 
-- the configured artifact provider keeps the backing artifact bytes or provider-native document
-- OpenSearch keeps knowledge objects, retrieval indexes, and intake metadata
-- Cortex remains the only mutation authority over durable memory even when artifact bytes live in an external provider
+- the configured artifact provider or `Git` keeps the canonical artifact body
+- the knowledge plane keeps decomposition, retrieval indexes, and intake metadata
+- Cortex remains the mutation authority over Layer 3 durable memory
 
 Imported artifacts are evidence. Promoted artifacts are derived human-facing outputs. Both should be addressable through the same Cortex artifact identity model even if their backing providers differ.
 
@@ -75,4 +75,4 @@ Dream or other REM routines may:
 - [Dream Cycle](dream-cycle.md)
 - [Artifact Provider](artifact-provider.md)
 - [Artifact Promotion](artifact-promotion.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

@@ -1,0 +1,7 @@
+{
+  "epic_id": "02_high_signal_mamba_stream",
+  "tests": [
+    "checkpoint production works",
+    "continuity objects support bounded context"
+  ]
+}

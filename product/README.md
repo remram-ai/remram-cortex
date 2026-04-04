@@ -1,40 +1,18 @@
 # Product Surface
 
-This folder holds the stable Cortex product surface.
+`product/` holds the stable Cortex product surface after the layered reset.
 
-Use it for design material that should outlive one MVP run or one execution thread.
+The old capability/dependency registry was archived because it described a different repository posture.
 
-## Start Here
+The active product surface is now organized around the architectural foundations we actually intend to build.
 
-- If you want the stable Cortex capability map, start with [capabilities/README.md](capabilities/README.md).
-- If you want the stable dependency map, start with [dependencies/README.md](dependencies/README.md).
-- If you are changing a stable product area, read the specific `spec.md` and `regression-plan.md` together.
-- If you are looking for current delivery order, acceptance, or proof, switch to [../projects/](../projects/README.md).
+## Foundations
 
-## Structure
+- [Foundations](foundations/README.md)
+- [TODO](TODO.md)
 
-- [capabilities/README.md](capabilities/README.md): Cortex-owned capabilities
-- [dependencies/README.md](dependencies/README.md): service-shaped or external dependencies Cortex relies on
+## Rule
 
-## Stable Artifact Contract
+If a document describes stable behavior that should survive multiple implementation passes, it belongs here.
 
-The default stable artifact set is:
-
-- capabilities: `spec.md` plus `regression-plan.md`
-- dependencies: `README.md`, `spec.md`, and `regression-plan.md`
-
-Optional artifacts such as operator guides, provider notes, sample payloads, or diagrams may be added when the surface needs them.
-
-When a stable regression plan becomes an active execution surface, add a `regression-plan.json` companion so tests can be tracked by stable IDs instead of prose alone.
-
-## Boundary
-
-`product/` is the Cortex equivalent of the platform registry layer in `remram`, but scoped to this repository as one product-sized implementation boundary.
-
-That means:
-
-- native Cortex behavior belongs under `capabilities/`
-- platform-shaped dependencies may live under `dependencies/`
-- when a dependency is already owned canonically in `remram/platform/`, the local dependency folder should prefer a pointer or a thin overlay rather than a second competing source of truth
-
-Project-specific sequencing, execution records, and evidence belong under [../projects/](../projects/README.md), not here.
+If it describes one active delivery run, it belongs in [projects/](../projects/README.md).

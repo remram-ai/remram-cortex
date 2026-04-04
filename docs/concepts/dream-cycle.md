@@ -35,4 +35,4 @@ Reconciliation is broader and slower than reflection. Keeping it asynchronous av
 - [Knowledge Object](knowledge-object.md)
 - [Typed Signals](typed-signals.md)
 - [Artifact Promotion](artifact-promotion.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Graphiti + Neo4j Durable Memory](../design/graphiti-neo4j-durable-memory.md)

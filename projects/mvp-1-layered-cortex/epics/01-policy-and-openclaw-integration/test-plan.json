@@ -1,0 +1,7 @@
+{
+  "epic_id": "01_policy_and_openclaw_integration",
+  "tests": [
+    "policy overlay changes runtime behavior",
+    "session mechanics remain OpenClaw-native"
+  ]
+}

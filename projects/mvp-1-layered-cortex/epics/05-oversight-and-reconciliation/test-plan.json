@@ -1,0 +1,7 @@
+{
+  "epic_id": "05_oversight_and_reconciliation",
+  "tests": [
+    "oversight reviews semantic checkpoints",
+    "nightly reconciliation hardens Layer 3 memory"
+  ]
+}

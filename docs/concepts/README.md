@@ -48,4 +48,4 @@ Read in this order:
 Go next:
 
 - [Overview](../overview/overview.md) if you need the high-level role and repository boundary
-- [Architecture](../remram-cortex/architecture.md) for the full system design
+- [Layered Memory Architecture](../design/layered-memory-architecture.md) for the active system design

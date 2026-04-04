@@ -49,16 +49,14 @@ This architecture is meant to support:
 
 This document defines the architecture and layer contracts.
 
-It does not, by itself, lock the durable-memory substrate.
+It is intentionally more stable than any one technology document.
 
-That choice remains inside the durable-memory layer and can still be evaluated across candidates such as:
+The current chosen stack is documented separately in:
 
-- `Graphiti`
-- `Mem0`
-- `Cognee`
-- a future Cortex-native authority implementation
-
-The architecture should survive that choice.
+- [Technology Stack](technology-stack.md)
+- [OpenClaw Integration](openclaw-integration.md)
+- [Graphiti + Neo4j Durable Memory](graphiti-neo4j-durable-memory.md)
+- [Knowledge And Artifact Architecture](knowledge-and-artifact-architecture.md)
 
 ## Design Principles
 

@@ -44,4 +44,4 @@ Bootstrap ingestion does not change the authority model:
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
 - [Memory Versus Context](memory-vs-context.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)

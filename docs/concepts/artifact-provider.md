@@ -85,4 +85,4 @@ This should remain explicit. A watched external edit should become an update pat
 - [Artifact Intake](artifact-intake.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [Knowledge Object](knowledge-object.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

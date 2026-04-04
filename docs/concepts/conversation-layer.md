@@ -47,4 +47,4 @@ But durable attachment, merge, and continuity storage should remain Cortex respo
 - [Knowledge Object](knowledge-object.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [OpenClaw Integration](../design/openclaw-integration.md)

@@ -1,0 +1,7 @@
+{
+  "epic_id": "03_graphiti_neo4j_durable_memory",
+  "tests": [
+    "tentative memory lifecycle works",
+    "durable memory provenance is inspectable"
+  ]
+}

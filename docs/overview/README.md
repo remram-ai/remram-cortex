@@ -1,18 +1,23 @@
 # Overview
 
-`docs/overview/` contains the high-level explanation of Remram Cortex.
+`docs/overview/` explains Cortex at the repository level.
 
-Read this folder first if you need to understand what Cortex is, why it exists, and how this repository relates to the broader Remram system.
+Use this folder first when you need to understand:
+
+- what Cortex is
+- what it is not
+- what architecture is currently active
+- how the repository is organized after the layered reset
 
 Documents in this folder:
 
 - [Overview](overview.md)
 - [Charter](charter.md)
-- [Archive](archive/)
 
 Go next:
 
-- [Glossary](../glossary.md) to lock the shared vocabulary
-- [Concepts](../concepts/README.md) for the normalized vocabulary
-- [Layered Memory Architecture](../design/layered-memory-architecture.md) for the current foundational architecture
-- [Design](../design/README.md) for active stack options and delivery packages
+- [Glossary](../glossary.md)
+- [Concepts](../concepts/README.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)
+- [Technology Stack](../design/technology-stack.md)
+- [Archive](../../archive/README.md) for historical material

@@ -1,53 +1,63 @@
 # Reflection
 
-Reflection is the post-run extraction pass that converts runtime evidence into candidate knowledge deltas.
+Reflection is the branching post-runtime interpretation layer.
 
-It is the first step that turns activity into memory.
+It is how runtime evidence becomes:
+
+- staged notions for durable memory
+- artifact impacts
+- semantic checkpoints and continuity compression
+- governed preference-policy updates
 
 ## Trigger
 
-Reflection is expected to run from the runtime `agent_end` boundary after a unit of execution is complete and after the user-visible response has already been delivered.
+Reflection runs after execution boundaries such as:
 
-## What Reflection Does
+- turn end
+- session end
+- explicit checkpoints
+- compaction-related boundaries when needed
 
-Reflection:
+## Inputs
 
-- reads bounded run evidence such as tool outputs, imported artifacts, and full interaction or loop logs when needed
-- compares that evidence with existing related knowledge
-- proposes small memory updates instead of rewriting the whole graph
-- computes the semantic signature and typed signal fields that will later drive retrieval
-- attaches or updates links so one object can be rediscovered from multiple angles
-- extracts stable signals such as preferences, recurring patterns, and notable corrections
+Reflection should read:
 
-Typical deltas include add, revise, correct, relate, strengthen, weaken, retire, supersede, contradict, generalize, and specialize.
+- raw evidence from the runtime evidence log
+- the High-Signal Mamba stream
+- existing durable memory when reconciliation requires it
+- artifact support when the update touches Layer 4 or Layer 5
 
-Reflection should be incremental and independent of prompt visibility. Its inputs come from persisted evidence, not from whatever still happens to remain in the live context window.
+## Outputs
 
-Reflection output should be structured delta data, not a free-form narrative summary.
+Reflection should branch one evidence feed into:
 
-It may also emit dense functional summaries or highlights of a thread so future retrieval can lean on compressed process memory instead of full chat replay.
+1. memory updates
+2. artifact impacts
+3. context compression products
+4. governed preference-policy updates
 
-## Merge Discipline
+Oversight should observe the same semantic products in parallel.
 
-Reflection should not create a new object every time similar wording appears.
+## Memory Path
 
-For each candidate memory, it should decide whether to:
+The normal reflection memory path is:
 
-- reinforce an existing object
-- refine an existing object
-- generalize above one or more existing objects
-- create a sibling object
-- supersede an older object
-- record a contradiction
-- create a truly new object
+1. derive a candidate notion from the semantic checkpoint stream
+2. stage it
+3. optionally expose it early as tentative cross-thread memory if the signal is high
+4. reconcile it later against stronger evidence
 
-That merge discipline is what keeps retrieval cheap later.
+## Compression Path
 
-A compression-oriented model may sit inside this path when the raw evidence is large. Mamba 3 is a strong candidate for extracting signal from full chat or loop logs before the durable delta writer updates memory.
+Reflection is also where the High-Signal Mamba stream is produced.
+
+That stream exists so most consumers do not need raw evidence directly.
 
 ## What Reflection Does Not Do
 
-Reflection does not globally reconcile the full memory graph. That is the job of the dream cycle.
+Reflection does not make every semantic output automatically durable.
+
+It also does not replace the slower reconciliation and maintenance work of the dream cycle.
 
 ## Related Concepts
 
@@ -57,3 +67,4 @@ Reflection does not globally reconcile the full memory graph. That is the job of
 - [Artifact Intake](artifact-intake.md)
 - [Dream Cycle](dream-cycle.md)
 - [Artifact Promotion](artifact-promotion.md)
+- [High-Signal Mamba Stream](high-signal-mamba-stream.md)

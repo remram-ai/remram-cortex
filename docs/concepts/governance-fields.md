@@ -41,4 +41,4 @@ Cortex needs exact or bounded filters for ownership, visibility, and lifecycle b
 - [Semantic Signature](semantic-signature.md)
 - [Typed Signals](typed-signals.md)
 - [Bounded Retrieval](bounded-retrieval.md)
-- [Architecture](../remram-cortex/architecture.md)
+- [Layered Memory Architecture](../design/layered-memory-architecture.md)
