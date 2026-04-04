@@ -92,3 +92,11 @@ The default posture is:
 - let OpenClaw do its thing
 - hook into it cleanly
 - add semantic compression and policy above it
+
+That still implies a custom Cortex context-engine posture.
+
+Why:
+
+- OpenClaw provides the right Layer 2 mechanics
+- Cortex still needs smaller-window bounded assembly and precomputed semantic continuity
+- those are augmentation problems, not reasons to replace OpenClaw session ownership

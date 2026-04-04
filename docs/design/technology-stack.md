@@ -55,6 +55,16 @@ It exists to:
 - stage notions for durable memory
 - support oversight and nightly reconciliation
 
+`Mamba` here is an architectural role, not yet a locked implementation choice.
+
+The important commitment is:
+
+- rolling semantic compression
+- typed checkpoints
+- source-linked rebuildability
+
+The exact model or library can still change as long as it preserves that contract.
+
 ### Graphiti + Neo4j
 
 This remains the chosen Layer 3 posture because it gives:

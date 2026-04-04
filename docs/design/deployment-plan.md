@@ -38,6 +38,8 @@ The base deployment should include:
 - continuity compression
 - optimistic and nightly stream consumption
 
+This worker is a role, not yet a locked implementation dependency.
+
 ### Graphiti + Neo4j
 
 - Layer 3 durable memory
