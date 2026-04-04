@@ -1,22 +1,22 @@
-# Oversight And Reconciliation
+# Intuition And Reconciliation
 
-This document defines the stable product posture for oversight and reconciliation.
+This document defines the stable product posture for Intuition and reconciliation.
 
-## Oversight
+## Intuition
 
-Oversight is a control consumer of semantic outputs and related staged state.
+Intuition is the future Mamba-side signal evaluator for Cortex.
 
 Its responsibilities include:
 
-- suspicious-memory detection
-- policy violation flags
-- review triggers
-- confidence downgrades
-- approval-oriented veto paths where required
+- evaluating high-signal windows from Mamba
+- deciding when hotter layered ingestion should wake
+- emitting stronger notion or reflection triggers
+- leaving the deeper reasoning to reflection and reconciliation
+- later supporting coding-supervision triggers when that capability exists
 
-Oversight should consume boundary-triggered semantic outputs in early phases, notion activity by default, and later the Mamba stream when available.
+Intuition is blocked by `Mamba`.
 
-It should escalate to evidence packages only when fidelity or approval requirements demand it.
+It is therefore not part of the base Phase 1 architecture.
 
 ## Reconciliation
 

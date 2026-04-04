@@ -27,7 +27,7 @@ The active stack direction is:
 - `OpenClaw` as the chosen agentic framework
 - Cortex-owned Layer 1 policy
 - `QMD` for Layer 2 hot working memory and notions
-- a narrow High-Signal `Mamba` stream as a later always-on optimization layer
+- a narrow High-Signal `Mamba` stream as a later always-on supercharge layer
 - `Graphiti + Neo4j` for Layer 3 durable memory
 - `Postgres` for the operational middle of the stack
 - `Git` for Layer 5 canonical artifacts when canonical publication is warranted
@@ -41,7 +41,7 @@ Cortex owns:
 - Layer 3 durable-memory contracts
 - Layer 4 operational knowledge authority rules
 - the split between operational knowledge and canonical publication
-- reflection, Dream, oversight, and promotion behavior
+- reflection, Dream, reconciliation, and promotion behavior
 
 ## OpenClaw Principle
 
@@ -61,7 +61,7 @@ The biggest clarifications now are:
 
 - Layer 2 explicitly uses `QMD`
 - Mamba is narrow by design
-- Mamba is deferred by default until Phase 3 unless the post-Phase-1 gate pulls it forward
+- Mamba is not required to make the architecture valid and lands later as a supercharge unless the post-Phase-1 gate pulls it forward
 - Layer 3 stays one Graphiti memory system
 - Layer 4 is the operational knowledge authority
 - Layer 5 is only canonical publication truth when canon is warranted

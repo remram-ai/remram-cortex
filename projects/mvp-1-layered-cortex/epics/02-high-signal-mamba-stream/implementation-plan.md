@@ -14,7 +14,7 @@ It can be pulled forward as a Phase `1.5` spike only if the post-Phase-1 gate sa
    - typed payloads
    - source references
    - confidence and timing fields
-   - notion and oversight hints
+   - notion and Intuition hints
 2. Build checkpoint production from session activity.
    - always-on near-time listening
    - bounded event emission during active sessions
@@ -22,12 +22,12 @@ It can be pulled forward as a Phase `1.5` spike only if the post-Phase-1 gate sa
 3. Support downstream consumption modes.
    - working-memory assembly
    - notion staging in `QMD`
-   - oversight and reflection
+   - Intuition and reflection
    - later checkpoint and nightly consumers
 4. Integrate the stream with downstream consumers.
    - context continuity assembly
    - `QMD` notion staging
-   - oversight
+   - Intuition
    - reflection and Layer 4 workspace hints
 
 ## Deliverables

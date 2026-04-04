@@ -13,23 +13,23 @@ The long-term stack is:
 - `OpenClaw` as the chosen agentic framework
 - Cortex-owned Layer 1 policy composition
 - `QMD` for Layer 2 hot working memory and notions
-- a narrow High-Signal `Mamba` stream as the later always-on Layer 2 listener
+- a narrow High-Signal `Mamba` stream as a later Layer 2 supercharge
 - `Graphiti + Neo4j` for Layer 3 durable semantic memory
 - `Postgres` as the operational middle-layer authority
 - `Git` for Layer 5 canonical artifacts when publication-grade canon is actually warranted
 
 ## Delivery Sequencing
 
-The architecture still wants `Mamba`.
+The base architecture is complete without live `Mamba`.
 
-The sequencing change is:
+The sequencing choice is:
 
 - Phase 1 proves the spine without live `Mamba`
 - Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
 - after Phase 1 there is a simple decision gate for a possible Phase `1.5` `Mamba` spike
-- otherwise `Mamba` remains deferred until Phase 3
+- otherwise Phase 3 adds `Mamba` as a supercharge rather than a missing dependency
 
-This is a sequencing choice, not an architecture reversal.
+This is a sequencing choice, not an architecture reversal and not a sign that the stack is waiting to become valid later.
 
 ## Why This Stack
 
@@ -112,12 +112,29 @@ It is not:
 - the document decomposition engine
 - a general-purpose semantic authority
 
-Its role is to improve:
+Its role is to supercharge:
 
+- infinite-context-like continuity without claiming literal infinite recall
 - near-time continuity compression
 - always-on high-signal capture
 - lower-latency semantic awareness
 - cleaner live-session handling for long-running work
+
+It also gives Reflection and Dream better directional signal and better candidate surfaces.
+
+It does not change the authority model.
+
+Reflection and Dream still retain access to fuller evidence and evidence packages for deeper passes.
+
+When `Mamba` exists, Cortex can add `Intuition` on top of that stream.
+
+`Intuition` is the later signal evaluator that decides when high-signal windows should wake hotter layered ingestion or opportunistic GPU-backed processing.
+
+The important line is:
+
+- the spine already works without `Mamba`
+- `Mamba` improves the quality and timeliness of signal flowing through that same spine
+- deeper reflection, Dream, and reconciliation still use fuller evidence when needed
 
 ### Graphiti + Neo4j
 
@@ -176,7 +193,7 @@ The active rule is:
 - let OpenClaw own runtime mechanics
 - let `QMD` own hot working-memory retrieval and notions
 - let Phase 1 prove the spine with boundary-triggered semantic processing
-- let `Mamba` arrive later as a narrow optimization layer
+- let `Mamba` arrive later as a narrow supercharge to an already-working design
 - let Graphiti own durable semantic memory
 - let Postgres own the operational middle
 - let Git own canonical publication only when canon is warranted

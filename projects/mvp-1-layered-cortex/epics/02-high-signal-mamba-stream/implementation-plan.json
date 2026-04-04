@@ -16,7 +16,7 @@
         "typed payload shape",
         "confidence and timing fields",
         "source references",
-        "notion and oversight hints"
+        "notion and Intuition hints"
       ]
     },
     {
@@ -34,7 +34,7 @@
       "outputs": [
         "working-memory assembly consumption",
         "QMD notion update consumption",
-        "oversight and reflection consumption",
+        "Intuition and reflection consumption",
         "consumer watermark or idempotence rules"
       ]
     }

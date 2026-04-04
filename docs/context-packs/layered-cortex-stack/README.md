@@ -21,7 +21,7 @@ Explain the chosen Cortex stack topic by topic:
 4. what the High-Signal Mamba Stream is
 5. how durable memory works
 6. how knowledge and artifacts work
-7. how reflection, oversight, and reconciliation work
+7. how reflection, Intuition, and reconciliation work
 8. how the runtime and build sequence fit together
 
 ## Recommended Load Order
@@ -32,7 +32,7 @@ Explain the chosen Cortex stack topic by topic:
 4. [03 High-Signal Mamba Stream](03-high-signal-mamba-stream.md)
 5. [04 Durable Memory: Graphiti And Neo4j](04-durable-memory-graphiti-and-neo4j.md)
 6. [05 Knowledge, Artifacts, Postgres, And Git](05-knowledge-artifacts-postgres-and-git.md)
-7. [06 Reflection, Oversight, And Reconciliation](06-reflection-oversight-and-reconciliation.md)
+7. [06 Reflection, Intuition, And Reconciliation](06-reflection-intuition-and-reconciliation.md)
 8. [07 Runtime And Data Lifecycles](07-runtime-and-data-lifecycles.md)
 9. [08 MVP And Delivery Sequence](08-mvp-and-delivery-sequence.md)
 10. [09 Audio Debrief Prompt Kit](09-audio-debrief-prompt-kit.md)

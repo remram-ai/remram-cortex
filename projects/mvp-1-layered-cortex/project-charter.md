@@ -14,7 +14,7 @@ In scope:
 - Layer 3 durable semantic memory
 - Layer 4 operational knowledge
 - Layer 5 canonical artifacts when warranted
-- reflection, Dream, oversight, and promotion readiness
+- reflection, Dream, reconciliation, and promotion readiness
 
 Out of scope:
 

@@ -56,4 +56,4 @@ The lifecycle rule is:
 - durable meaning in Layer 3
 - operational bodies in Layer 4
 - canonical publication in Layer 5 only when applicable
-- Mamba later as a hardening and optimization layer rather than a prerequisite for Phase 1
+- Mamba later as a hardening and optimization supercharge rather than a prerequisite for Phase 1

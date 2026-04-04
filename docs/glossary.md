@@ -108,10 +108,6 @@ Layer 4 operational knowledge truth, including workspaces, reference-derived kno
 
 The runtime execution system. OpenClaw owns sessions, transcripts, hooks, compaction, and tool execution.
 
-### Oversight
-
-A review and control consumer that observes semantic outputs and intervenes when trust, policy, or approval conditions require it.
-
 ## P
 
 ### Policy
@@ -121,6 +117,10 @@ Layer 1 behavior and control logic, including modes, tool policy, approval rules
 ### Provenance
 
 The support and source trail that explains where memory or knowledge came from.
+
+### Intuition
+
+A future Mamba-side signal evaluator that decides when high-signal windows should wake opportunistic layered ingestion or supervision work.
 
 ## R
 

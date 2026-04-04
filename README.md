@@ -7,16 +7,17 @@ It is now organized around a layered architecture:
 1. `Policy`
 2. `Working Memory`
 3. `Durable Memory`
-4. `Decomposed Artifact Knowledge`
+4. `Operational Knowledge`
 5. `Canonical Artifacts`
 
 The active stack direction is:
 
 - `OpenClaw` for runtime execution and working-memory mechanics
 - Cortex-owned policy composition
-- a High-Signal `Mamba` stream for semantic checkpointing and compression
+- `QMD` for hot working memory and notions
+- a High-Signal `Mamba` stream later as a narrow continuity supercharge
 - `Graphiti + Neo4j` for durable memory
-- `Postgres + pgvector` for evidence, control-plane state, and decomposed knowledge
+- `Postgres` for evidence, control-plane state, and operational knowledge
 - `Git` for canonical artifact truth
 
 ## Repository Layout

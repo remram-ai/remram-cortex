@@ -28,8 +28,8 @@
     },
     {
       "test_id": "AT-006",
-      "name": "Oversight consumes semantic outputs",
-      "expected_result": "Oversight can consume semantic outputs and trigger review or downgrade paths."
+      "name": "Reflection cleanup keeps hot memory lean",
+      "expected_result": "Reflection can prune, merge, and demote low-value QMD notions without turning Layer 2 into durable authority."
     }
   ]
 }

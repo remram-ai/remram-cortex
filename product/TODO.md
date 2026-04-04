@@ -10,6 +10,6 @@ The following stable product documents still need a fresh pass:
 - durable-memory state model and support schema
 - Layer 4 workspace schema and revision contract
 - publication workflow contract
-- oversight rulebook and escalation classes
+- Intuition trigger model and coding-supervision classes
 
 These should be added only after the new MVP hardens the active architecture enough to justify stable contracts.

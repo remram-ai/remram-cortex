@@ -1,12 +1,12 @@
 {
-  "epic_id": "05_oversight_and_reconciliation",
+  "epic_id": "05_intuition_and_reconciliation",
   "scenarios": [
     {
       "id": "01",
-      "name": "Oversight review path",
+      "name": "Intuition is not required for base trust",
       "assertions": [
-        "Oversight can observe semantic checkpoints and flag suspicious changes.",
-        "High-impact or low-confidence cases can escalate to evidence-backed review."
+        "Base trust and reconciliation work without Intuition.",
+        "Intuition remains a later Mamba-gated capability rather than a Phase 1 prerequisite."
       ]
     },
     {
@@ -36,7 +36,7 @@
     }
   ],
   "non_goals": [
-    "Replacing Layer 3 authority with oversight",
+    "Replacing Layer 3 authority with Intuition",
     "Using nightly maintenance as the only trust boundary"
   ]
 }

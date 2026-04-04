@@ -1,4 +1,4 @@
-# Reflection, Oversight, And Reconciliation
+# Reflection, Intuition, And Reconciliation
 
 ## Reflection
 
@@ -23,19 +23,30 @@ Reflection is allowed to:
 - use Layer 3 relationships to organize Layer 4 work
 - detect promotion candidates
 
-## Oversight
+Later, Mamba improves Reflection by supplying better near-time signal and better candidate surfaces.
 
-Oversight observes the relevant semantic products and intervenes when trust, policy, or approval posture requires it.
+It does not replace Reflection's ability to use fuller evidence when deeper work is required.
 
-In early phases it consumes boundary-triggered semantic outputs by default.
+Reflection is not waiting on Mamba to become real.
 
-Later, Mamba can become its default near-time signal source.
+Mamba later supercharges an already-valid reflection path.
 
-Oversight may consume:
+## Intuition
+
+Intuition is not part of the base Phase 1 architecture.
+
+It is the later Mamba-side signal evaluator that decides when high-signal windows should wake hotter layered ingestion.
+
+That means Intuition is blocked by Mamba.
+
+When it exists, Intuition may consume:
 
 - notion activity
-- semantic outputs
-- promotion candidates
+- semantic checkpoints from Mamba
+- hotter reflection candidates
+- later coding-supervision hints
+
+Its main value is that it can queue opportunistic processing while GPU headroom exists instead of waiting only for session-end or batch windows.
 
 ## Reconciliation
 
@@ -58,6 +69,10 @@ It is allowed to:
 - detect workspace merges
 - detect promotion readiness
 - harden support and supersession
+
+Dream still retains access to fuller evidence and semantic state.
+
+Later, Mamba gives Dream better directional hints, but not a replacement for deep evidence-backed consolidation.
 
 Both Reflection and Dream use Layer 3 to help organize Layer 4.
 

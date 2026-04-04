@@ -59,7 +59,7 @@ That aligns with the active design where the stream can feed:
 
 - working-memory assembly
 - notion capture
-- oversight
+- Intuition
 - artifact-impact hints
 - later durable-memory reconciliation
 
@@ -76,7 +76,7 @@ The stream sensor should be:
 It should decide whether a bounded window is worth turning into:
 
 - a notion
-- an oversight event
+- an Intuition trigger
 - a coding-assistance trigger
 - an artifact-impact event
 

@@ -2,9 +2,9 @@
 
 This document records the active delivery posture for the locked Cortex architecture.
 
-The long-term architecture still wants `Mamba`.
+The long-term architecture still includes `Mamba`.
 
-The implementation sequence now defers it by default.
+The important sequencing clarification is that Cortex is already valid without it.
 
 ## Long-Term Stack
 
@@ -17,7 +17,7 @@ The long-term stack remains:
 - `Neo4j`
 - `Postgres`
 - `Git` when canonical artifact publication is warranted
-- a narrow High-Signal `Mamba` listener added later as a real-time optimization layer
+- a narrow High-Signal `Mamba` listener added later as a real-time supercharge layer
 
 ## Phase 1: Prove The Core Spine Without Live Mamba
 
@@ -46,6 +46,8 @@ The Phase 1 rule is:
 - prove the spine with boundary-triggered semantic processing first
 - keep clean interfaces so `Mamba` can plug in later without architectural churn
 
+Phase 1 should read as a complete proof surface in its own right.
+
 ## Post-Phase-1 Decision Gate
 
 After Phase 1, evaluate whether local continuity pressure is becoming a meaningful problem.
@@ -58,7 +60,7 @@ If limited VRAM and local context pressure are causing:
 
 then `Mamba` may be pulled forward immediately as a Phase `1.5` spike.
 
-If not, keep the planned sequencing and leave `Mamba` deferred.
+If not, keep the planned sequencing and add `Mamba` later as a supercharge.
 
 This is a clear fork point, not an unresolved debate.
 
@@ -86,7 +88,7 @@ At that point, `Mamba` becomes:
 - a small always-on high-signal listener
 - a producer of a typed semantic channel
 - an optimization layer for continuity and live-session quality
-- a lower-latency signal source for working memory, notion staging, oversight, and reflection
+- a lower-latency signal source for working memory, notion staging, Intuition, and reflection
 
 `Mamba` still remains narrow.
 
@@ -153,6 +155,13 @@ When Phase 3 arrives, `Mamba` adds:
 - always-on Layer 2-adjacent high-signal listening
 - typed semantic event production
 - bounded routing into more expensive downstream work
+- stronger infinite-context-like continuity for long-running sessions
+- better near-time triggers and live memory quality
+- better directional signal for Reflection and Dream
+
+It does not replace deeper evidence-backed maintenance passes.
+
+Reflection, Dream, and reconciliation still retain access to fuller evidence and evidence packages when they need real depth.
 
 ## Evidence Retention
 
@@ -203,4 +212,4 @@ The deployment shape is intentionally smaller in Phase 1:
 - Git only when canonical artifact publication is warranted
 - boundary-triggered semantic processing instead of live Mamba
 
-`Mamba` remains part of the long-term design and is added later unless the post-Phase-1 gate pulls it forward.
+`Mamba` remains part of the long-term design, but as a later supercharge to an already-working spine unless the post-Phase-1 gate pulls it forward.

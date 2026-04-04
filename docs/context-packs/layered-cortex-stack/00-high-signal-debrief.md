@@ -4,7 +4,7 @@
 
 Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and Git-backed canon only when canonical publication is actually warranted.
 
-The long-term architecture still wants a narrow always-on Mamba signal stream, but that is now deferred by default.
+The long-term architecture still wants a narrow always-on Mamba signal stream, but the core spine no longer reads as if it is waiting on Mamba to become valid.
 
 ## The Main Architectural Move
 
@@ -34,7 +34,7 @@ The clean authority model is:
 - `Graphiti + Neo4j` is Layer 3 durable memory.
 - `Postgres` is the operational middle-layer authority.
 - `Git` is used only when canonical artifact publication is warranted.
-- `Mamba` remains in the long-term architecture as a later always-on optimization layer.
+- `Mamba` remains in the long-term architecture as a later always-on supercharge layer.
 
 ## The Main Sequencing Clarification
 
@@ -49,18 +49,25 @@ Instead, Phase 1 uses:
 After Phase 1 there is a clear decision gate:
 
 - if local VRAM and context pressure are causing real continuity problems, pull `Mamba` forward as a Phase `1.5` spike
-- otherwise continue to Phase 2 and leave `Mamba` deferred until Phase 3
+- otherwise continue to Phase 2 and add `Mamba` in Phase 3 as a supercharge rather than a missing dependency
 
 ## The Main Runtime Story
 
 1. OpenClaw runs the session.
 2. QMD supports hot working-memory retrieval and notion storage.
 3. turn-end and session-end processing produce typed semantic outputs.
-4. those outputs can update notions, oversight, and bounded continuity.
+4. those outputs can update notions, reflection inputs, and bounded continuity.
 5. reflection uses Layer 3 relationships to help organize Layer 4 workspaces.
 6. high-value meaning promotes into Graphiti durable memory when warranted.
 7. Dream does slower consolidation and promotion readiness work.
-8. later, Mamba can improve the same runtime by producing a better always-on signal.
+8. later, Mamba can improve the same runtime by producing a better always-on signal without changing the underlying lifecycle.
+
+That gives the system:
+
+- an infinite-context-like continuity effect
+- better near-time triggers
+- better live memory quality
+- better directional context for Reflection and Dream
 
 ## The Main Workspace Story
 
@@ -113,7 +120,13 @@ It is:
 
 It should stay narrow.
 
-It is deferred for sequencing reasons, not because the architecture stopped wanting it.
+It is scheduled later for sequencing reasons, not because the architecture stopped wanting it.
+
+It does not replace full evidence for deeper maintenance passes.
+
+Reflection and Dream still retain access to fuller evidence and evidence packages.
+
+Mamba makes those passes more efficient and better directed later.
 
 ## Why Postgres Matters
 
@@ -150,4 +163,4 @@ The architecture is now cleaner and the sequencing is cleaner too:
 - Graphiti for durable semantic truth
 - Postgres for operational knowledge truth
 - Git only for canonical publication when that is actually needed
-- Mamba later as a narrow hardening and optimization layer
+- Mamba later as a narrow hardening and optimization supercharge to an already-working spine

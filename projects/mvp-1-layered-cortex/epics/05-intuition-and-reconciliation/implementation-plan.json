@@ -1,6 +1,6 @@
 {
-  "epic_id": "05_oversight_and_reconciliation",
-  "objective": "Add the trust and hardening layer through oversight, evidence-backed review, and reconciliation at session and nightly boundaries.",
+  "epic_id": "05_intuition_and_reconciliation",
+  "objective": "Add the trust and hardening layer through reconciliation at session and nightly boundaries, with Intuition defined later as a Mamba-gated evaluator.",
   "dependencies": [
     "01_policy_and_openclaw_integration",
     "03_graphiti_neo4j_durable_memory",
@@ -9,20 +9,20 @@
   "workstreams": [
     {
       "id": "01",
-      "name": "Oversight model",
+      "name": "Reconciliation model",
       "outputs": [
-        "oversight triggers",
-        "review classes",
-        "approval or veto rules"
+        "trust elevation rules",
+        "tentative memory handling",
+        "stronger-evidence requirements"
       ]
     },
     {
       "id": "02",
-      "name": "Evidence escalation",
+      "name": "Intuition trigger model",
       "outputs": [
-        "semantic-stream default consumption",
-        "evidence package escalation path",
-        "confidence downgrade and review outputs"
+        "Mamba-gated trigger model",
+        "reflection wake-up rules",
+        "evidence package escalation path for deeper review"
       ]
     },
     {
@@ -46,12 +46,12 @@
     }
   ],
   "exit_criteria": [
-    "Oversight can review and intervene on semantic outputs.",
     "Tentative memory can be upgraded, downgraded, or rejected at session boundaries.",
-    "Nightly maintenance hardens memory quality without changing the authority boundary."
+    "Nightly maintenance hardens memory quality without changing the authority boundary.",
+    "Intuition is documented as a later Mamba-side evaluator rather than a base architecture module."
   ],
   "risks": [
-    "Letting oversight silently become the authority layer.",
+    "Letting Intuition silently become the authority layer.",
     "Letting approval-sensitive changes bypass evidence-backed review."
   ]
 }

@@ -44,7 +44,7 @@ Reflection is explicitly allowed to keep QMD healthy.
 
 ## Mamba In This Layer
 
-Mamba is still part of the architecture, but it is deferred by default.
+Mamba is still part of the architecture, but Layer 2 is not waiting on it to become real.
 
 Phase 1 and Phase 2 use:
 
@@ -52,7 +52,9 @@ Phase 1 and Phase 2 use:
 - session-end extraction
 - checkpoint-triggered extraction when needed
 
-Phase 3 adds Mamba as a narrow always-on listener that improves the same Layer 2 posture.
+Phase 3 adds Mamba as a narrow always-on listener that supercharges the same Layer 2 posture.
+
+Later, Intuition can sit on top of the Mamba stream to wake opportunistic high-signal processing while GPU headroom exists.
 
 ## The Main Rule
 

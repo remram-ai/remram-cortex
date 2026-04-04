@@ -36,7 +36,7 @@ Reconciliation is broader and slower than reflection. Keeping it asynchronous av
 - [Reflection](reflection.md)
 - [Knowledge Object](knowledge-object.md)
 - [Notion](notion.md)
-- [Oversight](oversight.md)
+- [Intuition](intuition.md)
 - [Typed Signals](typed-signals.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [Graphiti + Neo4j Durable Memory](../design/graphiti-neo4j-durable-memory.md)

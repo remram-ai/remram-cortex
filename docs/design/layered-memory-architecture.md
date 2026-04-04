@@ -161,12 +161,36 @@ Its job is to keep a narrow, continuous, high-signal stream available for downst
 
 Sequencing clarification:
 
+- Layer 2 is already valid without live Mamba
 - Phase 1 does not require live Mamba
 - Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
 - after Phase 1 there is a decision gate for a possible Phase `1.5` Mamba spike
-- otherwise Mamba remains deferred until Phase 3
+- otherwise Phase 3 adds Mamba as a supercharge to the same Layer 2 posture
 
 When Mamba arrives, it augments those hooks rather than replacing them.
+
+Its value is:
+
+- an infinite-context-like continuity effect for live work
+- better near-time triggers
+- better live memory quality
+- better directional signal for Reflection and Dream
+
+It does not change the authority boundaries.
+
+Reflection and Dream still retain access to fuller evidence and evidence packages for deeper passes.
+
+The important line is that Layer 2 is not waiting to become real later.
+
+It already works through OpenClaw sessions, `QMD`, notions, and boundary-triggered semantic processing.
+
+Mamba later improves the signal quality, trigger quality, and continuity quality flowing through that same layer.
+
+When `Mamba` exists, Cortex may add `Intuition` as a narrow signal evaluator on top of the stream.
+
+`Intuition` decides when a high-signal window should wake hotter layered ingestion or opportunistic GPU-backed processing.
+
+It is blocked by `Mamba` and is not part of the base Phase 1 architecture.
 
 #### Reflection And Layer 2 Cleanup
 
@@ -414,7 +438,7 @@ After Phase 1, evaluate whether local continuity pressure is becoming a real pro
 
 If limited VRAM and local context pressure are causing continuity loss, prompt bloat, or poor live-session behavior, Mamba may be pulled forward as a Phase `1.5` spike.
 
-If not, Mamba remains deferred.
+If not, Phase 3 adds Mamba later as a supercharge rather than as a blocked dependency.
 
 ### Phase 2
 
@@ -422,7 +446,7 @@ Phase 2 deepens Layer 4 workspaces, external reference handling, and Layer 4 to 
 
 ### Phase 3
 
-Phase 3 adds Mamba as the default always-on narrow high-signal listener.
+Phase 3 adds Mamba as the default always-on narrow high-signal listener and continuity supercharge.
 
 ### Postgres As Middle-Layer Authority
 
@@ -489,7 +513,7 @@ The conceptual relationship network remains in Layer 3.
 3. `QMD` provides hot working-memory retrieval and notion storage.
 4. turn-end, session-end, and explicit-checkpoint processing emit typed semantic outputs.
 5. Layer 2 continuity is assembled from session state, `QMD`, and those outputs.
-6. later, Mamba can improve this same flow by providing a better always-on signal source.
+6. later, Mamba can improve this same flow by providing a better always-on signal source without changing the underlying lifecycle.
 
 ### Flow 2: Layer 2 To Layer 3
 
@@ -553,6 +577,10 @@ It is allowed to:
 - identify whether multiple workspaces should merge
 - identify whether a workspace is ripening into a promotion candidate
 - harden support, supersession, and invalidation
+
+Dream still works from fuller evidence and semantic state, not just from the Mamba signal.
+
+Later, Mamba gives Dream better directional hints and better candidate surfaces, but it does not replace deep evidence-backed consolidation.
 
 Both Reflection and Dream use Layer 3 to help organize Layer 4.
 
@@ -652,7 +680,7 @@ Mamba is a narrow always-on Layer 2 listener that emits a high-signal stream fro
 
 It is not a general artifact parser or universal semantic subsystem.
 
-It is deferred by default for sequencing reasons, not removed from the architecture.
+It is scheduled later in the rollout for sequencing reasons, not removed from the architecture.
 
 ### 10. What is in MVP 1 versus intentionally deferred?
 
@@ -668,6 +696,6 @@ MVP 1 includes:
 
 `OpenSearch` is deferred.
 
-`Mamba` is deferred by default and may be pulled forward as a Phase `1.5` spike if the post-Phase-1 gate says continuity pressure justifies it.
+`Mamba` is not part of the Phase 1 proof surface by default and may be pulled forward as a Phase `1.5` spike if the post-Phase-1 gate says continuity pressure justifies it.
 
 Additional service expansion is deferred.

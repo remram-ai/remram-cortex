@@ -58,6 +58,8 @@ That is the Phase 1 posture.
 
 It replaces the earlier passive "OpenClaw-native only" wording without requiring live Mamba on day one.
 
+The key posture is that this Layer 2 design is already real and useful before `Mamba` exists.
+
 #### QMD Role
 
 `QMD` is part of the hot working-memory surface.
@@ -120,7 +122,22 @@ Delivery posture:
 
 - Phase 1 proves the spine without Mamba
 - after Phase 1 there is a decision gate for a possible Phase `1.5` spike
-- otherwise Mamba lands in Phase 3 as hardening and optimization
+- otherwise Mamba lands in Phase 3 as hardening, optimization, and continuity supercharge
+
+When it arrives, it improves:
+
+- infinite-context-like live continuity
+- near-time triggers
+- live memory quality
+- directional signal for Reflection and Dream
+
+When `Mamba` exists, Cortex can add `Intuition` as a narrow evaluator on top of the stream.
+
+Its role is to queue opportunistic high-signal processing while GPU headroom exists instead of waiting only for session-end or batch windows.
+
+It does not replace fuller evidence in deeper maintenance passes.
+
+Reflection, Dream, and reconciliation still retain access to fuller evidence and evidence packages when deeper work is required.
 
 ## Runtime Retrieval Posture
 
@@ -162,4 +179,4 @@ Cortex adds:
 - durable-memory promotion
 - operational knowledge organization
 
-Mamba arrives later as a narrow optimization layer, not as the prerequisite for proving the architecture.
+Mamba arrives later as a narrow supercharge layer, not as the prerequisite for proving the architecture.

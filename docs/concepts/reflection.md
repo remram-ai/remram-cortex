@@ -16,6 +16,18 @@ In Phase 1 and Phase 2, reflection runs on:
 
 Later, `Mamba` becomes a better real-time signal source for the same downstream reflection path.
 
+That does not mean Reflection is waiting on `Mamba` to become real.
+
+The reflection lifecycle already exists in Phase 1 and Phase 2.
+
+That means Mamba improves:
+
+- near-time triggers
+- live continuity quality
+- the directional signal available to Reflection and Dream
+
+It does not remove reflection's access to fuller evidence when deeper work is needed.
+
 ## What Reflection Does
 
 Reflection is allowed to:
@@ -40,6 +52,8 @@ Reflection may read:
 - existing Layer 3 semantic structure
 - Layer 4 workspace state
 
+Deeper passes should still be able to read fuller evidence and evidence packages.
+
 ## What Reflection Does Not Do
 
 Reflection is not:
@@ -53,6 +67,10 @@ Mamba emits signal later.
 Reflection consumes signal whenever it is available.
 
 Dream does the slower consolidation pass.
+
+Mamba improves the direction and efficiency of those downstream passes.
+
+It does not replace deep evidence-backed interpretation.
 
 ## Reflection And Layer 3
 

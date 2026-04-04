@@ -15,4 +15,4 @@ The active epic set is:
 2. [02-high-signal-mamba-stream](02-high-signal-mamba-stream/README.md)
 3. [03-graphiti-neo4j-durable-memory](03-graphiti-neo4j-durable-memory/README.md)
 4. [04-knowledge-plane-and-artifacts](04-knowledge-plane-and-artifacts/README.md)
-5. [05-oversight-and-reconciliation](05-oversight-and-reconciliation/README.md)
+5. [05-intuition-and-reconciliation](05-intuition-and-reconciliation/README.md)

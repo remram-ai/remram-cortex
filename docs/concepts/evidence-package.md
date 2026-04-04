@@ -23,7 +23,7 @@ Cortex should not rely on live session state or loose document pointers when mem
 Evidence packages give the system a stable, inspectable support surface for:
 
 - notion reconciliation
-- oversight review
+- deeper review when signal quality or trust posture requires it
 - Graphiti episode packaging
 - artifact impact analysis
 - replay after logic changes
@@ -76,4 +76,4 @@ Evidence packages can be trimmed more aggressively than raw live session state o
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
 - [Notion](notion.md)
 - [Reflection](reflection.md)
-- [Oversight](oversight.md)
+- [Intuition](intuition.md)

@@ -2,19 +2,19 @@
 
 ## Objective
 
-Add the trust and hardening layer: oversight, checkpoint review, session-end reconciliation, and nightly consolidation.
+Add the trust and hardening layer through checkpoint review, session-end reconciliation, nightly consolidation, and later Intuition when Mamba exists.
 
 ## Workstreams
 
-1. Define the oversight model.
-   - what is automatically observed
-   - what requires review
-   - what requires approval or veto
-2. Integrate oversight with semantic outputs.
-   - default consume boundary-triggered semantic outputs in Phase 1
+1. Finalize the reconciliation model.
+   - what is automatically reconciled
+   - what remains tentative
+   - what requires stronger evidence before trust elevation
+2. Define Intuition as a later Mamba-side evaluator.
    - consume the Mamba stream later when available
-   - escalate to evidence packages when needed
-   - emit review tasks, confidence downgrades, or approval requests
+   - decide when hotter layered ingestion should wake
+   - route high-signal windows into reflection or notion updates
+   - leave deeper review to evidence-backed downstream work
 3. Finalize session-end reconciliation.
    - close evidence packages
    - resolve tentative QMD notions
@@ -34,8 +34,8 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
 
 ## Deliverables
 
-- oversight trigger model
-- evidence-escalation path
+- Intuition trigger model
+- evidence-escalation path for deeper review
 - session-end reconciliation loop
 - nightly reconciliation loop
 - QMD cleanup rules
@@ -48,11 +48,11 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
 
 ## Exit Criteria
 
-- oversight can observe and intervene on semantic outputs
 - tentative memory can be upgraded, downgraded, or rejected at session boundaries
 - nightly maintenance can improve trust without changing the authority model
+- Intuition is clearly defined as a later Mamba-gated evaluator rather than a base architecture module
 
 ## Notes
 
-- Oversight is a control consumer, not the main memory authority.
+- Intuition is not part of the base Phase 1 proof surface.
 - Session-end reconciliation is the main trust boundary for fast cross-thread memory.

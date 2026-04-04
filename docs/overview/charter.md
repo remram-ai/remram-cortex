@@ -97,4 +97,4 @@ Cortex exists to stop that drift.
 
 Phase 1 proves the spine without live `Mamba`.
 
-After Phase 1, a simple decision gate determines whether `Mamba` should be pulled forward as a Phase `1.5` spike or remain deferred until Phase 3.
+After Phase 1, a simple decision gate determines whether `Mamba` should be pulled forward as a Phase `1.5` spike or added later in Phase 3 as a supercharge to the same spine.

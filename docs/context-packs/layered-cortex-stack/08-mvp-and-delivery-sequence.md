@@ -2,9 +2,9 @@
 
 ## Delivery Posture
 
-The long-term architecture still wants `Mamba`.
+The long-term architecture still includes `Mamba`.
 
-The sequencing change is that `Mamba` is no longer required to prove the MVP spine.
+The sequencing change is that `Mamba` is no longer required to prove the MVP spine, and the MVP should not read as if it is waiting on `Mamba` to become real.
 
 Phase 1 proves the layered Cortex spine using boundary-triggered semantic processing.
 
@@ -39,7 +39,7 @@ After Phase 1, ask one simple question:
 Is limited VRAM and local context pressure causing real continuity problems, prompt bloat, or poor live-session behavior?
 
 - If yes, pull `Mamba` forward immediately as a Phase `1.5` spike.
-- If no, keep the planned sequencing and leave `Mamba` deferred.
+- If no, keep the planned sequencing and add `Mamba` later as a supercharge.
 
 This is a clear fork point, not an unresolved debate.
 
@@ -67,6 +67,9 @@ At that point, `Mamba` improves:
 - always-on high-signal capture
 - lower-latency semantic awareness
 - cleaner live-session handling for long-running work
+- better directional signal for Reflection and Dream
+
+At that point, Cortex can also add `Intuition` as a Mamba-side evaluator that queues opportunistic high-signal processing while GPU headroom exists.
 
 `Mamba` still remains narrow.
 
@@ -95,4 +98,4 @@ The sequencing now reads:
 - Phase 1 proves the layered spine with boundary-triggered semantic processing
 - then there is a decision gate for a possible Phase `1.5` `Mamba` spike
 - Phase 2 deepens workspaces and artifact lifecycles
-- Phase 3 adds `Mamba` for optimization and hardening by default
+- Phase 3 adds `Mamba` for optimization, hardening, and live-continuity supercharge by default
