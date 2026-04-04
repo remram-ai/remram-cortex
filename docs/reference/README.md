@@ -15,6 +15,7 @@ Documents in this folder:
 - [Neo4j Cortex Fit Analysis](neo4j-cortex-fit-analysis.md)
 - [Weaviate Cortex Fit Analysis](weaviate-cortex-fit-analysis.md)
 - [Cognee Cortex Fit Analysis](cognee-cortex-fit-analysis.md)
+- [OpenClaw Thread Option Signal Review](openclaw-thread-option-signal-review.md)
 
 Go next:
 

@@ -16,9 +16,11 @@ This repository is still early, so the documentation tree is organized around a 
 ## Start Here
 
 - read [overview/](overview/README.md) for the high-level role and repository boundary
+- read [design/layered-memory-architecture.md](design/layered-memory-architecture.md) for the current foundational architecture direction
 - read [glossary.md](glossary.md) to align on locked terminology
 - read [concepts/](concepts/README.md) for short concept definitions built on that glossary
-- read [architecture.md](remram-cortex/architecture.md) for the canonical system design
+- use [design/](design/README.md) for the active stack options and current architecture packages
+- read [architecture.md](remram-cortex/architecture.md) for the older canonical system design until it is fully reconciled to the layered approach
 - use [inconsistencies.md](remram-cortex/inconsistencies.md) to see whether any active inconsistencies remain and where prior ones were archived
 - use [reference/](reference/README.md) for external guides and supporting material that inform design choices
 - read [remram-cortex/](remram-cortex/README.md) for the local document map

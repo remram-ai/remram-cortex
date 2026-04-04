@@ -8,9 +8,11 @@ Documents in this folder:
 
 - [Overview](overview.md)
 - [Charter](charter.md)
+- [Archive](archive/)
 
 Go next:
 
 - [Glossary](../glossary.md) to lock the shared vocabulary
 - [Concepts](../concepts/README.md) for the normalized vocabulary
-- [Architecture](../remram-cortex/architecture.md) for the authoritative system design
+- [Layered Memory Architecture](../design/layered-memory-architecture.md) for the current foundational architecture
+- [Design](../design/README.md) for active stack options and delivery packages
