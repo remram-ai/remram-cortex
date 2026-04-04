@@ -17,6 +17,12 @@ It is built around:
 
 The default implementation posture is `Postgres + pgvector`.
 
+Layer 4 is allowed to move quickly, but it must remain:
+
+- source-linked
+- revision-aware
+- subordinate to canonical artifact truth
+
 ## Layer 5: Canonical Artifacts
 
 Layer 5 is the publication-truth layer.
@@ -36,3 +42,5 @@ That is allowed only if:
 - the anchor is explicit
 - dirty-state tracking is explicit
 - publication and re-ingestion are part of the design
+
+Only compact summary + pointer + Layer 3 appropriate beliefs should flow upward into durable memory.

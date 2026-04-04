@@ -1,7 +1,33 @@
 {
   "epic_id": "02_high_signal_mamba_stream",
-  "tests": [
-    "checkpoint production works",
-    "continuity objects support bounded context"
+  "scenarios": [
+    {
+      "id": "01",
+      "name": "Checkpoint production",
+      "assertions": [
+        "Session evidence produces semantic checkpoints.",
+        "Checkpoint payloads carry stable source references."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Bounded continuity",
+      "assertions": [
+        "Context assembly can use checkpoints to reduce prompt pressure.",
+        "Smaller-window runs do not depend on raw transcript replay."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Consumer safety",
+      "assertions": [
+        "Consumers can replay or resume without corrupting state.",
+        "The stream remains a projection rather than a new authority."
+      ]
+    }
+  ],
+  "non_goals": [
+    "Replacing raw evidence retention",
+    "Treating checkpoints as trusted durable memory"
   ]
 }

@@ -1,7 +1,33 @@
 {
   "epic_id": "01_policy_and_openclaw_integration",
-  "tests": [
-    "policy overlay changes runtime behavior",
-    "session mechanics remain OpenClaw-native"
+  "scenarios": [
+    {
+      "id": "01",
+      "name": "Policy overlay affects runtime behavior",
+      "assertions": [
+        "Different overlays change runtime behavior in observable ways.",
+        "Resolved policy remains inspectable."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "OpenClaw remains Layer 2 owner",
+      "assertions": [
+        "Sessions and compaction remain OpenClaw-native.",
+        "Cortex augments assembly without replacing session mechanics."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Startup bundle is bounded",
+      "assertions": [
+        "The startup bundle fits a bounded assembly model.",
+        "Knowledge is pointer-driven rather than injected wholesale."
+      ]
+    }
+  ],
+  "non_goals": [
+    "Building a separate working-memory store",
+    "Replacing OpenClaw compaction in the first pass"
   ]
 }

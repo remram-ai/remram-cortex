@@ -9,6 +9,8 @@ It is how runtime evidence becomes:
 - semantic checkpoints and continuity compression
 - governed preference-policy updates
 
+Oversight observes these products in parallel rather than replacing them.
+
 ## Trigger
 
 Reflection runs after execution boundaries such as:
@@ -24,6 +26,7 @@ Reflection should read:
 
 - raw evidence from the runtime evidence log
 - the High-Signal Mamba stream
+- closed evidence packages when a boundary has already been sealed
 - existing durable memory when reconciliation requires it
 - artifact support when the update touches Layer 4 or Layer 5
 
@@ -62,9 +65,12 @@ It also does not replace the slower reconciliation and maintenance work of the d
 ## Related Concepts
 
 - [Knowledge Object](knowledge-object.md)
+- [Notion](notion.md)
+- [Evidence Package](evidence-package.md)
 - [Semantic Signature](semantic-signature.md)
 - [Typed Signals](typed-signals.md)
 - [Artifact Intake](artifact-intake.md)
 - [Dream Cycle](dream-cycle.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
+- [Oversight](oversight.md)

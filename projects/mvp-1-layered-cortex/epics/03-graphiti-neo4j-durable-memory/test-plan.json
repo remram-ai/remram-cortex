@@ -1,7 +1,33 @@
 {
   "epic_id": "03_graphiti_neo4j_durable_memory",
-  "tests": [
-    "tentative memory lifecycle works",
-    "durable memory provenance is inspectable"
+  "scenarios": [
+    {
+      "id": "01",
+      "name": "Bounded episode packaging",
+      "assertions": [
+        "Graphiti receives summaries, pointers, and Layer 3 appropriate beliefs.",
+        "Raw logs are not used as the default episode payload."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Tentative cross-thread memory",
+      "assertions": [
+        "High-signal notions can be shared across threads.",
+        "Tentative memory is marked as low-confidence or unreconciled."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Reconciliation and provenance",
+      "assertions": [
+        "Reconciliation promotes, rejects, or supersedes tentative memory correctly.",
+        "Resulting durable memory remains support-linked."
+      ]
+    }
+  ],
+  "non_goals": [
+    "Using Graphiti as a transcript archive",
+    "Allowing unreconciled tentative memory to become the default truth surface"
   ]
 }

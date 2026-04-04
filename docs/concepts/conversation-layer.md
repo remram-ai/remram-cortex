@@ -4,6 +4,8 @@ The conversation layer is a proposed semantic continuity layer between runtime s
 
 It exists to preserve direction and continuity across sessions without turning Cortex into a transcript store.
 
+It remains an optional later construct rather than a phase-1 requirement.
+
 ## Session Versus Conversation Versus Knowledge
 
 A session is a runtime execution grouping owned by OpenClaw.
@@ -14,7 +16,7 @@ A knowledge object is an atomic durable statement or relation owned by Cortex.
 
 ## What The Conversation Layer Stores
 
-If adopted, the conversation layer should store dense continuity data such as:
+If adopted later, the conversation layer should store dense continuity data such as:
 
 - referenced session identifiers
 - a canonical rolling summary
@@ -25,9 +27,15 @@ It should not store full transcripts.
 
 ## Why It Exists
 
-Raw transcript persistence does not scale into durable memory. The conversation layer preserves semantic continuity while knowledge objects continue to hold atomic durable facts, constraints, principles, and related memory.
+Raw transcript persistence does not scale into durable memory. The conversation layer would preserve semantic continuity while knowledge objects continue to hold atomic durable facts, constraints, principles, and related memory.
 
 This keeps continuity compaction-agnostic: OpenClaw may compact sessions while Cortex still retains meaning.
+
+In the current stack, the closest active precursor is:
+
+- OpenClaw session continuity
+- High-Signal Mamba checkpoints
+- staged notions and durable memory
 
 ## Ownership Boundary
 

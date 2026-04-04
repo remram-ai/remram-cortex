@@ -12,3 +12,25 @@ Design rule:
 - the High-Signal Mamba stream is the default semantic consumer surface
 - Layer 4 operational knowledge may move ahead of Layer 5 canonical artifacts during active work
 - publication and re-ingestion bring them back into alignment
+
+Current upstream docs support the following assumptions:
+
+- `Postgres` already gives a credible lexical retrieval surface through built-in full-text search.
+- `pgvector` supports vector similarity inside the same operational database.
+- `pgvector` documentation explicitly supports hybrid-search patterns when combined with Postgres full-text search.
+
+That is why the current default is:
+
+- `Postgres + pgvector` first
+- add a second search platform only when measured Layer 4 requirements justify it
+
+Operational rule:
+
+- treat runtime evidence packages and canonical artifact revisions as different backing stores behind one logical evidence contract
+- keep `Postgres` as the operational evidence and decomposition authority
+- keep `Git` or the provider source as the canonical artifact authority
+
+Official references:
+
+- https://www.postgresql.org/docs/current/textsearch.html
+- https://github.com/pgvector/pgvector

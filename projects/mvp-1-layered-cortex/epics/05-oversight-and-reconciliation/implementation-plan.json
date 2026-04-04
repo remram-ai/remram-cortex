@@ -1,8 +1,47 @@
 {
   "epic_id": "05_oversight_and_reconciliation",
-  "deliverables": [
-    "oversight trigger model",
-    "semantic checkpoint review path",
-    "nightly reconciliation loop"
+  "objective": "Add the trust and hardening layer through oversight, evidence-backed review, and reconciliation at session and nightly boundaries.",
+  "dependencies": [
+    "02_high_signal_mamba_stream",
+    "03_graphiti_neo4j_durable_memory",
+    "04_knowledge_plane_and_artifacts"
+  ],
+  "workstreams": [
+    {
+      "id": "01",
+      "name": "Oversight model",
+      "outputs": [
+        "oversight triggers",
+        "review classes",
+        "approval or veto rules"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Evidence escalation",
+      "outputs": [
+        "semantic-stream default consumption",
+        "evidence package escalation path",
+        "confidence downgrade and review outputs"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Reconciliation loops",
+      "outputs": [
+        "session-end reconciliation",
+        "checkpoint reconciliation",
+        "nightly maintenance and consolidation"
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "Oversight can review and intervene on semantic outputs.",
+    "Tentative memory can be upgraded, downgraded, or rejected at session boundaries.",
+    "Nightly maintenance hardens memory quality without changing the authority boundary."
+  ],
+  "risks": [
+    "Letting oversight silently become the authority layer.",
+    "Letting approval-sensitive changes bypass evidence-backed review."
   ]
 }

@@ -1,7 +1,33 @@
 {
   "epic_id": "04_knowledge_plane_and_artifacts",
-  "tests": [
-    "revision-aware decomposition works",
-    "canonical artifact truth remains separate"
+  "scenarios": [
+    {
+      "id": "01",
+      "name": "Revision-aware decomposition",
+      "assertions": [
+        "Layer 4 slices link back to explicit artifact revisions.",
+        "Source locators remain inspectable."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Canonical truth boundary",
+      "assertions": [
+        "Layer 5 remains the canonical publication surface.",
+        "Operational slices do not replace publication truth."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Re-ingestion loop",
+      "assertions": [
+        "Revision changes can trigger re-ingestion.",
+        "Stale support can be detected after canonical changes."
+      ]
+    }
+  ],
+  "non_goals": [
+    "Treating Layer 4 as the publication source of truth",
+    "Copying full artifacts into Layer 3 durable memory"
   ]
 }

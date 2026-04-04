@@ -14,6 +14,8 @@ Its responsibilities include:
 - confidence downgrades
 - approval-oriented veto paths where required
 
+Oversight should consume semantic checkpoints by default and escalate to evidence packages only when fidelity or approval requirements demand it.
+
 ## Reconciliation
 
 Reconciliation is how tentative outputs become trusted durable memory.
@@ -23,6 +25,8 @@ It should run at:
 - session end
 - checkpoint boundaries
 - nightly maintenance
+
+Session-end reconciliation is the primary trust boundary for fast cross-thread memory.
 
 ## Product Rule
 

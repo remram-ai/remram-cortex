@@ -74,8 +74,16 @@ This is the default Layer 4 substrate because it gives:
 - evidence storage
 - revision-aware decomposition records
 - vector search without introducing a second major platform
+- lexical search through native Postgres full-text capabilities
+- a credible hybrid-search posture inside one operational store
 
 If later lexical retrieval requirements exceed what this posture handles well, a dedicated search layer can be added deliberately.
+
+That is an intentional tradeoff:
+
+- start with one operational Layer 4 platform
+- measure where it breaks
+- only then add a second search substrate
 
 ### Git
 

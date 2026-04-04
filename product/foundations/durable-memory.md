@@ -30,6 +30,14 @@ The durable-memory product model is:
 3. high-signal notions may appear early as tentative memory
 4. reconciliation decides what becomes trusted durable memory
 
+Durable memory should normally ingest:
+
+- a compact summary
+- provenance or support references
+- a pointer back to evidence or canonical artifact revision
+
+It should not ingest raw transcripts or full artifact bodies as the normal representation.
+
 ## Product Rule
 
 Layer 3 is the semantic memory authority.

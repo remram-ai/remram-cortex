@@ -65,6 +65,8 @@ That means:
 
 This is acceptable because those are all operational, queryable, revision-aware surfaces.
 
+It also keeps lexical and vector retrieval close together in one base platform before introducing a separate search engine.
+
 ## Git Role
 
 `Git` remains the preferred canonical artifact posture because it gives:

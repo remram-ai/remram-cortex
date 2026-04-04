@@ -1,12 +1,14 @@
 # Typed Signals
 
-Typed signals are Cortex's primary semantic retrieval surface.
+Typed signals are a retained Cortex retrieval concept for structured semantic retrieval.
 
-Each knowledge object emits a small set of retrieval signals into fixed fields, while the values inside those fields remain open natural language.
+They are not currently a locked phase-1 implementation commitment for the new layered stack.
+
+If adopted, each knowledge object would emit a small set of retrieval signals into fixed fields, while the values inside those fields remain open natural language.
 
 ## Current Signal Fields
 
-The current first-pass signal set is:
+The previously favored first-pass signal set was:
 
 - `domain`: what broad world this knowledge lives in
 - `activity`: what someone is doing
@@ -18,9 +20,9 @@ This field set is intentionally small and slow-changing.
 
 ## Why Typed Signals Exist
 
-Typed signals give the knowledge plane a structured multi-field surface for scoring without forcing Cortex into brittle taxonomies.
+Typed signals would give the knowledge plane a structured multi-field surface for scoring without forcing Cortex into brittle taxonomies.
 
-They let Cortex ask:
+They would let Cortex ask:
 
 - does the query match the same domain
 - does it involve the same activity
@@ -32,15 +34,17 @@ That is much more useful than collapsing everything into one untyped blob of key
 
 ## Value Rules
 
-Signal values should be:
+If used, signal values should be:
 
 - short natural-language phrases
 - multi-value when needed
 - open-ended rather than enumerated
 - generated during reflection or import based on rediscovery usefulness
 
-The schema is fixed.
-The values evolve.
+The design intent is:
+
+- keep the schema relatively fixed
+- let the values evolve
 
 ## Why The Field Set Must Stay Small
 

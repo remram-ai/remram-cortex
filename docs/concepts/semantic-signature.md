@@ -1,16 +1,18 @@
 # Semantic Signature
 
-A semantic signature is a compact 16-32 bit routing code attached to a knowledge object and generated for a query.
+A semantic signature is a retained Cortex retrieval concept for coarse semantic routing.
 
-It is Cortex's coarse semantic partitioning layer.
+It is not currently a locked phase-1 implementation commitment.
+
+If adopted later, it would act as a compact routing code attached to a knowledge object and generated for a query.
 
 ## What It Does
 
-The signature answers a limited question:
+The signature would answer a limited question:
 
 "What kind of thing is this, in a very compressed way?"
 
-It helps Cortex:
+It could help Cortex:
 
 - bias retrieval toward the right semantic region
 - cheaply preselect candidates before deeper scoring
@@ -29,7 +31,7 @@ Two different memories may share the same signature and still need typed signals
 
 ## Retrieval Role
 
-The signature should be used as a soft routing or score-bias signal.
+If adopted, the signature should be used as a soft routing or score-bias signal.
 
 Typical behavior:
 

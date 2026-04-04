@@ -15,6 +15,8 @@ Dream cycles are responsible for:
 - allowing stale or weak knowledge to decay or be demoted over time
 - forming higher-order principles from repeated consistent patterns
 - identifying artifact-promotion candidates
+- reopening low-confidence notions or tentative memory that aged badly
+- reconciling stale support when artifacts or evidence packages changed
 
 Dream should improve the quality of retrieval without turning retrieval into a reasoning-heavy live step.
 
@@ -33,6 +35,8 @@ Reconciliation is broader and slower than reflection. Keeping it asynchronous av
 
 - [Reflection](reflection.md)
 - [Knowledge Object](knowledge-object.md)
+- [Notion](notion.md)
+- [Oversight](oversight.md)
 - [Typed Signals](typed-signals.md)
 - [Artifact Promotion](artifact-promotion.md)
 - [Graphiti + Neo4j Durable Memory](../design/graphiti-neo4j-durable-memory.md)

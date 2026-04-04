@@ -1,8 +1,49 @@
 {
   "epic_id": "02_high_signal_mamba_stream",
-  "deliverables": [
-    "checkpoint schema",
-    "stream consumption modes",
-    "raw evidence linkage"
+  "objective": "Build the High-Signal Mamba Stream as the primary semantic checkpoint bus between evidence and downstream consumers.",
+  "dependencies": [
+    "01_policy_and_openclaw_integration",
+    "docs/concepts/evidence-package.md",
+    "docs/concepts/high-signal-mamba-stream.md"
+  ],
+  "workstreams": [
+    {
+      "id": "01",
+      "name": "Checkpoint schema",
+      "outputs": [
+        "typed payload shape",
+        "confidence and timing fields",
+        "source references",
+        "notion and oversight hints"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Production model",
+      "outputs": [
+        "optimistic production",
+        "boundary production",
+        "rebuildability from evidence packages"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Consumption model",
+      "outputs": [
+        "optimistic consumption",
+        "on-demand consumption",
+        "nightly consumption",
+        "consumer watermark or idempotence rules"
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "The stream is produced from session evidence with stable source links.",
+    "At least two downstream consumers can use the same semantic stream.",
+    "The stream is documented as a rebuildable semantic projection rather than a second authority."
+  ],
+  "risks": [
+    "Treating the stream as durable truth instead of a checkpoint surface.",
+    "Losing source linkage during optimistic generation."
   ]
 }

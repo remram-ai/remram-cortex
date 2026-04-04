@@ -1,8 +1,47 @@
 {
   "epic_id": "01_policy_and_openclaw_integration",
-  "deliverables": [
-    "policy bundle shape",
-    "OpenClaw integration boundary",
-    "bounded startup stance"
+  "objective": "Stand up Cortex policy composition and the OpenClaw integration seam while keeping Layer 2 OpenClaw-native.",
+  "dependencies": [
+    "docs/design/layered-memory-architecture.md",
+    "docs/design/openclaw-integration.md"
+  ],
+  "workstreams": [
+    {
+      "id": "01",
+      "name": "Policy bundle schema",
+      "outputs": [
+        "role and mode overlays",
+        "tool and approval rules",
+        "prompt-budget discipline",
+        "mutable preference-policy boundary"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "OpenClaw-facing assembly",
+      "outputs": [
+        "policy resolution for a run",
+        "inspectable injection surface",
+        "clear Layer 1/2 ownership boundary"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Bounded startup stance",
+      "outputs": [
+        "policy-first startup ordering",
+        "bounded working-memory continuity",
+        "knowledge pointers instead of full corpora"
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "Policy can be resolved and injected without replacing OpenClaw sessions.",
+    "The startup bundle order is explicit and bounded.",
+    "Epic 02 can consume the established OpenClaw boundary without redesigning Layer 2."
+  ],
+  "risks": [
+    "Overreaching into OpenClaw session mechanics too early.",
+    "Treating policy as prompt text instead of a resolvable contract."
   ]
 }

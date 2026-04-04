@@ -1,5 +1,49 @@
 # Implementation Plan
 
-- define oversight triggers
-- consume semantic checkpoints for review
-- finalize session-end and nightly reconciliation loops
+## Objective
+
+Add the trust and hardening layer: oversight, checkpoint review, session-end reconciliation, and nightly consolidation.
+
+## Workstreams
+
+1. Define the oversight model.
+   - what is automatically observed
+   - what requires review
+   - what requires approval or veto
+2. Integrate oversight with the semantic checkpoint stream.
+   - default consume Stream 2
+   - escalate to evidence packages when needed
+   - emit review tasks, confidence downgrades, or approval requests
+3. Finalize session-end reconciliation.
+   - close evidence packages
+   - resolve tentative notions
+   - update Layer 3 trust state
+4. Finalize nightly reconciliation and Dream-like maintenance.
+   - deduplication
+   - contradiction checks
+   - stale-support cleanup
+   - higher-confidence consolidation
+
+## Deliverables
+
+- oversight trigger model
+- evidence-escalation path
+- session-end reconciliation loop
+- nightly reconciliation loop
+
+## Dependencies
+
+- Epic 02 semantic checkpoints
+- Epic 03 notion and durable-memory state model
+- Epic 04 artifact revision and support model
+
+## Exit Criteria
+
+- oversight can observe and intervene on semantic outputs
+- tentative memory can be upgraded, downgraded, or rejected at session boundaries
+- nightly maintenance can improve trust without changing the authority model
+
+## Notes
+
+- Oversight is a control consumer, not the main memory authority.
+- Session-end reconciliation is the main trust boundary for fast cross-thread memory.

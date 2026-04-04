@@ -1,7 +1,33 @@
 {
   "epic_id": "05_oversight_and_reconciliation",
-  "tests": [
-    "oversight reviews semantic checkpoints",
-    "nightly reconciliation hardens Layer 3 memory"
+  "scenarios": [
+    {
+      "id": "01",
+      "name": "Oversight review path",
+      "assertions": [
+        "Oversight can observe semantic checkpoints and flag suspicious changes.",
+        "High-impact or low-confidence cases can escalate to evidence-backed review."
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Session-end reconciliation",
+      "assertions": [
+        "Tentative memory can be promoted, downgraded, or rejected.",
+        "Trust state changes remain inspectable."
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Nightly maintenance",
+      "assertions": [
+        "Nightly reconciliation can merge, supersede, or invalidate memory safely.",
+        "Provenance and support links remain intact."
+      ]
+    }
+  ],
+  "non_goals": [
+    "Replacing Layer 3 authority with oversight",
+    "Using nightly maintenance as the only trust boundary"
   ]
 }

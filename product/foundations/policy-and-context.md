@@ -26,6 +26,12 @@ Instead, Cortex adds:
 - High-Signal Mamba checkpoints
 - compression-ready continuity products
 
+The stable intent is:
+
+- let OpenClaw own session continuity
+- prepare compact continuity ahead of compaction pressure
+- keep smaller-window runtime bundles viable without transcript replay by default
+
 ## Product Rule
 
 The stable product contract is:

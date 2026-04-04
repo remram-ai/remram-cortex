@@ -141,6 +141,16 @@ The durable-memory layer should usually receive:
 
 The full document body should remain in the canonical artifact layer.
 
+## Relationship To Evidence Packages
+
+The stream should point back to closed evidence packages or canonical revisions rather than becoming a second authority.
+
+That is what makes it:
+
+- rebuildable
+- auditable
+- safe to consume optimistically
+
 ## Design Principle
 
 Most consumers should subscribe to the High-Signal Mamba Stream.
@@ -148,3 +158,10 @@ Most consumers should subscribe to the High-Signal Mamba Stream.
 Very few consumers should read raw evidence directly.
 
 That keeps Cortex efficient on smaller-window models while preserving a path back to exact evidence when it matters.
+
+## Related Concepts
+
+- [Evidence Package](evidence-package.md)
+- [Notion](notion.md)
+- [Oversight](oversight.md)
+- [Reflection](reflection.md)

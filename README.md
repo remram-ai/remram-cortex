@@ -31,6 +31,7 @@ The active stack direction is:
 - [docs/overview/overview.md](docs/overview/overview.md)
 - [docs/design/layered-memory-architecture.md](docs/design/layered-memory-architecture.md)
 - [docs/design/technology-stack.md](docs/design/technology-stack.md)
+- [docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
 - [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
 
 ## Current Direction

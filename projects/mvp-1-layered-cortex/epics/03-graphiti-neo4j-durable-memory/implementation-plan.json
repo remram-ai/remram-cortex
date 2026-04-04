@@ -1,8 +1,46 @@
 {
   "epic_id": "03_graphiti_neo4j_durable_memory",
-  "deliverables": [
-    "Graphiti service bring-up",
-    "notion staging",
-    "reconciliation hooks"
+  "objective": "Stand up Layer 3 durable memory with Graphiti and Neo4j, including notion staging and reconciliation.",
+  "dependencies": [
+    "02_high_signal_mamba_stream",
+    "docs/design/graphiti-neo4j-durable-memory.md"
+  ],
+  "workstreams": [
+    {
+      "id": "01",
+      "name": "Layer 3 bring-up",
+      "outputs": [
+        "Neo4j deployment posture",
+        "Graphiti configuration",
+        "episode write path"
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Notion and memory state model",
+      "outputs": [
+        "candidate notion shape",
+        "tentative and active states",
+        "supersession and invalidation states"
+      ]
+    },
+    {
+      "id": "03",
+      "name": "Reconciliation",
+      "outputs": [
+        "session-end promotion",
+        "checkpoint promotion",
+        "merge, reject, and supersede behavior"
+      ]
+    }
+  ],
+  "exit_criteria": [
+    "High-signal notions can appear as tentative cross-thread memory.",
+    "Reconciliation can promote or reject tentative memory.",
+    "Graphiti receives bounded evidence packages rather than raw log dumps."
+  ],
+  "risks": [
+    "Overloading Graphiti with raw evidence.",
+    "Confusing tentative memory with trusted durable memory."
   ]
 }
