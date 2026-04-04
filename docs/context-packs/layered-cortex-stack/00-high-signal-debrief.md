@@ -2,11 +2,13 @@
 
 ## Cortex In One Sentence
 
-Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, a narrow always-on Mamba signal stream, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and Git-backed canon only when canonical publication is actually warranted.
+Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and Git-backed canon only when canonical publication is actually warranted.
+
+The long-term architecture still wants a narrow always-on Mamba signal stream, but that is now deferred by default.
 
 ## The Main Architectural Move
 
-The architecture is no longer trying to force all context, memory, and artifacts through one substrate.
+The architecture no longer tries to force all context, memory, and artifacts through one substrate.
 
 It now separates:
 
@@ -29,30 +31,36 @@ The clean authority model is:
 - `OpenClaw` is the chosen agentic framework.
 - Cortex owns Layer 1 policy composition.
 - `QMD` is the Layer 2 hot working-memory substrate and notion store.
-- a narrow High-Signal `Mamba` listener emits a typed high-signal stream from session activity.
 - `Graphiti + Neo4j` is Layer 3 durable memory.
 - `Postgres` is the operational middle-layer authority.
 - `Git` is used only when canonical artifact publication is warranted.
+- `Mamba` remains in the long-term architecture as a later always-on optimization layer.
 
-## The Biggest Locked Clarifications
+## The Main Sequencing Clarification
 
-- Layer 2 explicitly uses `QMD`.
-- notions live in Layer 2, not in a separate Postgres-first or Graphiti-first ledger.
-- Mamba is narrow by design and should not absorb broad reflection or artifact parsing work.
-- Layer 3 remains one Graphiti memory system.
-- Layer 4 is the operational knowledge authority.
-- Layer 5 is only canonical publication truth when applicable.
-- `OpenSearch` is not part of the active stack.
+Phase 1 proves the spine without live `Mamba`.
+
+Instead, Phase 1 uses:
+
+- turn-end semantic processing
+- session-end semantic processing
+- checkpoint-triggered semantic processing when needed
+
+After Phase 1 there is a clear decision gate:
+
+- if local VRAM and context pressure are causing real continuity problems, pull `Mamba` forward as a Phase `1.5` spike
+- otherwise continue to Phase 2 and leave `Mamba` deferred until Phase 3
 
 ## The Main Runtime Story
 
 1. OpenClaw runs the session.
 2. QMD supports hot working-memory retrieval and notion storage.
-3. the Mamba listener continuously emits typed high-signal events from session activity.
-4. those signals can update notions, oversight, and bounded continuity.
+3. turn-end and session-end processing produce typed semantic outputs.
+4. those outputs can update notions, oversight, and bounded continuity.
 5. reflection uses Layer 3 relationships to help organize Layer 4 workspaces.
 6. high-value meaning promotes into Graphiti durable memory when warranted.
 7. Dream does slower consolidation and promotion readiness work.
+8. later, Mamba can improve the same runtime by producing a better always-on signal.
 
 ## The Main Workspace Story
 
@@ -82,22 +90,6 @@ Layer 5 only exists when publication-grade canon is warranted.
 
 External references do not automatically become Git-backed canonical artifacts.
 
-## What Layer 3 Does For Layer 4
-
-Layer 3 helps Layer 4 organize itself.
-
-It can represent:
-
-- same emerging idea
-- related workspace
-- supporting reference
-- supersedes
-- candidate for promotion
-
-The bodies remain in Layer 4.
-
-The conceptual relationship network remains in Layer 3.
-
 ## Why QMD Matters
 
 QMD is the pragmatic hot-memory choice inside the OpenClaw-centered stack.
@@ -109,7 +101,7 @@ It gives Cortex:
 - tentative cross-thread continuity under tighter rules
 - a Layer 2 memory surface that can be kept lean through reflection cleanup
 
-## Why Mamba Matters
+## Why Mamba Still Matters
 
 Mamba is not a broad semantic engine.
 
@@ -120,6 +112,8 @@ It is:
 - a bounded trigger surface for downstream systems
 
 It should stay narrow.
+
+It is deferred for sequencing reasons, not because the architecture stopped wanting it.
 
 ## Why Postgres Matters
 
@@ -138,20 +132,22 @@ This is why the architecture avoids `OpenSearch` for now.
 
 ## The Most Important Exclusions
 
-The active design explicitly avoids:
+The active Phase 1 design explicitly avoids:
 
 - OpenSearch in the near-term stack
 - a second Graphiti usage pattern
 - pushing budding ideas into Git too early
 - treating external references like authored canonical artifacts
 - making Mamba a universal reasoning engine
+- requiring live Mamba to prove the spine
 
 ## Bottom Line
 
-The architecture is now cleaner:
+The architecture is now cleaner and the sequencing is cleaner too:
 
 - OpenClaw at the framework center
 - QMD for hot working continuity and notions
 - Graphiti for durable semantic truth
 - Postgres for operational knowledge truth
 - Git only for canonical publication when that is actually needed
+- Mamba later as a narrow hardening and optimization layer

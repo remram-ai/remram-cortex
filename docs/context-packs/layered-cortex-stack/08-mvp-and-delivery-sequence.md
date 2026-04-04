@@ -1,43 +1,98 @@
 # MVP And Delivery Sequence
 
-## MVP Goal
+## Delivery Posture
 
-MVP 1 proves the simplified locked stack:
+The long-term architecture still wants `Mamba`.
+
+The sequencing change is that `Mamba` is no longer required to prove the MVP spine.
+
+Phase 1 proves the layered Cortex spine using boundary-triggered semantic processing.
+
+## Phase 1: Prove The Core Spine Without Live Mamba
+
+Phase 1 includes:
 
 - `OpenClaw`
 - Cortex policy layer
 - `QMD` hot working memory
-- narrow Mamba high-signal stream
+- notion storage in `QMD`
+- turn-end and session-end semantic processing
+- checkpoint-triggered semantic processing when needed
+- session-end reconciliation
 - `Graphiti + Neo4j` durable memory
 - `Postgres` operational middle layer
-- `Git` canonical artifacts when applicable
+- Layer 4 operational knowledge authority
+- basic Layer 5 canonical artifact handling when applicable
+- cross-thread concept linking through Layer 3
+- reflection-driven `QMD` cleanup
+- promotion readiness signals for eventual Layer 5 publication
 
-## Epic Order
+Phase 1 does not require:
 
-1. policy and OpenClaw integration
-2. QMD-backed Layer 2 and Mamba stream
-3. Graphiti plus Neo4j durable memory
-4. Layer 4 operational knowledge
-5. reflection, Dream, oversight, and promotion readiness
+- live always-on `Mamba`
+- continuous semantic checkpoint generation during the session
 
-## What MVP Explicitly Excludes
+## Post-Phase-1 Decision Gate
 
-MVP excludes:
+After Phase 1, ask one simple question:
 
-- OpenSearch
-- a second graph system
-- a second Graphiti mode
-- premature canonicalization of budding ideas
+Is limited VRAM and local context pressure causing real continuity problems, prompt bloat, or poor live-session behavior?
 
-## The 10 Design-Lock Answers
+- If yes, pull `Mamba` forward immediately as a Phase `1.5` spike.
+- If no, keep the planned sequencing and leave `Mamba` deferred.
 
-1. Choose `QMD` explicitly for Layer 2 hot working memory and notions.
-2. The notion ledger lives in `QMD`.
-3. Tentative cross-thread memory is allowed under tighter retrieval rules, but it is not silently authoritative before reconciliation.
-4. No `OpenSearch` for now. `Postgres` remains the operational middle-layer authority for MVP.
-5. Keep full transcripts hot for roughly `90` to `120` days since last access, then move them to cold storage. Keep compact metadata and semantic checkpoints hot much longer.
-6. Keep the trust model minimal. Use lightweight states and avoid inventing a giant second semantics system.
-7. Use stable anchor identity and pointer-based relationships in Graphiti. Do not turn Graphiti into a document body store.
-8. Keep the split hard. OpenClaw owns runtime and workflow mechanics. Cortex owns memory, policy composition, reconciliation, and governed preference-policy behavior.
-9. Mamba is a narrow always-on Layer 2 listener that emits a high-signal stream from session activity.
-10. MVP 1 includes OpenClaw, Cortex policy, QMD, Mamba, Graphiti plus Neo4j, Postgres, and Git when canon is warranted. OpenSearch and additional service expansion are deferred.
+This is a clear fork point, not an unresolved debate.
+
+## Phase 2: Deepen Layer 4 And Layer 5
+
+Phase 2 focuses on:
+
+- richer Layer 4 workspace handling
+- budding idea workspaces that span many threads
+- stronger external reference handling
+- stronger promotion lifecycle from Layer 4 to Layer 5
+- better dirty-state and redraft flows
+- cleaner operational knowledge organization driven by Layer 3 relationships
+- clearer workspace and artifact category distinctions
+
+This phase makes the Layer 4 and Layer 5 story feel real and usable.
+
+## Phase 3: Add Mamba As Hardening And Optimization
+
+Phase 3 introduces `Mamba` as the default always-on narrow high-signal listener.
+
+At that point, `Mamba` improves:
+
+- near-time continuity compression
+- always-on high-signal capture
+- lower-latency semantic awareness
+- cleaner live-session handling for long-running work
+
+`Mamba` still remains narrow.
+
+It is not:
+
+- a universal reasoning engine
+- the reflection engine
+- the document decomposition engine
+
+## What Stays Locked
+
+The core architecture decisions still stand:
+
+1. `QMD` is the Layer 2 hot working-memory substrate and notion store.
+2. Tentative cross-thread memory is allowed under tighter retrieval rules but is not silently authoritative before reconciliation.
+3. `Postgres` remains the operational middle-layer authority.
+4. `OpenSearch` is still deferred.
+5. `Graphiti + Neo4j` remains the Layer 3 durable memory system.
+6. Layer 4 remains the operational knowledge authority.
+7. Layer 5 remains canonical publication truth only when canon is warranted.
+
+## Bottom Line
+
+The sequencing now reads:
+
+- Phase 1 proves the layered spine with boundary-triggered semantic processing
+- then there is a decision gate for a possible Phase `1.5` `Mamba` spike
+- Phase 2 deepens workspaces and artifact lifecycles
+- Phase 3 adds `Mamba` for optimization and hardening by default

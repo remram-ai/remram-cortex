@@ -145,7 +145,7 @@ They are not silently authoritative durable memory.
 
 `Mamba` is narrow by design.
 
-It is:
+In the long-term architecture, it is:
 
 - a small always-on listener
 - a Layer 2-adjacent high-signal producer
@@ -158,6 +158,15 @@ It is not:
 - a broad semantic authority
 
 Its job is to keep a narrow, continuous, high-signal stream available for downstream consumers.
+
+Sequencing clarification:
+
+- Phase 1 does not require live Mamba
+- Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
+- after Phase 1 there is a decision gate for a possible Phase `1.5` Mamba spike
+- otherwise Mamba remains deferred until Phase 3
+
+When Mamba arrives, it augments those hooks rather than replacing them.
 
 #### Reflection And Layer 2 Cleanup
 
@@ -377,7 +386,7 @@ This is the main architecture rule to protect.
 
 ## Storage And Service Posture
 
-The active stack is:
+The long-term stack is:
 
 - `OpenClaw`
 - Cortex policy layer
@@ -386,6 +395,34 @@ The active stack is:
 - `Graphiti + Neo4j` for Layer 3
 - `Postgres` for the operational middle of the stack
 - `Git` when canonical artifact publication is warranted
+
+## Implementation Sequencing
+
+### Phase 1
+
+Phase 1 proves the layered spine without live Mamba.
+
+It uses:
+
+- turn-end semantic processing
+- session-end semantic processing
+- explicit-checkpoint semantic processing when needed
+
+### Post-Phase-1 Decision Gate
+
+After Phase 1, evaluate whether local continuity pressure is becoming a real problem.
+
+If limited VRAM and local context pressure are causing continuity loss, prompt bloat, or poor live-session behavior, Mamba may be pulled forward as a Phase `1.5` spike.
+
+If not, Mamba remains deferred.
+
+### Phase 2
+
+Phase 2 deepens Layer 4 workspaces, external reference handling, and Layer 4 to Layer 5 lifecycle behavior.
+
+### Phase 3
+
+Phase 3 adds Mamba as the default always-on narrow high-signal listener.
 
 ### Postgres As Middle-Layer Authority
 
@@ -450,12 +487,13 @@ The conceptual relationship network remains in Layer 3.
 1. OpenClaw runs the session.
 2. The transcript and runtime events remain the evidence surface.
 3. `QMD` provides hot working-memory retrieval and notion storage.
-4. the High-Signal Mamba stream listens continuously and emits typed high-signal events.
-5. Layer 2 continuity is assembled from session state, `QMD`, and the high-signal stream.
+4. turn-end, session-end, and explicit-checkpoint processing emit typed semantic outputs.
+5. Layer 2 continuity is assembled from session state, `QMD`, and those outputs.
+6. later, Mamba can improve this same flow by providing a better always-on signal source.
 
 ### Flow 2: Layer 2 To Layer 3
 
-1. a high-signal event contributes to a notion in `QMD`
+1. boundary-triggered semantic processing contributes to a notion in `QMD`
 2. the notion is queryable for continuity and cross-thread use under tighter rules
 3. reflection evaluates the notion against evidence and current semantic structure
 4. high-value meaning is promoted into Layer 3 when warranted
@@ -614,6 +652,8 @@ Mamba is a narrow always-on Layer 2 listener that emits a high-signal stream fro
 
 It is not a general artifact parser or universal semantic subsystem.
 
+It is deferred by default for sequencing reasons, not removed from the architecture.
+
 ### 10. What is in MVP 1 versus intentionally deferred?
 
 MVP 1 includes:
@@ -621,11 +661,13 @@ MVP 1 includes:
 - `OpenClaw`
 - Cortex policy layer
 - `QMD` hot working memory
-- Mamba high-signal stream
+- boundary-triggered semantic processing
 - `Graphiti + Neo4j` durable memory
 - `Postgres` operational middle layer
 - `Git` canonical artifacts when applicable
 
 `OpenSearch` is deferred.
+
+`Mamba` is deferred by default and may be pulled forward as a Phase `1.5` spike if the post-Phase-1 gate says continuity pressure justifies it.
 
 Additional service expansion is deferred.

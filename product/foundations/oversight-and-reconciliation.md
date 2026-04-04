@@ -4,7 +4,7 @@ This document defines the stable product posture for oversight and reconciliatio
 
 ## Oversight
 
-Oversight is a control consumer of the semantic checkpoint stream and related staged state.
+Oversight is a control consumer of semantic outputs and related staged state.
 
 Its responsibilities include:
 
@@ -14,7 +14,9 @@ Its responsibilities include:
 - confidence downgrades
 - approval-oriented veto paths where required
 
-Oversight should consume high-signal checkpoints and notion activity by default and escalate to evidence packages only when fidelity or approval requirements demand it.
+Oversight should consume boundary-triggered semantic outputs in early phases, notion activity by default, and later the Mamba stream when available.
+
+It should escalate to evidence packages only when fidelity or approval requirements demand it.
 
 ## Reconciliation
 

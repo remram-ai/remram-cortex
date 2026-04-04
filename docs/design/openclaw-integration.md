@@ -10,7 +10,7 @@ Cortex integrates with it through:
 
 - Layer 1 policy composition
 - Layer 2 hot working-memory augmentation
-- high-signal listening
+- boundary-triggered semantic processing in early phases
 - Layer 3 durable-memory retrieval and promotion
 - Layer 4 and Layer 5 knowledge tooling
 
@@ -47,16 +47,16 @@ OpenClaw still owns:
 - compaction
 - runtime execution state
 
-Cortex now augments Layer 2 with:
+Cortex augments Layer 2 with:
 
 - `QMD` as the hot working-memory retrieval substrate
 - notion storage in `QMD`
-- high-signal continuity and notion inputs from the Mamba stream
 - policy-aware bounded context assembly
+- semantic processing hooks that run at turn end, session end, and explicit checkpoints
 
-This is the locked Layer 2 posture.
+That is the Phase 1 posture.
 
-It replaces the earlier passive "OpenClaw-native only" wording.
+It replaces the earlier passive "OpenClaw-native only" wording without requiring live Mamba on day one.
 
 #### QMD Role
 
@@ -71,9 +71,33 @@ It is used for:
 
 `QMD` should not become a shadow durable-memory system.
 
-## High-Signal Mamba Integration
+## Semantic Processing Before Mamba
 
-The High-Signal Mamba stream should read session activity continuously and emit a typed high-signal channel.
+Phase 1 still needs semantic outputs.
+
+It just produces them at boundaries instead of through a continuously running listener.
+
+The main OpenClaw integration points remain:
+
+- turn-end or after-turn observation
+- compaction boundaries
+- `/stop`
+- `/reset`
+- explicit checkpoints
+
+At those boundaries, Cortex should be able to:
+
+- emit typed semantic outputs
+- stage and clean notions in `QMD`
+- reconcile candidate durable memory
+- update Layer 4 operational workspaces
+- schedule slower Dream work
+
+These hooks should remain even after Mamba arrives.
+
+## High-Signal Mamba Integration Later
+
+The High-Signal Mamba stream is still part of the long-term architecture.
 
 It is:
 
@@ -92,23 +116,11 @@ The preferred implementation pattern is:
 - a small continuous sensor
 - plus a larger writer or reasoning model only when bounded high-signal windows justify it
 
-## Hooks And Boundaries
+Delivery posture:
 
-The main OpenClaw integration points remain:
-
-- turn-end or after-turn observation
-- compaction boundaries
-- `/stop`
-- `/reset`
-- explicit checkpoints
-
-At those boundaries, Cortex should be able to:
-
-- emit high-signal continuity objects
-- stage and clean notions in `QMD`
-- reconcile candidate durable memory
-- update Layer 4 operational workspaces
-- schedule slower Dream work
+- Phase 1 proves the spine without Mamba
+- after Phase 1 there is a decision gate for a possible Phase `1.5` spike
+- otherwise Mamba lands in Phase 3 as hardening and optimization
 
 ## Runtime Retrieval Posture
 
@@ -135,7 +147,7 @@ They are not the center of Cortex durable memory.
 
 Cortex still treats:
 
-- QMD as the hot Layer 2 working-memory substrate
+- `QMD` as the hot Layer 2 working-memory substrate
 - Graphiti as the Layer 3 durable-memory center
 
 ## Bottom Line
@@ -145,9 +157,9 @@ OpenClaw owns runtime mechanics.
 Cortex adds:
 
 - policy
-- QMD-backed hot working memory
-- a narrow Mamba listener
+- `QMD`-backed hot working memory
+- boundary-triggered semantic processing in early phases
 - durable-memory promotion
 - operational knowledge organization
 
-That is the clean framework-first integration posture.
+Mamba arrives later as a narrow optimization layer, not as the prerequisite for proving the architecture.

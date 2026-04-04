@@ -2,7 +2,7 @@
   "epic_id": "03_graphiti_neo4j_durable_memory",
   "objective": "Stand up Layer 3 durable memory with Graphiti and Neo4j, including reconciliation from QMD notions into trusted durable memory.",
   "dependencies": [
-    "02_high_signal_mamba_stream",
+    "01_policy_and_openclaw_integration",
     "docs/design/graphiti-neo4j-durable-memory.md"
   ],
   "workstreams": [

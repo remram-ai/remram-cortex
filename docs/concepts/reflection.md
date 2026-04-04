@@ -2,7 +2,19 @@
 
 Reflection is the near-time interpretation and maintenance path.
 
-It is how Cortex turns high-signal runtime activity into staged memory, Layer 4 workspace updates, and hot-memory cleanup.
+It is how Cortex turns semantic outputs into staged memory, Layer 4 workspace updates, and hot-memory cleanup.
+
+## Sequencing Clarification
+
+Reflection exists before `Mamba`.
+
+In Phase 1 and Phase 2, reflection runs on:
+
+- turn-end semantic processing
+- session-end semantic processing
+- explicit-checkpoint semantic processing when needed
+
+Later, `Mamba` becomes a better real-time signal source for the same downstream reflection path.
 
 ## What Reflection Does
 
@@ -22,7 +34,8 @@ Reflection is allowed to:
 Reflection may read:
 
 - raw runtime evidence
-- the High-Signal Mamba stream
+- boundary-triggered semantic outputs
+- the High-Signal Mamba Stream when available
 - Layer 2 notions in `QMD`
 - existing Layer 3 semantic structure
 - Layer 4 workspace state
@@ -35,9 +48,9 @@ Reflection is not:
 - the only long-horizon maintenance path
 - a reason to turn Layer 3 into a body store
 
-Mamba emits signal.
+Mamba emits signal later.
 
-Reflection consumes signal.
+Reflection consumes signal whenever it is available.
 
 Dream does the slower consolidation pass.
 

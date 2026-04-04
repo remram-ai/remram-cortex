@@ -32,7 +32,7 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including reconciliatio
 
 ## Dependencies
 
-- Epic 02 semantic checkpoint stream
+- Phase 1 boundary-triggered semantic processing hooks
 - evidence package model
 
 ## Exit Criteria

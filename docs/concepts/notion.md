@@ -21,7 +21,7 @@ It is not trusted durable memory just because it exists.
 
 Notions let Cortex separate:
 
-- live high-signal continuity
+- live working continuity
 - medium-confidence semantic candidates
 - trusted durable semantic memory
 
@@ -42,11 +42,13 @@ They are not:
 
 The normal notion lifecycle is:
 
-1. session activity emits high-signal events
+1. turn-end, session-end, or explicit-checkpoint processing emits semantic outputs
 2. a notion is created or updated in `QMD`
 3. the notion may be retrieved for continuity or tentative cross-thread use
 4. reflection may merge, prune, demote, or expire it
 5. reconciliation may promote it into Layer 3 durable memory
+
+When `Mamba` arrives later, it becomes an additional near-time signal source for the same lifecycle.
 
 ## Retrieval Rule
 

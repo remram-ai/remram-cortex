@@ -1,8 +1,25 @@
 # High-Signal Mamba Stream
 
-The High-Signal Mamba Stream is Cortex's always-on high-signal channel.
+The High-Signal Mamba Stream is Cortex's later always-on high-signal channel.
 
 It is a narrow Layer 2-adjacent listener built from session activity.
+
+## Sequencing Clarification
+
+`Mamba` is deferred, not removed.
+
+Phase 1 proves the architecture with boundary-triggered semantic processing:
+
+- turn-end extraction
+- session-end extraction
+- explicit-checkpoint extraction when needed
+
+After Phase 1, there is a simple decision gate:
+
+- if local continuity pressure is real, Mamba can be pulled forward as a Phase `1.5` spike
+- otherwise it remains deferred until Phase 3
+
+When Mamba does arrive, it augments those hooks rather than replacing them.
 
 ## What It Is
 

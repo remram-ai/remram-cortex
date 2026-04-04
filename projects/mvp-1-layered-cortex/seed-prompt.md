@@ -6,7 +6,8 @@ Assume:
 
 - OpenClaw owns sessions and runtime execution
 - Cortex owns policy, Layer 2 notion rules, durable-memory orchestration, and operational-knowledge routing
-- the active stack is `OpenClaw + QMD + narrow Mamba + Graphiti + Neo4j + Postgres + Git`
+- the Phase 1 stack is `OpenClaw + QMD + boundary-triggered semantic processing + Graphiti + Neo4j + Postgres + Git`
+- `Mamba` is part of the later architecture but deferred by default
 
 Before changing implementation details:
 

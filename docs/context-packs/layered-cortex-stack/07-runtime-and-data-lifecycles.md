@@ -5,8 +5,10 @@
 1. OpenClaw runs the session.
 2. the transcript and runtime events remain the evidence surface.
 3. QMD supports hot retrieval and notion storage.
-4. the narrow Mamba listener emits typed high-signal events.
-5. Layer 2 continuity is assembled from session state, QMD, and high-signal outputs.
+4. turn-end and session-end processing emit typed semantic outputs.
+5. Layer 2 continuity is assembled from session state, QMD, and those outputs.
+
+Later, Mamba can improve this same flow by providing a better always-on signal source.
 
 ## Flow 2: Many Threads To One Emerging Idea
 
@@ -54,3 +56,4 @@ The lifecycle rule is:
 - durable meaning in Layer 3
 - operational bodies in Layer 4
 - canonical publication in Layer 5 only when applicable
+- Mamba later as a hardening and optimization layer rather than a prerequisite for Phase 1

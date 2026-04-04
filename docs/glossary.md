@@ -76,7 +76,9 @@ A hard-bounding field that decides whether something is eligible before semantic
 
 ### High-Signal Mamba Stream
 
-The semantic checkpoint stream built from raw evidence and used by most downstream consumers.
+The later always-on high-signal stream built from live session activity.
+
+It is deferred by default until Phase 3.
 
 ## K
 
@@ -92,7 +94,7 @@ A durable memory object such as a belief, preference, constraint, or decision.
 
 ### Notion
 
-A staged candidate memory derived from the semantic checkpoint stream.
+A staged candidate memory derived from semantic processing outputs.
 
 In the active design, "notion" is effectively the Cortex term for a candidate durable memory.
 
@@ -108,7 +110,7 @@ The runtime execution system. OpenClaw owns sessions, transcripts, hooks, compac
 
 ### Oversight
 
-A review and control consumer that observes semantic checkpoints and intervenes when trust, policy, or approval conditions require it.
+A review and control consumer that observes semantic outputs and intervenes when trust, policy, or approval conditions require it.
 
 ## P
 
@@ -130,7 +132,7 @@ The branching post-runtime layer that turns evidence into notions, artifact impa
 
 ### Semantic Checkpoint
 
-A typed, source-linked continuity object emitted into the High-Signal Mamba Stream.
+A typed, source-linked continuity object emitted by boundary-triggered semantic processing in early phases and later by the High-Signal Mamba Stream.
 
 ### Session
 

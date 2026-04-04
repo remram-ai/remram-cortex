@@ -2,7 +2,7 @@
   "epic_id": "05_oversight_and_reconciliation",
   "objective": "Add the trust and hardening layer through oversight, evidence-backed review, and reconciliation at session and nightly boundaries.",
   "dependencies": [
-    "02_high_signal_mamba_stream",
+    "01_policy_and_openclaw_integration",
     "03_graphiti_neo4j_durable_memory",
     "04_knowledge_plane_and_artifacts"
   ],

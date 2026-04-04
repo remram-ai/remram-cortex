@@ -14,7 +14,8 @@ Explain:
 
 - what Cortex is
 - the five-layer model
-- why the stack uses OpenClaw, QMD, High-Signal Mamba, Graphiti plus Neo4j, Postgres plus pgvector, and Git only when canon is warranted
+- why the stack uses OpenClaw, QMD, Graphiti plus Neo4j, Postgres plus pgvector, and Git only when canon is warranted
+- why Mamba is still wanted but deferred by default
 - how runtime evidence becomes durable memory
 - how hot notions, Layer 4 workspaces, and canonical artifacts differ
 - the major implementation risks
@@ -43,7 +44,8 @@ Make sure to explain:
 
 - the raw evidence log
 - `QMD` as the hot notion surface
-- the High-Signal Mamba Stream as a narrow listener
+- boundary-triggered semantic processing in Phase 1
+- the High-Signal Mamba Stream as a later narrow listener
 - tentative notions under tighter retrieval rules
 - session-end reconciliation
 - Graphiti evidence packaging
@@ -58,6 +60,7 @@ Cover:
 - Layer 4 versus Layer 5
 - why Layer 4 is an operational authority, not just a projection layer
 - how external references differ from canonical artifacts
+- how canonical Layer 5 revisions reprocess back down into Layer 4 and Layer 3
 - why Postgres and Git are separate
 - anchor identity
 - dirty-state tracking
@@ -99,6 +102,7 @@ Include:
 
 - system framing
 - layers
+- delivery phases and the post-Phase-1 decision gate
 - data flows
 - memory model
 - artifact model

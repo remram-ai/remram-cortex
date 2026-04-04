@@ -9,9 +9,14 @@ The current stack splits evidence and knowledge cleanly:
 Design rule:
 
 - raw evidence is not the default consumer surface
-- the High-Signal Mamba stream is the default semantic consumer surface
+- semantic outputs are the default consumer surface
 - Layer 4 operational knowledge may move ahead of Layer 5 canonical artifacts during active work
 - publication and re-ingestion bring them back into alignment
+
+Sequencing note:
+
+- Phase 1 and Phase 2 produce semantic outputs through boundary-triggered processing
+- later, Mamba can become the default always-on near-time producer of that same semantic surface
 
 Current upstream docs support the following assumptions:
 

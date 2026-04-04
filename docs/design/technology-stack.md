@@ -4,17 +4,32 @@ This document records the active Cortex stack after design lock.
 
 It is not a comparison memo.
 
-It describes the stack the repository is now being organized around.
+It describes the stack the repository is being organized around and the sequencing posture for implementing it.
 
-## Chosen Stack
+## Long-Term Stack
+
+The long-term stack is:
 
 - `OpenClaw` as the chosen agentic framework
 - Cortex-owned Layer 1 policy composition
 - `QMD` for Layer 2 hot working memory and notions
-- a narrow High-Signal `Mamba` stream as the always-on Layer 2 listener
+- a narrow High-Signal `Mamba` stream as the later always-on Layer 2 listener
 - `Graphiti + Neo4j` for Layer 3 durable semantic memory
 - `Postgres` as the operational middle-layer authority
 - `Git` for Layer 5 canonical artifacts when publication-grade canon is actually warranted
+
+## Delivery Sequencing
+
+The architecture still wants `Mamba`.
+
+The sequencing change is:
+
+- Phase 1 proves the spine without live `Mamba`
+- Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
+- after Phase 1 there is a simple decision gate for a possible Phase `1.5` `Mamba` spike
+- otherwise `Mamba` remains deferred until Phase 3
+
+This is a sequencing choice, not an architecture reversal.
 
 ## Why This Stack
 
@@ -65,9 +80,25 @@ This is not a giant new memory architecture.
 
 It is the pragmatic hot-memory choice inside an OpenClaw-centered stack.
 
-### High-Signal Mamba Stream
+### Semantic Processing Before Mamba
 
-The Mamba stream is narrow by design.
+Phase 1 still needs semantic processing.
+
+It just does not need an always-on listener yet.
+
+Phase 1 uses:
+
+- turn-end extraction
+- session-end extraction
+- explicit-checkpoint extraction when needed
+
+Those hooks should survive into later phases.
+
+When `Mamba` arrives, it augments those hooks instead of replacing them.
+
+### High-Signal Mamba Stream Later
+
+The Mamba stream remains narrow by design.
 
 It is:
 
@@ -81,10 +112,12 @@ It is not:
 - the document decomposition engine
 - a general-purpose semantic authority
 
-The strongest implementation pattern is:
+Its role is to improve:
 
-- a small continuous sensor
-- plus a larger bounded writer path that is only invoked on high-signal windows
+- near-time continuity compression
+- always-on high-signal capture
+- lower-latency semantic awareness
+- cleaner live-session handling for long-running work
 
 ### Graphiti + Neo4j
 
@@ -111,7 +144,7 @@ It covers:
 - Layer 4 operational knowledge bodies
 - incubation workspaces
 - reference summaries and links
-- decomposed artifact knowledge
+- decomposed artifact knowledge where canonical artifacts exist
 - retrieval metadata
 - workflow and dirty-state fields
 
@@ -141,8 +174,9 @@ The active stack explicitly excludes:
 The active rule is:
 
 - let OpenClaw own runtime mechanics
-- let QMD own hot working-memory retrieval and notions
-- let the Mamba stream stay narrow
+- let `QMD` own hot working-memory retrieval and notions
+- let Phase 1 prove the spine with boundary-triggered semantic processing
+- let `Mamba` arrive later as a narrow optimization layer
 - let Graphiti own durable semantic memory
 - let Postgres own the operational middle
 - let Git own canonical publication only when canon is warranted

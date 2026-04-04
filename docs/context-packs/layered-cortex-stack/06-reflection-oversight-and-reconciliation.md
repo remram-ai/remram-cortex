@@ -4,7 +4,15 @@
 
 Reflection is the near-time path.
 
-It is allowed to:
+It exists before `Mamba`.
+
+In Phase 1 and Phase 2, reflection runs on:
+
+- turn-end semantic processing
+- session-end semantic processing
+- checkpoint-triggered semantic processing when needed
+
+Reflection is allowed to:
 
 - update notions
 - prune notions
@@ -19,10 +27,14 @@ It is allowed to:
 
 Oversight observes the relevant semantic products and intervenes when trust, policy, or approval posture requires it.
 
-It may consume:
+In early phases it consumes boundary-triggered semantic outputs by default.
+
+Later, Mamba can become its default near-time signal source.
+
+Oversight may consume:
 
 - notion activity
-- high-signal stream events
+- semantic outputs
 - promotion candidates
 
 ## Reconciliation
@@ -32,6 +44,8 @@ Reconciliation is how tentative working-memory candidates become trusted durable
 Fast cross-thread continuity is allowed.
 
 Silent authority is not.
+
+Session-end reconciliation is the primary trust boundary in Phase 1.
 
 ## Dream
 

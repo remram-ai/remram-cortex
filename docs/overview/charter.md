@@ -48,7 +48,8 @@ It uses:
 
 - OpenClaw sessions and runtime continuity
 - `QMD` for hot retrieval and notion storage
-- a narrow Mamba stream for high-signal listening
+- boundary-triggered semantic processing in early phases
+- a narrow Mamba stream later for high-signal listening
 
 ### Durable Memory
 
@@ -91,3 +92,9 @@ Without Cortex, systems drift toward:
 - external references being treated like authored artifacts
 
 Cortex exists to stop that drift.
+
+## Delivery Posture
+
+Phase 1 proves the spine without live `Mamba`.
+
+After Phase 1, a simple decision gate determines whether `Mamba` should be pulled forward as a Phase `1.5` spike or remain deferred until Phase 3.

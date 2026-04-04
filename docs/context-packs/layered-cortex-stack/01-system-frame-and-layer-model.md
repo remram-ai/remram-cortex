@@ -32,7 +32,8 @@ It uses:
 
 - OpenClaw sessions and runtime continuity
 - `QMD` for hot retrieval and notion storage
-- a narrow high-signal Mamba listener
+- boundary-triggered semantic processing in early phases
+- a narrow high-signal Mamba listener later as an optimization layer
 
 Layer 2 is fast, pruneable, and not durably authoritative.
 

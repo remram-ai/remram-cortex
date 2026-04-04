@@ -10,8 +10,9 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
    - what is automatically observed
    - what requires review
    - what requires approval or veto
-2. Integrate oversight with the semantic checkpoint stream.
-   - default consume Stream 2
+2. Integrate oversight with semantic outputs.
+   - default consume boundary-triggered semantic outputs in Phase 1
+   - consume the Mamba stream later when available
    - escalate to evidence packages when needed
    - emit review tasks, confidence downgrades, or approval requests
 3. Finalize session-end reconciliation.
@@ -41,7 +42,7 @@ Add the trust and hardening layer: oversight, checkpoint review, session-end rec
 
 ## Dependencies
 
-- Epic 02 semantic checkpoints
+- Phase 1 boundary-triggered semantic processing hooks
 - Epic 03 notion and durable-memory state model
 - Epic 04 artifact revision and support model
 

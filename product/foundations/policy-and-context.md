@@ -27,7 +27,8 @@ Cortex augments that runtime with:
 - `QMD` as the hot working-memory retrieval substrate
 - notions stored directly in `QMD`
 - policy-aware working-memory assembly
-- a narrow High-Signal Mamba listener that emits typed high-signal events
+- boundary-triggered semantic processing in early phases
+- a narrow High-Signal Mamba listener later as a real-time optimization layer
 
 The stable intent is:
 
@@ -35,6 +36,10 @@ The stable intent is:
 - let `QMD` hold the hot notion and retrieval surface
 - keep smaller-window runtime bundles viable without transcript replay by default
 - keep the hot layer lean through reflection-driven cleanup
+
+Phase 1 proves this posture without live Mamba.
+
+Mamba can be pulled forward later if the post-Phase-1 gate says continuity pressure justifies it.
 
 ## Product Rule
 

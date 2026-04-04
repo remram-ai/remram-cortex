@@ -1,12 +1,31 @@
 # High-Signal Mamba Stream
 
-## What It Is
+## The Main Sequencing Clarification
 
-The High-Signal Mamba Stream is the always-on high-signal channel for Cortex.
+`Mamba` is deferred, not removed.
 
-It sits next to Layer 2 and listens continuously to session activity.
+Phase 1 and Phase 2 still use semantic processing, but they do it through:
 
-## What It Does
+- turn-end extraction
+- session-end extraction
+- explicit-checkpoint extraction when needed
+
+After Phase 1, there is a decision gate:
+
+- if local continuity pressure is already painful, pull `Mamba` forward as a Phase `1.5` spike
+- otherwise leave it deferred until Phase 3
+
+## What Mamba Is
+
+The High-Signal Mamba Stream is the later always-on high-signal channel for Cortex.
+
+It is:
+
+- a small always-on listener
+- a Layer 2-adjacent signal producer
+- a narrow optimization and continuity-improvement layer
+
+## What Mamba Does
 
 It emits a typed signal stream for:
 
@@ -15,7 +34,7 @@ It emits a typed signal stream for:
 - oversight
 - reflection
 
-## What It Does Not Do
+## What Mamba Does Not Do
 
 It is not:
 
@@ -26,32 +45,23 @@ It is not:
 
 The architecture should keep it narrow.
 
-## Recommended Implementation Pattern
+## Why Mamba Still Matters
 
-The strongest pattern is:
+When it lands, Mamba improves:
 
-- a small continuous listener or sensor
-- plus larger downstream writers only when a bounded high-signal window justifies the cost
+- near-time continuity compression
+- always-on high-signal capture
+- lower-latency semantic awareness
+- cleaner live-session handling for long-running work
 
-The stream is supposed to gate expensive downstream work, not absorb all of it.
+## Important Boundary
 
-## Why It Exists
+The Phase 1 hooks should survive after Mamba arrives.
 
-The stream exists because:
+Mamba augments:
 
-- raw transcript replay is too expensive as the default path
-- Layer 2 needs a continuous high-signal surface
-- notions and oversight need fast input without rereading everything
+- turn-end processing
+- session-end processing
+- checkpoint-triggered processing
 
-## What It Feeds
-
-The stream may be consumed by:
-
-- working-memory assembly
-- notion staging
-- oversight
-- reflection
-
-That does not make the stream those systems.
-
-It remains the narrow high-signal producer.
+It does not invalidate that implementation work.

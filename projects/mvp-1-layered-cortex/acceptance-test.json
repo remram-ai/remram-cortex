@@ -8,8 +8,8 @@
     },
     {
       "test_id": "AT-002",
-      "name": "Semantic checkpoints reduce context pressure",
-      "expected_result": "The Mamba stream produces compact continuity objects that support smaller-window runs."
+      "name": "Semantic processing reduces context pressure",
+      "expected_result": "Boundary-triggered semantic processing produces compact continuity objects that support smaller-window runs."
     },
     {
       "test_id": "AT-003",
@@ -28,8 +28,8 @@
     },
     {
       "test_id": "AT-006",
-      "name": "Oversight consumes semantic checkpoints",
-      "expected_result": "Oversight can consume semantic checkpoints and trigger review or downgrade paths."
+      "name": "Oversight consumes semantic outputs",
+      "expected_result": "Oversight can consume semantic outputs and trigger review or downgrade paths."
     }
   ]
 }

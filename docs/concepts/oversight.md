@@ -17,9 +17,11 @@ Oversight is responsible for:
 
 ## Default Input Surface
 
-Oversight should consume the High-Signal Mamba Stream by default.
+In Phase 1 and Phase 2, oversight consumes boundary-triggered semantic outputs by default.
 
-That gives it:
+When `Mamba` arrives later, oversight may consume the High-Signal Mamba Stream as its default near-time feed.
+
+This gives it:
 
 - better signal density
 - lower cost than replaying raw evidence
@@ -52,7 +54,7 @@ Oversight can run in:
 - on-demand mode
 - nightly mode
 
-The same semantic stream can support all three.
+The same semantic-output contract should support all three.
 
 ## Related Concepts
 
