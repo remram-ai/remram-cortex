@@ -19,13 +19,19 @@ OpenClaw Runtime
             +-------------------------------+
             |                               |
             v                               v
-Working Memory Sidecar                Cortex Coordination Layer
-  - hot continuity                    - anchor identity
-  - task state                        - layer routing
-  - recent tool outcomes              - policy enforcement
-  - evidence queue                    - publication workflow
+OpenClaw Session Surface             Cortex Coordination Layer
+  - transcripts                      - anchor identity
+  - session evidence                 - layer routing
+  - native compaction                - policy enforcement
+  - context-engine inputs            - publication workflow
             |                               |
             +---------------+---------------+
+                            |
+                            v
+                    Context Compression
+              - rolling summaries
+              - Mamba-style continuity
+              - working-state distillation
                             |
                             v
                         Cognee Platform
@@ -48,6 +54,48 @@ Working Memory Sidecar                Cortex Coordination Layer
                       - provider-backed documents
 ```
 
+## OpenClaw Extension Surface Mapping
+
+In OpenClaw terms, this stack maps to four main extension surfaces.
+
+### 1. Context Engine
+
+The context engine should assemble:
+
+- policy
+- working memory from the session surface
+- compact durable-memory bundle
+
+It should not inject deep knowledge by default.
+
+### 2. Memory Engine
+
+The memory-engine slot should expose durable memory through a Cortex facade over `Cognee`.
+
+That means the runtime still sees a memory interface, even though the backing behavior resolves through `Cognee` platform operations.
+
+### 3. Reflection Pipeline
+
+Reflection should run after or alongside execution and branch evidence into:
+
+- durable-memory updates
+- artifact or knowledge impacts
+- context compression products
+- governed preference-policy updates
+
+This should not live in the context engine hot path.
+
+### 4. Knowledge Tool Interface
+
+Deep knowledge access should be exposed as tools.
+
+Agents should use tools to:
+
+- inspect derived knowledge
+- query artifacts
+- fetch supporting evidence
+- escalate to canonical artifact bodies
+
 ## Layer Interfaces In This Stack
 
 ### Policy Interface
@@ -58,7 +106,9 @@ Owned by Cortex orchestration.
 
 ### Working Memory Interface
 
-Owned by the hot sidecar.
+Owned by the OpenClaw session surface.
+
+Cortex augments this layer through policy-aware assembly and Mamba-style semantic compression.
 
 `Cognee` should not be in the critical path for low-latency continuity.
 
@@ -92,11 +142,13 @@ Canonical publication stays outside `Cognee`.
 
 ## Evidence Flow
 
-1. runtime events are captured into working memory and evidence log
+1. runtime events are captured into the session surface and evidence log
 2. reflection selects memory and artifact-impact candidates
-3. Cortex routes durable candidates into `Cognee`
-4. Cortex routes artifact bodies and revisions into canonical artifact intake
-5. `Cognee` processes derived knowledge from those sources
+3. reflection produces context compression outputs
+4. governed preference-policy changes route through a separate path
+5. Cortex routes durable candidates into `Cognee`
+6. Cortex routes artifact bodies and revisions into canonical artifact intake
+7. `Cognee` processes derived knowledge from those sources
 
 ## Retrieval Flow
 

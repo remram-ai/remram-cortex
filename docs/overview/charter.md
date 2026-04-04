@@ -38,8 +38,8 @@ The system needs explicit separation between:
 - policy
 - working state
 - durable memory
-- canonical artifact truth
 - derived retrieval knowledge
+- canonical artifact truth
 
 These are not the same thing and should not be forced through one substrate.
 

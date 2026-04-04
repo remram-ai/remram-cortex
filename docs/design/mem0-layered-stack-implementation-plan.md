@@ -19,17 +19,21 @@ Exit criteria:
 - clean ownership rules
 - no ambiguity about what lives in Mem0 vs knowledge collections
 
-## Phase 1: Working Memory Backbone
+## Phase 1: OpenClaw Working-Memory Backbone
 
 Goals:
 
-- stand up bounded working-memory sidecar
+- keep OpenClaw as the primary working-memory implementation
+- add Cortex policy overlays
+- add Mamba-style semantic checkpoint production
 - add evidence log and queue state
+- keep rolling compression outputs ready before compaction needs them
 
 Exit criteria:
 
 - low-latency continuity works
 - evidence is replayable
+- working-memory assembly is compression-aware
 
 ## Phase 2: Mem0 Integration
 
@@ -62,6 +66,8 @@ Goals:
 
 - send memory updates into `Mem0`
 - send artifact impacts into decomposition
+- send context compression products into working-memory continuity
+- route preference-policy deltas into a governed policy path
 - keep canonical artifacts untouched until publication flow
 
 Exit criteria:

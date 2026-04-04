@@ -16,13 +16,16 @@ Exit criteria:
 
 - retrieval quality is strong enough to justify the custom-lifecycle cost
 
-## Phase 1: Working Memory And Control Plane
+## Phase 1: OpenClaw Working-Memory And Control Plane
 
 Goals:
 
-- stand up bounded working-memory sidecar
+- keep OpenClaw as the primary working-memory implementation
+- add Cortex policy overlays
+- add Mamba-style semantic checkpoint production
 - stand up small control-plane store if needed
 - define anchor and revision registry
+- keep rolling context compression outputs ready before compaction needs them
 
 Exit criteria:
 
@@ -57,6 +60,8 @@ Exit criteria:
 Goals:
 
 - branch evidence into memory updates and artifact impacts
+- branch evidence into context compression products
+- route preference-policy deltas into a governed policy path
 - support dirty anchors
 - redraft and republish canonical artifacts
 

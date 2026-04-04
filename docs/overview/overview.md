@@ -15,8 +15,8 @@ It is a layered intelligence architecture where:
 - policy governs behavior
 - working memory supports live execution
 - durable memory compounds learned understanding
-- canonical artifacts preserve official temporal truth
 - decomposed artifact knowledge supports retrieval and reasoning
+- canonical artifacts preserve official temporal truth
 
 Many of the original Cortex concepts remain valid.
 
@@ -137,12 +137,8 @@ The current Cortex foundation is:
 1. `Policy`
 2. `Working Memory`
 3. `Durable Memory`
-4. `Knowledge`
-
-with knowledge split into:
-
-- `Canonical Artifacts`
-- `Decomposed Artifact Knowledge`
+4. `Decomposed Artifact Knowledge`
+5. `Canonical Artifacts`
 
 This is the active conceptual baseline for the repository.
 

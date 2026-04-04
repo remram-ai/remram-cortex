@@ -23,6 +23,7 @@ Documents in this folder:
 - [Conversation Layer](conversation-layer.md)
 - [Memory Versus Context](memory-vs-context.md)
 - [Artifact Promotion](artifact-promotion.md)
+- [High-Signal Mamba Stream](high-signal-mamba-stream.md)
 - [Dimension (Legacy Term)](dimension.md)
 
 Read in this order:
@@ -41,7 +42,8 @@ Read in this order:
 12. [Conversation Layer](conversation-layer.md)
 13. [Memory Versus Context](memory-vs-context.md)
 14. [Artifact Promotion](artifact-promotion.md)
-15. [Dimension (Legacy Term)](dimension.md)
+15. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
+16. [Dimension (Legacy Term)](dimension.md)
 
 Go next:
 

@@ -18,12 +18,18 @@ OpenClaw Runtime
             +-------------------------------+
             |                               |
             v                               v
-Working Memory Sidecar               Cortex Authority Layer
-  - hot continuity                   - anchor registry
-  - queue state                      - memory lifecycle rules
-  - task state                       - publication workflow
+OpenClaw Session Surface            Cortex Authority Layer
+  - transcripts                     - anchor registry
+  - session evidence                - memory lifecycle rules
+  - native compaction               - publication workflow
             |                               |
             +---------------+---------------+
+                            |
+                            v
+                    Context Compression
+              - rolling summaries
+              - Mamba-style continuity
+              - task and thread distillation
                             |
                             v
                         Weaviate
@@ -39,11 +45,54 @@ Working Memory Sidecar               Cortex Authority Layer
                         - provider docs
 ```
 
+## OpenClaw Extension Surface Mapping
+
+In OpenClaw terms, this stack also resolves through four extension surfaces.
+
+### 1. Context Engine
+
+The context engine should assemble:
+
+- policy
+- working memory from the session surface
+- compact durable-memory bundle
+
+It should keep knowledge retrieval out of the default startup path.
+
+### 2. Memory Engine
+
+The memory-engine slot would front a Cortex-native durable-memory service on top of `Weaviate`.
+
+That means this slot is custom, not inherited from a third-party memory product.
+
+### 3. Reflection Pipeline
+
+Reflection should branch evidence into:
+
+- durable-memory updates
+- artifact impacts
+- context compression products
+- governed preference-policy updates
+
+This is where the system would implement update, supersession, and support reconciliation rules.
+
+### 4. Knowledge Tool Interface
+
+Deep knowledge and artifact access should come through tools.
+
+That tool surface should expose:
+
+- hybrid retrieval over decomposition
+- anchor resolution
+- canonical artifact fetch when needed
+
 ## Layer Contracts
 
 ### Working Memory
 
-Separate and bounded.
+Owned by the OpenClaw session surface.
+
+Cortex augments this layer through policy-aware assembly and Mamba-style semantic compression.
 
 ### Durable Memory
 

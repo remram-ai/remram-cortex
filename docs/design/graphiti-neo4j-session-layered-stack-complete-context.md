@@ -1,10 +1,10 @@
-# Graphiti + Neo4j + Redis Layered Stack Complete Context Pack
+# Graphiti + Neo4j + Session-Surface Layered Stack Complete Context Pack
 
 ## Purpose
 
 This document models the layered Cortex stack around:
 
-- bounded `Redis` working memory
+- OpenClaw session-surface working memory
 - `Graphiti + Neo4j` for durable memory
 - `OpenSearch` or `Postgres + pgvector` for the knowledge plane
 - `Git` for canonical artifacts
@@ -16,7 +16,8 @@ Reviewed on `April 3, 2026`.
 ## Stack Shape
 
 - `OpenClaw` as runtime shell
-- bounded `Redis` working-memory sidecar
+- OpenClaw session surface as the working-memory implementation
+- policy overlays and Mamba-stream augmentation
 - evidence log and replay channel
 - `Graphiti` as durable-memory authority
 - `Neo4j` as durable graph store
@@ -73,16 +74,20 @@ This stack treats `Neo4j` as the durable graph backend because:
 
 This is the safer graph backend under the current constraints.
 
-## Why Redis Still Makes Sense Here
+## Why OpenClaw Session Working Memory Comes First
 
-`Redis` only makes sense here as a bounded operational layer:
+Working memory should start on the native OpenClaw session surface.
 
-- hot continuity
-- task state
-- queue state
-- handoff buffers
+That means:
 
-It should not be treated as a primary durable memory substrate.
+- session transcripts remain the evidence surface
+- OpenClaw owns the primary working-memory mechanics
+- Cortex contributes policy and semantic compression rather than replacing Layer 2
+- rolling compression improves effective context depth
+
+No separate hot store should be part of the base architecture.
+
+The default design should let OpenClaw own Layer 2 and let Cortex augment it through policy and semantic compression.
 
 ## Why The Knowledge Plane Is Separate
 
@@ -118,7 +123,7 @@ This variant is strongest when:
 ## What We Would Be Adopting
 
 - graph-first durable memory
-- separate working memory
+- session-surface working memory with Mamba-stream augmentation
 - separate knowledge plane
 - artifact authority outside memory
 - explicit cross-layer routing

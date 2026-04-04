@@ -1,10 +1,10 @@
-# Graphiti + Neo4j + Redis Layered Stack Implementation Plan
+# Graphiti + Neo4j + Session-Surface Layered Stack Implementation Plan
 
 ## Purpose
 
 This plan describes how to implement the layered stack built around:
 
-- `Redis` working memory
+- OpenClaw session-surface working memory
 - `Graphiti + Neo4j` durable memory
 - `OpenSearch` or `Postgres + pgvector` knowledge plane
 
@@ -21,18 +21,22 @@ Exit criteria:
 - one knowledge-plane backend selected
 - interface contract agreed
 
-## Phase 1: Working Memory And Evidence Backbone
+## Phase 1: OpenClaw Working-Memory Integration And Evidence Backbone
 
 Goals:
 
-- stand up bounded `Redis`
+- keep OpenClaw as the primary working-memory implementation
+- add Cortex policy overlays
+- add Mamba-style semantic checkpoint production
 - add append-only evidence log
-- support hot continuity and queue state
+- support bounded continuity assembly through OpenClaw-native surfaces
+- keep compression products ready before compaction needs them
 
 Exit criteria:
 
 - working continuity
 - replayable evidence stream
+- compression-aware context assembly without introducing a separate hot store
 
 ## Phase 2: Graphiti Durable Memory Integration
 
@@ -67,6 +71,8 @@ Goals:
 - branch evidence into:
   - memory updates for `Graphiti`
   - artifact impacts for the knowledge plane
+  - context compression products
+  - governed preference-policy updates
 
 Exit criteria:
 

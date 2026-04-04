@@ -29,20 +29,12 @@ The system should separate:
 1. `policy`
 2. `working memory`
 3. `durable memory`
-4. `knowledge`
-
-Knowledge is further split into:
-
-- `canonical artifacts`
-- `decomposed artifact knowledge`
+4. `decomposed artifact knowledge`
+5. `canonical artifacts`
 
 This gives the full stack:
 
-**policy -> working memory -> durable memory -> knowledge**
-
-with:
-
-**knowledge = canonical artifacts + decomposed artifact knowledge**
+**policy -> working memory -> durable memory -> decomposed artifact knowledge -> canonical artifacts**
 
 This architecture is meant to support:
 
@@ -108,6 +100,17 @@ Policy is relatively stable compared with live context and learned memory.
 
 It should remain in orchestration and configuration space.
 
+Policy is not uniformly mutable.
+
+It should be split conceptually into:
+
+- stable access and safety policy
+- mutable preference-policy and operating preferences
+
+Mutable preference-policy can change through a governed reflection path.
+
+Access policy should require explicit approval-oriented workflows.
+
 ### Layer 2: Working Memory
 
 Working memory is the hot, temporary, low-latency runtime layer.
@@ -136,6 +139,78 @@ Working memory is:
 - optimized for runtime usefulness, not historical perfection
 
 It is not the durable source of truth.
+
+### Working Memory Posture
+
+In OpenClaw terms, working memory should be anchored on the native session surface.
+
+That means:
+
+- the session transcript remains the evidence surface
+- OpenClaw remains the primary working-memory implementation
+- working continuity is session-scoped by default
+- Cortex augments that layer through policy and semantic compression rather than replacing it
+
+The system should not assume that raw session replay is the working-memory product.
+
+Instead, the context engine should assemble bounded working memory from:
+
+- recent session evidence
+- rolling continuity summaries
+- active runtime state
+- compressed continuity objects
+
+The raw session evidence should remain a journal, not the main consumer surface.
+
+The main operational surface should be a derived semantic checkpoint stream built from that evidence.
+
+An external hot store should not be assumed.
+
+The default posture should be to let OpenClaw own working memory and to augment it through semantic compression and policy-aware assembly.
+
+### Context Compression
+
+Working memory quality should improve through rolling compression.
+
+This is the best place for a Mamba-style or other compression-oriented model.
+
+That compression layer should produce compact continuity objects such as:
+
+- active goals
+- open loops
+- current assumptions
+- recent decisions
+- active entities and threads
+- handoff state
+- candidate notions
+- artifact-impact hints
+- oversight flags
+
+This is how the system gets an effectively larger context window without pretending the model has infinite prompt budget.
+
+### Raw Evidence And Semantic Checkpoint Model
+
+The architecture should distinguish clearly between:
+
+- raw evidence
+- the semantic checkpoint stream
+
+For runtime conversations and agent activity:
+
+- raw evidence should close into an immutable evidence record, typically in `Postgres`
+- the semantic checkpoint stream should be the primary operational consumer surface
+
+For documents and other canonical artifacts:
+
+- raw evidence should remain the canonical artifact body and revision history, typically in `Git`
+- derived semantic checkpoints should still be the primary operational consumer surface
+
+The best mental model is:
+
+- raw evidence = journal or canonical source
+- semantic checkpoint stream = materialized semantic checkpoint
+
+Consumers should prefer the semantic checkpoint stream by default and escalate back to raw evidence only when exact verification is needed.
 
 ### Layer 3: Durable Memory
 
@@ -169,15 +244,32 @@ Durable memory is:
 
 This is where reflection and Dream-like maintenance belong.
 
-### Layer 4: Knowledge
+### Layer 4: Decomposed Artifact Knowledge
 
-Knowledge is broader than durable memory.
+This is the machine-usable derived layer built from canonical artifacts.
 
-It is the evidence and reference layer the system can inspect, cite, retrieve from, and reason over at higher fidelity.
+It is the operational knowledge layer the system can inspect, cite, retrieve from, and reason over at higher fidelity without pulling whole source artifacts into runtime.
 
-Knowledge is split into two sublayers.
+It should contain:
 
-#### 4A. Canonical Artifacts
+- typed slices
+- extracted structures
+- sections
+- entities
+- fields
+- embeddings
+- lexical retrieval surfaces
+- source-linked offsets and locators
+- decomposition metadata
+- retrieval-ready payloads
+
+This layer is allowed to be mutable in near time and may temporarily move ahead of the canonical artifact during active work.
+
+It is not the final published artifact truth.
+
+It is derived working knowledge.
+
+### Layer 5: Canonical Artifacts
 
 Canonical artifacts are the official human-facing or system-facing source objects.
 
@@ -201,29 +293,6 @@ Canonical artifacts are:
 - historically traceable
 - human-manageable
 - publication-oriented
-
-#### 4B. Decomposed Artifact Knowledge
-
-This is the machine-usable derived layer built from canonical artifacts.
-
-It should contain:
-
-- typed slices
-- extracted structures
-- sections
-- entities
-- fields
-- embeddings
-- lexical retrieval surfaces
-- source-linked offsets and locators
-- decomposition metadata
-- retrieval-ready payloads
-
-This layer is allowed to be mutable in near time and may temporarily move ahead of the canonical artifact during active work.
-
-It is not the final published artifact truth.
-
-It is derived working knowledge.
 
 ## Unified Authority Model
 
@@ -410,6 +479,13 @@ Core responsibilities:
 - maintain queue and handoff state
 - support bounded hot retrieval
 
+Implementation note:
+
+- this interface should be anchored on the OpenClaw session surface
+- OpenClaw should remain the primary working-memory implementation
+- Cortex should contribute policy overlays and Mamba-style semantic compression
+- external hot storage is not assumed
+
 Suggested operations:
 
 - `append_event(session_id, event)`
@@ -428,43 +504,65 @@ Write authority:
 
 Durable-memory systems must not treat this layer as canonical truth.
 
-### 3. Evidence Log Interface
+### 3. Raw Evidence Interface
 
-Working memory, queueing, and recovery may share one underlying event stream.
+Raw evidence is the canonical recovery and audit surface.
 
-That shared stream is operational infrastructure, not a second semantic authority.
+It is not the main subscribeable bus.
 
 Core responsibilities:
 
 - append immutable evidence records
-- track processing state
 - support replay and audit
-- support downstream branching into memory and artifact updates
+- support checkpoint close and evidence packaging
+- support exact verification when semantic outputs are disputed
 
 Suggested operations:
 
 - `append_evidence(event)`
-- `read_from_offset(offset, filters) -> events[]`
-- `mark_state(event_id, state)`
+- `close_evidence_window(scope_id) -> evidence_record`
+- `get_evidence(evidence_id) -> evidence_record`
+- `fetch_evidence(range_or_filter) -> evidence[]`
 - `replay(range_or_filter) -> events[]`
 
-Suggested event states:
+### 4. Semantic Checkpoint Stream Interface
+
+This is the main operational stream for downstream consumers.
+
+It is derived from raw evidence and rebuildable from it.
+
+Core responsibilities:
+
+- emit typed semantic checkpoints
+- preserve source references back to raw evidence
+- support optimistic, on-demand, and nightly consumption
+- support notion staging and lightweight oversight
+
+Suggested operations:
+
+- `append_checkpoint(checkpoint) -> checkpoint_id`
+- `read_checkpoints(cursor, filters) -> checkpoints[]`
+- `get_checkpoint(checkpoint_id) -> checkpoint`
+- `mark_checkpoint_state(checkpoint_id, state)`
+
+Suggested checkpoint states:
 
 - `captured`
-- `working_available`
-- `queued_for_reflection`
-- `memory_applied`
-- `artifact_applied`
+- `continuity_available`
+- `notion_staged`
+- `artifact_impact_applied`
+- `oversight_reviewed`
+- `reconciled`
 - `verified`
 - `rejected`
 
-### 4. Durable Memory Interface
+### 5. Durable Memory Interface
 
 This is the primary memory authority contract.
 
 Core responsibilities:
 
-- ingest durable memory candidates
+- ingest staged notions and durable memory candidates
 - update or supersede prior memory objects
 - store provenance and support references
 - expose graph-shaped retrieval and navigation
@@ -472,6 +570,7 @@ Core responsibilities:
 
 Suggested operations:
 
+- `stage_notion(notion) -> notion_result`
 - `upsert_memory(memory_delta) -> memory_result`
 - `invalidate_memory(memory_id, reason)`
 - `search_memory(query, scope, filters) -> memory_bundle`
@@ -488,7 +587,15 @@ Write authority:
 
 Direct runtime writes are not allowed unless they pass through the durable-memory contract.
 
-### 5. Artifact Registry Interface
+High-signal cross-thread writes may be staged in near time, but they should be marked as:
+
+- `tentative`
+- `low_confidence`
+- `unreconciled`
+
+Only reconciliation should promote them to trusted Layer 3 memory.
+
+### 6. Artifact Registry Interface
 
 This interface manages stable artifact anchors and canonical revisions.
 
@@ -513,7 +620,7 @@ Write authority:
 - publication workflows
 - provider sync jobs
 
-### 6. Knowledge Decomposition Interface
+### 7. Knowledge Decomposition Interface
 
 This interface owns machine-usable derived views of artifacts.
 
@@ -538,7 +645,7 @@ Write authority:
 - reflection artifact-impact branch
 - re-ingestion after publication
 
-### 7. Publication Interface
+### 8. Publication Interface
 
 This interface handles redraft and canonical publication.
 
@@ -562,7 +669,7 @@ Write authority:
 - scheduled consolidation jobs
 - explicit user-initiated publication flows
 
-### 8. Runtime Context Assembly Interface
+### 9. Runtime Context Assembly Interface
 
 This interface is how the orchestrator composes bounded startup and prompt context from the layers.
 
@@ -608,6 +715,12 @@ Re-ingestion from a new canonical revision must be allowed to supersede stale de
 ### Rule 6
 
 No layer is allowed to write directly into another layer's storage implementation while bypassing Cortex contracts.
+
+### Rule 7
+
+Cross-thread memory can appear before reconciliation only as tentative staged memory.
+
+Layer 1 and Layer 2 may publish high-signal notions into the shared pipeline, but Layer 3 remains the authority that confirms, merges, rejects, or supersedes them.
 
 ## Assembled Startup Stance
 
@@ -681,18 +794,22 @@ This gives the system the benefits of graph reasoning without forcing every stor
 
 The graph is a reasoning index over knowledge, not a duplication of all knowledge internals.
 
-## Reflection Split: Two Ingestions From One Feed
+## Reflection Split: Four Products Plus Oversight
 
 Reflection should not produce only memory deltas.
 
-It should branch the same evidence stream into two output types:
+It should branch the same evidence stream into four output types:
 
 1. memory updates
 2. artifact impacts
+3. context compression
+4. governed instructions or policy updates
+
+Oversight should consume the same semantic checkpoint stream in parallel, but it is not itself a normal write branch.
 
 ### Memory Updates
 
-These update durable memory quickly and incrementally.
+These should usually begin as staged notions derived from the semantic checkpoint stream.
 
 Examples:
 
@@ -701,6 +818,14 @@ Examples:
 - new customer posture
 - updated operating belief
 - new constraint
+
+By default, durable memory should be reconciled at:
+
+- session end
+- checkpoint hooks
+- nightly maintenance
+
+Near-time durable writes should happen only for high-signal items, and those writes should remain tentative until later reconciliation.
 
 ### Artifact Impacts
 
@@ -715,11 +840,76 @@ Examples:
 - urgency
 - whether a redraft should be queued now
 
+### Context Compression
+
+This branch should continuously distill noisy session evidence into compact working-memory objects.
+
+This is the natural home for:
+
+- rolling continuity summaries
+- open-loop compression
+- active-thread distillation
+- Mamba-style continuity products
+
+These outputs improve working memory.
+
+They do not become durable memory just by existing.
+
+They are also the default input surface for:
+
+- oversight
+- notion staging
+- artifact-impact hints
+- low-cost ongoing monitoring
+
+### Governed Instructions Or Policy Updates
+
+Some policy-like state is mutable and should be learned over time.
+
+Examples:
+
+- user preferences
+- preferred operating style
+- stable formatting tendencies
+- mode bias adjustments
+
+These should not share a write path with access control or safety-critical rules.
+
+Access-policy changes should require explicit approval-oriented workflows.
+
+### Oversight Consumer
+
+Oversight should consume the semantic checkpoint stream by default.
+
+It should be able to escalate back to raw evidence when:
+
+- confidence is low
+- impact is high
+- approval is required
+- provenance is disputed
+- memory reconciliation needs exact verification
+
+Oversight responsibilities include:
+
+- flag suspicious memory writes
+- detect policy violations
+- open review tasks
+- downgrade confidence
+- veto sensitive updates when required
+- maintain audit traces
+
 ### Reflection Principle
 
 Use one evidence feed.
 
-Run two ingestion products off it.
+Branch it into:
+
+- durable-memory updates
+- knowledge and artifact updates
+- working-memory compression products
+- governed preference-policy updates
+
+Let oversight observe the same semantic products in parallel.
 
 ## Artifact Lifecycle And Collaboration Model
 
@@ -740,6 +930,14 @@ Once a business plan or similar artifact is ingested, the user should be able to
 - "This changes our market posture."
 
 The system should update derived artifact knowledge immediately so reasoning and retrieval stay current.
+
+Document artifacts should be indexed into the durable-memory layer with the same restraint used for session evidence:
+
+- one compact summary node or episode-level representation
+- a pointer back to the canonical artifact revision
+- only extracted Layer 3 appropriate standalone facts, beliefs, or support relationships
+
+The full artifact body should remain outside the durable-memory layer.
 
 ### Dirty State
 
@@ -800,6 +998,28 @@ This enables:
 - contradiction analysis
 - clean re-ingestion from Git after redraft
 
+## Evidence Packaging And Graph Ingestion
+
+At session end or other reconciliation checkpoints, the system should:
+
+1. close the session evidence window
+2. persist the evidence package as immutable runtime evidence, typically in `Postgres`
+3. reconcile staged notions against:
+   - existing durable memory
+   - oversight outcomes
+   - artifact support
+   - the closed evidence package
+4. ingest a compact evidence package into the durable-memory graph
+
+For `Graphiti`, that evidence package should usually contain:
+
+- a compact summary
+- source pointers to the evidence record
+- timestamps and thread identifiers
+- selected extracted beliefs or support only when they are Layer 3 appropriate
+
+For document artifacts, the comparable raw evidence surface remains the canonical artifact revision in `Git` or the provider source, not `Postgres`.
+
 ## Retrieval Order
 
 A good retrieval order is:
@@ -846,10 +1066,11 @@ These make it possible to reason clearly about:
 Suggested evidence states:
 
 - `captured`
-- `working_available`
-- `queued_for_reflection`
-- `memory_applied`
-- `artifact_applied`
+- `continuity_available`
+- `notion_staged`
+- `artifact_impact_applied`
+- `oversight_reviewed`
+- `reconciled`
 - `verified`
 - `rejected`
 
@@ -881,15 +1102,15 @@ Likely implementation surfaces:
 
 Likely implementation surfaces:
 
-- bounded hot store
+- OpenClaw session surface
+- native compaction and session continuity
 - runtime continuity objects
-- rolling summaries
-- queue and buffer structures
 - streaming compression sidecar
 
 Implementation note:
 
-- a Redis-like store is acceptable for bounded hot state
+- working memory should stay OpenClaw-native by default
+- Cortex should augment it through semantic checkpoint production and policy-aware assembly
 - the append-only evidence log may be disk-backed
 - working memory should be treated as operational infrastructure, not durable authority
 

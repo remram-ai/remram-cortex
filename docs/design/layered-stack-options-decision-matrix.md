@@ -20,7 +20,7 @@ Reviewed on `April 3, 2026`.
 
 ### Stack B
 
-`Redis + Graphiti + Neo4j + OpenSearch/Postgres + Git`
+`Graphiti + Neo4j + Session-Surface Working Memory + OpenSearch/Postgres + Git`
 
 ### Stack C
 
@@ -42,10 +42,10 @@ All four stacks assume:
 
 ## Comparison Matrix
 
-| Dimension | Stack A: Cognee | Stack B: Graphiti + Neo4j + Redis | Stack C: Mem0 + Weaviate | Stack D: Weaviate-First |
+| Dimension | Stack A: Cognee | Stack B: Graphiti + Neo4j + Session Surface | Stack C: Mem0 + Weaviate | Stack D: Weaviate-First |
 | --- | --- | --- | --- | --- |
 | Core posture | platform-first | graph-first durable memory | memory-first | hybrid-platform-first |
-| Working memory fit | requires separate sidecar | requires separate sidecar | requires separate sidecar | requires separate sidecar |
+| Working memory fit | OpenClaw session surface + Mamba stream augmentation | OpenClaw session surface + Mamba stream augmentation | OpenClaw session surface + Mamba stream augmentation | OpenClaw session surface + Mamba stream augmentation |
 | Durable-memory clarity | medium | high | high | medium |
 | Knowledge-layer fit | high | high | medium-high | high |
 | Hybrid retrieval shape | application-layer | graph + search layered retrieval | substrate-native available through Weaviate, but not fully exposed by stock Mem0 | database-native |
@@ -67,12 +67,12 @@ Adopts:
 - staged knowledge processing
 - dataset-oriented ingestion
 
-### Stack B: Graphiti + Neo4j + Redis
+### Stack B: Graphiti + Neo4j + Session Surface
 
 Adopts:
 
 - graph-first durable memory
-- separate working memory
+- session-surface working memory with bounded context assembly
 - separate knowledge plane
 
 ### Stack C: Mem0 + Weaviate
@@ -100,7 +100,7 @@ Fighting:
 - simplicity
 - a narrow memory-plugin worldview
 
-### Stack B: Graphiti + Neo4j + Redis
+### Stack B: Graphiti + Neo4j + Session Surface
 
 Fighting:
 

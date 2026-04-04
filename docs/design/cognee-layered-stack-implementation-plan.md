@@ -4,6 +4,29 @@
 
 This plan describes how to validate and implement the layered stack with `Cognee` as the central memory-and-knowledge platform.
 
+This version assumes a deliberate choice to adopt `Cognee`'s worldview where possible rather than wrapping it in heavy Cortex-first abstractions.
+
+Bluntly:
+
+- this is the "bend the knee" version of the plan
+- the goal is to accomplish Cortex outcomes through `Cognee`
+- not to force `Cognee` back into a stricter Cortex-native semantic model
+
+## Adoption Posture
+
+If this path is chosen, the operating rule should be:
+
+- let `Cognee` own the multi-store enrichment and retrieval worldview
+- let Cortex stay thinner at the center
+- keep Cortex responsible for:
+  - policy composition
+  - working-memory assembly
+  - anchor identity
+  - canonical artifact authority
+  - publication workflows
+
+Do not build custom replacement layers for platform behaviors that `Cognee` already provides unless there is a specific demonstrated gap.
+
 ## Phase 0: Prove The Platform Shape
 
 Goals:
@@ -23,9 +46,12 @@ Exit criteria:
 Goals:
 
 - implement Cortex anchor registry
-- implement working-memory sidecar
+- keep OpenClaw as the primary working-memory implementation
+- add Cortex policy overlays
+- add Mamba-style semantic checkpoint production
 - keep canonical artifacts outside `Cognee`
-- define explicit routing between working memory, durable memory, and knowledge
+- define the thinnest explicit routing between working memory, durable memory, and knowledge
+- add rolling context compression outputs
 
 Exit criteria:
 
@@ -33,25 +59,36 @@ Exit criteria:
 - working anchor identity model
 - basic startup stance assembly
 
+Implementation posture:
+
+- do not over-wrap `Cognee`
+- prefer direct use of its native ingestion and search surfaces
+- only add Cortex translation layers where authority boundaries require them
+
 ## Phase 2: Durable Memory Facade
 
 Goals:
 
-- wrap `Cognee` operations in Cortex durable-memory contracts
-- define memory object shapes exposed to runtime
-- implement confidence, support, and status overlays
+- expose `Cognee` memory and retrieval outputs through a thin Cortex durable-memory facade
+- define only the minimum memory object shapes needed by runtime
+- add support and status overlays only where they are required by actual workflows
 
 Exit criteria:
 
 - memory updates are routed through Cortex contracts
 - runtime can ask for compact durable-memory bundles
 
+Implementation posture:
+
+- adopt Cognee's data and pipeline shape where possible
+- avoid rebuilding a second durable-memory model on top of Cognee
+
 ## Phase 3: Artifact And Knowledge Flow
 
 Goals:
 
 - integrate artifact intake with anchor and revision tracking
-- run `Cognee` over decomposed artifact inputs
+- run `Cognee` over decomposed artifact inputs using its native staged pipeline
 - support incremental reprocessing
 
 Exit criteria:
@@ -67,12 +104,19 @@ Goals:
 - branch one evidence feed into:
   - durable-memory updates
   - artifact impacts
+- context compression products
+- governed preference-policy updates
 - ensure dirty-anchor behavior is explicit
 
 Exit criteria:
 
 - runtime evidence can update memory now
 - artifact redraft can happen later
+
+Implementation posture:
+
+- use `Cognee` for the branches that match its native strengths
+- do not force reflection to mimic Graphiti-style temporal semantics if Cognee can achieve the same practical outcome through its own pipeline model
 
 ## Phase 5: Publication And Reconciliation
 
@@ -105,4 +149,5 @@ Exit criteria:
 1. Is the operational overhead acceptable?
 2. Does the platform feel native to the layered architecture or too heavy?
 3. Is the application-layer hybrid retrieval good enough?
-4. Does Cortex still feel like the authority, or does `Cognee` become the product center?
+4. Can Cortex stay the coordinating authority without fighting Cognee's core worldview?
+5. Are the remaining gaps smaller than the custom stack we would build around `Graphiti`?

@@ -18,12 +18,18 @@ OpenClaw Runtime
             +------------------------------+
             |                              |
             v                              v
-Working Memory Sidecar              Cortex Coordination Layer
-  - hot continuity                  - anchor identity
-  - task state                      - policy
-  - evidence queue                  - publication workflow
+OpenClaw Session Surface            Cortex Coordination Layer
+  - transcripts                     - anchor identity
+  - session evidence                - policy
+  - native compaction               - publication workflow
             |                              |
             +--------------+---------------+
+                           |
+                           v
+                   Context Compression
+              - rolling summaries
+              - Mamba-style continuity
+              - open-loop state
                            |
                            v
                          Mem0
@@ -43,11 +49,57 @@ Working Memory Sidecar              Cortex Coordination Layer
                        - provider docs
 ```
 
+## OpenClaw Extension Surface Mapping
+
+In OpenClaw terms, this stack also resolves into four extension surfaces.
+
+### 1. Context Engine
+
+The context engine should assemble:
+
+- policy
+- working memory from the session surface
+- compact `Mem0` recall
+
+This keeps the runtime bounded and avoids using artifact corpora as prompt baggage.
+
+### 2. Memory Engine
+
+The memory-engine slot should use the official `Mem0` integration path where possible.
+
+That slot owns:
+
+- durable-memory writes through `Mem0`
+- memory recall into runtime
+
+### 3. Reflection Pipeline
+
+Reflection should take runtime evidence and branch it into:
+
+- `Mem0` durable-memory updates
+- artifact and decomposition impacts
+- context compression products
+- governed preference-policy updates
+
+This is also the right place for later graph-reflection experiments if desired.
+
+### 4. Knowledge Tool Interface
+
+Deeper knowledge access should be tool-based.
+
+Tools should expose:
+
+- decomposition search
+- supporting slices
+- canonical artifact fetch when needed
+
 ## Layer Contracts
 
 ### Working Memory
 
-Owned by the hot sidecar only.
+Owned by the OpenClaw session surface.
+
+Cortex augments this layer through policy-aware assembly and Mamba-style semantic compression.
 
 ### Durable Memory
 
@@ -69,10 +121,12 @@ Owned by `Git` or provider authority.
 
 ## Reflection Flow
 
-1. evidence enters working memory and evidence log
+1. evidence enters the session surface and evidence log
 2. reflection proposes durable-memory updates for `Mem0`
 3. reflection also proposes artifact impacts for decomposition
-4. publication later reconciles canonical artifacts
+4. reflection produces context compression outputs
+5. governed preference-policy updates are routed separately
+6. publication later reconciles canonical artifacts
 
 ## Why This Architecture Is Clean
 

@@ -19,6 +19,7 @@ This repository is still early, so the documentation tree is organized around a 
 - read [design/layered-memory-architecture.md](design/layered-memory-architecture.md) for the current foundational architecture direction
 - read [glossary.md](glossary.md) to align on locked terminology
 - read [concepts/](concepts/README.md) for short concept definitions built on that glossary
+- read [concepts/high-signal-mamba-stream.md](concepts/high-signal-mamba-stream.md) for the current semantic checkpoint-stream model
 - use [design/](design/README.md) for the active stack options and current architecture packages
 - read [architecture.md](remram-cortex/architecture.md) for the older canonical system design until it is fully reconciled to the layered approach
 - use [inconsistencies.md](remram-cortex/inconsistencies.md) to see whether any active inconsistencies remain and where prior ones were archived

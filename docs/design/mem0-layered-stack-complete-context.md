@@ -19,7 +19,8 @@ Reviewed on `April 3, 2026`.
 ## Stack Shape
 
 - `OpenClaw` as runtime shell
-- bounded working-memory sidecar
+- OpenClaw session surface as the working-memory implementation
+- policy overlays and Mamba-stream augmentation
 - `Mem0 OSS` as durable-memory base
 - `Weaviate` as the main vector and hybrid-ready substrate
 - `Git` as canonical artifact authority
@@ -99,7 +100,7 @@ Owned by Cortex orchestration.
 
 ### Working Memory
 
-Owned by the hot sidecar.
+Owned by the OpenClaw session surface, augmented by Cortex policy and the Mamba stream.
 
 ### Durable Memory
 

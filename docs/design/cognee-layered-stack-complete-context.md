@@ -20,7 +20,8 @@ Reviewed on `April 3, 2026`.
 ## Stack Shape
 
 - `OpenClaw` as runtime shell
-- bounded working-memory sidecar
+- OpenClaw session surface as the working-memory implementation
+- policy overlays and Mamba-stream augmentation
 - `Cognee` as the multi-source memory and knowledge platform
 - `Postgres` as Cognee relational backbone
 - `Neo4j` or `FalkorDB` as graph backend
@@ -112,7 +113,7 @@ Owned by Cortex orchestration, not by `Cognee`.
 
 ### Working Memory
 
-Owned by a bounded hot sidecar, not by `Cognee`.
+Owned by the OpenClaw session surface, augmented by Cortex policy and the Mamba stream, not by `Cognee`.
 
 ### Durable Memory
 
