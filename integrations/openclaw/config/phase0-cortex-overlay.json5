@@ -1,0 +1,42 @@
+// Preparation-only overlay fragment for the Moltbox OpenClaw baseline.
+//
+// Apply this on top of the approved Moltbox runtime baseline rather than
+// treating it as a full replacement openclaw.json.
+//
+// Design intent:
+// - keep OpenClaw runtime mechanics native
+// - keep the built-in legacy context engine for Phase 0
+// - enable QMD as the chosen Layer 2 working-memory backend
+// - do not enable Cortex hook packages yet
+{
+  memory: {
+    // Official QMD opt-in uses memory.backend = "qmd".
+    // Source: OpenClaw memory config reference.
+    backend: "qmd",
+
+    qmd: {
+      // Keep transcript indexing off by default until we validate the exact
+      // retrieval posture on appliance.
+      sessions: {
+        enabled: false,
+      },
+
+      // Let OpenClaw manage its default workspace memory paths unless Moltbox
+      // needs an explicit override later.
+      // paths: [],
+    },
+  },
+
+  plugins: {
+    slots: {
+      // Keep native OpenClaw behavior in Phase 0.
+      contextEngine: "legacy",
+    },
+
+    entries: {
+      "cortex-phase1-bridge": {
+        enabled: false,
+      },
+    },
+  },
+}

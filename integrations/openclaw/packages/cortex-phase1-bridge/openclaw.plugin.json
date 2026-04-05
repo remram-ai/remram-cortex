@@ -1,0 +1,36 @@
+{
+  "id": "cortex-phase1-bridge",
+  "name": "Cortex Phase 1 Bridge",
+  "description": "Preparation-stage Cortex bridge for OpenClaw boundary hooks, startup bundle injection, and inspectable spool output.",
+  "skills": [
+    "./skills"
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "bridgeMode": {
+        "type": "string",
+        "enum": [
+          "dry-run",
+          "service"
+        ]
+      },
+      "spoolDir": {
+        "type": "string"
+      },
+      "startupBundleDir": {
+        "type": "string"
+      },
+      "cortexApiBaseUrl": {
+        "type": "string"
+      },
+      "enablePromptInjection": {
+        "type": "boolean"
+      },
+      "enableEventCapture": {
+        "type": "boolean"
+      }
+    }
+  }
+}

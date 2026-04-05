@@ -1,0 +1,29 @@
+{
+  "session_id": "session-001",
+  "conversation_id": "conversation-layered-cortex",
+  "user_id": "user-jason",
+  "trigger": "session_end",
+  "checkpoint_label": "prep-pass",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are operating inside the locked layered Cortex architecture."
+    },
+    {
+      "role": "user",
+      "content": "My name is Jason and I am working on the layered Cortex MVP."
+    },
+    {
+      "role": "assistant",
+      "content": "I will keep the architecture boundaries locked and explicit."
+    },
+    {
+      "role": "user",
+      "content": "I prefer inspectable staging surfaces over hidden automation."
+    },
+    {
+      "role": "user",
+      "content": "The implementation should target Moltbox later and we need a preparation-only pass first."
+    }
+  ]
+}

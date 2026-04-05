@@ -1,0 +1,45 @@
+// Preparation-only overlay fragment for Phase 1 activation on Moltbox test.
+//
+// Apply this after the Phase 0 baseline is working and only in a test lane first.
+//
+// Design intent:
+// - keep OpenClaw sessions and compaction native
+// - enable the Cortex Phase 1 bridge plugin
+// - allow bounded prompt injection for startup bundles
+// - keep the context engine on "legacy" until the Cortex-owned engine is ready
+{
+  memory: {
+    backend: "qmd",
+
+    qmd: {
+      // Leave transcript indexing explicit and reviewable.
+      sessions: {
+        enabled: false,
+      },
+    },
+  },
+
+  plugins: {
+    allow: ["cortex-phase1-bridge"],
+
+    slots: {
+      contextEngine: "legacy",
+    },
+
+    entries: {
+      "cortex-phase1-bridge": {
+        enabled: true,
+        hooks: {
+          allowPromptInjection: true,
+        },
+        config: {
+          bridgeMode: "dry-run",
+          spoolDir: "~/.openclaw/cortex-phase1",
+          startupBundleDir: "~/.openclaw/cortex-phase1/startup-bundles",
+          enablePromptInjection: true,
+          enableEventCapture: true,
+        },
+      },
+    },
+  },
+}

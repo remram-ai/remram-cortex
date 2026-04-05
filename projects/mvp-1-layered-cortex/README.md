@@ -34,6 +34,7 @@ That means:
 - [Project Plan](project-plan.md)
 - [Acceptance Test](acceptance-test.md)
 - [Runtime Docs](runtime-docs.md)
+- [Moltbox Bring-Up Plan](moltbox-bring-up-plan.md)
 - [Seed Prompt](seed-prompt.md)
 - [Epics](epics/README.md)
 
