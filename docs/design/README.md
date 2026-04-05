@@ -8,6 +8,7 @@ Historical comparisons, rejected stack options, and older MVP packages were move
 
 ## Active Documents
 
+- [Agent Tool Graph](agent-tool-graph.md)
 - [Layered Memory Architecture](layered-memory-architecture.md)
 - [Technology Stack](technology-stack.md)
 - [OpenClaw Integration](openclaw-integration.md)
@@ -19,9 +20,10 @@ Historical comparisons, rejected stack options, and older MVP packages were move
 
 1. Start with [Layered Memory Architecture](layered-memory-architecture.md)
 2. Read [Technology Stack](technology-stack.md)
-3. Read [OpenClaw Integration](openclaw-integration.md)
-4. Read [Graphiti + Neo4j Durable Memory](graphiti-neo4j-durable-memory.md)
-5. Read [Knowledge And Artifact Architecture](knowledge-and-artifact-architecture.md)
-6. Use [Deployment Plan](deployment-plan.md) for implementation posture
+3. Read [Agent Tool Graph](agent-tool-graph.md)
+4. Read [OpenClaw Integration](openclaw-integration.md)
+5. Read [Graphiti + Neo4j Durable Memory](graphiti-neo4j-durable-memory.md)
+6. Read [Knowledge And Artifact Architecture](knowledge-and-artifact-architecture.md)
+7. Use [Deployment Plan](deployment-plan.md) for implementation posture
 
 Historical material now lives under [archive/](../../archive/README.md).

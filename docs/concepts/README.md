@@ -11,6 +11,7 @@ Read [Glossary](../glossary.md) before this folder if you need the locked short-
 
 These are directly part of the active layered architecture:
 
+- [Agent Tool Graph](agent-tool-graph.md)
 - [Knowledge Authority](knowledge-authority.md)
 - [Memory Versus Context](memory-vs-context.md)
 - [Knowledge Object](knowledge-object.md)
@@ -44,24 +45,25 @@ These are retained from earlier Cortex thinking and may still be useful later, b
 ## Suggested Reading Order
 
 1. [Knowledge Authority](knowledge-authority.md)
-2. [Memory Versus Context](memory-vs-context.md)
-3. [Knowledge Object](knowledge-object.md)
-4. [Notion](notion.md)
-5. [Evidence Package](evidence-package.md)
-6. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
-7. [Reflection](reflection.md)
-8. [Intuition](intuition.md)
-9. [Dream Cycle](dream-cycle.md)
-10. [Artifact Intake](artifact-intake.md)
-11. [Artifact Provider](artifact-provider.md)
-12. [Artifact Promotion](artifact-promotion.md)
-13. [Bootstrap Ingestion](bootstrap-ingestion.md)
-14. [Bounded Retrieval](bounded-retrieval.md)
-15. [Governance Fields](governance-fields.md)
-16. [Conversation Layer](conversation-layer.md)
-17. [Typed Signals](typed-signals.md)
-18. [Semantic Signature](semantic-signature.md)
-19. [Dimension (Legacy Term)](dimension.md)
+2. [Agent Tool Graph](agent-tool-graph.md)
+3. [Memory Versus Context](memory-vs-context.md)
+4. [Knowledge Object](knowledge-object.md)
+5. [Notion](notion.md)
+6. [Evidence Package](evidence-package.md)
+7. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
+8. [Reflection](reflection.md)
+9. [Intuition](intuition.md)
+10. [Dream Cycle](dream-cycle.md)
+11. [Artifact Intake](artifact-intake.md)
+12. [Artifact Provider](artifact-provider.md)
+13. [Artifact Promotion](artifact-promotion.md)
+14. [Bootstrap Ingestion](bootstrap-ingestion.md)
+15. [Bounded Retrieval](bounded-retrieval.md)
+16. [Governance Fields](governance-fields.md)
+17. [Conversation Layer](conversation-layer.md)
+18. [Typed Signals](typed-signals.md)
+19. [Semantic Signature](semantic-signature.md)
+20. [Dimension (Legacy Term)](dimension.md)
 
 Go next:
 
