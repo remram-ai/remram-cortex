@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "files": [
+    "README.md",
+    "SKILL.md",
+    "index.js",
+    "openclaw.plugin.json",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "node --test ./test/*.test.mjs"
+  },
   "openclaw": {
     "extensions": [
       "./index.js"

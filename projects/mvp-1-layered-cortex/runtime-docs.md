@@ -48,6 +48,12 @@ python -m remram_cortex run-boundary --input examples/phase1-session.json
 
 The command writes inspectable artifacts under `.runtime/cortex/` by default.
 
+Start the local bridge service:
+
+```bash
+python -m remram_cortex serve --host 127.0.0.1 --port 8091
+```
+
 ## Appliance Target Posture
 
 This scaffold is written for the current Moltbox direction:

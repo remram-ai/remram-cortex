@@ -171,6 +171,48 @@ class BridgeServiceTests(unittest.TestCase):
                 server.server_close()
                 thread.join(timeout=2)
 
+    def test_http_service_processes_boundary_requests(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            runtime = CortexPreparationRuntime(CortexSettings(data_root=Path(tmpdir)))
+            service = CortexBridgeHttpService(runtime)
+            server = create_http_server(service, host="127.0.0.1", port=0)
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                host, port = server.server_address
+                base_url = f"http://{host}:{port}"
+
+                status, payload = self._request_json(
+                    base_url,
+                    "/v1/openclaw/boundaries",
+                    method="POST",
+                    payload={
+                        **SAMPLE_BOUNDARY,
+                        "mode": "standard",
+                        "preference_overlays": {"tone": "direct"},
+                    },
+                )
+                self.assertEqual(status, 200)
+                self.assertIn("result", payload)
+                self.assertIn("startup_bundle", payload)
+                self.assertTrue(Path(payload["result"]["semantic_checkpoint_path"]).exists())
+
+                status, error_payload = self._request_json(
+                    base_url,
+                    "/v1/openclaw/boundaries",
+                    method="POST",
+                    payload={
+                        **SAMPLE_BOUNDARY,
+                        "preference_overlays": ["bad"],
+                    },
+                )
+                self.assertEqual(status, 400)
+                self.assertEqual(error_payload["error"], "invalid_preference_overlays")
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=2)
+
 
 if __name__ == "__main__":
     unittest.main()
