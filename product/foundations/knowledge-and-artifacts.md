@@ -32,15 +32,25 @@ Layer 4 must remain:
 - explicit about whether a Layer 5 counterpart exists
 - explicit about dirty-state and sync posture when a Layer 5 counterpart does exist
 
-## Layer 5: Canonical Artifacts
+## Layer 5: Evidence
 
-Layer 5 is the publication-truth layer.
+Layer 5 is the source-of-record evidence layer.
 
-It is built around:
+It is built around evidence classes rather than one storage product:
 
-- `Git`
-- provider-backed authoritative sources
-- reviewed redrafts
+- `runtime_evidence`
+- `reference_cache`
+- `authored_artifact`
+
+`Git` is one backend for the authored-artifact class, not the definition of the whole layer.
+
+The current storage posture is interface-first:
+
+- filesystem-backed runtime evidence early
+- shorter-lived retained reference bodies where appropriate
+- `Git` introduced later for the authored-artifact class
+
+Layer 4 may point at those Layer 5 bodies, but it should not become the lifecycle owner of Layer 5.
 
 ## Stable Product Rule
 
@@ -58,7 +68,7 @@ When a Layer 5 counterpart exists, the system must make the gap explicit through
 
 Only compact summary + pointer + Layer 3 appropriate beliefs should flow upward into durable memory.
 
-Once a Layer 4 workspace is promoted, Layer 5 becomes the canonical source for that artifact.
+Once a Layer 4 workspace is promoted into an authored artifact, Layer 5 becomes the canonical source for that body.
 
 After that point, meaningful Layer 5 revisions must be able to:
 
@@ -70,4 +80,4 @@ Hard boundary:
 
 - Layer 4 owns operational knowledge bodies
 - Layer 3 owns durable semantic truth about those bodies
-- Layer 5 owns canonical publication truth only when canonical publication is warranted
+- Layer 5 owns source-of-record evidence bodies, with authored canon as one special class

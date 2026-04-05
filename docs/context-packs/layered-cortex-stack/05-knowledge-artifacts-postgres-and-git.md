@@ -4,7 +4,7 @@
 
 Layer 4 is the operational knowledge authority.
 
-Layer 5 is canonical publication truth only when canon is actually warranted.
+Layer 5 is the source-of-record evidence layer.
 
 Layer 4 is not just a projection of Layer 5.
 
@@ -17,11 +17,15 @@ Layer 4 should hold:
 - decomposed artifact knowledge
 - active operational document state
 
-This means Layer 4 can be authoritative even when there is no Layer 5 artifact at all.
+This means Layer 4 can be authoritative even when there is no authored Layer 5 artifact at all.
+
+Layer 5 stores evidence bodies.
+
+Layer 4 stores the shaped operational knowledge derived from them.
 
 ## External References
 
-External references are distinct from authored canonical artifacts.
+External references are distinct from authored artifacts.
 
 Examples:
 
@@ -30,30 +34,61 @@ Examples:
 - articles
 - research sources
 
-These should not automatically become Git-backed canon.
+These should not automatically become authored canon.
 
 Instead:
 
+- Layer 5 may retain the source body as `reference_cache`
 - Layer 4 holds summaries, linked records, and extracted operational knowledge
 - Layer 3 stores only durable meaning that matters
 
-## Canonical Artifacts
+## Layer 5 Evidence Classes
 
-Layer 5 is used only when publication-grade canonical authorship and revision are warranted.
+Layer 5 should be read as three main evidence classes:
 
-That is where:
+- `runtime_evidence`
+- `reference_cache`
+- `authored_artifact`
 
-- Git-backed canon
-- reviewed redrafts
-- canonical revision history
+Only the authored-artifact class depends on publication-grade authorship and revision.
 
-belong.
+`Git` is one backend for that class.
 
-Once a Layer 4 workspace is promoted, Layer 5 becomes the canonical source for that artifact.
+Layer 5 should be treated as one stable evidence contract even when the backend differs by class or phase.
+
+That means:
+
+- filesystem-backed runtime evidence early
+- shorter-lived retained references where appropriate
+- `Git` later for `authored_artifact`
+
+Layer 4 should reference Layer 5 evidence, not become its lifecycle owner.
+
+The phase story is:
+
+- `Phase 1` uses Layer 5 for chat-derived `runtime_evidence`
+- `Phase 2` adds one-way `reference_cache`
+- `Phase 3` adds retained owned-source evidence with source-maintenance semantics
+- `Phase 4` introduces `authored_artifact` as canonical published output
+
+## Multiple Ingestion Workflows
+
+Layer 5 is one evidence layer, but not one ingestion workflow.
+
+The main workflows are:
+
+- `runtime_evidence` capture for chat transcripts and tool outputs
+- reference ingestion for web links and other outside material
+- owned-source ingestion for high-signal user content
+- authored promotion and reprocessing for Layer 4 work that becomes canon
+
+The promotion path is not the same thing as reference or artifact ingestion.
+
+Once a Layer 4 workspace is promoted into an authored artifact, Layer 5 becomes the canonical source for that body.
 
 That does not make Layer 5 dead storage.
 
-Meaningful canonical revision must be able to trigger:
+Meaningful authored revision must be able to trigger:
 
 - re-ingestion back into Layer 4 so the operational body stays aligned
 - reconciliation in Layer 3 so summaries, support, and semantic links stay current
@@ -64,10 +99,9 @@ Postgres is the operational middle-layer authority for now.
 
 It covers:
 
-- runtime evidence
 - Layer 4 bodies
 - reference records and summaries
-- decomposed artifact knowledge where canonical artifacts exist
+- decomposed artifact knowledge where authored artifacts exist
 - metadata
 - workflow fields
 
@@ -77,11 +111,13 @@ The goal is fewer moving pieces and cleaner authority boundaries.
 
 ## Budding Ideas
 
-Budding ideas do not jump straight to Git.
+Budding ideas do not jump straight to authored canon.
 
 They live first as:
 
 - Layer 3 relationship structure
 - Layer 4 evolving workspace bodies
 
-Layer 5 only appears later if canonical publication is warranted.
+Layer 5 already exists as evidence.
+
+Only the authored-artifact subset appears later when canon is warranted.

@@ -23,15 +23,20 @@ Current upstream docs support the following assumptions:
 - Compaction writes continuity back into the session surface, which is why Cortex should prepare semantic checkpoints ahead of prompt pressure instead of waiting until context is already overflowing.
 - Memory and context-engine are separate plugin slots, which supports the current posture of leaving Layer 2 with OpenClaw while Cortex owns policy and Layer 3 separately.
 - `QMD` is a stronger OpenClaw-native memory engine than the builtin engine when you want reranking, query expansion, extra-path indexing, and session transcript indexing.
+- `QMD` can fall back to the builtin SQLite manager if the binary is missing or initialization fails, which makes it reasonable as a Phase 0 baseline choice rather than only a later advanced option.
+- Session transcript indexing is currently an opt-in experimental posture rather than something the architecture should silently assume on every baseline install.
 - `Dreaming` exists in OpenClaw as an experimental background promotion pass, but it promotes short-term recalls into Markdown long-term memory and should not be confused with Cortex Layer 3 consolidation.
 
 Operational rule:
 
 - do not replace OpenClaw Layer 2 until OpenClaw itself is the blocker
-- prefer augmentation through policy and the High-Signal Mamba stream
+- use the public OpenClaw baseline first
+- prefer augmentation through policy, `QMD`, and boundary-triggered semantic processing
+- add the High-Signal Mamba stream later as optimization rather than baseline dependency
 
 Implementation takeaways:
 
+- Treat `Phase 0` as a real baseline with local-model execution, safe config, pruning, compaction, and `QMD`.
 - Treat the OpenClaw session as the native evidence surface for Layer 2.
 - Use the context engine for policy-aware bounded assembly, not for replacing session mechanics.
 - Use hooks and checkpoint boundaries to close evidence windows, emit semantic checkpoints, and trigger slower reconciliation.

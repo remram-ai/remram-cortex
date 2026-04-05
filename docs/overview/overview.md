@@ -2,7 +2,7 @@
 
 Remram Cortex is the knowledge authority layer for Remram.
 
-It coordinates policy, hot working continuity, durable semantic memory, operational knowledge, and canonical publication without collapsing them into one storage model.
+It coordinates policy, hot working continuity, durable semantic memory, operational knowledge, and source-of-record evidence without collapsing them into one storage model.
 
 The architecture is now centered on five layers:
 
@@ -10,7 +10,7 @@ The architecture is now centered on five layers:
 2. `Working Memory`
 3. `Durable Memory`
 4. `Operational Knowledge`
-5. `Canonical Artifacts`
+5. `Evidence`
 
 The clean authority model is:
 
@@ -18,7 +18,7 @@ The clean authority model is:
 - Layer 2 = hot working continuity
 - Layer 3 = durable semantic truth
 - Layer 4 = operational knowledge truth
-- Layer 5 = canonical publication truth
+- Layer 5 = source-of-record evidence
 
 ## Chosen Stack
 
@@ -30,7 +30,7 @@ The active stack direction is:
 - a narrow High-Signal `Mamba` stream as a later always-on supercharge layer
 - `Graphiti + Neo4j` for Layer 3 durable memory
 - `Postgres` for the operational middle of the stack
-- `Git` for Layer 5 canonical artifacts when canonical publication is warranted
+- a Layer 5 evidence system, with `runtime_evidence`, `reference_cache`, and `authored_artifact` as the main source-of-record classes
 
 ## What Cortex Owns
 
@@ -40,7 +40,7 @@ Cortex owns:
 - Layer 2 notion and high-signal lifecycle rules
 - Layer 3 durable-memory contracts
 - Layer 4 operational knowledge authority rules
-- the split between operational knowledge and canonical publication
+- the split between operational knowledge and source-of-record evidence
 - reflection, Dream, reconciliation, and promotion behavior
 
 ## OpenClaw Principle
@@ -61,10 +61,10 @@ The biggest clarifications now are:
 
 - Layer 2 explicitly uses `QMD`
 - Mamba is narrow by design
-- Mamba is not required to make the architecture valid and lands later as a supercharge unless the post-Phase-1 gate pulls it forward
+- Mamba is not required to make the architecture valid and lands later as a Phase 5 supercharge
 - Layer 3 stays one Graphiti memory system
 - Layer 4 is the operational knowledge authority
-- Layer 5 is only canonical publication truth when canon is warranted
+- Layer 5 is the evidence layer, with authored canon as a permanent subset rather than the definition of the layer
 - `OpenSearch` is not part of the near-term stack
 
 ## Repository Direction

@@ -4,7 +4,7 @@
 
 This document defines the locked layered architecture for Remram Cortex.
 
-The architecture is no longer trying to force runtime continuity, durable memory, operational knowledge, and canonical artifacts through one substrate.
+The architecture is no longer trying to force runtime continuity, durable memory, operational knowledge, and source-of-record evidence through one substrate.
 
 It is now organized around five explicit layers with sharper authority boundaries and cleaner lifecycle rules.
 
@@ -24,7 +24,7 @@ The active layer model is:
 2. `Working Memory`
 3. `Durable Memory`
 4. `Operational Knowledge`
-5. `Canonical Artifacts`
+5. `Evidence`
 
 Those layers now have explicit authority boundaries:
 
@@ -32,7 +32,7 @@ Those layers now have explicit authority boundaries:
 - Layer 2 owns hot working continuity
 - Layer 3 owns durable semantic truth
 - Layer 4 owns operational knowledge truth
-- Layer 5 owns canonical publication truth
+- Layer 5 owns source-of-record evidence
 
 This architecture is designed to support:
 
@@ -40,7 +40,7 @@ This architecture is designed to support:
 - cross-thread continuity without pretending it is already trusted truth
 - durable semantic memory with lineage and supersession
 - medium-horizon evolving workspaces that span many threads
-- clean separation between operational knowledge and canonical publication
+- clean separation between operational knowledge, evidence bodies, and authored canon
 - fewer standing services and less architecture tax
 
 ## OpenClaw Selection Principle
@@ -162,10 +162,9 @@ Its job is to keep a narrow, continuous, high-signal stream available for downst
 Sequencing clarification:
 
 - Layer 2 is already valid without live Mamba
-- Phase 1 does not require live Mamba
-- Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
-- after Phase 1 there is a decision gate for a possible Phase `1.5` Mamba spike
-- otherwise Phase 3 adds Mamba as a supercharge to the same Layer 2 posture
+- Phase 0 establishes vanilla OpenClaw with `QMD`
+- Phases 1 through 4 use turn-end, session-end, and explicit-checkpoint semantic processing
+- Phase 5 adds Mamba as a supercharge to the same Layer 2 posture
 
 When Mamba arrives, it augments those hooks rather than replacing them.
 
@@ -299,9 +298,9 @@ It is authoritative for operational content.
 
 That means:
 
-- if there is no Layer 5 artifact, Layer 4 is the authority for that content
-- if there is a Layer 5 artifact, Layer 4 is still the operational authority for active work and retrieval
-- Layer 5 is only the canonical publication authority when applicable
+- if there is no authored Layer 5 artifact, Layer 4 is still the authority for that operational content
+- if there is Layer 5 evidence behind the content, Layer 4 is still the operational authority for active work and retrieval
+- Layer 5 remains the source-of-record evidence layer rather than the semantic or operational authority
 
 Layer 4 is authoritative for:
 
@@ -337,7 +336,7 @@ A spark of an idea may begin as a sentence and evolve across many threads.
 That medium-horizon body is:
 
 - larger than Layer 3
-- less formal than Layer 5
+- less formal than publication-grade authored canon
 - incomplete
 - unstable
 - evolving
@@ -348,7 +347,7 @@ Layer 3 helps identify that many threads belong to the same emerging concept.
 
 Layer 4 holds the evolving workspace body for that concept.
 
-Layer 5 only becomes relevant when the work is ready for canonical publication.
+Layer 5 is already relevant as evidence, but authored canon only becomes relevant when the work is ready for canonical publication.
 
 #### External Reference Material
 
@@ -362,32 +361,75 @@ Examples:
 - factual sources
 - research materials the user does not own
 
-These should not automatically become Git-backed canonical artifacts.
+These should not automatically become authored canon.
 
 Instead:
 
+- Layer 5 may retain the source body as cached reference evidence when useful
 - Layer 4 may hold summaries, linked reference records, extracted operational knowledge, and retrieval-ready material
 - Layer 3 stores only durable meaning that actually matters
 - the system may later ask whether a valuable reference should be retained more intentionally
 
 This is a category distinction inside the operational knowledge model, not a sixth layer.
 
-### Layer 5: Canonical Artifacts
+### Layer 5: Evidence
 
-Layer 5 is canonical publication truth when publication-grade authorship and revision are needed.
+Layer 5 is the source-of-record evidence layer.
 
-It is not the default destination for every useful idea.
+It stores persisted evidence bodies and source snapshots rather than semantic meaning.
 
-It exists for:
+Layer 5 should be read as a multi-bucket evidence layer, not as "Git" and not as publication truth only.
 
-- authored canonical artifacts
-- reviewable revisions
-- publication-grade bodies
-- Git-backed or provider-backed canonical truth
+The main evidence classes are:
 
-Budding ideas do not jump straight to Git.
+1. `runtime_evidence`
+2. `reference_cache`
+3. `authored_artifact`
 
-Layer 5 is only used when canonical publication is actually warranted.
+#### Runtime Evidence
+
+This includes session transcripts, evidence packages, tool outputs, and other runtime source records.
+
+It is evidence of what happened or what was seen.
+
+It is not durable semantic truth.
+
+#### Reference Cache
+
+This includes retained external sources such as fetched pages, uploaded PDFs, podcast transcripts, or temporary source snapshots.
+
+It exists to preserve source bodies long enough for processing, reuse, and audit without turning every reference into authored canon.
+
+#### Authored Artifact
+
+This is the permanent and revisioned subset of Layer 5 evidence used when publication-grade authorship or review really matters.
+
+Git or another provider may back this evidence class, but Git does not define the whole layer.
+
+Hard rule:
+
+**Layer 5 stores source-of-record evidence bodies, not semantic meaning and not Layer 4 working bodies.**
+
+#### Multiple Ingestion Workflows
+
+Layer 5 is not fed by one generic document-ingestion path.
+
+The architecture should distinguish at least four workflows:
+
+1. `runtime_evidence` capture
+   - chat transcripts, tool outputs, and evidence packages
+   - this is a Phase 1 workflow
+2. `authored_artifact` ingestion
+   - owned content and other high-signal authored source material
+   - this is a stronger source-of-record path than generic reference intake
+3. `reference_cache` ingestion
+   - web links, uploaded references, fetched pages, and temporary outside material
+   - this has different retention and promotion rules than owned artifacts
+4. authored promotion and reprocessing
+   - this is not normal ingestion
+   - it is the Layer 4 to Layer 5 publication path plus the bottom-up reprocessing loop back into Layer 4 and Layer 3
+
+Those workflows share Layer 5, but they do not share the same lifecycle semantics.
 
 ## Authority Boundaries
 
@@ -397,7 +439,7 @@ The clean authority model is:
 - Layer 2 = hot working continuity
 - Layer 3 = durable semantic truth
 - Layer 4 = operational knowledge truth
-- Layer 5 = canonical publication truth
+- Layer 5 = source-of-record evidence
 
 This is the main architecture rule to protect.
 
@@ -405,8 +447,8 @@ This is the main architecture rule to protect.
 
 1. Layer 2 may surface tentative continuity and notions, but it does not become durable truth automatically.
 2. Layer 3 may organize and connect workspaces, but it does not own their bodies.
-3. Layer 4 may move fast and be operationally authoritative, but it does not silently replace Layer 5 when canonical publication exists.
-4. Layer 5 is canonical only when there is a publication-grade artifact to own.
+3. Layer 4 may move fast and be operationally authoritative, but it references Layer 5 evidence rather than owning Layer 5 lifecycle.
+4. Authored canon is one Layer 5 evidence class, not the whole meaning of the layer.
 
 ## Storage And Service Posture
 
@@ -418,35 +460,33 @@ The long-term stack is:
 - narrow High-Signal `Mamba` stream
 - `Graphiti + Neo4j` for Layer 3
 - `Postgres` for the operational middle of the stack
-- `Git` when canonical artifact publication is warranted
+- a Layer 5 evidence system, with `Git` as one backend for authored artifacts when publication-grade canon is warranted
 
 ## Implementation Sequencing
 
+### Phase 0
+
+Phase 0 establishes the vanilla OpenClaw baseline with `QMD`, compaction, pruning, and safe local-model runtime behavior.
+
 ### Phase 1
 
-Phase 1 proves the layered spine without live Mamba.
-
-It uses:
-
-- turn-end semantic processing
-- session-end semantic processing
-- explicit-checkpoint semantic processing when needed
-
-### Post-Phase-1 Decision Gate
-
-After Phase 1, evaluate whether local continuity pressure is becoming a real problem.
-
-If limited VRAM and local context pressure are causing continuity loss, prompt bloat, or poor live-session behavior, Mamba may be pulled forward as a Phase `1.5` spike.
-
-If not, Phase 3 adds Mamba later as a supercharge rather than as a blocked dependency.
+Phase 1 proves the chat-derived Cortex memory loop on top of that baseline.
 
 ### Phase 2
 
-Phase 2 deepens Layer 4 workspaces, external reference handling, and Layer 4 to Layer 5 lifecycle behavior.
+Phase 2 adds one-way reference decomposition for uploaded documents and web snapshots.
 
 ### Phase 3
 
-Phase 3 adds Mamba as the default always-on narrow high-signal listener and continuity supercharge.
+Phase 3 adds owned-source maintenance, dirty-state dual-version semantics, and source reprocessing.
+
+### Phase 4
+
+Phase 4 adds authored artifact promotion into canon plus bottom-up reprocessing from authored artifacts.
+
+### Phase 5
+
+Phase 5 adds Mamba, Intuition, and optimization or hardening.
 
 ### Postgres As Middle-Layer Authority
 
@@ -455,7 +495,7 @@ Phase 3 adds Mamba as the default always-on narrow high-signal listener and cont
 It should cover:
 
 - Layer 1 policy and control data
-- runtime evidence authority
+- operational evidence metadata and coordination state where needed
 - Layer 4 operational knowledge bodies
 - incubation workspaces
 - reference summaries and links
@@ -509,7 +549,7 @@ The conceptual relationship network remains in Layer 3.
 ### Flow 1: Live Session To Layer 2
 
 1. OpenClaw runs the session.
-2. The transcript and runtime events remain the evidence surface.
+2. The transcript and runtime events remain the Layer 5 runtime-evidence surface.
 3. `QMD` provides hot working-memory retrieval and notion storage.
 4. turn-end, session-end, and explicit-checkpoint processing emit typed semantic outputs.
 5. Layer 2 continuity is assembled from session state, `QMD`, and those outputs.
@@ -536,17 +576,18 @@ This is a core problem the architecture is explicitly designed to solve.
 ### Flow 4: External Reference Material
 
 1. an external source is introduced
-2. Layer 4 stores summaries, linked reference records, extracted operational knowledge, and retrieval-ready material
-3. Layer 3 stores only durable meaning that matters
-4. the reference may later be retained more intentionally, but it does not automatically become a canonical artifact
+2. Layer 5 may retain the source body as `reference_cache`
+3. Layer 4 stores summaries, linked reference records, extracted operational knowledge, and retrieval-ready material
+4. Layer 3 stores only durable meaning that matters
+5. the reference may later be retained more intentionally, but it does not automatically become an authored artifact
 
-### Flow 5: Working Workspace To Canonical Artifact
+### Flow 5: Working Workspace To Authored Artifact
 
 1. a Layer 4 workspace matures
 2. Layer 3 relationships and support indicate promotion readiness
 3. a redraft or publication workflow is initiated
-4. Layer 5 receives the canonical artifact only when publication-grade authorship is warranted
-5. once promoted, Layer 5 becomes the canonical source for that artifact
+4. Layer 5 receives an `authored_artifact` only when publication-grade authorship is warranted
+5. once promoted, that authored artifact becomes the canonical source for that body
 6. later meaningful Layer 5 revisions can trigger re-ingestion back into Layer 4
 7. Layer 3 support, summaries, and semantic links are then reconciled as needed
 
@@ -615,8 +656,8 @@ The revised architecture explicitly avoids:
 - passive Layer 2 with no chosen hot-memory substrate
 - using Mamba as a broad semantic engine
 - treating Layer 4 as only a projection of Layer 5
-- pushing budding ideas into Git too early
-- treating external references like authored canonical artifacts
+- pushing budding ideas into authored canon too early
+- treating external references like authored artifacts
 - introducing `OpenSearch` into the near-term stack
 - creating a second Graphiti usage pattern or shadow graph
 
@@ -664,7 +705,7 @@ Optional per-edge or per-support confidence signals are acceptable if they stay 
 
 Use stable anchor identity and pointer-based relationships.
 
-Graphiti should represent concept relationships, support, supersession, and links to workspaces or artifacts, but not become a document body store.
+Graphiti should represent concept relationships, support, supersession, and links to workspaces or Layer 5 evidence records, but not become a document body store.
 
 ### 8. How hard is the split between OpenClaw config and Cortex policy?
 
@@ -692,10 +733,13 @@ MVP 1 includes:
 - boundary-triggered semantic processing
 - `Graphiti + Neo4j` durable memory
 - `Postgres` operational middle layer
-- `Git` canonical artifacts when applicable
+- Layer 5 runtime-evidence handling for chat-derived work
+- narrow Layer 4 operational support bodies for chat-derived memory
 
 `OpenSearch` is deferred.
 
-`Mamba` is not part of the Phase 1 proof surface by default and may be pulled forward as a Phase `1.5` spike if the post-Phase-1 gate says continuity pressure justifies it.
+`Mamba` is intentionally deferred to the optimization phase.
+
+Authored canon and `Git` are deferred to the artifact-promotion phase.
 
 Additional service expansion is deferred.

@@ -4,16 +4,15 @@
 
 `Mamba` is part of the long-term design, but the architecture is already valid without it.
 
-Phase 1 and Phase 2 still use semantic processing, but they do it through:
+Phases 1 through 4 still use semantic processing, but they do it through:
 
 - turn-end extraction
 - session-end extraction
 - explicit-checkpoint extraction when needed
 
-After Phase 1, there is a decision gate:
+Phase 0 exists before that as the vanilla OpenClaw baseline.
 
-- if local continuity pressure is already painful, pull `Mamba` forward as a Phase `1.5` spike
-- otherwise add it in Phase 3 as a supercharge to the same spine
+Phase 5 adds `Mamba` as a supercharge to the same spine.
 
 ## What Mamba Is
 
@@ -69,7 +68,7 @@ It also provides:
 
 ## Important Boundary
 
-The Phase 1 hooks should survive after Mamba arrives.
+The early-phase hooks should survive after Mamba arrives.
 
 Mamba augments:
 

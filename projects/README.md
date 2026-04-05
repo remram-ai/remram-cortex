@@ -16,3 +16,10 @@ Use `projects/` for:
 - active epic plans
 
 Use [product/](../product/README.md) for stable behavior that should outlive one MVP.
+
+For a new implementation thread, start with:
+
+1. [../docs/context-packs/layered-cortex-stack/README.md](../docs/context-packs/layered-cortex-stack/README.md)
+2. [../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
+3. [mvp-1-layered-cortex/README.md](mvp-1-layered-cortex/README.md)
+4. [mvp-1-layered-cortex/project-plan.md](mvp-1-layered-cortex/project-plan.md)

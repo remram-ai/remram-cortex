@@ -5,8 +5,8 @@ This note captures the current Mamba and state-space-model assumptions behind th
 Sequencing clarification:
 
 - the long-term architecture still wants this stream
-- the current delivery plan defers it by default until Phase 3
-- Phase 1 proves the spine with boundary-triggered semantic processing instead
+- the current delivery plan defers it until Phase 5
+- Phases 1 through 4 prove the spine with boundary-triggered semantic processing instead
 
 It is a supporting reference for the active Cortex architecture, not a commitment to one exact model family or checkpoint.
 

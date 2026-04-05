@@ -63,13 +63,19 @@ It owns:
 - decomposed artifact knowledge
 - active operational document state
 
-Layer 4 is authoritative for operational content even when there is no Layer 5 counterpart.
+Layer 4 is authoritative for operational content even when there is no authored Layer 5 counterpart.
 
-### Layer 5: Canonical Artifacts
+### Layer 5: Evidence
 
-Layer 5 is canonical publication truth when publication-grade canon is actually warranted.
+Layer 5 is the source-of-record evidence layer.
 
-It should not be treated as the default destination for every useful idea.
+Its main evidence classes are:
+
+- `runtime_evidence`
+- `reference_cache`
+- `authored_artifact`
+
+Authored canon is a permanent subset of Layer 5, not the whole meaning of the layer.
 
 ## Authority By Layer
 
@@ -79,7 +85,7 @@ Each layer owns a different kind of truth:
 - Layer 2 = hot working continuity
 - Layer 3 = durable semantic truth
 - Layer 4 = operational knowledge truth
-- Layer 5 = canonical publication truth
+- Layer 5 = source-of-record evidence
 
 ## Why These Boundaries Matter
 
@@ -88,7 +94,7 @@ If the boundaries blur:
 - policy becomes memory
 - hot continuity becomes durable truth
 - Graphiti becomes a document body store
-- operational workspaces jump to canon too early
+- operational workspaces jump to authored canon too early
 - external references get treated like authored artifacts
 
 The locked architecture prevents that.
@@ -111,13 +117,15 @@ Layer 4 uses them to organize bodies.
 
 ## The Medium-Horizon Workspace
 
-One of the most important clarifications is that a budding concept may span many threads before it ever becomes a canonical artifact.
+One of the most important clarifications is that a budding concept may span many threads before it ever becomes an authored artifact.
 
 That medium-horizon workspace belongs in Layer 4.
 
 Layer 3 helps identify that the threads belong together.
 
-Layer 5 is only relevant later if the work becomes canon-worthy.
+Layer 5 is already relevant as evidence.
+
+Only the authored-artifact subset becomes relevant later if the work becomes canon-worthy.
 
 ## Startup Stance
 

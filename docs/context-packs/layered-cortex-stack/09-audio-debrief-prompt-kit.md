@@ -61,7 +61,8 @@ Cover:
 - Layer 4 versus Layer 5
 - why Layer 4 is an operational authority, not just a projection layer
 - how external references differ from canonical artifacts
-- how canonical Layer 5 revisions reprocess back down into Layer 4 and Layer 3
+- how Layer 5 evidence is separated from Layer 4 meaning
+- how authored Layer 5 revisions reprocess back down into Layer 4 and Layer 3
 - why Postgres and Git are separate
 - anchor identity
 - dirty-state tracking
@@ -103,7 +104,7 @@ Include:
 
 - system framing
 - layers
-- delivery phases and the post-Phase-1 decision gate
+- delivery phases from Phase 0 baseline through Phase 5 optimization
 - why Mamba improves but does not fundamentally rewrite the spine
 - data flows
 - memory model

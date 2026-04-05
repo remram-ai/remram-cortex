@@ -10,7 +10,7 @@ Cortex is committed to:
 - hot working continuity that stays fast and pruneable
 - durable semantic memory with lineage and reconciliation
 - operational knowledge that can evolve before publication
-- canonical publication only when canon is actually warranted
+- source-of-record evidence that remains separate from operational and semantic meaning
 - fewer standing services and clearer authority boundaries
 
 ## System Boundary
@@ -23,7 +23,7 @@ Cortex:
 - governs Layer 2 notions and high-signal continuity
 - governs durable-memory promotion into Layer 3
 - governs how Layer 3 helps organize Layer 4
-- governs how Layer 4 and Layer 5 stay aligned when canon exists
+- governs how Layer 4 and Layer 5 stay aligned when evidence exists and when authored canon is promoted
 
 ## Layer Commitments
 
@@ -75,11 +75,19 @@ It owns:
 - reference-derived operational knowledge
 - decomposed artifact knowledge
 
-### Canonical Artifacts
+### Evidence
 
-Layer 5 is canonical publication truth when publication-grade authorship and revision are warranted.
+Layer 5 is the source-of-record evidence layer.
 
-It is not the default destination for every useful idea or external reference.
+It holds persisted evidence bodies rather than semantic meaning.
+
+It includes:
+
+- runtime evidence
+- retained or cached external references
+- authored artifacts when publication-grade canon is warranted
+
+Those are all evidence bodies, not semantic truth.
 
 ## Why This Exists
 
@@ -95,6 +103,11 @@ Cortex exists to stop that drift.
 
 ## Delivery Posture
 
-Phase 1 proves the spine without live `Mamba`.
+The delivery posture is progressive:
 
-After Phase 1, a simple decision gate determines whether `Mamba` should be pulled forward as a Phase `1.5` spike or added later in Phase 3 as a supercharge to the same spine.
+- `Phase 0` establishes a vanilla OpenClaw baseline
+- `Phase 1` activates the chat-derived Cortex memory loop
+- `Phase 2` adds one-way reference decomposition
+- `Phase 3` adds owned-source maintenance and dirty-state semantics
+- `Phase 4` adds authored artifact promotion into canon
+- `Phase 5` adds `Mamba`, `Intuition`, and optimization

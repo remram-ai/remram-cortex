@@ -14,16 +14,15 @@ Mamba arrives later as a supercharge to that same spine.
 
 `Mamba` is part of the long-term design, but it is not on the critical path for proving the architecture.
 
-Phase 1 proves the architecture with boundary-triggered semantic processing:
+Phases 1 through 4 prove the architecture with boundary-triggered semantic processing:
 
 - turn-end extraction
 - session-end extraction
 - explicit-checkpoint extraction when needed
 
-After Phase 1, there is a simple decision gate:
+Phase 0 exists before that as the vanilla OpenClaw baseline.
 
-- if local continuity pressure is real, Mamba can be pulled forward as a Phase `1.5` spike
-- otherwise Phase 3 adds it as the default continuity supercharge
+Phase 5 adds Mamba as the default continuity supercharge.
 
 When Mamba does arrive, it augments those hooks rather than replacing them.
 

@@ -16,7 +16,7 @@ The long-term stack is:
 - a narrow High-Signal `Mamba` stream as a later Layer 2 supercharge
 - `Graphiti + Neo4j` for Layer 3 durable semantic memory
 - `Postgres` as the operational middle-layer authority
-- `Git` for Layer 5 canonical artifacts when publication-grade canon is actually warranted
+- a Layer 5 evidence system, with `Git` as one backend for `authored_artifact` when publication-grade canon is actually warranted
 
 ## Delivery Sequencing
 
@@ -24,10 +24,12 @@ The base architecture is complete without live `Mamba`.
 
 The sequencing choice is:
 
-- Phase 1 proves the spine without live `Mamba`
-- Phase 1 uses turn-end, session-end, and explicit-checkpoint semantic processing
-- after Phase 1 there is a simple decision gate for a possible Phase `1.5` `Mamba` spike
-- otherwise Phase 3 adds `Mamba` as a supercharge rather than a missing dependency
+- Phase 0 establishes a vanilla OpenClaw baseline with `QMD`
+- Phase 1 activates the chat-derived Cortex loop
+- Phase 2 adds one-way reference decomposition
+- Phase 3 adds owned-source maintenance and dirty-state semantics
+- Phase 4 adds authored artifact promotion into `Git`
+- Phase 5 adds `Mamba`, `Intuition`, and optimization work
 
 This is a sequencing choice, not an architecture reversal and not a sign that the stack is waiting to become valid later.
 
@@ -94,7 +96,7 @@ Phase 1 uses:
 
 Those hooks should survive into later phases.
 
-When `Mamba` arrives, it augments those hooks instead of replacing them.
+When `Mamba` arrives in Phase 5, it augments those hooks instead of replacing them.
 
 ### High-Signal Mamba Stream Later
 
@@ -157,13 +159,13 @@ It is used for normal durable-memory behavior, including concept clustering and 
 It covers:
 
 - policy and control data
-- runtime evidence
 - Layer 4 operational knowledge bodies
 - incubation workspaces
 - reference summaries and links
 - decomposed artifact knowledge where canonical artifacts exist
 - retrieval metadata
 - workflow and dirty-state fields
+- evidence-control and indexing state where needed by the current implementation
 
 This is not being justified as the final winner for document retrieval in the abstract.
 
@@ -171,9 +173,9 @@ It is being chosen because it keeps the near-term service count lower and covers
 
 ### Git
 
-`Git` remains the Layer 5 canonical publication surface when publication-grade artifacts are warranted.
+`Git` remains one Layer 5 backend for the `authored_artifact` evidence class when publication-grade artifacts are warranted.
 
-It should not be treated as the default destination for every useful idea or every external reference.
+It should not be treated as the default destination for every useful idea, every transcript, or every external reference.
 
 ## What Is Not In The Active Stack
 
@@ -191,9 +193,11 @@ The active stack explicitly excludes:
 The active rule is:
 
 - let OpenClaw own runtime mechanics
+- let Phase 0 prove the vanilla OpenClaw baseline first
 - let `QMD` own hot working-memory retrieval and notions
-- let Phase 1 prove the spine with boundary-triggered semantic processing
-- let `Mamba` arrive later as a narrow supercharge to an already-working design
+- let Phase 1 prove the chat-derived Cortex spine with boundary-triggered semantic processing
+- let later phases add references, owned sources, and authored canon in order
+- let `Mamba` arrive last as a narrow supercharge to an already-working design
 - let Graphiti own durable semantic memory
 - let Postgres own the operational middle
-- let Git own canonical publication only when canon is warranted
+- let Layer 5 own source-of-record evidence, with Git used only for authored canon when that is warranted

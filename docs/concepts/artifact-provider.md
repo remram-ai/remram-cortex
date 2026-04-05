@@ -1,88 +1,79 @@
 # Artifact Provider
 
-Artifact storage in Cortex should be provider-backed and configurable.
+An artifact provider is the backend that stores or resolves a Layer 5 evidence body.
 
-Cortex needs a stable artifact model, but it should not hardcode one storage backend forever. Different users and artifact types want different operational tradeoffs.
+Layer 5 is defined by its role, not by one storage product.
+
+That means Cortex should keep a stable Layer 5 contract even when the backing provider differs by evidence class or phase.
 
 ## Core Rule
 
-Cortex always owns the artifact record:
+The provider owns body storage and retrieval.
 
-- stable `artifact_id`
-- provider type
-- authority mode
+Cortex owns:
+
+- stable identity
 - provenance
-- links to knowledge objects
+- evidence class
+- links into Layer 4 and Layer 3
 
-The backing provider may vary. The Cortex artifact record does not.
+The backend may vary.
+
+The Cortex identity and authority boundaries should not.
+
+## Evidence Classes
+
+In the active architecture, providers serve three main Layer 5 evidence classes:
+
+- `runtime_evidence`
+- `reference_cache`
+- `authored_artifact`
+
+Those classes do not need the same retention or revision behavior.
 
 ## Provider Capabilities
 
-Providers may support different capabilities.
+Useful provider capabilities include:
 
-Important capabilities include:
-
-- `store`
+- `ingest`
 - `resolve`
-- `version_history`
-- `share`
-- `watch_changes`
-- `export`
-- `backup_snapshot`
+- `exists`
+- `metadata`
+- `refresh` when the source is externally fetched
+- `version_history` when the source is canon or revisioned
+- `lifecycle` or retention support
 
 Not every provider needs every capability.
 
-## Authority Modes
+## Current Posture
 
-Each artifact should declare an authority mode.
+The current phased posture is:
 
-Suggested starting modes:
+- filesystem-backed Layer 5 runtime evidence early
+- cache-like storage for retained references
+- `Git` introduced later for the `authored_artifact` class
 
-- `cortex_owned`
-- `external_authoritative`
-- `published_mirror`
-- `collaborative_mirror`
+The important rule is not "which backend is fanciest."
 
-These modes matter more than where the bytes happen to live.
+It is:
 
-## Routing Policy
-
-Provider choice should be routed from artifact policy rather than hardcoded by file path.
-
-A practical first routing policy uses:
-
-- `artifact_class`: `evidence | working | official | operational`
-- `editing_mode`: `solo | collaborative`
-- `media_family`: `markdown | rich_doc | spreadsheet | deck | binary`
-- `authority_mode`
-
-Example first-pass behavior:
-
-- default to local Git for unconfigured or system-oriented artifacts
-- use Google Workspace for collaborative rich docs, sheets, and decks
-- keep imported evidence in a provider that preserves the original form
-- allow official artifacts to remain Git-canonical and optionally mirror outward
-
-The right question is not "is it human readable?"
-The right question is "how does this artifact live, who edits it, and which provider best serves that lifecycle?"
-
-## Human And System Split
-
-The provider line often follows who actually uses the artifact:
-
-- collaborative human-facing plans, ideas, and business artifacts often fit Google Workspace best
-- markdown, system-authored artifacts, prompts, exported HTML, and workflow-facing outputs often fit Git better
-- provider-native tools such as design systems may be the source of truth for their own artifact classes while still exporting linked derivatives
+- does this backend fit the evidence class
+- does it preserve the right lifecycle behavior
+- does it keep Layer 4 from becoming Layer 5's keeper
 
 ## Change Monitoring
 
-If a provider supports change watching, Cortex should be able to monitor artifact edits and trigger re-ingestion or reconciliation.
+If a provider exposes meaningful change signals, Cortex should be able to turn them into explicit reprocessing events.
 
-This should remain explicit. A watched external edit should become an update path, not an invisible silent mutation.
+That matters most for:
+
+- owned maintained sources
+- authored artifacts in canon
+
+A source edit should become an explicit update path, not a silent hidden mutation.
 
 ## Related Concepts
 
 - [Artifact Intake](artifact-intake.md)
 - [Artifact Promotion](artifact-promotion.md)
-- [Knowledge Object](knowledge-object.md)
 - [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

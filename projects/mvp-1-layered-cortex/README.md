@@ -1,33 +1,32 @@
 # MVP 1: Layered Cortex
 
-This project is the first implementation package for the locked layered Cortex architecture.
+This project is the phased activation package for the locked layered Cortex architecture.
 
 ## Goal
 
-Deliver a working Cortex spine that proves:
+Deliver Cortex as a progressive activation of system loops:
 
-- custom policy on top of OpenClaw
-- `QMD` hot Layer 2 working memory and notions
-- turn-end and session-end semantic processing
-- `Graphiti + Neo4j` durable semantic memory
-- `Postgres` as the operational middle-layer authority
-- `Git` canonical artifacts only when canonical publication is warranted
+- `Phase 0` baseline OpenClaw
+- `Phase 1` chat-derived memory
+- `Phase 2` reference decomposition
+- `Phase 3` collaborative source maintenance
+- `Phase 4` artifact promotion
+- `Phase 5` optimization
 
-`Mamba` is still part of the long-term architecture.
-
-It is deferred by default and moved to Phase 3 unless the post-Phase-1 decision gate pulls it forward.
+The immediate execution target is `Phase 0` plus `Phase 1`.
 
 ## Definition Of Done
 
-The MVP is done when:
+The current MVP target is done when `Phase 1` is complete on top of the `Phase 0` baseline.
 
-- OpenClaw runtime uses Cortex policy and bounded context assembly
-- `QMD` supports hot continuity and notion storage
-- boundary-triggered semantic processing produces usable typed continuity outputs
+That means:
+
+- OpenClaw baseline runs locally with safe config, compaction, pruning, and `QMD`
+- Cortex policy overlays that baseline cleanly
+- chat transcripts enter a Layer 5 evidence loop
+- boundary-triggered semantic processing yields usable Layer 4 chat-derived support bodies
 - Layer 3 durable memory organizes concepts and relationships without becoming a body store
-- Layer 4 operational knowledge supports evolving workspaces and reference material
-- Layer 5 is used only for canonical publication when warranted
-- the project has an inspectable acceptance-test surface
+- the project has an inspectable Phase 1 acceptance surface
 
 ## Documents
 
@@ -37,3 +36,14 @@ The MVP is done when:
 - [Runtime Docs](runtime-docs.md)
 - [Seed Prompt](seed-prompt.md)
 - [Epics](epics/README.md)
+
+## Recommended Handoff Path
+
+For a new implementation thread, read in this order:
+
+1. [../../docs/context-packs/layered-cortex-stack/README.md](../../docs/context-packs/layered-cortex-stack/README.md)
+2. [../../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](../../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
+3. [../../docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md](../../docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md)
+4. [Project Charter](project-charter.md)
+5. [Project Plan](project-plan.md)
+6. [Acceptance Test](acceptance-test.md)

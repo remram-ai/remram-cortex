@@ -37,6 +37,18 @@ Explain the chosen Cortex stack topic by topic:
 9. [08 MVP And Delivery Sequence](08-mvp-and-delivery-sequence.md)
 10. [09 Audio Debrief Prompt Kit](09-audio-debrief-prompt-kit.md)
 
+## Fast AI Handoff
+
+If the goal is to start implementation quickly in a new thread, load this shorter path:
+
+1. [00 High-Signal Debrief](00-high-signal-debrief.md)
+2. [01 System Frame And Layer Model](01-system-frame-and-layer-model.md)
+3. [05 Knowledge, Artifacts, Postgres, And Git](05-knowledge-artifacts-postgres-and-git.md)
+4. [08 MVP And Delivery Sequence](08-mvp-and-delivery-sequence.md)
+5. [../../../projects/mvp-1-layered-cortex/README.md](../../../projects/mvp-1-layered-cortex/README.md)
+6. [../../../projects/mvp-1-layered-cortex/project-plan.md](../../../projects/mvp-1-layered-cortex/project-plan.md)
+7. [../../../projects/mvp-1-layered-cortex/acceptance-test.md](../../../projects/mvp-1-layered-cortex/acceptance-test.md)
+
 ## Relationship To The Main Docs
 
 This pack compresses and reorganizes the active material from:

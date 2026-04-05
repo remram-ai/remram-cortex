@@ -1,6 +1,6 @@
 {
   "epic_id": "04_knowledge_plane_and_artifacts",
-  "objective": "Stand up Layer 4 operational knowledge and Layer 5 canonical artifact flow with explicit anchor, revision, and re-ingestion contracts.",
+  "objective": "Stand up Layer 4 operational knowledge and the Layer 5 evidence lifecycle with explicit anchor, evidence-class, revision, and re-ingestion contracts.",
   "dependencies": [
     "03_graphiti_neo4j_durable_memory",
     "docs/design/knowledge-and-artifact-architecture.md"
@@ -8,50 +8,68 @@
   "workstreams": [
     {
       "id": "01",
-      "name": "Anchor and revision model",
+      "name": "Anchor and evidence model",
       "outputs": [
         "stable anchor identity",
         "revision linkage",
-        "dirty-state and publication status"
+        "evidence-class distinctions"
       ]
     },
     {
       "id": "02",
-      "name": "Layer 4 operational knowledge",
+      "name": "Phase 1 Layer 4 support surface",
       "outputs": [
-        "incubation workspaces",
-        "external reference records and summaries",
-        "decomposed artifact knowledge when canon exists",
-        "retrieval-ready payloads"
+        "chat-derived summaries",
+        "concept support bodies",
+        "fact and belief candidates",
+        "retrieval and pointer records"
       ]
     },
     {
       "id": "03",
-      "name": "Canonical artifact flow",
+      "name": "Reference decomposition",
       "outputs": [
-        "Git or provider-backed canonical source",
+        "external reference records and summaries",
+        "decomposed knowledge from attached docs and web snapshots",
+        "retrieval-ready payloads"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "Owned-source maintenance and dirty state",
+      "outputs": [
+        "current versus derived version model",
+        "diff and reconciliation surface",
+        "reprocessing after source changes"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "Authored artifact flow",
+      "outputs": [
+        "Git-backed canonical source",
         "redraft and publication loop",
         "re-ingestion after revision changes"
       ]
     },
     {
-      "id": "04",
+      "id": "06",
       "name": "Bottom-up canonical reprocessing",
       "outputs": [
-        "Layer 5 becomes the canonical source after promotion",
+        "Layer 5 authored artifacts become the canonical source after promotion",
         "meaningful canonical revisions trigger Layer 4 re-ingestion",
         "Layer 3 support and summaries reconcile after canonical changes"
       ]
     }
   ],
   "exit_criteria": [
-    "Artifacts have stable anchor and revision identity.",
     "Layer 4 operational knowledge remains source-linked and revision-aware where applicable.",
-    "Layer 5 remains canonical publication truth.",
+    "Layer 5 evidence classes remain explicit.",
+    "Authored canon is introduced only in the promotion phase.",
     "Canonical revisions can drive reprocessing back into Layer 4 and Layer 3."
   ],
   "risks": [
-    "Allowing Layer 4 operational work to masquerade as canonical artifacts.",
+    "Allowing Layer 4 operational work to masquerade as authored canon.",
     "Failing to invalidate stale Layer 3 support after revision changes."
   ]
 }

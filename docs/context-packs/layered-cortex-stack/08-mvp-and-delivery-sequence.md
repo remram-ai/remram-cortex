@@ -2,82 +2,109 @@
 
 ## Delivery Posture
 
-The long-term architecture still includes `Mamba`.
+The architecture is now delivered as a progressive activation of system loops.
 
-The sequencing change is that `Mamba` is no longer required to prove the MVP spine, and the MVP should not read as if it is waiting on `Mamba` to become real.
+The key sequencing move is that the baseline comes first, then Cortex proves itself on chat, then on references, then on maintained sources, then on authored canon, and only later on optimization.
 
-Phase 1 proves the layered Cortex spine using boundary-triggered semantic processing.
+## Phase 0: OpenClaw Baseline
 
-## Phase 1: Prove The Core Spine Without Live Mamba
+Goal:
 
-Phase 1 includes:
+- prove the vanilla OpenClaw baseline with a local model, safe config, compaction, pruning, and `QMD`
 
-- `OpenClaw`
-- Cortex policy layer
-- `QMD` hot working memory
-- notion storage in `QMD`
-- turn-end and session-end semantic processing
-- checkpoint-triggered semantic processing when needed
-- session-end reconciliation
-- `Graphiti + Neo4j` durable memory
-- `Postgres` operational middle layer
-- Layer 4 operational knowledge authority
-- basic Layer 5 canonical artifact handling when applicable
-- cross-thread concept linking through Layer 3
-- reflection-driven `QMD` cleanup
-- promotion readiness signals for eventual Layer 5 publication
+User-visible behavior:
 
-Phase 1 does not require:
+- the assistant chats and uses tools
+- baseline OpenClaw memory works
+- there is no Cortex-specific reflection, Graphiti memory, or Layer 5 evidence loop yet
 
-- live always-on `Mamba`
-- continuous semantic checkpoint generation during the session
+## Phase 1: Chat Memory Loop
 
-## Post-Phase-1 Decision Gate
+Goal:
 
-After Phase 1, ask one simple question:
+- prove the full Cortex loop from chat into memory
 
-Is limited VRAM and local context pressure causing real continuity problems, prompt bloat, or poor live-session behavior?
+System change:
 
-- If yes, pull `Mamba` forward immediately as a Phase `1.5` spike.
-- If no, keep the planned sequencing and add `Mamba` later as a supercharge.
+- Layer 5 runtime evidence for chat transcripts
+- boundary-triggered semantic processing
+- Layer 4 chat-derived support bodies such as summaries, concept support bodies, and fact or belief candidates
+- Reflection and Dream over chat-derived evidence
+- Layer 3 durable memory
 
-This is a clear fork point, not an unresolved debate.
+User-visible behavior:
 
-## Phase 2: Deepen Layer 4 And Layer 5
+- Cortex starts remembering important facts, preferences, and recurring concepts from conversation
+- continuity improves across sessions
 
-Phase 2 focuses on:
+## Phase 2: Reference Decomposition Loop
 
-- richer Layer 4 workspace handling
-- budding idea workspaces that span many threads
-- stronger external reference handling
-- stronger promotion lifecycle from Layer 4 to Layer 5
-- better dirty-state and redraft flows
-- cleaner operational knowledge organization driven by Layer 3 relationships
-- clearer workspace and artifact category distinctions
+Goal:
 
-This phase makes the Layer 4 and Layer 5 story feel real and usable.
+- make one-way outside material usable
 
-## Phase 3: Add Mamba As Hardening And Optimization
+Inputs:
 
-Phase 3 introduces `Mamba` as the default always-on narrow high-signal listener.
+- uploaded reference documents
+- web-link snapshot fetches
 
-At that point, `Mamba` improves:
+This phase is still one-way.
 
-- near-time continuity compression
-- always-on high-signal capture
-- lower-latency semantic awareness
-- cleaner live-session handling for long-running work
-- better directional signal for Reflection and Dream
+It does not yet add source-sync or dirty-state semantics.
 
-At that point, Cortex can also add `Intuition` as a Mamba-side evaluator that queues opportunistic high-signal processing while GPU headroom exists.
+User-visible behavior:
 
-`Mamba` still remains narrow.
+- attached documents and links become usable knowledge in later conversations
 
-It is not:
+## Phase 3: Collaborative Source Maintenance Loop
 
-- a universal reasoning engine
-- the reflection engine
-- the document decomposition engine
+Goal:
+
+- maintain owned high-signal documents as living sources
+
+System change:
+
+- dirty-state dual-version semantics
+- source-sync and reprocessing
+- Layer 4 and Layer 3 alignment against owned-source updates
+
+This is the phase where "file cabinet" documents become living maintained sources rather than static uploads.
+
+User-visible behavior:
+
+- important owned documents stop being static uploads and become maintainable working sources
+
+## Phase 4: Artifact Promotion Loop
+
+Goal:
+
+- promote clustered work into authored canon
+
+System change:
+
+- promotion candidate detection
+- artifact drafting
+- Git-backed authored artifacts
+- bottom-up reprocessing from canon back into Layer 4 and Layer 3
+
+User-visible behavior:
+
+- the system can turn ongoing work into maintained authored outputs
+
+## Phase 5: Optimization Loop
+
+Goal:
+
+- improve signal quality, efficiency, and live-session behavior
+
+System change:
+
+- `Mamba` as the narrow always-on signal layer
+- `Intuition` as the later signal evaluator on top of Mamba
+
+User-visible behavior:
+
+- the system feels more responsive and more continuous without brute-force replay
 
 ## What Stays Locked
 
@@ -89,13 +116,15 @@ The core architecture decisions still stand:
 4. `OpenSearch` is still deferred.
 5. `Graphiti + Neo4j` remains the Layer 3 durable memory system.
 6. Layer 4 remains the operational knowledge authority.
-7. Layer 5 remains canonical publication truth only when canon is warranted.
+7. Layer 5 remains the source-of-record evidence layer, with authored canon as one special class when publication is warranted.
 
 ## Bottom Line
 
 The sequencing now reads:
 
-- Phase 1 proves the layered spine with boundary-triggered semantic processing
-- then there is a decision gate for a possible Phase `1.5` `Mamba` spike
-- Phase 2 deepens workspaces and artifact lifecycles
-- Phase 3 adds `Mamba` for optimization, hardening, and live-continuity supercharge by default
+- Phase 0 proves the vanilla OpenClaw baseline
+- Phase 1 learns from chat
+- Phase 2 understands references
+- Phase 3 maintains owned sources
+- Phase 4 promotes authored artifacts
+- Phase 5 optimizes the same system

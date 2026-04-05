@@ -1,78 +1,113 @@
 # Artifact Intake
 
-Artifact intake is the multimodal evidence path that turns external documents and images into Cortex evidence, decomposed knowledge, and eventually durable memory where appropriate.
+Artifact intake is the Layer 5 to Layer 4 entry path for non-runtime source material.
 
-It gives Cortex one consistent entry point for imported artifacts instead of treating every upload as an opaque attachment.
+It covers source bodies such as:
 
-After intake, Cortex should own the artifact record even when the backing provider is external. The original external location may remain in provenance, but it is not the authoritative organization or identity surface inside Cortex.
+- uploaded reference documents
+- fetched web snapshots
+- owned high-signal documents
+- retained source files that should become part of the user's evidence corpus
+
+It does not mean:
+
+- runtime transcript capture
+- authored artifact promotion
+- direct durable-memory writes from raw bodies
+
+Those are separate flows.
+
+## Why Intake Exists
+
+Without a formal intake path, every upload or fetched source risks becoming:
+
+- an opaque attachment
+- an ad hoc retrieval blob
+- a silent Layer 3 write
+
+Artifact intake keeps the boundary clean:
+
+- Layer 5 stores the source-of-record body
+- Layer 4 stores bounded operational forms derived from it
+- Layer 3 stores only durable meaning that survives reflection and reconciliation
 
 ## Intake Flow
 
 Artifact intake should:
 
-- create or update a Cortex-managed artifact record and assign a stable internal `artifact_id`
-- run an Artifact Parser over the source to extract structure and meaning
-- emit a summary, highlights, and bounded source-linked import slices
-- deduplicate those slices against existing memory and existing decomposition
-- create or reinforce Layer 3 appropriate knowledge from the resulting evidence
-- index the resulting decomposition and intake metadata in the knowledge plane
+- create or update a stable Cortex-managed source anchor
+- store the source body in Layer 5 under the right evidence class
+- extract bounded operational forms for Layer 4
+- attach source pointers and provenance to those derived forms
+- allow reflection and later Dream work to decide what durable meaning belongs in Layer 3
 
-A Qwen-VL-class model is a likely fit for the first Artifact Parser profile because the same intake path should be able to read both documents and images.
+The key rule is:
 
-The parser may use chunking internally to keep large artifacts bounded. Those chunks are not a second durable memory tier. The durable Cortex record remains the knowledge object created or updated by each source-linked slice.
+- raw source bodies belong in Layer 5
+- shaped working bodies belong in Layer 4
+- durable semantic conclusions belong in Layer 3
 
-Context-aware chunking and related RAG ingestion strategies are most relevant here. They help preserve document structure before knowledge extraction without turning chunks themselves into the durable memory model.
+## Intake Lanes
 
-## Why Source Location Matters
+The main intake lanes are:
 
-Each imported slice should carry source references such as:
+### Reference Intake
 
-- `artifact_id`
-- page, section, frame, or region
-- character or offset range when available
+For outside material such as:
 
-This keeps memory traceable, reviewable, and updatable when the source artifact changes.
+- web links
+- uploaded PDFs
+- research sources
 
-External source location is provenance, not organization. Cortex should be able to preserve where an artifact came from without depending on that source path for its internal layout, retrieval behavior, or human inspection hierarchy.
+This usually lands first as `reference_cache`.
 
-## Canonical Artifact Identity
+It is one-way by default and follows shorter retention rules.
 
-Import should create a Cortex-managed artifact record with:
+### Owned-Source Intake
 
-- a stable internal `artifact_id`
-- provider identity and provider-local location
-- a deterministic Cortex resolution path
-- source provenance such as original URI, Drive file ID, chat attachment reference, or import session
-- authority mode such as `cortex_owned` or `external_authoritative`
-- links to resulting knowledge objects and later promoted artifacts
+For user-owned or intentionally retained high-signal material such as:
 
-That separation matters because imported source systems are allowed to drift. Files may be renamed, moved, re-sliced, or deleted in their original environment while Cortex still needs a stable evidence surface.
+- business plans
+- budgets
+- structured personal documents
+- durable internal notes
 
-## Storage Boundary
+This has a stronger trust and retention posture than generic references.
 
-- the configured artifact provider or `Git` keeps the canonical artifact body
-- the knowledge plane keeps decomposition, retrieval indexes, and intake metadata
-- Cortex remains the mutation authority over Layer 3 durable memory
+It becomes the basis for later source maintenance and dirty-state workflows.
 
-Imported artifacts are evidence. Promoted artifacts are derived human-facing outputs. Both should be addressable through the same Cortex artifact identity model even if their backing providers differ.
+## What Layer 4 Should Receive
 
-## Retention And Pruning
+Artifact intake should produce bounded Layer 4 forms such as:
 
-Not every imported artifact deserves permanence.
+- summaries
+- extracted snippets
+- decomposition chunks
+- linked source records
+- retrieval-ready operational bodies
 
-Dream or other REM routines may:
+It should not copy entire raw bodies into Layer 4 by default.
 
-- prune artifacts that produced no durable reused memory
-- retire weak import-only knowledge objects
-- keep a lightweight retained record with summary and provenance when the original file should no longer stay resident
+## Identity And Provenance
+
+Each intake result should preserve enough source linkage to support:
+
+- review
+- reprocessing
+- dirty-state comparison
+- later promotion or supersession
+
+Useful source references include:
+
+- stable source anchor or evidence id
+- revision or fetch identifier when available
+- page, section, region, or offset hints when available
 
 ## Related Concepts
 
-- [Knowledge Object](knowledge-object.md)
-- [Typed Signals](typed-signals.md)
+- [Artifact Provider](artifact-provider.md)
+- [Artifact Promotion](artifact-promotion.md)
 - [Bootstrap Ingestion](bootstrap-ingestion.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
-- [Artifact Provider](artifact-provider.md)
-- [Artifact Promotion](artifact-promotion.md)
 - [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

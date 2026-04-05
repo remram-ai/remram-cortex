@@ -6,7 +6,7 @@ It watches the High-Signal Mamba Stream and decides when a bounded high-signal w
 
 Its main job is to queue opportunistic processing when GPU cycles are free instead of waiting only for session-end or batch schedules.
 
-It is not part of the base Phase 1 spine.
+It is not part of the base Cortex spine before the optimization phase.
 
 ## What Intuition Does
 
@@ -24,7 +24,7 @@ Intuition is blocked by `Mamba`.
 
 That means:
 
-- in Phase 1 and Phase 2, Cortex uses boundary-triggered semantic processing without Intuition
+- in Phases 0 through 4, Cortex uses boundary-triggered semantic processing without Intuition
 - once `Mamba` lands, Intuition can consume the High-Signal Mamba Stream as its default near-time feed
 
 This gives Intuition:

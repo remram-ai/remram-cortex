@@ -2,12 +2,12 @@
 
 ## Core Scenarios
 
-1. Incubation workspaces can exist in Layer 4 without requiring a Layer 5 artifact.
-2. External reference material can live in Layer 4 without becoming canonical Git content.
-3. Decomposed artifact knowledge remains revision-aware when a canonical artifact does exist.
-4. Dirty-state tracking marks anchors when operational knowledge outruns canonical revisions.
-5. Publication and re-ingestion realign Layer 4 and Layer 5 when canon is warranted.
-6. Once canon exists, meaningful Layer 5 revision can trigger bottom-up reprocessing into Layer 4 and Layer 3 reconciliation.
+1. Chat-derived Layer 4 support bodies can exist without requiring an authored Layer 5 artifact.
+2. External reference material can live in Layer 4 without becoming authored Git content.
+3. Owned-source documents can introduce dirty-state dual-version semantics without becoming authored canon immediately.
+4. Decomposed knowledge remains revision-aware when an authored artifact does exist.
+5. Publication and re-ingestion realign Layer 4 and Layer 5 when authored canon is warranted.
+6. Once authored canon exists, meaningful Layer 5 revision can trigger bottom-up reprocessing into Layer 4 and Layer 3 reconciliation.
 
 ## Failure Checks
 
@@ -18,8 +18,9 @@
 
 ## Evidence Of Completion
 
-- one incubation workspace lifecycle with no canonical artifact
+- one chat-derived support-body lifecycle with no authored artifact
 - one external reference lifecycle with summaries and retrieval records
+- one owned-source maintenance lifecycle with dirty-state and reprocessing
 - one artifact lifecycle from canonical source to operational knowledge to redraft
 - one re-ingestion pass after canonical revision update
 - one bottom-up canonical reprocessing case after a meaningful Layer 5 revision

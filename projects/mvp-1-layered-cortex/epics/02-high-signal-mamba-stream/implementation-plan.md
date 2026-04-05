@@ -4,9 +4,7 @@
 
 Build the High-Signal Mamba Stream as Cortex's narrow always-on high-signal channel between live session activity and downstream consumers.
 
-This epic is Phase 3 by default.
-
-It can be pulled forward as a Phase `1.5` spike only if the post-Phase-1 gate says local continuity pressure justifies it.
+This epic is Phase 5 by default.
 
 ## Workstreams
 

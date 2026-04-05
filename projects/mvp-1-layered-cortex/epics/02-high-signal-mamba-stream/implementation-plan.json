@@ -1,7 +1,7 @@
 {
   "epic_id": "02_high_signal_mamba_stream",
   "objective": "Build the High-Signal Mamba Stream as a narrow always-on high-signal channel between session activity and downstream consumers.",
-  "delivery_posture": "Phase 3 by default; optional Phase 1.5 spike if the post-Phase-1 decision gate says continuity pressure justifies it.",
+  "delivery_posture": "Phase 5 by default as part of the optimization loop.",
   "dependencies": [
     "01_policy_and_openclaw_integration",
     "phase_1_boundary_triggered_semantic_processing",

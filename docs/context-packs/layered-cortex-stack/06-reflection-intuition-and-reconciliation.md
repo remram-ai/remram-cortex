@@ -6,7 +6,7 @@ Reflection is the near-time path.
 
 It exists before `Mamba`.
 
-In Phase 1 and Phase 2, reflection runs on:
+In Phases 1 through 4, reflection runs on:
 
 - turn-end semantic processing
 - session-end semantic processing
@@ -33,7 +33,7 @@ Mamba later supercharges an already-valid reflection path.
 
 ## Intuition
 
-Intuition is not part of the base Phase 1 architecture.
+Intuition is not part of the base architecture before the optimization phase.
 
 It is the later Mamba-side signal evaluator that decides when high-signal windows should wake hotter layered ingestion.
 
@@ -56,7 +56,7 @@ Fast cross-thread continuity is allowed.
 
 Silent authority is not.
 
-Session-end reconciliation is the primary trust boundary in Phase 1.
+Session-end reconciliation is the primary trust boundary in the Phase 1 chat-memory loop.
 
 ## Dream
 

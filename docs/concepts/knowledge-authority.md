@@ -12,7 +12,7 @@ Cortex owns:
 - notion governance and reconciliation
 - semantic retrieval over durable memory
 - reflection and maintenance
-- the split between operational knowledge and canonical artifacts
+- the split between operational knowledge and Layer 5 evidence
 
 ## What Cortex Does Not Own
 
@@ -20,10 +20,10 @@ Cortex does not own:
 
 - OpenClaw execution
 - OpenClaw session mechanics
-- canonical artifact truth by mere possession of a copy
+- Layer 5 evidence truth by mere possession of a copy
 
 OpenClaw executes.
-Git or another authoritative provider may hold canonical artifact truth.
+Layer 5 may hold the source-of-record evidence body.
 Cortex decides what becomes durable semantic memory.
 
 ## Why This Boundary Matters
@@ -40,7 +40,8 @@ Cortex prevents that drift by enforcing the layer split:
 1. working memory is operational
 2. durable memory is semantic
 3. operational knowledge bodies remain operational
-4. canonical artifacts remain ground truth
+4. Layer 5 evidence remains source-of-record rather than semantic truth
+5. authored canon is only one permanent Layer 5 evidence class, not the whole layer
 
 ## Related Concepts
 

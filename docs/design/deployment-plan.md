@@ -2,9 +2,7 @@
 
 This document records the active delivery posture for the locked Cortex architecture.
 
-The long-term architecture still includes `Mamba`.
-
-The important sequencing clarification is that Cortex is already valid without it.
+The architecture is being delivered as a progressive activation of system loops rather than one flat implementation sprint.
 
 ## Long-Term Stack
 
@@ -16,81 +14,98 @@ The long-term stack remains:
 - `Graphiti`
 - `Neo4j`
 - `Postgres`
-- `Git` when canonical artifact publication is warranted
+- a Layer 5 evidence system, with `Git` used for authored artifacts when publication-grade canon is warranted
 - a narrow High-Signal `Mamba` listener added later as a real-time supercharge layer
 
-## Phase 1: Prove The Core Spine Without Live Mamba
+## Phase 0: OpenClaw Baseline
 
-Phase 1 focuses on the minimum architecture needed to prove the layered model and core lifecycle.
+Phase 0 establishes the vanilla baseline.
 
-Phase 1 includes:
+It includes:
 
 - `OpenClaw`
+- local-model execution
+- safe baseline config
+- session pruning and compaction
+- `QMD` enabled in the public OpenClaw posture
+
+It does not yet include Cortex-specific reflection, durable memory, or Layer 5 evidence orchestration.
+
+## Phase 1: Chat Memory Loop
+
+Phase 1 is the first full Cortex loop.
+
+It includes:
+
 - Cortex policy and integration layer
-- `QMD` for hot working-memory retrieval and notion storage
+- Layer 5 runtime-evidence capture for chat transcripts
 - turn-end, session-end, and explicit-checkpoint semantic processing
-- session-end reconciliation
+- Reflection and Dream over chat-derived evidence
 - `Graphiti + Neo4j` for Layer 3 durable semantic memory
-- `Postgres` for runtime evidence and Layer 4 operational knowledge
-- basic Layer 5 canonical artifact handling when applicable
+- `Postgres` for narrow Layer 4 chat-derived support bodies and the operational middle layer
 - reflection-driven `QMD` cleanup
-- Layer 3 relationship-building and promotion readiness signals
+- session-end reconciliation
 
 Phase 1 does not require:
 
+- reference ingestion
+- owned-source sync
+- Git-backed authored canon
 - live always-on `Mamba`
-- continuous in-session semantic checkpoint generation
 
-The Phase 1 rule is:
+## Phase 2: Reference Decomposition Loop
 
-- prove the spine with boundary-triggered semantic processing first
-- keep clean interfaces so `Mamba` can plug in later without architectural churn
+Phase 2 introduces one-way outside material.
 
-Phase 1 should read as a complete proof surface in its own right.
+It includes:
 
-## Post-Phase-1 Decision Gate
+- uploaded reference documents
+- web-link snapshot fetches
+- a shared decomposition spine for those reference inputs
+- Layer 4 reference-derived knowledge bodies
+- Layer 3 meaning extraction from those decomposed references
 
-After Phase 1, evaluate whether local continuity pressure is becoming a meaningful problem.
+This phase makes outside material usable without yet introducing source ownership or dirty-state complexity.
 
-If limited VRAM and local context pressure are causing:
+## Phase 3: Collaborative Source Maintenance Loop
 
-- real continuity loss
-- prompt bloat
-- poor long-running session behavior
+Phase 3 introduces owned high-signal documents as living maintained sources.
 
-then `Mamba` may be pulled forward immediately as a Phase `1.5` spike.
+It includes:
 
-If not, keep the planned sequencing and add `Mamba` later as a supercharge.
+- owned "file cabinet" documents
+- dirty-state as a dual-state model
+- current-version and derived-version tracking
+- diff and reconciliation surfaces
+- source reprocessing back into Layer 4 and Layer 3
 
-This is a clear fork point, not an unresolved debate.
+This is the phase where source-sync becomes real.
 
-## Phase 2: Deepen Operational Knowledge And Artifact Lifecycles
+## Phase 4: Artifact Promotion Loop
 
-Phase 2 expands the Layer 4 and Layer 5 story.
+Phase 4 introduces authored canon.
 
-Phase 2 includes:
+It includes:
 
-- richer Layer 4 workspace handling
-- budding idea workspaces spanning many threads
-- stronger external reference handling
-- clearer workspace and artifact category distinctions
-- stronger dirty-state, redraft, and promotion flows
-- Layer 3-assisted organization of Layer 4 operational work
+- promotion candidate detection
+- artifact drafting
+- Git as the canonical backend for authored artifacts
+- bottom-up reprocessing from authored canon into Layer 4 and Layer 3
 
-This phase makes the Layer 4 and Layer 5 story feel real and usable.
+This is the phase where the system begins producing maintained authored assets, not just memory and decomposition.
 
-## Phase 3: Add Mamba As Hardening And Optimization
+## Phase 5: Optimization Loop
 
-Phase 3 introduces `Mamba` as the default always-on Layer 2-adjacent listener.
+Phase 5 introduces optimization and hardening.
 
-At that point, `Mamba` becomes:
+It includes:
 
-- a small always-on high-signal listener
-- a producer of a typed semantic channel
-- an optimization layer for continuity and live-session quality
-- a lower-latency signal source for working memory, notion staging, Intuition, and reflection
+- `Mamba` as the narrow always-on Layer 2-adjacent listener
+- `Intuition` as a later signal evaluator on top of Mamba
+- bounded routing into more expensive downstream work
+- performance and reliability hardening
 
-`Mamba` still remains narrow.
+`Mamba` remains narrow.
 
 It is not:
 
@@ -113,7 +128,7 @@ It is not:
 
 - policy composition
 - bounded context assembly
-- turn-end and session-end semantic processing
+- boundary-triggered semantic processing
 - notion staging and cleanup rules
 - Layer 3 and Layer 4 orchestration
 - reflection and Dream orchestration
@@ -136,21 +151,20 @@ It is not:
 
 ### Postgres
 
-- runtime evidence authority
 - Layer 4 operational knowledge bodies
 - reference summaries and links
-- decomposed artifact knowledge where canonical artifacts exist
-- retrieval metadata
+- decomposed artifact knowledge
 - workflow and dirty-state fields
 - retention metadata for later cold-storage migration
+- operational evidence-control state where needed by the implementation
 
 ### Git
 
-- canonical publication truth when canon is warranted
+- Layer 5 `authored_artifact` backend in the artifact-promotion phase and later
 
 ### Mamba Later
 
-When Phase 3 arrives, `Mamba` adds:
+When Phase 5 arrives, `Mamba` adds:
 
 - always-on Layer 2-adjacent high-signal listening
 - typed semantic event production
@@ -161,55 +175,51 @@ When Phase 3 arrives, `Mamba` adds:
 
 It does not replace deeper evidence-backed maintenance passes.
 
-Reflection, Dream, and reconciliation still retain access to fuller evidence and evidence packages when they need real depth.
-
-## Evidence Retention
-
-Runtime evidence should stay hot only for a bounded recent window.
-
-Active posture:
-
-- keep full transcripts hot for roughly `90` to `120` days since last access
-- then move them to cold storage
-- keep compact metadata and semantic checkpoints hot much longer
-
 ## Bring-Up Order
+
+### Phase 0 Bring-Up
+
+1. `OpenClaw`
+2. local model
+3. safe baseline config
+4. `QMD`
 
 ### Phase 1 Bring-Up
 
-1. `OpenClaw`
-2. `Postgres`
-3. `Neo4j`
-4. `Graphiti`
-5. Cortex integration layer
-6. `QMD`
-7. Git-backed canonical artifact flow when applicable
+5. Layer 5 runtime-evidence store
+6. `Postgres`
+7. `Neo4j`
+8. `Graphiti`
+9. Cortex integration layer
+10. Reflection and Dream hooks
 
-### Phase 3 Add-On
+### Later Bring-Up
 
-8. narrow `Mamba` listener
+11. reference-decomposition workers
+12. owned-source sync and dirty-state machinery
+13. `Git`-backed artifact flow
+14. narrow `Mamba` listener
+15. `Intuition`
 
 ## MVP Simplicity Rule
 
-The architecture should avoid unnecessary service sprawl.
+The architecture should avoid unnecessary service sprawl in the early phases.
 
-That means Phase 1 explicitly excludes:
+That means the early phases explicitly exclude:
 
 - `OpenSearch`
 - a second graph system
 - a second Graphiti usage pattern
 - a giant separate external working-memory service
-- live always-on `Mamba` by default
+- live always-on `Mamba`
 
 ## Bottom Line
 
-The deployment shape is intentionally smaller in Phase 1:
+The deployment shape is intentionally progressive:
 
-- OpenClaw at the framework center
-- QMD for hot Layer 2 memory
-- Graphiti + Neo4j for Layer 3
-- Postgres for the operational middle
-- Git only when canonical artifact publication is warranted
-- boundary-triggered semantic processing instead of live Mamba
-
-`Mamba` remains part of the long-term design, but as a later supercharge to an already-working spine unless the post-Phase-1 gate pulls it forward.
+- Phase 0 establishes vanilla OpenClaw
+- Phase 1 proves the chat-derived Cortex loop
+- Phase 2 adds one-way references
+- Phase 3 adds maintained owned sources
+- Phase 4 adds authored canon
+- Phase 5 optimizes the whole system with Mamba and Intuition

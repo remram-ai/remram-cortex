@@ -2,13 +2,13 @@
 
 ## Cortex In One Sentence
 
-Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and Git-backed canon only when canonical publication is actually warranted.
+Cortex is a five-layer knowledge architecture built around OpenClaw, QMD hot working memory, Graphiti plus Neo4j durable memory, Postgres operational knowledge, and a Layer 5 evidence system spanning runtime evidence, reference cache, and authored canon when publication-grade authorship is actually warranted.
 
 The long-term architecture still wants a narrow always-on Mamba signal stream, but the core spine no longer reads as if it is waiting on Mamba to become valid.
 
 ## The Main Architectural Move
 
-The architecture no longer tries to force all context, memory, and artifacts through one substrate.
+The architecture no longer tries to force all context, memory, and evidence through one substrate.
 
 It now separates:
 
@@ -16,7 +16,7 @@ It now separates:
 2. `Working Memory`
 3. `Durable Memory`
 4. `Operational Knowledge`
-5. `Canonical Artifacts`
+5. `Evidence`
 
 The clean authority model is:
 
@@ -24,7 +24,7 @@ The clean authority model is:
 - Layer 2 = hot working continuity
 - Layer 3 = durable semantic truth
 - Layer 4 = operational knowledge truth
-- Layer 5 = canonical publication truth
+- Layer 5 = source-of-record evidence
 
 ## The Chosen Stack
 
@@ -33,34 +33,34 @@ The clean authority model is:
 - `QMD` is the Layer 2 hot working-memory substrate and notion store.
 - `Graphiti + Neo4j` is Layer 3 durable memory.
 - `Postgres` is the operational middle-layer authority.
-- `Git` is used only when canonical artifact publication is warranted.
+- Layer 5 carries `runtime_evidence`, `reference_cache`, and `authored_artifact`.
+- `Git` is used only for the authored-artifact class when canon is warranted.
 - `Mamba` remains in the long-term architecture as a later always-on supercharge layer.
 
 ## The Main Sequencing Clarification
 
-Phase 1 proves the spine without live `Mamba`.
+The delivery posture is now progressive.
 
-Instead, Phase 1 uses:
+The sequence is:
 
-- turn-end semantic processing
-- session-end semantic processing
-- checkpoint-triggered semantic processing when needed
-
-After Phase 1 there is a clear decision gate:
-
-- if local VRAM and context pressure are causing real continuity problems, pull `Mamba` forward as a Phase `1.5` spike
-- otherwise continue to Phase 2 and add `Mamba` in Phase 3 as a supercharge rather than a missing dependency
+- `Phase 0`: vanilla OpenClaw baseline
+- `Phase 1`: chat-derived memory
+- `Phase 2`: one-way reference decomposition
+- `Phase 3`: owned-source maintenance
+- `Phase 4`: artifact promotion
+- `Phase 5`: `Mamba`, `Intuition`, and optimization
 
 ## The Main Runtime Story
 
 1. OpenClaw runs the session.
-2. QMD supports hot working-memory retrieval and notion storage.
-3. turn-end and session-end processing produce typed semantic outputs.
-4. those outputs can update notions, reflection inputs, and bounded continuity.
-5. reflection uses Layer 3 relationships to help organize Layer 4 workspaces.
-6. high-value meaning promotes into Graphiti durable memory when warranted.
-7. Dream does slower consolidation and promotion readiness work.
-8. later, Mamba can improve the same runtime by producing a better always-on signal without changing the underlying lifecycle.
+2. Layer 5 records runtime evidence.
+3. QMD supports hot working-memory retrieval and notion storage.
+4. turn-end and session-end processing produce typed semantic outputs.
+5. those outputs can update notions, reflection inputs, and bounded continuity.
+6. reflection uses Layer 3 relationships to help organize Layer 4 workspaces.
+7. high-value meaning promotes into Graphiti durable memory when warranted.
+8. Dream does slower consolidation and promotion readiness work.
+9. later, Mamba can improve the same runtime by producing a better always-on signal without changing the underlying lifecycle.
 
 That gives the system:
 
@@ -79,13 +79,13 @@ The architecture solves it like this:
 
 - Layer 3 identifies that many threads belong to the same emerging concept
 - Layer 4 holds the evolving workspace body for that concept
-- Layer 5 only becomes relevant if the work is ready for canonical publication
+- Layer 5 already matters as evidence, but authored canon only becomes relevant if the work is ready for publication
 
 This is the medium-horizon operational space that earlier versions of the architecture underdefined.
 
 ## The Main Artifact Story
 
-Not all operational knowledge bodies are canonical artifacts.
+Not all operational knowledge bodies are authored artifacts.
 
 Layer 4 can hold:
 
@@ -93,9 +93,11 @@ Layer 4 can hold:
 - external reference material
 - authored operational artifact bodies
 
-Layer 5 only exists when publication-grade canon is warranted.
+Layer 5 always exists as the evidence layer.
 
-External references do not automatically become Git-backed canonical artifacts.
+Only the authored-artifact subset depends on publication-grade canon being warranted.
+
+External references do not automatically become authored canon.
 
 ## Why QMD Matters
 
@@ -120,7 +122,7 @@ It is:
 
 It should stay narrow.
 
-It is scheduled later for sequencing reasons, not because the architecture stopped wanting it.
+It is scheduled in the optimization phase, not because the architecture stopped wanting it.
 
 It does not replace full evidence for deeper maintenance passes.
 
@@ -134,10 +136,9 @@ Postgres is not just a decomposition database.
 
 It is the operational middle-layer authority for:
 
-- runtime evidence
 - Layer 4 bodies
 - reference records and summaries
-- decomposed artifact knowledge where canonical artifacts exist
+- decomposed artifact knowledge where authored artifacts exist
 - metadata
 - workflow state
 
@@ -149,8 +150,8 @@ The active Phase 1 design explicitly avoids:
 
 - OpenSearch in the near-term stack
 - a second Graphiti usage pattern
-- pushing budding ideas into Git too early
-- treating external references like authored canonical artifacts
+- pushing budding ideas into authored canon too early
+- treating external references like authored artifacts
 - making Mamba a universal reasoning engine
 - requiring live Mamba to prove the spine
 
@@ -162,5 +163,6 @@ The architecture is now cleaner and the sequencing is cleaner too:
 - QMD for hot working continuity and notions
 - Graphiti for durable semantic truth
 - Postgres for operational knowledge truth
-- Git only for canonical publication when that is actually needed
+- Layer 5 for source-of-record evidence
+- Git only for authored canon when that is actually needed
 - Mamba later as a narrow hardening and optimization supercharge to an already-working spine

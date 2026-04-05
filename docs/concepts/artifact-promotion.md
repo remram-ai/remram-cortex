@@ -1,14 +1,18 @@
 # Artifact Promotion
 
-Artifact promotion is the process of moving stabilized knowledge out of Cortex-only memory and into a durable human-managed document or repository artifact.
+Artifact promotion is the process of turning stabilized Layer 4 work into a Layer 5 `authored_artifact`.
 
-Promoted artifacts are derived projections of validated knowledge, not the canonical memory source.
+Promotion is the point where authored canon becomes warranted for a specific body of work.
 
-They should be written through a configurable artifact provider so revisions remain reviewable and traceable over time.
+It is not the same as:
 
-Imported source artifacts may live behind that same provider abstraction, but they enter Cortex through [Artifact Intake](artifact-intake.md). Promotion is the reverse direction: validated memory becoming a durable human-facing artifact.
+- runtime evidence capture
+- reference intake
+- owned-source intake
 
-The shared provider model does not imply shared semantics. Imported artifacts are evidence surfaces with preserved provenance. Promoted artifacts are Cortex-authored outputs. Neither should inherit their canonical organization from an external folder tree.
+Those are intake flows.
+
+Promotion is the authored publication flow.
 
 ## When Promotion Makes Sense
 
@@ -19,25 +23,32 @@ Promotion is appropriate when the result is:
 - reviewable and worth versioning
 - better expressed as a document, spec, or other durable artifact
 
-For collaborative human-readable artifacts, a Google Workspace provider may be the most practical default. For private or workflow-oriented artifacts, a local Git provider may still be preferred.
-
 ## Promotion Rule
 
-Not every knowledge object should be promoted. Cortex remains the working memory authority. Promotion is for knowledge that benefits from durable history, review, and explicit reuse.
+Not every knowledge object or workspace should be promoted.
 
-Promotion target should be chosen by artifact policy, not hardcoded globally.
+Layer 4 remains the operational authority during active work.
+
+Promotion is for work that benefits from:
+
+- canonical authorship
+- revision history
+- stable outward reuse
+- explicit maintenance as canon
 
 ## After Promotion
 
-Promotion requires review and approval before commit or publish.
+Promotion requires review and approval before publish.
 
-Promoted artifacts should be linked back to their originating knowledge and reindexed into Cortex as higher-authority document sources.
+In the current architecture, `Git` is introduced in the promotion phase as the first backend for authored canon.
 
-If the linked knowledge changes later, Dream may redraft the artifact and update the provider copy so the artifact surface remains synchronized with the evolved knowledge graph.
+Once promotion happens:
 
-If the provider supports watchable collaborative edits, human changes may trigger re-ingestion or reconciliation back into Cortex rather than silently drifting away from the knowledge graph.
+- the authored artifact becomes the canonical source for that body
+- Layer 4 remains the operational working body around it
+- Layer 3 keeps support, supersession, and semantic relationships around it
 
-Once promotion happens, the canonical artifact should be treated as a live source, not a dead endpoint.
+That means promotion is not a one-way archive move.
 
 Meaningful canonical revision must be able to:
 
@@ -51,3 +62,4 @@ Meaningful canonical revision must be able to:
 - [Artifact Provider](artifact-provider.md)
 - [Reflection](reflection.md)
 - [Dream Cycle](dream-cycle.md)
+- [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

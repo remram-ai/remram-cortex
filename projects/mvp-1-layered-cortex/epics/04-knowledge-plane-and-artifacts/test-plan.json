@@ -3,9 +3,9 @@
   "scenarios": [
     {
       "id": "01",
-      "name": "Layer 4 operational workspace",
+      "name": "Phase 1 Layer 4 support bodies",
       "assertions": [
-        "An incubation workspace can exist without a Layer 5 artifact.",
+        "Chat-derived support bodies can exist without an authored Layer 5 artifact.",
         "Operational bodies remain explicit about anchor identity and workflow state."
       ]
     },
@@ -19,6 +19,14 @@
     },
     {
       "id": "03",
+      "name": "Owned-source maintenance",
+      "assertions": [
+        "Owned high-signal source documents can introduce dirty-state dual-version semantics.",
+        "Source changes can trigger reprocessing before authored canon exists."
+      ]
+    },
+    {
+      "id": "04",
       "name": "Revision-aware artifact knowledge",
       "assertions": [
         "Layer 4 slices link back to explicit artifact revisions.",
@@ -26,15 +34,15 @@
       ]
     },
     {
-      "id": "04",
+      "id": "05",
       "name": "Canonical truth boundary",
       "assertions": [
-        "Layer 5 remains the canonical publication surface.",
-        "Operational slices do not replace publication truth."
+        "Layer 5 remains the source-of-record evidence layer.",
+        "Operational slices do not replace authored canon when authored canon exists."
       ]
     },
     {
-      "id": "05",
+      "id": "06",
       "name": "Re-ingestion loop",
       "assertions": [
         "Revision changes can trigger re-ingestion.",
@@ -42,16 +50,16 @@
       ]
     },
     {
-      "id": "06",
+      "id": "07",
       "name": "Bottom-up canonical reprocessing",
       "assertions": [
-        "After promotion, Layer 5 acts as the canonical source.",
+        "After promotion, the authored-artifact class in Layer 5 acts as the canonical source.",
         "Meaningful canonical revision can trigger Layer 4 re-ingestion and Layer 3 reconciliation."
       ]
     }
   ],
   "non_goals": [
-    "Treating Layer 4 as the publication source of truth",
+    "Treating Layer 4 as authored canon",
     "Copying full artifacts into Layer 3 durable memory",
     "Forcing every Layer 4 record into Git canon"
   ]

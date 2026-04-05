@@ -8,19 +8,19 @@ If a term here conflicts with the architecture or concept docs, update them toge
 
 ### Artifact
 
-A durable document, image, plan, or source object addressed through Cortex artifact identity.
+A Layer 5 source body or promoted authored body addressed through stable Cortex identity.
 
 ### Artifact Intake
 
-The path that turns external artifacts into Cortex evidence, decomposed knowledge, and optionally durable memory support.
+The path that turns non-runtime source material into Layer 5 evidence and Layer 4 operational knowledge.
 
 ### Artifact Provider
 
-The backing system that stores or resolves canonical artifact content.
+The backend that stores or resolves a Layer 5 evidence body. `Git` is one provider for authored artifacts, but Layer 5 is not defined by Git alone.
 
 ### Artifact Promotion
 
-The path that turns stabilized internal understanding into a reviewable canonical artifact.
+The path that turns stabilized internal understanding into a reviewable Layer 5 authored artifact.
 
 ## B
 
@@ -32,7 +32,7 @@ The rule that runtime injection must stay small, deliberate, and inspectable.
 
 ### Canonical Artifact
 
-The Layer 5 version of an artifact that serves as publication-grade ground truth.
+The publication-grade Layer 5 form of an authored artifact, with stronger permanence and revision guarantees than other evidence classes.
 
 ### Confidence
 
@@ -58,6 +58,10 @@ Layer 3 semantic memory that persists beyond sessions and compaction.
 
 Raw material the system can learn from, such as transcripts, tool outputs, or source artifacts.
 
+### Evidence Layer
+
+Layer 5 source-of-record evidence, including `runtime_evidence`, `reference_cache`, and `authored_artifact`.
+
 ### Evidence Package
 
 A closed, immutable record used for audit, replay, and reconciliation.
@@ -65,6 +69,18 @@ A closed, immutable record used for audit, replay, and reconciliation.
 ### External Reference Material
 
 Reference material the user does not necessarily own or intend to canonize, such as uploaded PDFs, podcasts, articles, or research sources.
+
+### Reference Cache
+
+A Layer 5 external-reference evidence class with shorter-lived retention than authored artifacts and a different pruning horizon than Layer 4 meaning.
+
+### Runtime Evidence
+
+Layer 5 evidence derived from sessions, transcripts, and other runtime activity.
+
+### Source Of Record
+
+The layer role that owns persisted evidence bodies without owning their semantic meaning. In Cortex, this is Layer 5.
 
 ## G
 
@@ -78,7 +94,7 @@ A hard-bounding field that decides whether something is eligible before semantic
 
 The later always-on high-signal stream built from live session activity.
 
-It is deferred by default until Phase 3.
+It is deferred until the optimization phase.
 
 ## K
 

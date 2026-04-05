@@ -8,13 +8,14 @@ This MVP proves the locked layered architecture rather than a loose collection o
 
 In scope:
 
+- a phased activation model starting from a vanilla OpenClaw baseline
 - Layer 1 policy
 - Layer 2 OpenClaw plus `QMD` hot working memory
 - turn-end, session-end, and checkpoint-triggered semantic processing
 - Layer 3 durable semantic memory
 - Layer 4 operational knowledge
-- Layer 5 canonical artifacts when warranted
-- reflection, Dream, reconciliation, and promotion readiness
+- Layer 5 evidence flows, with authored canon introduced later
+- reflection, Dream, reconciliation, and later promotion readiness
 
 Out of scope:
 
@@ -22,10 +23,15 @@ Out of scope:
 - a second graph system
 - a second Graphiti usage pattern
 - pushing budding ideas into Git by default
-- live always-on `Mamba` in Phase 1 by default
+- live always-on `Mamba` before the optimization phase
 
 ## Sequencing Rule
 
-Phase 1 proves the spine without live `Mamba`.
+The delivery contract is:
 
-After Phase 1, a simple decision gate determines whether `Mamba` is needed immediately as a Phase `1.5` spike or remains deferred until Phase 3.
+- `Phase 0` establishes a safe vanilla OpenClaw baseline
+- `Phase 1` proves the chat-derived Cortex memory loop
+- `Phase 2` adds one-way reference decomposition
+- `Phase 3` adds collaborative maintenance of owned source documents
+- `Phase 4` adds authored artifact promotion and canonical reprocessing
+- `Phase 5` adds Mamba, Intuition, performance work, and hardening

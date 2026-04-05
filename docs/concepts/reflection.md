@@ -8,7 +8,7 @@ It is how Cortex turns semantic outputs into staged memory, Layer 4 workspace up
 
 Reflection exists before `Mamba`.
 
-In Phase 1 and Phase 2, reflection runs on:
+In Phases 1 through 4, reflection runs on:
 
 - turn-end semantic processing
 - session-end semantic processing
@@ -18,7 +18,7 @@ Later, `Mamba` becomes a better real-time signal source for the same downstream 
 
 That does not mean Reflection is waiting on `Mamba` to become real.
 
-The reflection lifecycle already exists in Phase 1 and Phase 2.
+The reflection lifecycle already exists before the optimization phase.
 
 That means Mamba improves:
 

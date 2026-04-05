@@ -20,11 +20,15 @@ Decomposed artifact knowledge is not the same thing as either runtime context or
 
 It is the Layer 4 operational retrieval surface.
 
-## Canonical Artifacts
+## Evidence
 
-Canonical artifacts are not memory either.
+Layer 5 evidence is not memory either.
 
-They are Layer 5 ground truth.
+It is source-of-record material, not semantic meaning.
+
+Canonical authored artifacts are only one Layer 5 evidence class.
+
+Other common Layer 5 evidence classes are runtime evidence and cached external references.
 
 ## Why The Distinction Matters
 

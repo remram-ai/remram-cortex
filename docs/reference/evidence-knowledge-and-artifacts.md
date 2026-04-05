@@ -2,16 +2,17 @@
 
 The current stack splits evidence and knowledge cleanly:
 
-- runtime raw evidence closes into `Postgres`
+- Layer 5 source-of-record evidence includes runtime evidence, reference cache, and authored artifacts
 - Layer 4 operational knowledge lives in `Postgres + pgvector`
-- canonical artifacts live in `Git` or another authoritative provider
+- authored canon may live in `Git` or another authoritative provider when warranted
 
 Design rule:
 
 - raw evidence is not the default consumer surface
 - semantic outputs are the default consumer surface
-- Layer 4 operational knowledge may move ahead of Layer 5 canonical artifacts during active work
-- publication and re-ingestion bring them back into alignment
+- Layer 4 operational knowledge may move ahead of Layer 5 authored canon during active work
+- publication and re-ingestion bring authored canon back into alignment with Layer 4 and Layer 3
+- Layer 5 should keep a stable evidence contract even when backend details vary by evidence class or phase
 
 Sequencing note:
 
@@ -31,9 +32,10 @@ That is why the current default is:
 
 Operational rule:
 
-- treat runtime evidence packages and canonical artifact revisions as different backing stores behind one logical evidence contract
-- keep `Postgres` as the operational evidence and Layer 4 authority
-- keep `Git` or the provider source as the canonical artifact authority
+- treat runtime evidence, reference-cache bodies, and authored-artifact revisions as different Layer 5 evidence classes behind one logical evidence contract
+- keep `Postgres` as the operational middle and Layer 4 authority
+- keep Layer 5 source records distinct from Layer 4 operational bodies even when the current implementation shares some infrastructure
+- do not make Layer 4 the lifecycle owner of Layer 5 evidence
 
 Do not treat all Layer 4 records as proto-artifacts.
 

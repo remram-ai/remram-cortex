@@ -54,11 +54,11 @@ Cortex augments Layer 2 with:
 - policy-aware bounded context assembly
 - semantic processing hooks that run at turn end, session end, and explicit checkpoints
 
-That is the Phase 1 posture.
+That is the post-baseline Cortex posture.
 
 It replaces the earlier passive "OpenClaw-native only" wording without requiring live Mamba on day one.
 
-The key posture is that this Layer 2 design is already real and useful before `Mamba` exists.
+The key posture is that this Layer 2 design is already real and useful before `Mamba` exists, and even before Cortex adds its own loops on top of the Phase 0 baseline.
 
 #### QMD Role
 
@@ -69,13 +69,24 @@ It is used for:
 - retrieving hot working continuity
 - storing notions
 - supporting tentative cross-thread continuity
+- supporting reranking and query expansion in the OpenClaw memory surface
+- supporting optional session-transcript indexing when that experimental posture is deliberately enabled
 - staying lightweight and fast through continuous cleanup
 
 `QMD` should not become a shadow durable-memory system.
 
+Phase 0 should treat `QMD` as a real baseline component rather than a later optimization.
+
+That means:
+
+- enable `QMD`
+- keep pruning and compaction on
+- use the OpenClaw-native fallback posture rather than inventing a second working-memory stack on day one
+- treat session-transcript indexing as an explicit choice rather than silently assuming it in baseline config
+
 ## Semantic Processing Before Mamba
 
-Phase 1 still needs semantic outputs.
+Phases 1 through 4 still need semantic outputs.
 
 It just produces them at boundaries instead of through a continuously running listener.
 
@@ -120,9 +131,9 @@ The preferred implementation pattern is:
 
 Delivery posture:
 
-- Phase 1 proves the spine without Mamba
-- after Phase 1 there is a decision gate for a possible Phase `1.5` spike
-- otherwise Mamba lands in Phase 3 as hardening, optimization, and continuity supercharge
+- Phase 0 establishes vanilla OpenClaw with `QMD`
+- Phases 1 through 4 use boundary-triggered semantic processing
+- Mamba lands in Phase 5 as hardening, optimization, and continuity supercharge
 
 When it arrives, it improves:
 

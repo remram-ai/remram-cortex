@@ -8,11 +8,11 @@ It is a conditioning pipeline for waking up the knowledge base, not a replacemen
 
 Bootstrap ingestion should:
 
-- read historical transcript sources through exports, backfill jobs, or other controlled read-only surfaces
-- extract structured knowledge objects, retrieval signals, and durable continuity cues
+- read historical transcript sources and retained source material through exports, evidence imports, or other controlled read-only surfaces
+- close those sources into Layer 5 evidence records where appropriate
+- extract Layer 4 operational bodies and Layer 3 durable continuity cues
 - build governance fields, relationships, and retrieval indexes
 - surface contradictions and candidate principles
-- initialize derived continuity views such as memory-map projections
 
 It must not rewrite transcripts or store them as durable Cortex memory.
 
@@ -34,7 +34,8 @@ Both produce structured knowledge, but bootstrap initializes the base while refl
 
 Bootstrap ingestion does not change the authority model:
 
-- OpenClaw still owns transcripts and session history
+- Layer 5 still holds evidence, not semantic truth
+- Layer 4 still holds operational bodies
 - Cortex still owns only structured durable knowledge
 - orchestration still controls retrieval use and runtime injection
 

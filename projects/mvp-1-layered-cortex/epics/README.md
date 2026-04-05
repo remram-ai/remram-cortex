@@ -1,13 +1,17 @@
 # Epics
 
-These epics are capability tracks, not a strict one-pass execution order.
+These epics are capability tracks inside the phased activation model, not the phase model itself.
 
-Current phase mapping:
+The phase plan is authoritative.
 
-- Phase 1: Epic 01, Epic 03, and the foundational portions of Epic 04 and Epic 05
-- Phase 2: the deeper workspace and artifact portions of Epic 04 and Epic 05
-- Phase 3: Epic 02 by default
-- optional Phase `1.5`: pull Epic 02 forward only if the post-Phase-1 decision gate says continuity pressure is real
+The current epic set should be read as implementation slices that cut across phases:
+
+- `Phase 0`: baseline OpenClaw configuration and runtime bring-up
+- `Phase 1`: foundational portions of Epics 01, 03, 04, and 05
+- `Phase 2`: the reference-decomposition portions of Epic 04
+- `Phase 3`: the owned-source maintenance portions of Epic 04 and Epic 05
+- `Phase 4`: the authored-promotion portions of Epic 04 and Epic 05
+- `Phase 5`: Epic 02 plus the later Intuition and optimization portions of Epic 05
 
 The active epic set is:
 

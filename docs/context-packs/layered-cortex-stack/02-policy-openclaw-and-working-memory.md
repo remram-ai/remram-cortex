@@ -39,8 +39,23 @@ QMD now explicitly owns:
 - hot working-memory retrieval
 - notion storage
 - tentative cross-thread continuity under tighter rules
+- stronger memory search behavior such as reranking and query expansion
+- optional transcript indexing when that experimental OpenClaw posture is deliberately enabled
 
 Reflection is explicitly allowed to keep QMD healthy.
+
+## Phase 0 Baseline
+
+Phase 0 is not "no memory."
+
+It is the safe vanilla OpenClaw baseline with:
+
+- `QMD` enabled
+- pruning and compaction on
+- a local model
+- no Cortex-owned reflection or durable-memory loop yet
+
+That baseline is what Cortex extends in Phase 1.
 
 ## Mamba In This Layer
 
@@ -52,7 +67,7 @@ Phase 1 and Phase 2 use:
 - session-end extraction
 - checkpoint-triggered extraction when needed
 
-Phase 3 adds Mamba as a narrow always-on listener that supercharges the same Layer 2 posture.
+Phase 5 adds Mamba as a narrow always-on listener that supercharges the same Layer 2 posture.
 
 Later, Intuition can sit on top of the Mamba stream to wake opportunistic high-signal processing while GPU headroom exists.
 
