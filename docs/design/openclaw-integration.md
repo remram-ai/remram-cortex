@@ -19,6 +19,42 @@ The architectural rule is:
 - do things the OpenClaw way when that path is good enough
 - extend OpenClaw cleanly before replacing it
 
+## Live Appliance Authority
+
+For live Moltbox appliance behavior, `moltbox-gateway` is the source of truth.
+
+That means:
+
+- the managed service inventory
+- the public `moltbox` CLI contract
+- restricted-operator verification surfaces
+- snapshot-first recovery behavior
+- the current web baseline
+
+should be taken from the Gateway repo, not inferred from older Cortex notes.
+
+In practice:
+
+- `test` is the proving lane
+- `prod` is a protected managed pet
+- normal service-plane mutation uses `moltbox service ...`
+- normal runtime mutation uses native `moltbox test|prod openclaw ...`
+- routine validation should prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime`
+- raw Docker and break-glass SSH are not the normal path when the operator surface can do the job
+- the intended web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the old Playwright detour is not the intended baseline
+
+The current service inventory is the live baseline, not a permanent ceiling.
+
+If Cortex needs additional services such as `Postgres`, `Neo4j`, `Graphiti`, or a Cortex service boundary, those services should be introduced through:
+
+- tracked baseline service-definition changes in `moltbox-services`
+- promoted runtime-layer changes in `moltbox-runtime` when runtime behavior changes
+- official Gateway documentation updates only when the operator-facing contract or workflow changes
+- normal `moltbox` deployment and validation paths
+
+This document can still describe the intended Cortex integration seam, but it does not override the current live appliance contract.
+
 ## Layer Mapping
 
 ### Layer 1: Policy
@@ -191,3 +227,5 @@ Cortex adds:
 - operational knowledge organization
 
 Mamba arrives later as a narrow supercharge layer, not as the prerequisite for proving the architecture.
+
+For live appliance work, Cortex should fit itself into the current Moltbox operator contract first and only broaden that contract through explicit Gateway changes when necessary.

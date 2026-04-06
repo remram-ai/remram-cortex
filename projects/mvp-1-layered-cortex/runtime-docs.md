@@ -15,6 +15,20 @@ The runtime proof surface for this MVP should demonstrate:
 
 Always-on `Mamba` listening is not required for this proof surface.
 
+For live appliance work, the current authority for Gateway and runtime behavior is `moltbox-gateway`, especially:
+
+- `docs/guides/operator-guide.md`
+- `docs/design/cli-and-gateway.md`
+- `docs/design/runtime-and-services.md`
+- `docs/design/backup-and-recovery.md`
+- `docs/design/web-tooling.md`
+
+Repo split for live appliance delivery:
+
+- `moltbox-gateway` = operator contract, verification, recovery, appliance operating model
+- `moltbox-services` = baseline service definitions, baseline service config/examples, service-local docs
+- `moltbox-runtime` = final deployable runtime artifacts and promoted overlays
+
 ## Current Preparation Scaffold
 
 The repository now includes a preparation-only implementation scaffold that stops short of live infrastructure.
@@ -58,9 +72,27 @@ python -m remram_cortex serve --host 127.0.0.1 --port 8091
 
 This scaffold is written for the current Moltbox direction:
 
-- `moltbox-gateway` deploys shared services such as `Postgres` and helps deploy OpenClaw-facing skills
+- `moltbox-services` should own baseline service definitions for future shared services such as `Postgres`, `Neo4j`, `Graphiti`, or a Cortex service
+- `moltbox-runtime` should own the promoted runtime layer when runtime artifacts or overlays need to ship on the release path
+- `moltbox-gateway` should own operator-facing deploy, verification, and recovery behavior
 - OpenClaw runtime operation remains primarily native OpenClaw behavior
 - Cortex should integrate through contracts and bounded payloads, not through gateway-owned replay or direct runtime-state ownership
+
+Current live-baseline caveat:
+
+- the active managed service inventory is still only `gateway`, `caddy`, `ollama`, `searxng`, `test`, and `prod`
+- Cortex-adjacent services such as `Postgres`, `Neo4j`, `Graphiti`, and the Cortex service itself are future service-plane additions, not baseline facts yet
+- those services are allowed as part of the project, but their baseline definitions and service-local docs should land in `moltbox-services`
+- when runtime behavior changes, the approved promoted baseline should flow through `moltbox-runtime`
+- Gateway docs should change only when the operator contract, workflow, verification surface, or recovery model changes
+- deployment should still happen through `moltbox service ...`
+- routine runtime and web validation should prefer:
+  - `moltbox test verify runtime`
+  - `moltbox test verify browser`
+  - `moltbox test verify web`
+  - `moltbox prod verify runtime`
+- the web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the old Playwright detour is not part of the intended appliance baseline
 
 ## Layer 4 Contract
 

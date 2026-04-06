@@ -4,6 +4,31 @@ This document records the active delivery posture for the locked Cortex architec
 
 The architecture is being delivered as a progressive activation of system loops rather than one flat implementation sprint.
 
+## Live Appliance Authority
+
+For live Moltbox appliance work, `moltbox-gateway` is the source of truth for:
+
+- the current managed service inventory
+- the public `moltbox` CLI contract
+- the restricted-operator verification surfaces
+- the snapshot-first recovery model
+- the current web-tooling baseline
+
+This deployment plan describes the intended Cortex bring-up shape.
+
+It does not mean those future services already exist on the live appliance.
+
+Current live-baseline facts must still come from the Gateway repo until the service plane is intentionally extended.
+
+That extension is allowed as part of Cortex delivery.
+
+The rule is that new services must be introduced the Moltbox way:
+
+- define and track baseline service artifacts and service-local docs in `moltbox-services`
+- use `moltbox-runtime` for final promoted runtime artifacts and runtime-baseline changes
+- update official Gateway docs only when the operator contract, workflow, verification surface, or recovery behavior changes
+- deploy and validate through the official CLI and service-plane path
+
 ## Long-Term Stack
 
 The long-term stack remains:
@@ -133,6 +158,14 @@ It is not:
 - Layer 3 and Layer 4 orchestration
 - reflection and Dream orchestration
 
+On the live appliance, this layer should fit into the current operator model:
+
+- prove changes in `test` first
+- keep `prod` protected
+- use `moltbox service ...` for service-plane changes
+- use native `moltbox test|prod openclaw ...` for runtime mutation
+- prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime` for routine validation
+
 ### QMD
 
 - hot working-memory retrieval
@@ -193,6 +226,10 @@ It does not replace deeper evidence-backed maintenance passes.
 9. Cortex integration layer
 10. Reflection and Dream hooks
 
+For live appliance work, steps `6` through `9` are explicit service-plane additions beyond the current baseline.
+
+They should be introduced through tracked Moltbox repo changes, with baseline service definitions in `moltbox-services`, promoted runtime artifacts in `moltbox-runtime`, and Gateway doc changes only when the operator-facing contract actually changes, then deployed through the official service-plane path rather than treated as host-only drift.
+
 ### Later Bring-Up
 
 11. reference-decomposition workers
@@ -223,3 +260,5 @@ The deployment shape is intentionally progressive:
 - Phase 3 adds maintained owned sources
 - Phase 4 adds authored canon
 - Phase 5 optimizes the whole system with Mamba and Intuition
+
+For live appliance delivery, that progression must still respect the current Moltbox operator contract until it is intentionally broadened.

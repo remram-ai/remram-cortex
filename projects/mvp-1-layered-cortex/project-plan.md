@@ -28,6 +28,30 @@ The immediate build target is:
 
 Later phases remain part of the same project package so the implementation can be sequenced without architectural churn.
 
+## Live Appliance Authority
+
+When this project targets the live Moltbox appliance:
+
+- `moltbox-gateway` is the source of truth for current appliance behavior
+- older Cortex or `remram` docs do not override the Gateway repo for live appliance work
+- `test` is the proving lane
+- `prod` is a protected managed pet
+- normal service-plane mutation uses `moltbox service ...`
+- normal runtime mutation uses native `moltbox test|prod openclaw ...`
+- routine validation should prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime`
+- raw Docker, break-glass SSH, replay-era runtime ownership, and the old Playwright detour are not the intended baseline
+
+This project can describe future Phase 1 services such as `Postgres`, `Neo4j`, `Graphiti`, and a Cortex service boundary, but those are future service-plane additions, not live-baseline facts.
+
+Those service additions are allowed as part of this project.
+
+The constraint is that they must land through the tracked Moltbox path:
+
+- service definitions, baseline config, and service-local docs in `moltbox-services`
+- promoted runtime-layer changes in `moltbox-runtime`
+- official Gateway docs only when the operator contract or workflow changes
+- deploy and validation through the normal `moltbox` operator surface
+
 ## Source-Of-Truth Evolution
 
 | Phase | Primary Source Of Truth |
@@ -74,6 +98,7 @@ It is useful, but it is not yet Cortex.
 - `QMD` is enabled
 - compaction and pruning behave predictably
 - the baseline can be demonstrated before Cortex-specific behavior is added
+- if proven on the live appliance, the baseline is validated through the official `test` operator surfaces rather than host-only drift
 
 ### Non-Goals
 
@@ -145,6 +170,7 @@ In practice, that means:
 - Dream can consolidate chat-derived memory on a slower cadence
 - Graphiti stores durable concepts and relationships without becoming a body store
 - cross-session continuity is observably better than Phase 0
+- if proven on the live appliance, the change is safe to keep in `test` and can be validated without bypassing the Gateway operator contract
 
 ### Non-Goals
 

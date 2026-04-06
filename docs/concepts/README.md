@@ -11,6 +11,7 @@ Read [Glossary](../glossary.md) before this folder if you need the locked short-
 
 These are directly part of the active layered architecture:
 
+- [Live Appliance Authority](live-appliance-authority.md)
 - [Agent Tool Graph](agent-tool-graph.md)
 - [Knowledge Authority](knowledge-authority.md)
 - [Memory Versus Context](memory-vs-context.md)
@@ -44,26 +45,27 @@ These are retained from earlier Cortex thinking and may still be useful later, b
 
 ## Suggested Reading Order
 
-1. [Knowledge Authority](knowledge-authority.md)
-2. [Agent Tool Graph](agent-tool-graph.md)
-3. [Memory Versus Context](memory-vs-context.md)
-4. [Knowledge Object](knowledge-object.md)
-5. [Notion](notion.md)
-6. [Evidence Package](evidence-package.md)
-7. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
-8. [Reflection](reflection.md)
-9. [Intuition](intuition.md)
-10. [Dream Cycle](dream-cycle.md)
-11. [Artifact Intake](artifact-intake.md)
-12. [Artifact Provider](artifact-provider.md)
-13. [Artifact Promotion](artifact-promotion.md)
-14. [Bootstrap Ingestion](bootstrap-ingestion.md)
-15. [Bounded Retrieval](bounded-retrieval.md)
-16. [Governance Fields](governance-fields.md)
-17. [Conversation Layer](conversation-layer.md)
-18. [Typed Signals](typed-signals.md)
-19. [Semantic Signature](semantic-signature.md)
-20. [Dimension (Legacy Term)](dimension.md)
+1. [Live Appliance Authority](live-appliance-authority.md)
+2. [Knowledge Authority](knowledge-authority.md)
+3. [Agent Tool Graph](agent-tool-graph.md)
+4. [Memory Versus Context](memory-vs-context.md)
+5. [Knowledge Object](knowledge-object.md)
+6. [Notion](notion.md)
+7. [Evidence Package](evidence-package.md)
+8. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
+9. [Reflection](reflection.md)
+10. [Intuition](intuition.md)
+11. [Dream Cycle](dream-cycle.md)
+12. [Artifact Intake](artifact-intake.md)
+13. [Artifact Provider](artifact-provider.md)
+14. [Artifact Promotion](artifact-promotion.md)
+15. [Bootstrap Ingestion](bootstrap-ingestion.md)
+16. [Bounded Retrieval](bounded-retrieval.md)
+17. [Governance Fields](governance-fields.md)
+18. [Conversation Layer](conversation-layer.md)
+19. [Typed Signals](typed-signals.md)
+20. [Semantic Signature](semantic-signature.md)
+21. [Dimension (Legacy Term)](dimension.md)
 
 Go next:
 

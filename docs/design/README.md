@@ -18,6 +18,25 @@ Historical comparisons, rejected stack options, and older MVP packages were move
 
 ## How To Read This Folder
 
+For live Moltbox appliance work, load the current Gateway guides and design docs first.
+
+This folder describes the active Cortex architecture and intended integration shape, but it does not override `moltbox-gateway` on:
+
+- live service inventory
+- live CLI surfaces
+- restricted-operator validation
+- snapshot-first recovery behavior
+- current web-tooling baseline
+
+Repo authority split for live Moltbox work:
+
+- `moltbox-gateway`: operator/control-plane behavior
+- `moltbox-services`: baseline service definitions, baseline service config, service-local docs
+- `moltbox-runtime`: final promoted runtime artifacts and overlays
+- `remram-skills`: reusable skills/plugins
+
+Do not treat this repo as the service-definition authority for the live appliance.
+
 1. Start with [Layered Memory Architecture](layered-memory-architecture.md)
 2. Read [Technology Stack](technology-stack.md)
 3. Read [Agent Tool Graph](agent-tool-graph.md)

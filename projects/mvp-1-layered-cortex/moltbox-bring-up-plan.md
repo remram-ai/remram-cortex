@@ -4,9 +4,21 @@ This document is the concrete handoff plan from repository prep work to applianc
 
 It assumes the current direction:
 
-- `moltbox-gateway` deploys shared services and helps install OpenClaw-facing packages
+- `moltbox-services` owns baseline service definitions and service-local docs
+- `moltbox-runtime` owns final promoted runtime artifacts and overlays
+- `moltbox-gateway` owns the operator-facing deploy, verification, and recovery contract
 - OpenClaw remains primarily native for runtime operation and plugin lifecycle
 - Cortex integrates through explicit contracts, bounded hooks, and external service boundaries
+
+It also assumes the current live appliance baseline:
+
+- managed services are `gateway`, `caddy`, `ollama`, `searxng`, `test`, and `prod`
+- `test` is the proving lane
+- `prod` is a protected managed pet
+- routine validation should stay on `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime` where possible
+- raw Docker and break-glass SSH are not the normal path
+- the web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the Playwright detour is not part of the intended baseline
 
 ## What We Can Do Before Infrastructure Exists
 
@@ -45,25 +57,38 @@ Those assets now exist in this repository.
    - config validation passes
    - `QMD` is selected as the working-memory backend
    - compaction and pruning remain native OpenClaw behavior
+   - `moltbox test verify runtime` passes
+   - `moltbox test verify browser` passes
+   - `moltbox test verify web` passes
 4. Do not enable the Cortex bridge plugin yet.
 
 ### 2. Bring up the shared Cortex-adjacent services in test
 
-1. Use `moltbox-gateway` to deploy the shared services needed for Phase 1:
+1. Treat this as an explicit service-plane expansion step, not an assumption about the current baseline.
+2. Add the shared services needed for Phase 1 to the tracked Moltbox service inventory only when we are ready to support them cleanly:
    - `Postgres`
    - `Neo4j`
    - `Graphiti` service if we keep it as a separate service boundary
    - the Cortex Python service when we are ready to expose it beyond local staging
-2. Validate service health and network reachability from the OpenClaw runtime.
-3. Do not let the gateway take ownership of normal OpenClaw session internals.
+3. Land those additions the Moltbox way so they are globally discoverable:
+   - service definitions, baseline config, and service-local docs in `moltbox-services`
+   - promoted runtime-layer changes in `moltbox-runtime` when required
+   - official Gateway docs only when the operator contract or workflow changes
+4. Deploy those services through the official service plane:
+   - `moltbox service deploy <service>`
+5. Validate service health and network reachability from the OpenClaw runtime.
+6. Do not let the gateway take ownership of normal OpenClaw session internals.
+7. If routine validation of those services requires raw host orchestration, close the missing operator surface in `moltbox-gateway` instead of treating the workaround as normal.
 
 ### 3. Install the OpenClaw package in test
 
 1. Install the plugin package from:
    - `integrations/openclaw/packages/cortex-phase1-bridge/`
-2. Enable the package in `dry-run` mode first.
-3. Merge the `Phase 1` overlay into the test runtime config.
-4. Validate that:
+2. Use native OpenClaw install/config flows through the official `moltbox test openclaw ...` path.
+3. If the restricted operator contract is missing a needed install action, add the narrowest safe Gateway surface rather than normalizing raw shell mutation.
+4. Enable the package in `dry-run` mode first.
+5. Merge the `Phase 1` overlay into the test runtime config.
+6. Validate that:
    - the plugin is discoverable
    - the plugin is allowed and enabled
    - prompt injection permission is applied only for the bridge plugin
@@ -75,7 +100,11 @@ Those assets now exist in this repository.
 2. Confirm the plugin writes hook envelopes under its spool directory.
 3. Confirm startup bundle injection is bounded and readable.
 4. Confirm OpenClaw sessions, compaction, and transcript ownership remain native.
-5. Fix hook-shape mismatches here before enabling service-backed behavior.
+5. Re-run the official verification surfaces that should remain true after the plugin is added:
+   - `moltbox test verify runtime`
+   - `moltbox test verify browser`
+   - `moltbox test verify web`
+6. Fix hook-shape mismatches here before enabling service-backed behavior.
 
 ### 5. Switch the bridge from `dry-run` to service-backed mode
 
@@ -100,13 +129,19 @@ Those assets now exist in this repository.
    - Layer 3 packages stay pointer-based and never become transcript dumps
    - Reflection and Dream hooks are emitted on the expected cadence
 3. Compare continuity behavior against the pure Phase 0 baseline.
+4. Keep using the official verification surfaces so browser and web capability regressions are caught on the same lane:
+   - `moltbox test verify runtime`
+   - `moltbox test verify browser`
+   - `moltbox test verify web`
 
 ### 7. Promote cautiously to production
 
 1. Take the approved Moltbox and OpenClaw backup or restore point first.
 2. Repeat the install and config steps on `prod`.
 3. Keep the first production activation in the narrowest safe mode.
-4. Confirm rollback instructions are explicit before broadening the surface.
+4. Validate through the official protected-runtime surface:
+   - `moltbox prod verify runtime`
+5. Confirm rollback instructions are explicit before broadening the surface.
 
 ## Immediate Follow-On Work In This Repo
 

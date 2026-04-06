@@ -36,14 +36,25 @@ Stand up Layer 1 policy and the OpenClaw integration seam without replacing Open
 
 - active layered architecture docs
 - OpenClaw context-engine and session model
+- the current Moltbox Gateway operator contract when the work targets the live appliance baseline
 
 ## Exit Criteria
 
 - a run can resolve and inject a policy bundle without replacing OpenClaw sessions
 - the startup assembly order is explicit and bounded
 - the integration surface for later Mamba and Layer 3 work is stable
+- the implementation posture stays compatible with the live Moltbox contract:
+  - Gateway remains thin
+  - runtime mutation stays on native OpenClaw surfaces
+  - routine validation can stay on `moltbox test verify ...` where appropriate
 
 ## Notes
 
 - This epic should not invent a separate working-memory store.
 - The output here should make Epic 02 possible without revisiting Layer 1/2 ownership.
+- If a live-appliance implementation needs a new operator capability, close the gap in `moltbox-gateway` explicitly rather than normalizing raw Docker, break-glass SSH, or replay-era runtime ownership.
+- The live web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`; do not reintroduce the old Playwright detour as the intended baseline.
+- New services are allowed when the project needs them, but they must be added through the official Moltbox path so they are globally discoverable:
+  - service definitions, baseline config, and service-local docs in `moltbox-services`
+  - promoted runtime-layer changes in `moltbox-runtime`
+  - current Gateway docs only when the operator contract or workflow changes
