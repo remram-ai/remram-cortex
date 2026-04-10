@@ -109,5 +109,5 @@ Useful source references include:
 - [Artifact Promotion](artifact-promotion.md)
 - [Bootstrap Ingestion](bootstrap-ingestion.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

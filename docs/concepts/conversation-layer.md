@@ -54,5 +54,5 @@ But durable attachment, merge, and continuity storage should remain Cortex respo
 - [Memory Versus Context](memory-vs-context.md)
 - [Knowledge Object](knowledge-object.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [OpenClaw Integration](../design/openclaw-integration.md)

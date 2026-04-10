@@ -45,6 +45,8 @@ Layer 4 should hold:
 - reference-derived knowledge bodies
 - decomposed artifact knowledge
 - active operational document state
+- chronicle or longitudinal continuity bodies
+- needs workspaces or multi-party coordination bodies
 - retrieval-ready operational bodies
 
 Layer 4 should receive bounded derived forms from Layer 5 rather than pulling full raw bodies into operational storage by default.
@@ -60,7 +62,7 @@ Useful Layer 4 forms include:
 
 ## Layer 4 Content Classes
 
-Layer 4 should explicitly support at least three content classes:
+Layer 4 should explicitly support at least four content classes:
 
 ### 1. Working Or Incubation Workspaces
 
@@ -109,6 +111,23 @@ Examples:
 - authored synthesis documents
 
 These may later promote into the `authored_artifact` class inside Layer 5 when publication-grade canon becomes warranted.
+
+### 4. Longitudinal Continuity And Coordination Bodies
+
+Some products need operational bodies that are neither raw evidence nor publication drafts.
+
+Examples:
+
+- chronicles
+- needs workspaces
+- household or team coordination dossiers
+- permissioned continuity surfaces that span many threads and many contributors
+
+These still belong in Layer 4.
+
+Layer 3 stores durable meaning, relationships, roles, and support structure around them.
+
+Layer 5 stores the evidence bodies behind them.
 
 ## Layer 5: Source-Of-Record Evidence
 
@@ -231,6 +250,7 @@ It should cover:
 
 - Layer 1 policy and control data
 - Layer 4 workspace bodies
+- chronicle and coordination bodies
 - reference summaries and links
 - decomposed artifact knowledge
 - retrieval metadata
@@ -301,6 +321,7 @@ It can help identify:
 - that multiple workspaces should merge
 - that a workspace is becoming a promotion candidate
 - that certain references support the same operational body
+- that relationship, role, or approval context should shape a chronicle or coordination body
 
 Layer 4 may receive connector fields such as:
 

@@ -29,22 +29,40 @@ The active stack direction is:
 
 ## Start Here
 
+- [docs/authority-map.md](docs/authority-map.md)
 - [docs/overview/overview.md](docs/overview/overview.md)
+- [docs/glossary.md](docs/glossary.md)
 - [docs/design/layered-memory-architecture.md](docs/design/layered-memory-architecture.md)
 - [docs/design/technology-stack.md](docs/design/technology-stack.md)
-- [docs/context-packs/layered-cortex-stack/README.md](docs/context-packs/layered-cortex-stack/README.md)
-- [docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
+- [docs/context-packs/cortex-core/README.md](docs/context-packs/cortex-core/README.md)
 - [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
 
 ## AI Start Here
 
 For a fresh implementation thread or AI onboarding pass, use this path:
 
-1. [docs/context-packs/layered-cortex-stack/README.md](docs/context-packs/layered-cortex-stack/README.md)
-2. [docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
-3. [docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md](docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md)
-4. [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
-5. [projects/mvp-1-layered-cortex/project-plan.md](projects/mvp-1-layered-cortex/project-plan.md)
+1. [docs/context-packs/cortex-core/README.md](docs/context-packs/cortex-core/README.md)
+2. [docs/context-packs/cortex-core/00-repo-orientation.md](docs/context-packs/cortex-core/00-repo-orientation.md)
+3. [docs/context-packs/cortex-core/01-terminology-and-legacy.md](docs/context-packs/cortex-core/01-terminology-and-legacy.md)
+4. [docs/context-packs/cortex-core/02-layers-and-authority.md](docs/context-packs/cortex-core/02-layers-and-authority.md)
+5. [docs/context-packs/cortex-core/05-phases-and-delivery.md](docs/context-packs/cortex-core/05-phases-and-delivery.md)
+6. [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
+7. [projects/mvp-1-layered-cortex/project-plan.md](projects/mvp-1-layered-cortex/project-plan.md)
+
+For a longer NotebookLM or audio-style briefing, use the expanded [Layered Cortex Stack pack](docs/context-packs/layered-cortex-stack/README.md).
+
+## Canonical Docs
+
+When active docs disagree, treat these as the live authority:
+
+- [docs/authority-map.md](docs/authority-map.md)
+- [docs/glossary.md](docs/glossary.md)
+- [docs/design/layered-memory-architecture.md](docs/design/layered-memory-architecture.md)
+- [docs/design/technology-stack.md](docs/design/technology-stack.md)
+- [docs/design/openclaw-integration.md](docs/design/openclaw-integration.md)
+- [docs/design/graphiti-neo4j-durable-memory.md](docs/design/graphiti-neo4j-durable-memory.md)
+- [docs/design/knowledge-and-artifact-architecture.md](docs/design/knowledge-and-artifact-architecture.md)
+- [docs/design/deployment-plan.md](docs/design/deployment-plan.md)
 
 ## Current Direction
 
@@ -58,3 +76,4 @@ The active direction is to build Cortex around:
 - a clean split between operational knowledge and source-of-record evidence
 
 Older decision packages, alternative stack evaluations, and legacy architecture material were moved into the dated archive bucket during the layered repository reset.
+They remain historical context only unless the active authority docs explicitly revive them.

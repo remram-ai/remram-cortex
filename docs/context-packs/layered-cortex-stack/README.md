@@ -11,6 +11,8 @@ It is optimized for:
 
 It deliberately restates the active design in stable repeated language so an AI system can build a coherent mental model without also ingesting the archived decision churn.
 
+For the compact authority-first pack used by fresh implementation threads, start with [../cortex-core/README.md](../cortex-core/README.md).
+
 ## Pack Goal
 
 Explain the chosen Cortex stack topic by topic:
@@ -41,18 +43,21 @@ Explain the chosen Cortex stack topic by topic:
 
 If the goal is to start implementation quickly in a new thread, load this shorter path:
 
-1. [00 High-Signal Debrief](00-high-signal-debrief.md)
-2. [01 System Frame And Layer Model](01-system-frame-and-layer-model.md)
-3. [05 Knowledge, Artifacts, Postgres, And Git](05-knowledge-artifacts-postgres-and-git.md)
-4. [08 MVP And Delivery Sequence](08-mvp-and-delivery-sequence.md)
-5. [../../../projects/mvp-1-layered-cortex/README.md](../../../projects/mvp-1-layered-cortex/README.md)
-6. [../../../projects/mvp-1-layered-cortex/project-plan.md](../../../projects/mvp-1-layered-cortex/project-plan.md)
-7. [../../../projects/mvp-1-layered-cortex/acceptance-test.md](../../../projects/mvp-1-layered-cortex/acceptance-test.md)
+1. [../cortex-core/README.md](../cortex-core/README.md)
+2. [../cortex-core/00-repo-orientation.md](../cortex-core/00-repo-orientation.md)
+3. [../cortex-core/01-terminology-and-legacy.md](../cortex-core/01-terminology-and-legacy.md)
+4. [../cortex-core/02-layers-and-authority.md](../cortex-core/02-layers-and-authority.md)
+5. [../cortex-core/05-phases-and-delivery.md](../cortex-core/05-phases-and-delivery.md)
+6. [../../../projects/mvp-1-layered-cortex/README.md](../../../projects/mvp-1-layered-cortex/README.md)
+7. [../../../projects/mvp-1-layered-cortex/project-plan.md](../../../projects/mvp-1-layered-cortex/project-plan.md)
+8. [../../../projects/mvp-1-layered-cortex/acceptance-test.md](../../../projects/mvp-1-layered-cortex/acceptance-test.md)
 
 ## Relationship To The Main Docs
 
 This pack compresses and reorganizes the active material from:
 
+- [Authority Map](../../authority-map.md)
+- [Glossary](../../glossary.md)
 - [Layered Memory Architecture](../../design/layered-memory-architecture.md)
 - [Technology Stack](../../design/technology-stack.md)
 - [OpenClaw Integration](../../design/openclaw-integration.md)

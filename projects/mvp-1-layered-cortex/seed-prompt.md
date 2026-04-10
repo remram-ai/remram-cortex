@@ -8,15 +8,19 @@ Do not reopen major architecture decisions unless the codebase or current upstre
 
 Read these first, in order:
 
-1. `docs/context-packs/layered-cortex-stack/README.md`
-2. `docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md`
-3. `docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md`
-4. `projects/mvp-1-layered-cortex/README.md`
-5. `projects/mvp-1-layered-cortex/project-plan.md`
-6. `projects/mvp-1-layered-cortex/acceptance-test.md`
+1. `docs/context-packs/cortex-core/README.md`
+2. `docs/context-packs/cortex-core/00-repo-orientation.md`
+3. `docs/context-packs/cortex-core/01-terminology-and-legacy.md`
+4. `docs/context-packs/cortex-core/02-layers-and-authority.md`
+5. `docs/context-packs/cortex-core/05-phases-and-delivery.md`
+6. `projects/mvp-1-layered-cortex/README.md`
+7. `projects/mvp-1-layered-cortex/project-plan.md`
+8. `projects/mvp-1-layered-cortex/acceptance-test.md`
 
 Then use these canonical architecture docs as needed:
 
+- `docs/authority-map.md`
+- `docs/glossary.md`
 - `docs/design/layered-memory-architecture.md`
 - `docs/design/openclaw-integration.md`
 - `docs/design/graphiti-neo4j-durable-memory.md`

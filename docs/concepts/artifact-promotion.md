@@ -61,5 +61,5 @@ Meaningful canonical revision must be able to:
 - [Artifact Intake](artifact-intake.md)
 - [Artifact Provider](artifact-provider.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [Knowledge And Artifact Architecture](../design/knowledge-and-artifact-architecture.md)

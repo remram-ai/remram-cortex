@@ -102,5 +102,5 @@ should happen.
 
 - [Notion](notion.md)
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [Evidence Package](evidence-package.md)

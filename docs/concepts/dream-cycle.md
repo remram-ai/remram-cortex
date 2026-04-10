@@ -1,12 +1,16 @@
-# Dream Cycle
+# Dream
 
-A dream cycle is the scheduled reconciliation and consolidation pass over accumulated Cortex memory.
+`Dream Cycle` remains an acceptable longer form in older docs.
 
-Reflection captures local deltas from one run. Dream cycles clean up and synthesize the larger knowledge graph over time.
+Prefer `Dream` in active docs.
 
-## What Dream Cycles Do
+Dream is the scheduled reconciliation and consolidation pass over accumulated Cortex memory.
 
-Dream cycles are responsible for:
+Reflection captures local deltas from one run. Dream cleans up and synthesizes the larger knowledge graph over time.
+
+## What Dream Does
+
+Dream is responsible for:
 
 - deduplicating overlapping knowledge objects
 - surfacing contradictions instead of hiding them
@@ -27,7 +31,7 @@ That means it may:
 - compress stale continuity summaries
 - propose architectural pressure for new signal-field types without changing the hot-path schema automatically
 
-## Why Dream Cycles Are Separate
+## Why Dream Is Separate
 
 Reconciliation is broader and slower than reflection. Keeping it asynchronous avoids turning normal runtime completion into a global memory maintenance step.
 

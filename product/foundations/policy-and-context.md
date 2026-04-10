@@ -1,4 +1,9 @@
-# Policy And Context
+# Policy And Working Memory
+
+Earlier drafts used "context" in the title here.
+
+In the active Cortex vocabulary, `context` means bounded runtime injection.
+Layer 2 is `Working Memory`, not "context."
 
 This document defines the stable product posture for Layers 1 and 2.
 

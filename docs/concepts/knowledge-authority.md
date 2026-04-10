@@ -50,5 +50,5 @@ Cortex prevents that drift by enforcing the layer split:
 - [Typed Signals](typed-signals.md)
 - [Memory Versus Context](memory-vs-context.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [Layered Memory Architecture](../design/layered-memory-architecture.md)

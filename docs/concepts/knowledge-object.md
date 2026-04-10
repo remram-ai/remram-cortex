@@ -55,4 +55,4 @@ Those may be evidence, but they are not the memory object itself.
 - [Semantic Signature](semantic-signature.md)
 - [Typed Signals](typed-signals.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)

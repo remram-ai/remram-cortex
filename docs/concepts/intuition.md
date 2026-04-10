@@ -70,4 +70,4 @@ The same signal contract should support all three.
 - [Evidence Package](evidence-package.md)
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
 - [Reflection](reflection.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)

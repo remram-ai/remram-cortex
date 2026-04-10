@@ -13,17 +13,22 @@ Use them when you want:
 
 ## Active Packs
 
+- [Cortex Core](cortex-core/README.md)
 - [Layered Cortex Stack](layered-cortex-stack/README.md)
 
 ## Recommended AI Entry Path
 
 For new implementation or planning threads, start with:
 
-1. [Layered Cortex Stack](layered-cortex-stack/README.md)
-2. [00 High-Signal Debrief](layered-cortex-stack/00-high-signal-debrief.md)
-3. [08 MVP And Delivery Sequence](layered-cortex-stack/08-mvp-and-delivery-sequence.md)
-4. [../../projects/mvp-1-layered-cortex/README.md](../../projects/mvp-1-layered-cortex/README.md)
-5. [../../projects/mvp-1-layered-cortex/project-plan.md](../../projects/mvp-1-layered-cortex/project-plan.md)
+1. [Cortex Core](cortex-core/README.md)
+2. [00 Repo Orientation](cortex-core/00-repo-orientation.md)
+3. [01 Terminology And Legacy](cortex-core/01-terminology-and-legacy.md)
+4. [02 Layers And Authority](cortex-core/02-layers-and-authority.md)
+5. [05 Phases And Delivery](cortex-core/05-phases-and-delivery.md)
+6. [../../projects/mvp-1-layered-cortex/README.md](../../projects/mvp-1-layered-cortex/README.md)
+7. [../../projects/mvp-1-layered-cortex/project-plan.md](../../projects/mvp-1-layered-cortex/project-plan.md)
+
+Use [Layered Cortex Stack](layered-cortex-stack/README.md) when you want the longer NotebookLM or audio-oriented source set.
 
 ## Rule
 

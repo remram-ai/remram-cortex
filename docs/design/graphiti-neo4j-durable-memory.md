@@ -18,6 +18,12 @@ It owns:
 
 It is implemented as one `Graphiti` memory system on `Neo4j`.
 
+For the current Phase 1 deployment posture, that means:
+
+- `graphiti` runs as its own service boundary
+- `neo4j` runs as its own backing database service
+- `cortex` talks to `graphiti`; it does not absorb Graphiti into the same service by default
+
 ## What Layer 3 Stores
 
 Layer 3 stores:
@@ -60,6 +66,9 @@ The same Layer 3 system can naturally represent:
 - that one workspace supersedes another
 - that references support a concept
 - that a workspace is becoming a promotion candidate
+- that a person, household, or support network has stable relationship or approval context without inventing a second relationship-memory system
+
+Separating `graphiti` from `cortex` keeps the Layer 3 engine distinct from the Cortex orchestration layer.
 
 ## Useful Type Distinctions
 
@@ -120,6 +129,7 @@ It may represent:
 - supporting reference
 - supersedes
 - candidate for promotion
+- relationship or approval context that helps a multi-party product stay coherent
 
 Layer 4 may receive lightweight connector fields from this process, for example:
 
@@ -171,3 +181,9 @@ Layer 3 is not:
 Layer 3 remains one Graphiti memory system.
 
 It owns durable semantic truth and the concept relationship network that helps Layer 4 organize operational content.
+
+The current service posture is:
+
+- separate `graphiti` service
+- separate `neo4j` service
+- separate `cortex` service consuming that Layer 3 boundary

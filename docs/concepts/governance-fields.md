@@ -9,7 +9,8 @@ They decide whether a knowledge object is even eligible for a query before seman
 Governance fields exist to enforce:
 
 - ownership and audience boundaries
-- project, family, person, or system scope
+- project, household, family, person, provider, or system scope
+- role, visibility, or approval boundaries in multi-party systems
 - lifecycle state such as active, retired, or superseded
 - temporal validity windows and freshness constraints
 - other exact or bounded policy filters that should exclude an object entirely
@@ -28,6 +29,20 @@ Governance fields are not:
 - a replacement for full-text or embedding search
 
 If a field needs an unbounded vocabulary to stay useful, it probably belongs in a typed signal field instead.
+
+## Multi-Party Rule
+
+Governance fields are where Cortex keeps multi-party retrieval safe.
+
+If a product needs distinctions such as:
+
+- self versus family
+- family versus caregiver
+- trusted helper versus provider
+- visible versus private
+- editable versus review-only
+
+those distinctions belong in governance, not in semantic ranking.
 
 ## Why They Matter
 

@@ -11,7 +11,7 @@ Stand up Layer 4 operational knowledge and the Layer 5 evidence lifecycle withou
    - revision linkage
    - evidence-class distinctions
    - later dirty-state and publication status
-2. Build the Phase 1 Layer 4 support surface in `Postgres + pgvector`.
+2. Build the Phase 1 Layer 4 support surface in `Postgres`, using `pgvector` inside that same operational store when vector similarity is useful.
    - chat-derived summaries
    - concept support bodies
    - fact and belief candidates

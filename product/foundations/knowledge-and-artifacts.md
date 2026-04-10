@@ -15,7 +15,7 @@ It is built around:
 - dirty-state and workflow fields
 - source-linked and revision-aware operational bodies
 
-The default implementation posture is `Postgres + pgvector`.
+The default implementation posture is `Postgres`, with `pgvector` available inside that same operational store when vector similarity is useful.
 
 Layer 4 is allowed to move quickly, and in many cases it is the only authority for active work.
 
@@ -24,6 +24,8 @@ Layer 4 may hold:
 - incubation workspaces with no Layer 5 counterpart yet
 - external reference material that should not become canonical Git artifacts
 - active operational document state for authored work before publication
+- chronicle or longitudinal continuity bodies
+- multi-party coordination or needs workspaces
 
 Layer 4 must remain:
 

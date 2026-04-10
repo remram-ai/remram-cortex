@@ -3,7 +3,7 @@
 The current stack splits evidence and knowledge cleanly:
 
 - Layer 5 source-of-record evidence includes runtime evidence, reference cache, and authored artifacts
-- Layer 4 operational knowledge lives in `Postgres + pgvector`
+- Layer 4 operational knowledge lives in `Postgres`, with `pgvector` available inside that same operational store when vector similarity is useful
 - authored canon may live in `Git` or another authoritative provider when warranted
 
 Design rule:
@@ -27,7 +27,7 @@ Current upstream docs support the following assumptions:
 
 That is why the current default is:
 
-- `Postgres + pgvector` first
+- `Postgres` first, with `pgvector` inside that same operational store when useful
 - add a second search platform only when measured Layer 4 requirements justify it
 
 Operational rule:
@@ -44,6 +44,8 @@ Layer 4 includes:
 - incubation workspaces
 - external reference material
 - authored work that is not ready for canon yet
+- chronicle or longitudinal continuity bodies
+- needs workspaces or other coordination bodies
 - decomposed artifact knowledge when canonical artifacts do exist
 
 Official references:

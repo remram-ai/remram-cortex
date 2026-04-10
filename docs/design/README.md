@@ -6,6 +6,13 @@ The active design set is intentionally small.
 
 Historical comparisons, rejected stack options, and older MVP packages were moved to the archive.
 
+The canonical authority order inside active docs is:
+
+1. [../authority-map.md](../authority-map.md)
+2. [../glossary.md](../glossary.md)
+3. this folder
+4. supporting summaries elsewhere in the repo
+
 ## Active Documents
 
 - [Agent Tool Graph](agent-tool-graph.md)

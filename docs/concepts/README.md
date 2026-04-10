@@ -1,8 +1,10 @@
 # Concepts
 
-This folder defines the canonical vocabulary for Remram Cortex.
+This folder elaborates stable Cortex concepts.
 
-These documents are intentionally short and conceptual. Use them to align terminology before editing the architecture or implementation.
+The canonical short-form vocabulary lives in [Glossary](../glossary.md).
+
+These documents are intentionally short and conceptual. Use them to explain or deepen the terms and ideas that survive implementation changes.
 
 If you are new to the repository, read [Overview](../overview/overview.md) first.
 Read [Glossary](../glossary.md) before this folder if you need the locked short-form definitions.
@@ -21,7 +23,7 @@ These are directly part of the active layered architecture:
 - [High-Signal Mamba Stream](high-signal-mamba-stream.md)
 - [Reflection](reflection.md)
 - [Intuition](intuition.md)
-- [Dream Cycle](dream-cycle.md)
+- [Dream](dream-cycle.md)
 - [Artifact Intake](artifact-intake.md)
 - [Artifact Provider](artifact-provider.md)
 - [Artifact Promotion](artifact-promotion.md)
@@ -55,7 +57,7 @@ These are retained from earlier Cortex thinking and may still be useful later, b
 8. [High-Signal Mamba Stream](high-signal-mamba-stream.md)
 9. [Reflection](reflection.md)
 10. [Intuition](intuition.md)
-11. [Dream Cycle](dream-cycle.md)
+11. [Dream](dream-cycle.md)
 12. [Artifact Intake](artifact-intake.md)
 13. [Artifact Provider](artifact-provider.md)
 14. [Artifact Promotion](artifact-promotion.md)
@@ -69,5 +71,6 @@ These are retained from earlier Cortex thinking and may still be useful later, b
 
 Go next:
 
+- [Authority Map](../authority-map.md)
 - [Overview](../overview/overview.md) if you need the high-level role and repository boundary
 - [Layered Memory Architecture](../design/layered-memory-architecture.md) for the active system design

@@ -14,11 +14,13 @@ Memory is the structured, persistent, evolving Layer 3 knowledge owned by Cortex
 
 It survives transcript compaction, session resets, and other runtime boundaries.
 
-## Decomposed Knowledge
+## Operational Knowledge
 
 Decomposed artifact knowledge is not the same thing as either runtime context or durable memory.
 
-It is the Layer 4 operational retrieval surface.
+It is part of the Layer 4 operational retrieval surface.
+
+That same Layer 4 surface may also include chronicle bodies, needs workspaces, and other medium-horizon operational continuity bodies.
 
 ## Evidence
 

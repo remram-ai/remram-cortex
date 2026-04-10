@@ -43,9 +43,11 @@ That means:
 
 For a new implementation thread, read in this order:
 
-1. [../../docs/context-packs/layered-cortex-stack/README.md](../../docs/context-packs/layered-cortex-stack/README.md)
-2. [../../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md](../../docs/context-packs/layered-cortex-stack/00-high-signal-debrief.md)
-3. [../../docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md](../../docs/context-packs/layered-cortex-stack/08-mvp-and-delivery-sequence.md)
-4. [Project Charter](project-charter.md)
-5. [Project Plan](project-plan.md)
-6. [Acceptance Test](acceptance-test.md)
+1. [../../docs/context-packs/cortex-core/README.md](../../docs/context-packs/cortex-core/README.md)
+2. [../../docs/context-packs/cortex-core/00-repo-orientation.md](../../docs/context-packs/cortex-core/00-repo-orientation.md)
+3. [../../docs/context-packs/cortex-core/01-terminology-and-legacy.md](../../docs/context-packs/cortex-core/01-terminology-and-legacy.md)
+4. [../../docs/context-packs/cortex-core/02-layers-and-authority.md](../../docs/context-packs/cortex-core/02-layers-and-authority.md)
+5. [../../docs/context-packs/cortex-core/05-phases-and-delivery.md](../../docs/context-packs/cortex-core/05-phases-and-delivery.md)
+6. [Project Charter](project-charter.md)
+7. [Project Plan](project-plan.md)
+8. [Acceptance Test](acceptance-test.md)

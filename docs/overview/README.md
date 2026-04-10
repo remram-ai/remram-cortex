@@ -16,6 +16,7 @@ Documents in this folder:
 
 Go next:
 
+- [Authority Map](../authority-map.md)
 - [Glossary](../glossary.md)
 - [Concepts](../concepts/README.md)
 - [Layered Memory Architecture](../design/layered-memory-architecture.md)

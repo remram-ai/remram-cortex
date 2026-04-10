@@ -252,6 +252,7 @@ This means `Graphiti` can naturally represent:
 - one draft superseding another
 - certain references supporting a concept
 - a workspace becoming a candidate for promotion
+- relationship or approval context around a person, household, or support network without inventing a second relationship-memory system
 
 Useful type distinctions inside Layer 3 may include:
 
@@ -309,6 +310,8 @@ Layer 4 is authoritative for:
 - reference-derived knowledge bodies
 - decomposed artifact knowledge
 - active operational document state
+- chronicle or longitudinal continuity bodies
+- needs workspaces or multi-party coordination bodies
 - incubation workspaces that span many threads
 
 Layer 4 is not authoritative for durable semantic conclusions about that content.
@@ -317,11 +320,12 @@ Those belong in Layer 3.
 
 #### Classes Inside Layer 4
 
-Layer 4 should explicitly support at least three operational content classes:
+Layer 4 should explicitly support at least four operational content classes:
 
 1. `working/incubation workspaces`
 2. `external reference material`
 3. `authored artifact knowledge`
+4. `longitudinal continuity or coordination bodies`
 
 Not all Layer 4 bodies have a Layer 5 counterpart.
 
@@ -348,6 +352,25 @@ Layer 3 helps identify that many threads belong to the same emerging concept.
 Layer 4 holds the evolving workspace body for that concept.
 
 Layer 5 is already relevant as evidence, but authored canon only becomes relevant when the work is ready for canonical publication.
+
+#### Longitudinal And Multi-Party Operational Bodies
+
+Some products need Layer 4 bodies that are not just drafts or document surrogates.
+
+Examples include:
+
+- chronicle bodies
+- needs workspaces
+- household or team coordination dossiers
+- permissioned continuity surfaces that span many threads and many contributors
+
+These still belong in Layer 4.
+
+Layer 3 stores the durable conclusions, relationships, approvals, and support structure around them.
+
+Layer 5 stores the supporting evidence bodies behind them.
+
+This lets Cortex support multi-party continuity without inventing a separate family-memory or chronicle subsystem.
 
 #### External Reference Material
 
@@ -498,6 +521,7 @@ It should cover:
 - operational evidence metadata and coordination state where needed
 - Layer 4 operational knowledge bodies
 - incubation workspaces
+- chronicle and coordination bodies
 - reference summaries and links
 - decomposed artifact knowledge
 - retrieval metadata
@@ -572,6 +596,14 @@ The conceptual relationship network remains in Layer 3.
 5. if the workspace matures, it may become a candidate for canonical publication
 
 This is a core problem the architecture is explicitly designed to solve.
+
+### Flow 3A: Longitudinal Human Or Household Continuity
+
+1. repeated interactions, documents, or collaborator input accumulate around one person, household, or long-running topic
+2. Layer 3 links people, roles, approvals, and support relationships as semantic structure
+3. Layer 4 holds the chronicle, needs workspace, or coordination dossier body
+4. retrieval stays bounded by governance scope and role before semantic ranking
+5. Layer 5 keeps the supporting evidence bodies behind that continuity
 
 ### Flow 4: External Reference Material
 
@@ -679,7 +711,7 @@ Tentative cross-thread memory is allowed under tighter retrieval rules, but it i
 
 It may guide continuity, but high-impact conclusions still depend on reconciliation and stronger evidence.
 
-### 4. Is Layer 4 staying Postgres + pgvector first, with OpenSearch additive later, or do we want to start with both now?
+### 4. Is Layer 4 staying Postgres-first, with pgvector inside it and OpenSearch additive later, or do we want to start with both now?
 
 No `OpenSearch` for now.
 

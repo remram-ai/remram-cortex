@@ -14,7 +14,7 @@ Explain:
 
 - what Cortex is
 - the five-layer model
-- why the stack uses OpenClaw, QMD, Graphiti plus Neo4j, Postgres plus pgvector, and Git only when canon is warranted
+- why the stack uses OpenClaw, QMD, Graphiti plus Neo4j, Postgres as the operational authority with pgvector inside it when useful, and Git only when canon is warranted
 - why Mamba is still wanted but positioned as a later supercharge rather than a missing prerequisite
 - how runtime evidence becomes durable memory
 - how hot notions, Layer 4 workspaces, and canonical artifacts differ
