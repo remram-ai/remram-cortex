@@ -7,8 +7,9 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including reconciliatio
 ## Workstreams
 
 1. Bring up the Layer 3 runtime.
-   - `Neo4j` deployment and connection posture
-   - `Graphiti` service configuration
+   - separate `Neo4j` deployment and connection posture
+   - separate `Graphiti` service configuration
+   - Cortex-to-Graphiti service boundary
    - evidence package to episode mapping
 2. Define the durable-memory trust model.
    - QMD notion input shape
@@ -26,6 +27,7 @@ Stand up Layer 3 durable memory with `Graphiti + Neo4j`, including reconciliatio
 ## Deliverables
 
 - running `Graphiti + Neo4j` Layer 3 environment
+- separate `Graphiti` service boundary consumed by the separate `Cortex` service
 - Layer 3 trust-state and promotion rules
 - episode packaging contract
 - reconciliation flow for tentative cross-thread memory

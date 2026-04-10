@@ -29,6 +29,13 @@ The rule is that new services must be introduced the Moltbox way:
 - update official Gateway docs only when the operator contract, workflow, verification surface, or recovery behavior changes
 - deploy and validate through the official CLI and service-plane path
 
+Current Phase 1 deployment decision:
+
+- `cortex` is a separate service
+- `graphiti` is a separate service
+- `neo4j` remains the backing graph database
+- `postgres` remains the Layer 4 operational store
+
 ## Long-Term Stack
 
 The long-term stack remains:
@@ -158,13 +165,19 @@ It is not:
 - Layer 3 and Layer 4 orchestration
 - reflection and Dream orchestration
 
+Default Phase 1 deployment shape:
+
+- one separate `cortex` service
+- not folded into the UI process
+- not folded into the `graphiti` service
+
 On the live appliance, this layer should fit into the current operator model:
 
 - prove changes in `test` first
 - keep `prod` protected
 - use `moltbox service ...` for service-plane changes
 - use native `moltbox test|prod openclaw ...` for runtime mutation
-- prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime` for routine validation
+- prefer `moltbox test verify runtime|web` and `moltbox prod verify runtime` for routine validation
 
 ### QMD
 
@@ -181,6 +194,12 @@ On the live appliance, this layer should fit into the current operator model:
 - support
 - supersession
 - invalidation
+
+Default Phase 1 deployment shape:
+
+- one separate `graphiti` service
+- backed by `neo4j`
+- not folded into the `cortex` service
 
 ### Postgres
 
@@ -229,6 +248,13 @@ It does not replace deeper evidence-backed maintenance passes.
 For live appliance work, steps `6` through `9` are explicit service-plane additions beyond the current baseline.
 
 They should be introduced through tracked Moltbox repo changes, with baseline service definitions in `moltbox-services`, promoted runtime artifacts in `moltbox-runtime`, and Gateway doc changes only when the operator-facing contract actually changes, then deployed through the official service-plane path rather than treated as host-only drift.
+
+The current intended Phase 1 service set for that expansion is:
+
+- `postgres`
+- `neo4j`
+- `graphiti`
+- `cortex`
 
 ### Later Bring-Up
 

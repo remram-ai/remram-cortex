@@ -53,7 +53,7 @@ Stand up Layer 1 policy and the OpenClaw integration seam without replacing Open
 - This epic should not invent a separate working-memory store.
 - The output here should make Epic 02 possible without revisiting Layer 1/2 ownership.
 - If a live-appliance implementation needs a new operator capability, close the gap in `moltbox-gateway` explicitly rather than normalizing raw Docker, break-glass SSH, or replay-era runtime ownership.
-- The live web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`; do not reintroduce the old Playwright detour as the intended baseline.
+- The live web baseline is `web_search` + built-in `web_fetch`, with native `memory-core` disabled in the default local lane; do not reintroduce the old Playwright detour as the intended baseline.
 - New services are allowed when the project needs them, but they must be added through the official Moltbox path so they are globally discoverable:
   - service definitions, baseline config, and service-local docs in `moltbox-services`
   - promoted runtime-layer changes in `moltbox-runtime`

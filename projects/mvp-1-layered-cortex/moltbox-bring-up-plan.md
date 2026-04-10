@@ -15,9 +15,10 @@ It also assumes the current live appliance baseline:
 - managed services are `gateway`, `caddy`, `ollama`, `searxng`, `test`, and `prod`
 - `test` is the proving lane
 - `prod` is a protected managed pet
-- routine validation should stay on `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime` where possible
+- routine validation should stay on `moltbox test verify runtime|web` and `moltbox prod verify runtime` where possible
 - raw Docker and break-glass SSH are not the normal path
-- the web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the web baseline is `web_search` + built-in `web_fetch`
+- native `memory-core` is disabled in the default local lane
 - the Playwright detour is not part of the intended baseline
 
 ## What We Can Do Before Infrastructure Exists
@@ -58,7 +59,6 @@ Those assets now exist in this repository.
    - `QMD` is selected as the working-memory backend
    - compaction and pruning remain native OpenClaw behavior
    - `moltbox test verify runtime` passes
-   - `moltbox test verify browser` passes
    - `moltbox test verify web` passes
 4. Do not enable the Cortex bridge plugin yet.
 
@@ -68,8 +68,8 @@ Those assets now exist in this repository.
 2. Add the shared services needed for Phase 1 to the tracked Moltbox service inventory only when we are ready to support them cleanly:
    - `Postgres`
    - `Neo4j`
-   - `Graphiti` service if we keep it as a separate service boundary
-   - the Cortex Python service when we are ready to expose it beyond local staging
+   - `Graphiti`
+   - `Cortex`
 3. Land those additions the Moltbox way so they are globally discoverable:
    - service definitions, baseline config, and service-local docs in `moltbox-services`
    - promoted runtime-layer changes in `moltbox-runtime` when required
@@ -102,7 +102,6 @@ Those assets now exist in this repository.
 4. Confirm OpenClaw sessions, compaction, and transcript ownership remain native.
 5. Re-run the official verification surfaces that should remain true after the plugin is added:
    - `moltbox test verify runtime`
-   - `moltbox test verify browser`
    - `moltbox test verify web`
 6. Fix hook-shape mismatches here before enabling service-backed behavior.
 
@@ -117,7 +116,7 @@ Those assets now exist in this repository.
    - Layer 5 evidence capture
    - semantic checkpoint creation
    - Layer 4 support-body staging
-   - Layer 3 episode packaging
+   - Layer 3 episode packaging through the separate `Graphiti` service boundary
 4. Keep Layer 2 OpenClaw-native.
 
 ### 6. Validate the full Phase 1 loop in test
@@ -129,9 +128,8 @@ Those assets now exist in this repository.
    - Layer 3 packages stay pointer-based and never become transcript dumps
    - Reflection and Dream hooks are emitted on the expected cadence
 3. Compare continuity behavior against the pure Phase 0 baseline.
-4. Keep using the official verification surfaces so browser and web capability regressions are caught on the same lane:
+4. Keep using the official verification surfaces so runtime and web regressions are caught on the same lane:
    - `moltbox test verify runtime`
-   - `moltbox test verify browser`
    - `moltbox test verify web`
 
 ### 7. Promote cautiously to production

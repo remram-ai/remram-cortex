@@ -39,9 +39,10 @@ In practice:
 - `prod` is a protected managed pet
 - normal service-plane mutation uses `moltbox service ...`
 - normal runtime mutation uses native `moltbox test|prod openclaw ...`
-- routine validation should prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime`
+- routine validation should prefer `moltbox test verify runtime|web` and `moltbox prod verify runtime`
 - raw Docker and break-glass SSH are not the normal path when the operator surface can do the job
-- the intended web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the intended web baseline is `web_search` + built-in `web_fetch`
+- native `memory-core` is disabled in the default local lane
 - the old Playwright detour is not the intended baseline
 
 The current service inventory is the live baseline, not a permanent ceiling.

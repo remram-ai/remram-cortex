@@ -88,10 +88,10 @@ Current live-baseline caveat:
 - deployment should still happen through `moltbox service ...`
 - routine runtime and web validation should prefer:
   - `moltbox test verify runtime`
-  - `moltbox test verify browser`
   - `moltbox test verify web`
   - `moltbox prod verify runtime`
-- the web baseline is `web_search`, built-in `web_fetch`, and native OpenClaw `browser`
+- the web baseline is `web_search` + built-in `web_fetch`
+- native `memory-core` is disabled in the default local lane
 - the old Playwright detour is not part of the intended appliance baseline
 
 ## Layer 4 Contract

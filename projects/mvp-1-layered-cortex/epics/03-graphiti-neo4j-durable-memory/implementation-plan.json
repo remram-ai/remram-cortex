@@ -10,8 +10,9 @@
       "id": "01",
       "name": "Layer 3 bring-up",
       "outputs": [
-        "Neo4j deployment posture",
-        "Graphiti configuration",
+        "separate Neo4j deployment posture",
+        "separate Graphiti service configuration",
+        "Cortex-to-Graphiti service boundary",
         "episode write path"
       ]
     },
@@ -37,7 +38,8 @@
   "exit_criteria": [
     "High-signal QMD notions can appear as tentative cross-thread memory.",
     "Reconciliation can promote or reject tentative memory.",
-    "Graphiti receives bounded evidence packages rather than raw log dumps."
+    "Graphiti receives bounded evidence packages rather than raw log dumps.",
+    "The separate Cortex and Graphiti service boundaries are explicit."
   ],
   "risks": [
     "Overloading Graphiti with raw evidence.",

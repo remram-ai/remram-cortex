@@ -38,7 +38,7 @@ When this project targets the live Moltbox appliance:
 - `prod` is a protected managed pet
 - normal service-plane mutation uses `moltbox service ...`
 - normal runtime mutation uses native `moltbox test|prod openclaw ...`
-- routine validation should prefer `moltbox test verify runtime|browser|web` and `moltbox prod verify runtime`
+- routine validation should prefer `moltbox test verify runtime|web` and `moltbox prod verify runtime`
 - raw Docker, break-glass SSH, replay-era runtime ownership, and the old Playwright detour are not the intended baseline
 
 This project can describe future Phase 1 services such as `Postgres`, `Neo4j`, `Graphiti`, and a Cortex service boundary, but those are future service-plane additions, not live-baseline facts.
