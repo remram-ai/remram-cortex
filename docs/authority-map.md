@@ -82,5 +82,6 @@ For a new human reader:
 For a new AI thread:
 
 1. [Cortex Core Context Pack](context-packs/cortex-core/README.md)
-2. [MVP 1 README](../projects/mvp-1-layered-cortex/README.md)
-3. [Project Plan](../projects/mvp-1-layered-cortex/project-plan.md)
+2. [Live Appliance Quick Start](context-packs/cortex-core/08-live-appliance-quick-start.md) when the thread touches the real Moltbox environment
+3. [MVP 1 README](../projects/mvp-1-layered-cortex/README.md)
+4. [Project Plan](../projects/mvp-1-layered-cortex/project-plan.md)

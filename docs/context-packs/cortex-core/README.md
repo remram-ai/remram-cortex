@@ -25,6 +25,7 @@ Give a fresh reader enough context to avoid the common category errors:
 6. [05 Phases And Delivery](05-phases-and-delivery.md)
 7. [06 OpenClaw And Live Appliance Boundary](06-openclaw-and-live-appliance-boundary.md)
 8. [07 Elderclaw Pressure And Multi-Party Scope](07-elderclaw-pressure-and-multi-party-scope.md)
+9. [08 Live Appliance Quick Start](08-live-appliance-quick-start.md)
 
 ## Recommended Load Order
 
@@ -36,6 +37,7 @@ Give a fresh reader enough context to avoid the common category errors:
 6. [05 Phases And Delivery](05-phases-and-delivery.md)
 7. [06 OpenClaw And Live Appliance Boundary](06-openclaw-and-live-appliance-boundary.md)
 8. [07 Elderclaw Pressure And Multi-Party Scope](07-elderclaw-pressure-and-multi-party-scope.md)
+9. [08 Live Appliance Quick Start](08-live-appliance-quick-start.md)
 
 ## Relationship To Other Packs
 
