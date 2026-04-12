@@ -30,11 +30,11 @@ These documents define the active Cortex architecture.
 
 These documents define the active delivery package for the current MVP without redefining the architecture.
 
-- [MVP 1 README](../projects/mvp-1-layered-cortex/README.md): execution package entry point
-- [Project Charter](../projects/mvp-1-layered-cortex/project-charter.md): MVP scope and exclusions
-- [Project Plan](../projects/mvp-1-layered-cortex/project-plan.md): phased delivery sequence for the locked architecture
-- [Acceptance Test](../projects/mvp-1-layered-cortex/acceptance-test.md): current proof surface
-- [Runtime Docs](../projects/mvp-1-layered-cortex/runtime-docs.md): current scaffold and runtime-facing proof posture
+- [MVP 1 README](../projects/mvp-1-practical-cortex/README.md): active execution package entry point
+- [Project Charter](../projects/mvp-1-practical-cortex/project-charter.md): MVP scope and practical delivery posture
+- [Project Plan](../projects/mvp-1-practical-cortex/project-plan.md): active phased delivery sequence
+- [Acceptance Test](../projects/mvp-1-practical-cortex/acceptance-test.md): current practical proof surface
+- [Runtime Docs](../projects/mvp-1-practical-cortex/runtime-docs.md): current scaffold and runtime-facing proof posture
 
 ## Supporting But Non-Authoritative Summaries
 
@@ -83,5 +83,5 @@ For a new AI thread:
 
 1. [Cortex Core Context Pack](context-packs/cortex-core/README.md)
 2. [Live Appliance Quick Start](context-packs/cortex-core/08-live-appliance-quick-start.md) when the thread touches the real Moltbox environment
-3. [MVP 1 README](../projects/mvp-1-layered-cortex/README.md)
-4. [Project Plan](../projects/mvp-1-layered-cortex/project-plan.md)
+3. [MVP 1 README](../projects/mvp-1-practical-cortex/README.md)
+4. [Project Plan](../projects/mvp-1-practical-cortex/project-plan.md)

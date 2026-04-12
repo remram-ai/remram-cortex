@@ -35,7 +35,7 @@ The active stack direction is:
 - [docs/design/layered-memory-architecture.md](docs/design/layered-memory-architecture.md)
 - [docs/design/technology-stack.md](docs/design/technology-stack.md)
 - [docs/context-packs/cortex-core/README.md](docs/context-packs/cortex-core/README.md)
-- [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
+- [projects/mvp-1-practical-cortex/README.md](projects/mvp-1-practical-cortex/README.md)
 
 ## AI Start Here
 
@@ -47,8 +47,8 @@ For a fresh implementation thread or AI onboarding pass, use this path:
 4. [docs/context-packs/cortex-core/02-layers-and-authority.md](docs/context-packs/cortex-core/02-layers-and-authority.md)
 5. [docs/context-packs/cortex-core/05-phases-and-delivery.md](docs/context-packs/cortex-core/05-phases-and-delivery.md)
 6. [docs/context-packs/cortex-core/08-live-appliance-quick-start.md](docs/context-packs/cortex-core/08-live-appliance-quick-start.md)
-7. [projects/mvp-1-layered-cortex/README.md](projects/mvp-1-layered-cortex/README.md)
-8. [projects/mvp-1-layered-cortex/project-plan.md](projects/mvp-1-layered-cortex/project-plan.md)
+7. [projects/mvp-1-practical-cortex/README.md](projects/mvp-1-practical-cortex/README.md)
+8. [projects/mvp-1-practical-cortex/project-plan.md](projects/mvp-1-practical-cortex/project-plan.md)
 
 For a longer NotebookLM or audio-style briefing, use the expanded [Layered Cortex Stack pack](docs/context-packs/layered-cortex-stack/README.md).
 

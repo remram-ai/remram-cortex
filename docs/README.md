@@ -33,8 +33,8 @@ For a new AI implementation thread, the recommended read order is:
 3. [context-packs/cortex-core/01-terminology-and-legacy.md](context-packs/cortex-core/01-terminology-and-legacy.md)
 4. [context-packs/cortex-core/02-layers-and-authority.md](context-packs/cortex-core/02-layers-and-authority.md)
 5. [context-packs/cortex-core/05-phases-and-delivery.md](context-packs/cortex-core/05-phases-and-delivery.md)
-6. [../projects/mvp-1-layered-cortex/README.md](../projects/mvp-1-layered-cortex/README.md)
-7. [../projects/mvp-1-layered-cortex/project-plan.md](../projects/mvp-1-layered-cortex/project-plan.md)
+6. [../projects/mvp-1-practical-cortex/README.md](../projects/mvp-1-practical-cortex/README.md)
+7. [../projects/mvp-1-practical-cortex/project-plan.md](../projects/mvp-1-practical-cortex/project-plan.md)
 
 Use the expanded [Layered Cortex Stack](context-packs/layered-cortex-stack/README.md) pack when you want a longer topic-by-topic briefing or audio-oriented source set.
 

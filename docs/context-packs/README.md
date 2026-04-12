@@ -26,8 +26,8 @@ For new implementation or planning threads, start with:
 4. [02 Layers And Authority](cortex-core/02-layers-and-authority.md)
 5. [05 Phases And Delivery](cortex-core/05-phases-and-delivery.md)
 6. [08 Live Appliance Quick Start](cortex-core/08-live-appliance-quick-start.md)
-7. [../../projects/mvp-1-layered-cortex/README.md](../../projects/mvp-1-layered-cortex/README.md)
-8. [../../projects/mvp-1-layered-cortex/project-plan.md](../../projects/mvp-1-layered-cortex/project-plan.md)
+7. [../../projects/mvp-1-practical-cortex/README.md](../../projects/mvp-1-practical-cortex/README.md)
+8. [../../projects/mvp-1-practical-cortex/project-plan.md](../../projects/mvp-1-practical-cortex/project-plan.md)
 
 Use [Layered Cortex Stack](layered-cortex-stack/README.md) when you want the longer NotebookLM or audio-oriented source set.
 

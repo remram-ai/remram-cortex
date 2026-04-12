@@ -4,8 +4,9 @@ Use this note when a Cortex thread will touch the real Moltbox appliance or any 
 
 ## Current Active Project
 
-- The only active project package in this repo is `projects/mvp-1-layered-cortex/`.
-- The older `v0_1 MVP` package is archived and should not be treated as the current implementation plan.
+- The active project package in this repo is `projects/mvp-1-practical-cortex/`.
+- The earlier `mvp-1-layered-cortex` package is archived under `archive/2026-04-11-practical-project-reset/`.
+- The older `v0_1 MVP` package remains archived and should not be treated as the current implementation plan.
 
 ## Repo Authority Split
 
@@ -105,4 +106,4 @@ moltbox prod verify runtime
 - `moltbox-gateway/docs/guides/operator-guide.md`
 - `moltbox-gateway/docs/ai-context/cortex-implementation-thread-prompt.md`
 - `docs/design/deployment-plan.md`
-- `projects/mvp-1-layered-cortex/project-plan.md`
+- `projects/mvp-1-practical-cortex/project-plan.md`

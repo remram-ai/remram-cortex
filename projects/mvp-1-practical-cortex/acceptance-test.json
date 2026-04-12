@@ -1,0 +1,45 @@
+{
+  "project_id": "mvp_1_practical_cortex",
+  "tests": [
+    {
+      "test_id": "AT-001",
+      "name": "Remote OpenClaw baseline is healthy",
+      "expected_result": "The proving lane runs the approved OpenClaw baseline and passes routine runtime verification."
+    },
+    {
+      "test_id": "AT-002",
+      "name": "QMD sidecar memory is enabled",
+      "expected_result": "QMD is installed on the host, selected as the memory backend, and reachable from the baseline runtime."
+    },
+    {
+      "test_id": "AT-003",
+      "name": "Memory stays light",
+      "expected_result": "Memory retrieval uses tight limits so the default local model is not flooded with irrelevant prompt context."
+    },
+    {
+      "test_id": "AT-004",
+      "name": "Orchestrator routes before memory injection",
+      "expected_result": "The default assistant decides whether memory, web, coding, or escalation is required before invoking the heavier path."
+    },
+    {
+      "test_id": "AT-005",
+      "name": "Web baseline works without browser",
+      "expected_result": "Web search and fetch support the default assistant while browser remains outside the baseline."
+    },
+    {
+      "test_id": "AT-006",
+      "name": "OpenAI escalation is available",
+      "expected_result": "Harder reasoning and coding tasks can escalate from the local default model to OpenAI-backed execution."
+    },
+    {
+      "test_id": "AT-007",
+      "name": "Baseline specialist agents exist",
+      "expected_result": "Coding, research, and management-oriented agents are available with bounded responsibilities."
+    },
+    {
+      "test_id": "AT-008",
+      "name": "Dev-to-test loop is repeatable",
+      "expected_result": "Changes can be deployed, validated, inspected, and backed out on the proving lane using official Moltbox surfaces."
+    }
+  ]
+}
