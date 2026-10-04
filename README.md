@@ -1,4 +1,23 @@
-# remram-cortex
+# Remram Cortex — retired
+
+Status: retired as an active repository, 2026-10-04. Ready for owner-managed archiving.
+
+Cortex's recovered concepts and design depth have migrated into **Livonne Platform**, supporting **Livonne Care** and the wider Livonne platform:
+
+- [Twelve platform concepts](https://github.com/livonne-ai/livonne-platform/blob/main/knowledge/concepts/README.md)
+- [Cortex component design](https://github.com/livonne-ai/livonne-platform/tree/main/components/cortex)
+- [Conversion and examination record](https://github.com/livonne-ai/livonne/blob/main/projects/livonne-source-reauthoring/cortex-source-ledger.md)
+- [Livonne company and products](https://github.com/livonne-ai/livonne)
+
+The migration re-authored selected knowledge and preserved source provenance. It does not claim an implementation port, transfer of every historical revision, or appliance cutover. Original code, execution schemas, deployment material, and historical alternatives remain here as reference.
+
+For the continuing memory-enhanced OpenClaw experiment and Moltbox/Forge projects, start with [Remram](https://github.com/remram-ai/remram). Do not route new implementation work into this retired repository.
+
+## Historical README
+
+The original README below describes the earlier Cortex proposal. Its active-stack and implementation statements are historical, not current Livonne decisions.
+
+### Earlier Cortex framing
 
 Remram Cortex is the knowledge authority layer for Remram.
 
